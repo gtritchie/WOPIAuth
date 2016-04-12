@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BC81CBC867200A67FEF /* ProviderInfo.swift */; };
+		4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */; };
+		4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCC1CBC869500A67FEF /* ClientInfo.swift */; };
 		4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */; };
-		4E8CB5C01CB759C400769F0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5BF1CB759C400769F0D /* ViewController.swift */; };
 		4E8CB5C21CB759C400769F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C11CB759C400769F0D /* Assets.xcassets */; };
 		4E8CB5C51CB759C400769F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C31CB759C400769F0D /* Main.storyboard */; };
 		4E8CB5D01CB759C400769F0D /* WOPIAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5CF1CB759C400769F0D /* WOPIAuthTests.swift */; };
 		4E8CB5DB1CB759C400769F0D /* WOPIAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */; };
+		4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620931CBC9EB100D631F4 /* MainWindowController.swift */; };
+		4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */; };
+		4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620981CBD723200D631F4 /* ProviderListViewController.swift */; };
+		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,9 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E592BC81CBC867200A67FEF /* ProviderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfo.swift; sourceTree = "<group>"; };
+		4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfo.swift; sourceTree = "<group>"; };
+		4E592BCC1CBC869500A67FEF /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
 		4E8CB5BA1CB759C400769F0D /* WOPIAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOPIAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E8CB5BF1CB759C400769F0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4E8CB5C11CB759C400769F0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E8CB5C41CB759C400769F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E8CB5C61CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +53,10 @@
 		4E8CB5D61CB759C400769F0D /* WOPIAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOPIAuthUITests.swift; sourceTree = "<group>"; };
 		4E8CB5DC1CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EA620931CBC9EB100D631F4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailsViewController.swift; sourceTree = "<group>"; };
+		4EA620981CBD723200D631F4 /* ProviderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderListViewController.swift; sourceTree = "<group>"; };
+		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailEditProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +84,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E592BC71CBC865E00A67FEF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E592BCC1CBC869500A67FEF /* ClientInfo.swift */,
+				4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */,
+				4E592BC81CBC867200A67FEF /* ProviderInfo.swift */,
+			);
+			name = Model;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		4E8CB5B11CB759C400769F0D = {
 			isa = PBXGroup;
 			children = (
+				4EA620951CBCAB1200D631F4 /* Controller */,
 				4E8CB5BC1CB759C400769F0D /* WOPIAuth */,
 				4E8CB5CE1CB759C400769F0D /* WOPIAuthTests */,
 				4E8CB5D91CB759C400769F0D /* WOPIAuthUITests */,
@@ -96,10 +120,11 @@
 			isa = PBXGroup;
 			children = (
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
-				4E8CB5BF1CB759C400769F0D /* ViewController.swift */,
 				4E8CB5C11CB759C400769F0D /* Assets.xcassets */,
 				4E8CB5C31CB759C400769F0D /* Main.storyboard */,
+				4EA620931CBC9EB100D631F4 /* MainWindowController.swift */,
 				4E8CB5C61CB759C400769F0D /* Info.plist */,
+				4E592BC71CBC865E00A67FEF /* Model */,
 			);
 			path = WOPIAuth;
 			sourceTree = "<group>";
@@ -120,6 +145,16 @@
 				4E8CB5DC1CB759C400769F0D /* Info.plist */,
 			);
 			path = WOPIAuthUITests;
+			sourceTree = "<group>";
+		};
+		4EA620951CBCAB1200D631F4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */,
+				4EA620981CBD723200D631F4 /* ProviderListViewController.swift */,
+				4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,8 +287,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E8CB5C01CB759C400769F0D /* ViewController.swift in Sources */,
+				4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */,
+				4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */,
+				4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift in Sources */,
+				4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */,
+				4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */,
+				4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */,
 				4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */,
+				4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +430,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WOPIAuth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.office.WOPIAuth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -401,6 +443,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WOPIAuth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.office.WOPIAuth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -475,6 +518,7 @@
 				4E8CB5E11CB759C400769F0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4E8CB5E21CB759C400769F0D /* Build configuration list for PBXNativeTarget "WOPIAuthTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +527,7 @@
 				4E8CB5E41CB759C400769F0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4E8CB5E51CB759C400769F0D /* Build configuration list for PBXNativeTarget "WOPIAuthUITests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +536,7 @@
 				4E8CB5E71CB759C400769F0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
