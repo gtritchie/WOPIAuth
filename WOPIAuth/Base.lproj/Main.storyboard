@@ -751,6 +751,7 @@
                                             </tableColumns>
                                             <connections>
                                                 <binding destination="4oR-nD-lvo" name="content" keyPath="arrangedObjects" id="QbE-vp-vDW"/>
+                                                <binding destination="4oR-nD-lvo" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="QbE-vp-vDW" id="b9H-R5-5Uf"/>
                                                 <outlet property="delegate" destination="yfY-Zu-Un7" id="qD5-ha-RMO"/>
                                             </connections>
                                         </tableView>
@@ -790,7 +791,8 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="deleteSelectedProvider:" target="yfY-Zu-Un7" id="Vqx-tz-pV7"/>
+                                    <action selector="deleteSelectedProvider:" target="yfY-Zu-Un7" id="AhN-iv-NbK"/>
+                                    <binding destination="4oR-nD-lvo" name="enabled" keyPath="canRemove" id="GoQ-i7-bJA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1129,7 +1131,7 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="EPT-AC-jCU">
-                                                            <rect key="frame" x="120" y="1" width="200" height="17"/>
+                                                            <rect key="frame" x="119.99408137408147" y="1" width="200" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmE-zq-zaj">
@@ -1161,7 +1163,7 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="654-dF-LDo">
-                                                            <rect key="frame" x="323" y="1" width="123" height="17"/>
+                                                            <rect key="frame" x="322.61526086746829" y="1" width="123" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9OR-Ix-mhL">

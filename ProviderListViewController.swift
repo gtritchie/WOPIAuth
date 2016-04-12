@@ -14,20 +14,8 @@ class ProviderListViewController: NSViewController,
 	// MARK: Properties
 	
 	/// List of `ProviderInfo`s
-	var providers = [ProviderInfo]() {
-		didSet {
-			guard viewLoaded else { return }
-//			tableView.reloadData()
-		}
-	}
+	var providers = [ProviderInfo]()
 	
-	// MARK: Life Cycle
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
-
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let AddProviderDetailSegueIdentifier = "AddProviderDetail"
 	
@@ -38,11 +26,6 @@ class ProviderListViewController: NSViewController,
 			let destination = segue.destinationController as! ProviderDetailsViewController
 			destination.delegate = self
 
-			//let destination = segue.destinationViewController as! DetailViewController
-			//let indexPath = tableView.indexPathForSelectedRow!
-			//let selectedObject = fetchedResultsController.objectAtIndexPath(indexPath) as! AAAEmployeeMO
-			//destination.employee = selectedObject
-		
 		default:
 			print("Unknown segue: \(segue.identifier)")
 		}
@@ -59,22 +42,11 @@ class ProviderListViewController: NSViewController,
 	}
 		
 	func updateExisting(provider: ProviderInfo) {
-		
 	}
-	
-	// MARK: NSTableViewDataSource
-	
-//	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-//		return providers.count
-//	}
-//	
-//	func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
-//		return providers[row].providerName
-//	}
 	
 	// MARK: Actions
 	
-	@IBAction func deleteSelectedProvider(sender: NSButton) {
+	@IBAction func deleteSelectedProvider(sender: AnyObject) {
 		let alert = NSAlert()
 		alert.messageText = "Do you really want to remove this provider?"
 		alert.informativeText = "All information about this provider will be permanently deleted."
@@ -86,6 +58,7 @@ class ProviderListViewController: NSViewController,
 			switch response {
 			
 			case NSAlertFirstButtonReturn:
+				self.arrayController.remove(sender)
 				break
 				
 			default:
