@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */; };
+		4E100ACA1CC03FED00AFA37E /* RightPaneSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */; };
+		4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100ACB1CC0459100AFA37E /* Preferences.swift */; };
 		4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BC81CBC867200A67FEF /* ProviderInfo.swift */; };
 		4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */; };
 		4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCC1CBC869500A67FEF /* ClientInfo.swift */; };
@@ -18,7 +21,7 @@
 		4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620931CBC9EB100D631F4 /* MainWindowController.swift */; };
 		4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */; };
 		4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620981CBD723200D631F4 /* ProviderListViewController.swift */; };
-		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift */; };
+		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarSplitViewController.swift; path = WOPIAuth/SidebarSplitViewController.swift; sourceTree = "<group>"; };
+		4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightPaneSplitViewController.swift; sourceTree = "<group>"; };
+		4E100ACB1CC0459100AFA37E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		4E592BC81CBC867200A67FEF /* ProviderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfo.swift; sourceTree = "<group>"; };
 		4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfo.swift; sourceTree = "<group>"; };
 		4E592BCC1CBC869500A67FEF /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
@@ -53,10 +59,10 @@
 		4E8CB5D61CB759C400769F0D /* WOPIAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOPIAuthUITests.swift; sourceTree = "<group>"; };
 		4E8CB5DC1CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4EA620931CBC9EB100D631F4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		4EA620931CBC9EB100D631F4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = WOPIAuth/MainWindowController.swift; sourceTree = "<group>"; };
 		4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailsViewController.swift; sourceTree = "<group>"; };
 		4EA620981CBD723200D631F4 /* ProviderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderListViewController.swift; sourceTree = "<group>"; };
-		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailEditProtocol.swift; sourceTree = "<group>"; };
+		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 				4E592BCC1CBC869500A67FEF /* ClientInfo.swift */,
 				4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */,
 				4E592BC81CBC867200A67FEF /* ProviderInfo.swift */,
+				4E100ACB1CC0459100AFA37E /* Preferences.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -98,7 +105,6 @@
 		4E8CB5B11CB759C400769F0D = {
 			isa = PBXGroup;
 			children = (
-				4EA620951CBCAB1200D631F4 /* Controller */,
 				4E8CB5BC1CB759C400769F0D /* WOPIAuth */,
 				4E8CB5CE1CB759C400769F0D /* WOPIAuthTests */,
 				4E8CB5D91CB759C400769F0D /* WOPIAuthUITests */,
@@ -119,12 +125,12 @@
 		4E8CB5BC1CB759C400769F0D /* WOPIAuth */ = {
 			isa = PBXGroup;
 			children = (
+				4E592BC71CBC865E00A67FEF /* Model */,
+				4EA620951CBCAB1200D631F4 /* Controller */,
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
 				4E8CB5C11CB759C400769F0D /* Assets.xcassets */,
 				4E8CB5C31CB759C400769F0D /* Main.storyboard */,
-				4EA620931CBC9EB100D631F4 /* MainWindowController.swift */,
 				4E8CB5C61CB759C400769F0D /* Info.plist */,
-				4E592BC71CBC865E00A67FEF /* Model */,
 			);
 			path = WOPIAuth;
 			sourceTree = "<group>";
@@ -150,11 +156,15 @@
 		4EA620951CBCAB1200D631F4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4EA620931CBC9EB100D631F4 /* MainWindowController.swift */,
 				4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */,
 				4EA620981CBD723200D631F4 /* ProviderListViewController.swift */,
-				4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift */,
+				4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */,
+				4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */,
+				4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */,
 			);
 			name = Controller;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,11 +297,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E100ACA1CC03FED00AFA37E /* RightPaneSplitViewController.swift in Sources */,
+				4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */,
 				4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */,
 				4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */,
-				4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditProtocol.swift in Sources */,
+				4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditor.swift in Sources */,
 				4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */,
 				4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */,
+				4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */,
 				4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */,
 				4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */,
 				4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */,

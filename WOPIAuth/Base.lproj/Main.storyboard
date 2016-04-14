@@ -651,7 +651,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="WOPI Native Auth Test Tool" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -665,15 +665,15 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Sidebar Split View Controller-->
         <scene sceneID="pyf-1I-mAO">
             <objects>
-                <splitViewController id="R7S-rA-OnK" sceneMemberID="viewController">
+                <splitViewController id="R7S-rA-OnK" userLabel="Sidebar Split View Controller" customClass="SidebarSplitViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="Y3g-HD-0VG"/>
                         <splitViewItem id="NBB-Ty-agV"/>
                     </splitViewItems>
-                    <splitView key="splitView" wantsLayer="YES" dividerStyle="thin" vertical="YES" id="508-F0-WwJ">
+                    <splitView key="splitView" wantsLayer="YES" autosaveName="" dividerStyle="thin" vertical="YES" id="508-F0-WwJ">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </splitView>
@@ -840,6 +840,9 @@
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eFh-oh-ITV">
                                 <rect key="frame" x="141" y="217" width="498" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="3lZ-xo-ivS"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Contoso Storage" drawsBackground="YES" usesSingleLineMode="YES" id="YNd-Je-KKh">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1022,10 +1025,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="12.5" y="1782.5"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Right Pane Split View Controller-->
         <scene sceneID="iaf-6t-Est">
             <objects>
-                <splitViewController id="Ouk-iu-1VH" sceneMemberID="viewController">
+                <splitViewController id="Ouk-iu-1VH" userLabel="Right Pane Split View Controller" customClass="RightPaneSplitViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="kpf-sn-wn9"/>
                         <splitViewItem id="cme-Aw-dvS"/>

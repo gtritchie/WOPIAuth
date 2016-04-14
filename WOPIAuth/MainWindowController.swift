@@ -1,15 +1,10 @@
-//
-//  MainWindowController.swift
-//  WOPIAuth
-//
-//  Created by Gary Ritchie on 4/11/16.
-//  Copyright © 2016 Gary Ritchie. All rights reserved.
-//
-
 import Cocoa
 
 class MainWindowController: NSWindowController {
 
+	/// Ensure defaults are registered
+	let preferences = Preferences()
+	
     override func windowDidLoad() {
         super.windowDidLoad()
 		
@@ -17,5 +12,12 @@ class MainWindowController: NSWindowController {
 		// is collapsed.
 		self.contentViewController!.view.wantsLayer = true
     }
+	
+	// For some reason, setting this in the Storyboard doesn't work, have to 
+	// do it in code.
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		window?.setFrameAutosaveName("MainWindowAutoSave")
+	}
 
 }

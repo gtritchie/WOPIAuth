@@ -4,7 +4,7 @@ import Cocoa
 	Controller to manage display and editing of `ProviderInfo` objects.
 */
 class ProviderListViewController: NSViewController,
-	ProviderDetailEditProtocol, NSTableViewDelegate {
+	ProviderDetailEditor, NSTableViewDelegate {
 
 	// MARK: Outlets
 	
@@ -14,7 +14,11 @@ class ProviderListViewController: NSViewController,
 	// MARK: Properties
 	
 	/// List of `ProviderInfo`s
-	var providers = [ProviderInfo]()
+	var providers = Preferences.providers {
+		didSet {
+			print("did set")
+		}
+	}
 	
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let AddProviderDetailSegueIdentifier = "AddProviderDetail"
@@ -39,6 +43,7 @@ class ProviderListViewController: NSViewController,
 		
 	func addNew(provider: ProviderInfo) {
 		arrayController.addObject(provider)
+//		Preferences.providers = providers
 	}
 		
 	func updateExisting(provider: ProviderInfo) {
@@ -48,10 +53,10 @@ class ProviderListViewController: NSViewController,
 	
 	@IBAction func deleteSelectedProvider(sender: AnyObject) {
 		let alert = NSAlert()
-		alert.messageText = "Do you really want to remove this provider?"
-		alert.informativeText = "All information about this provider will be permanently deleted."
-		alert.addButtonWithTitle("Remove")
-		alert.addButtonWithTitle("Cancel")
+		alert.messageText = NSLocalizedString("Do you really want to remove this provider?", comment: "Confirm Provider delete messageText")
+		alert.informativeText = NSLocalizedString("All information about this provider will be permanently deleted.", comment: "Confirm Provider delete informativeText")
+		alert.addButtonWithTitle(NSLocalizedString("Remove", comment: "Confirm Provider delete remove button"))
+		alert.addButtonWithTitle(NSLocalizedString("Cancel", comment: "Confirm Provider delete cancel button"))
 		let window = sender.window!
 		alert.beginSheetModalForWindow(window, completionHandler: { (response) -> Void in
 			
@@ -59,6 +64,7 @@ class ProviderListViewController: NSViewController,
 			
 			case NSAlertFirstButtonReturn:
 				self.arrayController.remove(sender)
+//				Preferences.providers = self.providers
 				break
 				
 			default:
