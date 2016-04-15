@@ -43,7 +43,7 @@ class ProviderListViewController: NSViewController,
 		
 	func addNew(provider: ProviderInfo) {
 		arrayController.addObject(provider)
-//		Preferences.providers = providers
+		Preferences.providers = providers
 	}
 		
 	func updateExisting(provider: ProviderInfo) {
@@ -64,7 +64,7 @@ class ProviderListViewController: NSViewController,
 			
 			case NSAlertFirstButtonReturn:
 				self.arrayController.remove(sender)
-//				Preferences.providers = self.providers
+				Preferences.providers = self.providers
 				break
 				
 			default:

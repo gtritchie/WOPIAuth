@@ -1,7 +1,7 @@
 
 import Foundation
 
-private let providersKey = "providers"
+private let providerArrayKey = "arrayOfProvidersKey"
 
 /**
 	Helper class for reading and saving user settings.
@@ -14,7 +14,7 @@ class Preferences {
 	
 	private func registerDefaultPreferences() {
 		let defaults = [
-			providersKey : [ProviderInfo](),
+			providerArrayKey : NSKeyedArchiver.archivedDataWithRootObject([ProviderInfo]()),
 		]
 		
 		NSUserDefaults.standardUserDefaults().registerDefaults(defaults)
@@ -24,10 +24,12 @@ class Preferences {
 	/// Return the array of persisted `ProviderInfo`s.
 	static var providers: [ProviderInfo]? {
 		set {
-			NSUserDefaults.standardUserDefaults().setObject(newValue, forKey: providersKey)
+			let arrayOfObjectsData = NSKeyedArchiver.archivedDataWithRootObject(newValue!)
+			NSUserDefaults.standardUserDefaults().setObject(arrayOfObjectsData, forKey: providerArrayKey)
 		}
 		get {
-			return NSUserDefaults.standardUserDefaults().objectForKey(providersKey) as? [ProviderInfo]
+			let arrayOfObjectsUnarchivedData = NSUserDefaults.standardUserDefaults().dataForKey(providerArrayKey)!
+			return NSKeyedUnarchiver.unarchiveObjectWithData(arrayOfObjectsUnarchivedData) as? [ProviderInfo]
 		}
 	}
 }
