@@ -1,12 +1,13 @@
 import Foundation
 
-/**
-	`ProviderInfo` contains information needed to perform auth for
-	one Third Party Provider.
-*/
-
+/// Version of archived data
 private let currentProviderInfoVersion = 1
 
+/**
+	`ProviderInfo` contains information needed to perform auth for
+	one Third Party Provider. The `ProviderInfo.bootstrapper` field
+	is treated as the primary unique key.
+*/
 @objc class ProviderInfo: NSObject, NSCoding {
 	
 	// MARK: Init
@@ -17,18 +18,11 @@ private let currentProviderInfoVersion = 1
 	
 	// MARK: Properties
 	
+	/// Version of archived `ProviderInfo`
 	var providerInfoVersion = currentProviderInfoVersion
 	let providerInfoVersionKey = "providerInfoVersion"
 	
-	/// The Microsoft-supplied internal name for the provider.
-	dynamic var providerId: String = "PROVIDER ID"
-	let providerIdKey = "providerId"
-
-	/// The short user-visible name for the provider.
-	dynamic var providerName: String = "PROVIDER NAME"
-	let providerNameKey = "providerName"
-	
-	/// The WOPI bootstrap endpoint URL.
+	/// The WOPI bootstrap endpoint URL. This is treated as the primary unique key.
 	dynamic var bootstrapper: String = "BOOT"
 	let bootstrapperKey = "bootstrapper"
 	
@@ -60,21 +54,11 @@ private let currentProviderInfoVersion = 1
 			return nil
 		}
 		
-		guard let providerIdStr = aDecoder.decodeObjectForKey(providerIdKey) as? String else {
-			print("Failed to unarchive \(providerIdKey)")
-			return nil
-		}
-
-		guard let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as? String else {
-			print("Failed to unarchive \(providerNameKey)")
-			return nil
-		}
-
 		guard let bootstrapperStr = aDecoder.decodeObjectForKey(bootstrapperKey) as? String else {
 			print("Failed to unarchive \(bootstrapperKey)")
 			return nil
 		}
-
+		
 		guard let clientIdStr = aDecoder.decodeObjectForKey(clientIdKey) as? String else {
 			print("Failed to unarchive \(clientIdKey)")
 			return nil
@@ -91,8 +75,6 @@ private let currentProviderInfoVersion = 1
 		}
 		
 		self.providerInfoVersion = providerInfoVersionValue
-		self.providerId = providerIdStr
-		self.providerName = providerNameStr
 		self.bootstrapper = bootstrapperStr
 		self.clientId = clientIdStr
 		self.clientSecret = clientSecretStr
@@ -102,8 +84,6 @@ private let currentProviderInfoVersion = 1
 	/// Using `NSCoding` to save to `NSUserDefaults`
 	func encodeWithCoder(aCoder: NSCoder) {
 		aCoder.encodeInteger(self.providerInfoVersion, forKey: providerInfoVersionKey)
-		aCoder.encodeObject(self.providerId, forKey: providerIdKey)
-		aCoder.encodeObject(self.providerName, forKey: providerNameKey)
 		aCoder.encodeObject(self.bootstrapper, forKey: bootstrapperKey)
 		aCoder.encodeObject(self.clientId, forKey: clientIdKey)
 		aCoder.encodeObject(self.clientSecret, forKey: clientSecretKey)
