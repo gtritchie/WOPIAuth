@@ -14,11 +14,7 @@ class ProviderListViewController: NSViewController,
 	// MARK: Properties
 	
 	/// List of `ProviderInfo`s
-	var providers = Preferences.providers {
-		didSet {
-			print("did set")
-		}
-	}
+	var providers = Preferences.providers
 	
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let AddProviderDetailSegueIdentifier = "AddProviderDetail"

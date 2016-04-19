@@ -13,6 +13,7 @@
 		4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BC81CBC867200A67FEF /* ProviderInfo.swift */; };
 		4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */; };
 		4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCC1CBC869500A67FEF /* ClientInfo.swift */; };
+		4E6F606C1CC448C600F4F826 /* BootstrapFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */; };
 		4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */; };
 		4E8CB5C21CB759C400769F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C11CB759C400769F0D /* Assets.xcassets */; };
 		4E8CB5C51CB759C400769F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C31CB759C400769F0D /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		4E592BC81CBC867200A67FEF /* ProviderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfo.swift; sourceTree = "<group>"; };
 		4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfo.swift; sourceTree = "<group>"; };
 		4E592BCC1CBC869500A67FEF /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
+		4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapFetcher.swift; sourceTree = "<group>"; };
 		4E8CB5BA1CB759C400769F0D /* WOPIAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOPIAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E8CB5C11CB759C400769F0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				4E8CB5C11CB759C400769F0D /* Assets.xcassets */,
 				4E8CB5C31CB759C400769F0D /* Main.storyboard */,
 				4E8CB5C61CB759C400769F0D /* Info.plist */,
+				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
 			);
 			path = WOPIAuth;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */,
 				4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */,
 				4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */,
+				4E6F606C1CC448C600F4F826 /* BootstrapFetcher.swift in Sources */,
 				4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */,
 				4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */,
 				4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */,

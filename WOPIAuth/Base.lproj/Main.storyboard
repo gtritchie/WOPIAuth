@@ -584,6 +584,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="View" id="HyV-fh-RgO">
                                     <items>
+                                        <menuItem title="Show Sidebar" keyEquivalent="s" id="GuR-1H-2vK">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleSidebar:" target="Ady-hI-5gd" id="OWC-Pe-2dp"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
@@ -656,6 +662,32 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="CA14DA4E-F3EE-44B6-BE18-D0A4BD43A747" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Vn9-5l-BFE">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="4KK-DU-uSN"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="iQa-2v-s6s"/>
+                                <toolbarItem implicitItemIdentifier="25C861D3-12EA-40A9-A679-7ED7DF7EFE43" label="Toggle Sidebar" paletteLabel="Toggle Sidebar" image="NSSidebarTemplate" id="Vwg-vS-20k">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="38" height="25"/>
+                                    <size key="maxSize" width="38" height="25"/>
+                                    <button key="view" verticalHuggingPriority="750" id="tBv-Eb-fKJ">
+                                        <rect key="frame" x="24" y="14" width="38" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSSidebarTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hmk-z3-YI2">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="toggleSidebar:" target="Oky-zY-oP4" id="CvA-mP-SjF"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="Vwg-vS-20k"/>
+                                <toolbarItem reference="iQa-2v-s6s"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                     </window>
                     <connections>
                         <segue destination="R7S-rA-OnK" kind="relationship" relationship="window.shadowedContentViewController" id="mev-xB-bhM"/>
@@ -724,8 +756,8 @@
                                                             <rect key="frame" x="1" y="1" width="247" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-1q-w5G">
-                                                                    <rect key="frame" x="18" y="0.0" width="111" height="17"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-1q-w5G">
+                                                                    <rect key="frame" x="18" y="0.0" width="211" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="pWi-Kr-TAS">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1303,5 +1335,6 @@ Gw
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSSidebarTemplate" width="128" height="128"/>
     </resources>
 </document>
