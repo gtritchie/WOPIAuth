@@ -858,20 +858,20 @@
         <scene sceneID="uau-Mq-LfY">
             <objects>
                 <viewController id="2Cm-d8-fo4" customClass="ProviderDetailsViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="9Cn-f0-qBf">
-                        <rect key="frame" x="0.0" y="0.0" width="659" height="193"/>
+                    <view key="view" id="9Cn-f0-qBf">
+                        <rect key="frame" x="0.0" y="0.0" width="659" height="195"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-Wz-JTT">
-                                <rect key="frame" x="18" y="154" width="117" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-Wz-JTT">
+                                <rect key="frame" x="18" y="156" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bootstrapper URL:" id="dzy-xz-4JM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vmy-eY-TwH">
-                                <rect key="frame" x="141" y="151" width="498" height="22"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vmy-eY-TwH">
+                                <rect key="frame" x="141" y="153" width="498" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="t9H-dV-se2"/>
                                 </constraints>
@@ -884,16 +884,16 @@
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.bootstrapper" id="vL4-ys-M6V"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Gd-0n-Nw1">
-                                <rect key="frame" x="18" y="122" width="117" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Gd-0n-Nw1">
+                                <rect key="frame" x="18" y="124" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Client ID:" id="h7I-dv-Znj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="naz-pA-8qI">
-                                <rect key="frame" x="141" y="119" width="498" height="22"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="naz-pA-8qI">
+                                <rect key="frame" x="141" y="121" width="498" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="OAuth2 Client ID for Office" drawsBackground="YES" usesSingleLineMode="YES" id="yup-eP-w5W">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -903,16 +903,16 @@
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientId" id="38D-QL-sJT"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-4B-hGe">
-                                <rect key="frame" x="18" y="87" width="117" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-4B-hGe">
+                                <rect key="frame" x="18" y="92" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Client Secret:" id="8LZ-Ck-amM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cbv-Vr-XCU">
-                                <rect key="frame" x="141" y="87" width="498" height="22"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cbv-Vr-XCU">
+                                <rect key="frame" x="141" y="89" width="498" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="OAuth2 Client Secret for Office" drawsBackground="YES" usesSingleLineMode="YES" id="PdH-B2-Vi8">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -922,8 +922,8 @@
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="uAw-d8-KJj"/>
                                 </connections>
                             </textField>
-                            <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JYR-6R-Zgn">
-                                <rect key="frame" x="141" y="49" width="498" height="22"/>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JYR-6R-Zgn">
+                                <rect key="frame" x="141" y="57" width="498" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://localhost" drawsBackground="YES" usesSingleLineMode="YES" id="vMu-hF-hTJ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -933,8 +933,8 @@
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.redirectUrl" id="84k-Zc-1tW"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xWn-ba-ulm">
-                                <rect key="frame" x="18" y="52" width="117" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xWn-ba-ulm">
+                                <rect key="frame" x="18" y="60" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Redirect URL:" id="Iq8-Xm-YOB">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
