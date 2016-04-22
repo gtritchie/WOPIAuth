@@ -19,10 +19,12 @@
 		4E8CB5C51CB759C400769F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C31CB759C400769F0D /* Main.storyboard */; };
 		4E8CB5D01CB759C400769F0D /* WOPIAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5CF1CB759C400769F0D /* WOPIAuthTests.swift */; };
 		4E8CB5DB1CB759C400769F0D /* WOPIAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */; };
+		4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */; };
 		4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620931CBC9EB100D631F4 /* MainWindowController.swift */; };
 		4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */; };
 		4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620981CBD723200D631F4 /* ProviderListViewController.swift */; };
 		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */; };
+		4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +63,12 @@
 		4E8CB5D61CB759C400769F0D /* WOPIAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOPIAuthUITests.swift; sourceTree = "<group>"; };
 		4E8CB5DC1CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		4EA620931CBC9EB100D631F4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = WOPIAuth/MainWindowController.swift; sourceTree = "<group>"; };
 		4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailsViewController.swift; sourceTree = "<group>"; };
 		4EA620981CBD723200D631F4 /* ProviderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderListViewController.swift; sourceTree = "<group>"; };
 		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailEditor.swift; sourceTree = "<group>"; };
+		4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 				4E592BC71CBC865E00A67FEF /* Model */,
 				4EA620951CBCAB1200D631F4 /* Controller */,
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
+				4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */,
 				4E8CB5C11CB759C400769F0D /* Assets.xcassets */,
 				4E8CB5C31CB759C400769F0D /* Main.storyboard */,
 				4E8CB5C61CB759C400769F0D /* Info.plist */,
@@ -165,6 +170,7 @@
 				4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */,
 				4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */,
 				4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */,
+				4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -305,7 +311,9 @@
 				4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */,
 				4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */,
 				4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditor.swift in Sources */,
+				4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */,
 				4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */,
+				4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */,
 				4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */,
 				4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */,
 				4E6F606C1CC448C600F4F826 /* BootstrapFetcher.swift in Sources */,
