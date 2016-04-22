@@ -25,6 +25,7 @@
 		4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620981CBD723200D631F4 /* ProviderListViewController.swift */; };
 		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */; };
 		4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */; };
+		4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6431CCACC680054E523 /* URLFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		4EA620981CBD723200D631F4 /* ProviderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderListViewController.swift; sourceTree = "<group>"; };
 		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailEditor.swift; sourceTree = "<group>"; };
 		4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		4EB2A6431CCACC680054E523 /* URLFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,14 +133,13 @@
 		4E8CB5BC1CB759C400769F0D /* WOPIAuth */ = {
 			isa = PBXGroup;
 			children = (
+				4EB2A6461CCACC920054E523 /* Network */,
+				4EB2A6451CCACC750054E523 /* Helpers */,
 				4E592BC71CBC865E00A67FEF /* Model */,
 				4EA620951CBCAB1200D631F4 /* Controller */,
-				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
-				4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */,
 				4E8CB5C11CB759C400769F0D /* Assets.xcassets */,
 				4E8CB5C31CB759C400769F0D /* Main.storyboard */,
 				4E8CB5C61CB759C400769F0D /* Info.plist */,
-				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
 			);
 			path = WOPIAuth;
 			sourceTree = "<group>";
@@ -174,6 +175,24 @@
 			);
 			name = Controller;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		4EB2A6451CCACC750054E523 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4EB2A6431CCACC680054E523 /* URLFormatter.swift */,
+				4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */,
+				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		4EB2A6461CCACC920054E523 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,6 +328,7 @@
 				4E100ACA1CC03FED00AFA37E /* RightPaneSplitViewController.swift in Sources */,
 				4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */,
 				4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */,
+				4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */,
 				4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */,
 				4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditor.swift in Sources */,
 				4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */,

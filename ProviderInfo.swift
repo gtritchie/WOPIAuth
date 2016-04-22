@@ -22,23 +22,27 @@ private let currentProviderInfoVersion = 1
 	var providerInfoVersion = currentProviderInfoVersion
 	let providerInfoVersionKey = "providerInfoVersion"
 	
+	/// The Provider Name. For display purposes only.
+	dynamic var providerName: String?
+	let providerNameKey = "providerName"
+
 	/// The WOPI bootstrap endpoint URL. This is treated as the primary unique key.
-	dynamic var bootstrapper: String = "BOOT"
+	dynamic var bootstrapper: String?
 	let bootstrapperKey = "bootstrapper"
 	
 	/// The OAuth2 Client ID issued by the provider for Microsoft Office.
-	dynamic var clientId: String = "CID"
+	dynamic var clientId: String?
 	let clientIdKey = "clientId"
 	
 	/// The OAuth2 Client Secret issued by the provider for Microsoft Office.
-	dynamic var clientSecret: String = "SECRET"
+	dynamic var clientSecret: String?
 	let clientSecretKey = "clientSecret"
 	
 	/**
 		The redirect URL used to indicate that authorization has completed and
 		is returning an authorization_code via the code URL parameter.
 	*/
-	dynamic var redirectUrl: String = "REDIR"
+	dynamic var redirectUrl: String?
 	let redirectUrlKey = "redirectUrl"
 	
 	// MARK: NSCoding
@@ -53,7 +57,12 @@ private let currentProviderInfoVersion = 1
 			print("Unsupported \(providerInfoVersionKey)")
 			return nil
 		}
-		
+
+		guard let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as? String else {
+			print("Failed to unarchive \(providerNameKey)")
+			return nil
+		}
+	
 		guard let bootstrapperStr = aDecoder.decodeObjectForKey(bootstrapperKey) as? String else {
 			print("Failed to unarchive \(bootstrapperKey)")
 			return nil
@@ -75,6 +84,7 @@ private let currentProviderInfoVersion = 1
 		}
 		
 		self.providerInfoVersion = providerInfoVersionValue
+		self.providerName = providerNameStr
 		self.bootstrapper = bootstrapperStr
 		self.clientId = clientIdStr
 		self.clientSecret = clientSecretStr
@@ -84,6 +94,7 @@ private let currentProviderInfoVersion = 1
 	/// Using `NSCoding` to save to `NSUserDefaults`
 	func encodeWithCoder(aCoder: NSCoder) {
 		aCoder.encodeInteger(self.providerInfoVersion, forKey: providerInfoVersionKey)
+		aCoder.encodeObject(self.providerName, forKey: providerNameKey)
 		aCoder.encodeObject(self.bootstrapper, forKey: bootstrapperKey)
 		aCoder.encodeObject(self.clientId, forKey: clientIdKey)
 		aCoder.encodeObject(self.clientSecret, forKey: clientSecretKey)
