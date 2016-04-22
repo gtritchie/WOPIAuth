@@ -24,7 +24,7 @@ class ProviderDetailsViewController: NSViewController {
 	}
 	
 	@IBAction func save(sender: NSButton) {
-		WOPIAuthLog("Added Provider")
+		WOPIAuthLogInfo("Added Provider")
 		delegate?.addNew(provider)
 		delegate = nil
 		dismissController(sender)

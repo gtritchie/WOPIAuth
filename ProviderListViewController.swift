@@ -59,6 +59,7 @@ class ProviderListViewController: NSViewController,
 			switch response {
 			
 			case NSAlertFirstButtonReturn:
+				WOPIAuthLogError("Removed provider")
 				self.arrayController.remove(sender)
 				Preferences.providers = self.providers
 				break
