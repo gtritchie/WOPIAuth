@@ -13,6 +13,11 @@ class LogViewController: NSViewController {
 	
 	@IBOutlet var textView: NSTextView!
 	
+	// MARK: Actions
+	
+	@IBAction func clearLog(sender: AnyObject) {
+		log = NSAttributedString()
+	}
 	
 	// MARK: Life Cycle
 	
