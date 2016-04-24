@@ -25,21 +25,11 @@ class ProviderDetailsViewController: NSViewController {
 	
 	@IBAction func save(sender: NSButton) {
 		
-		// Cleanup any leading/trailing whitespace
-		provider.providerName = provider.providerName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.bootstrapper = provider.bootstrapper.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.clientId = provider.clientId.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.clientSecret = provider.clientSecret.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.redirectUrl = provider.redirectUrl.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-
-		if provider.providerName.isEmpty || provider.bootstrapper.isEmpty ||
-			provider.clientId.isEmpty || provider.clientSecret.isEmpty || provider.redirectUrl.isEmpty {
-
-			ShowValidationErrorMessage(sender, message: NSLocalizedString("All fields must contain information.", comment: "Message for empty Provider field(s)"))
+		guard isProviderValid(sender) else {
 			return
 		}
-
-		WOPIAuthLogInfo("Added Provider")
+		
+		WOPIAuthLogInfo("Added Provider: \(String(provider))")
 		delegate?.addNew(provider)
 		delegate = nil
 		dismissController(sender)
@@ -54,5 +44,33 @@ class ProviderDetailsViewController: NSViewController {
 		alert.addButtonWithTitle(NSLocalizedString("Close", comment: "Confirm Provider close button"))
 
 		alert.beginSheetModalForWindow(sender.window!, completionHandler: { (response) -> Void in })
+	}
+	
+	func isProviderValid(sender: NSButton) -> Bool {
+		
+		// Cleanup any leading/trailing whitespace
+		provider.providerName = provider.providerName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		provider.bootstrapper = provider.bootstrapper.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		provider.clientId = provider.clientId.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		provider.clientSecret = provider.clientSecret.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		provider.redirectUrl = provider.redirectUrl.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		
+		if provider.providerName.isEmpty || provider.bootstrapper.isEmpty ||
+			provider.clientId.isEmpty || provider.clientSecret.isEmpty || provider.redirectUrl.isEmpty {
+			
+			ShowValidationErrorMessage(sender, message: NSLocalizedString("All fields must contain information.",
+				comment: "Message for empty Provider field(s)"))
+			return false
+		}
+		
+		guard let nameAvailable = delegate?.providerNameAvailable(provider.providerName)
+			where nameAvailable else {
+				
+			ShowValidationErrorMessage(sender, message: NSLocalizedString("Provider Name must be unique.",
+				comment: "Message for duplicate Provider Name value"))
+			return false
+		}
+		
+		return true
 	}
 }

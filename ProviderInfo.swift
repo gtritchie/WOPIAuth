@@ -45,6 +45,13 @@ private let currentProviderInfoVersion = 1
 	dynamic var redirectUrl: String = ""
 	let redirectUrlKey = "redirectUrl"
 	
+	/// Summary of `ProviderInfo` suitable for logging
+	override var description: String {
+		get {
+			return "[providerName=\(providerName), bootstrapper=\(bootstrapper), clientId=\(clientId), clientSecret=***, redirectUrl=\(redirectUrl)]"
+		}
+	}
+		
 	// MARK: NSCoding
 	
 	/// Using `NSCoding` to restore from `NSUserDefaults`
