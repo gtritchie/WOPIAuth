@@ -881,7 +881,15 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="4VB-cT-m8R"/>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="Yeg-zQ-Tmz">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">Contoso</string>
+                                            <string key="NSNoSelectionPlaceholder">Contoso</string>
+                                            <string key="NSNotApplicablePlaceholder">Contoso</string>
+                                            <string key="NSNullPlaceholder">Contoso</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-Wz-JTT">
@@ -900,7 +908,14 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.bootstrapper" id="vL4-ys-M6V"/>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.bootstrapper" id="YrS-yU-20u">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">https://contoso.com/wopiboostrapper</string>
+                                            <string key="NSNoSelectionPlaceholder">https://contoso.com/wopiboostrapper</string>
+                                            <string key="NSNotApplicablePlaceholder">https://contoso.com/wopiboostrapper</string>
+                                            <string key="NSNullPlaceholder">https://contoso.com/wopiboostrapper</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Gd-0n-Nw1">
@@ -919,7 +934,14 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientId" id="38D-QL-sJT"/>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientId" id="fn5-qE-08z">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">OAuth2 Client ID for Office</string>
+                                            <string key="NSNoSelectionPlaceholder">OAuth2 Client ID for Office</string>
+                                            <string key="NSNotApplicablePlaceholder">OAuth2 Client ID for Office</string>
+                                            <string key="NSNullPlaceholder">OAuth2 Client ID for Office</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-4B-hGe">
@@ -941,7 +963,14 @@
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="5xc-2V-maq"/>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="V7t-W1-YaG">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNoSelectionPlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNotApplicablePlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNullPlaceholder">OAuth2 Client Secret for Office</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xWn-ba-ulm">
@@ -960,7 +989,14 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.redirectUrl" id="84k-Zc-1tW"/>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.redirectUrl" id="PUS-0r-k0y">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">https://localhost</string>
+                                            <string key="NSNoSelectionPlaceholder">https://localhost</string>
+                                            <string key="NSNotApplicablePlaceholder">https://localhost</string>
+                                            <string key="NSNullPlaceholder">https://localhost</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-mn-xxB">
