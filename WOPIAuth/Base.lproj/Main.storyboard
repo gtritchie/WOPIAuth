@@ -794,7 +794,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="klV-yt-Qn6"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="0E8-6Z-ghZ">
-                                    <rect key="frame" x="0.0" y="253" width="250" height="15"/>
+                                    <rect key="frame" x="0.0" y="252" width="175" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Jxx-GI-cgA">
@@ -1029,7 +1029,7 @@ Gw
                 </viewController>
                 <customObject id="iWx-s6-0pK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.5" y="1695.5"/>
+            <point key="canvasLocation" x="-194.5" y="1815.5"/>
         </scene>
         <!--Right Pane Split View Controller-->
         <scene sceneID="iaf-6t-Est">
@@ -1140,7 +1140,7 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="EPT-AC-jCU">
-                                                            <rect key="frame" x="120" y="1" width="199.09007190035027" height="17"/>
+                                                            <rect key="frame" x="120" y="1" width="200" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KmE-zq-zaj">
@@ -1284,7 +1284,7 @@ Gw
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="mUs-Ya-Uvi"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="OJu-vG-T82">
-                                    <rect key="frame" x="1" y="284" width="347" height="15"/>
+                                    <rect key="frame" x="1" y="283" width="347" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="64h-tg-ryp">
@@ -1318,19 +1318,19 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4Y-6S-paS">
-                                <rect key="frame" x="0.0" y="52" width="450" height="248"/>
+                                <rect key="frame" x="0.0" y="32" width="450" height="268"/>
                                 <clipView key="contentView" id="8q5-vK-ugI">
-                                    <rect key="frame" x="1" y="1" width="448" height="246"/>
+                                    <rect key="frame" x="1" y="1" width="448" height="266"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="SNL-zh-0QY">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="246"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="266"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="448" height="246"/>
+                                            <size key="minSize" width="448" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="448" height="246"/>
+                                            <size key="minSize" width="448" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <connections>
                                                 <binding destination="2j6-cB-pb3" name="attributedString" keyPath="log" id="Ejk-HI-Evk">
@@ -1352,28 +1352,32 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Ngi-zc-Gh0">
-                                    <rect key="frame" x="433" y="1" width="16" height="246"/>
+                                    <rect key="frame" x="433" y="1" width="16" height="266"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button toolTip="Empty Log" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mt8-DT-cTu" userLabel="Empty Log Button">
-                                <rect key="frame" x="406" y="12" width="32" height="32"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSTrashFull" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="voH-Cu-ysR">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7R9-ne-8Hb" userLabel="Clear Log Button">
+                                <rect key="frame" x="423" y="5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="GSv-VU-5U4"/>
+                                    <constraint firstAttribute="width" constant="22" id="jPd-U0-ajR"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="TrashCanTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="JDh-Uw-T9y">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="clearLog:" target="2j6-cB-pb3" id="fa8-VX-KBm"/>
+                                    <action selector="clearLog:" target="2j6-cB-pb3" id="osz-dg-oWP"/>
                                 </connections>
                             </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="x4Y-6S-paS" firstAttribute="leading" secondItem="PSm-7K-xpi" secondAttribute="leading" id="6eZ-yr-Igu"/>
                             <constraint firstAttribute="trailing" secondItem="x4Y-6S-paS" secondAttribute="trailing" id="88B-Ba-pNg"/>
-                            <constraint firstAttribute="bottom" secondItem="mt8-DT-cTu" secondAttribute="bottom" constant="12" id="PmE-3f-8v5"/>
-                            <constraint firstItem="mt8-DT-cTu" firstAttribute="top" secondItem="x4Y-6S-paS" secondAttribute="bottom" constant="8" symbolic="YES" id="XQh-TU-7tU"/>
+                            <constraint firstAttribute="bottom" secondItem="7R9-ne-8Hb" secondAttribute="bottom" constant="5" id="B8L-q3-gpy"/>
                             <constraint firstItem="x4Y-6S-paS" firstAttribute="top" secondItem="PSm-7K-xpi" secondAttribute="top" id="Ydc-pe-wBn"/>
-                            <constraint firstAttribute="trailing" secondItem="mt8-DT-cTu" secondAttribute="trailing" constant="12" id="kVc-S9-eRX"/>
+                            <constraint firstItem="7R9-ne-8Hb" firstAttribute="top" secondItem="x4Y-6S-paS" secondAttribute="bottom" constant="5" id="dok-gE-viK"/>
+                            <constraint firstAttribute="trailing" secondItem="7R9-ne-8Hb" secondAttribute="trailing" constant="5" id="tVN-sj-F48"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1389,6 +1393,6 @@ Gw
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSSidebarTemplate" width="15" height="12"/>
-        <image name="NSTrashFull" width="32" height="32"/>
+        <image name="TrashCanTemplate" width="128" height="128"/>
     </resources>
 </document>
