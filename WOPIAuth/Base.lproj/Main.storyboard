@@ -1392,8 +1392,8 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7R9-ne-8Hb" userLabel="Clear Log Button">
-                                <rect key="frame" x="423" y="5" width="22" height="22"/>
+                            <button toolTip="Clear log" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7R9-ne-8Hb" userLabel="Clear Log Button">
+                                <rect key="frame" x="408" y="5" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="GSv-VU-5U4"/>
                                     <constraint firstAttribute="width" constant="22" id="jPd-U0-ajR"/>
@@ -1413,7 +1413,7 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="7R9-ne-8Hb" secondAttribute="bottom" constant="5" id="B8L-q3-gpy"/>
                             <constraint firstItem="x4Y-6S-paS" firstAttribute="top" secondItem="PSm-7K-xpi" secondAttribute="top" id="Ydc-pe-wBn"/>
                             <constraint firstItem="7R9-ne-8Hb" firstAttribute="top" secondItem="x4Y-6S-paS" secondAttribute="bottom" constant="5" id="dok-gE-viK"/>
-                            <constraint firstAttribute="trailing" secondItem="7R9-ne-8Hb" secondAttribute="trailing" constant="5" id="tVN-sj-F48"/>
+                            <constraint firstAttribute="trailing" secondItem="7R9-ne-8Hb" secondAttribute="trailing" constant="20" symbolic="YES" id="tVN-sj-F48"/>
                         </constraints>
                     </view>
                     <connections>

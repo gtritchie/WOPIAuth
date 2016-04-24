@@ -33,7 +33,12 @@ class ProviderListViewController: NSViewController,
 	
 	// MARK: ProviderDetailEditProtocol
 	
-	func protocolIdAvailable(protocolId: String) -> Bool {
+	func providerNameAvailable(providerName: String) -> Bool {
+		if providers != nil {
+			if providers!.indexOf({$0.providerName == providerName}) != nil {
+				return false
+			}
+		}
 		return true
 	}
 		

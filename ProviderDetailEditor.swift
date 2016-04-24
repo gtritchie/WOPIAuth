@@ -5,8 +5,8 @@ import Cocoa
 */
 protocol ProviderDetailEditor {
 
-	/// Returns `true` if `protocolId` is a unique protocol identifier.
-	func protocolIdAvailable(protocolId: String) -> Bool
+	/// Returns `true` if `providerName` is a unique providerName identifier.
+	func providerNameAvailable(providerName: String) -> Bool
 
 	/// Add `provider` to the list of `ProviderInfo` objects.
 	func addNew(provider: ProviderInfo)
