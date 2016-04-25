@@ -500,7 +500,7 @@
                                             <connections>
                                                 <binding destination="4oR-nD-lvo" name="content" keyPath="arrangedObjects" id="QbE-vp-vDW"/>
                                                 <binding destination="4oR-nD-lvo" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="QbE-vp-vDW" id="b9H-R5-5Uf"/>
-                                                <outlet property="delegate" destination="yfY-Zu-Un7" id="qD5-ha-RMO"/>
+                                                <outlet property="delegate" destination="yfY-Zu-Un7" id="G4H-FJ-NCF"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
@@ -1079,10 +1079,10 @@ Gw
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="266"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="448" height="266"/>
+                                            <size key="minSize" width="433" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="448" height="266"/>
+                                            <size key="minSize" width="433" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <connections>
                                                 <binding destination="2j6-cB-pb3" name="attributedString" keyPath="log" id="Ejk-HI-Evk">
@@ -1104,7 +1104,7 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Ngi-zc-Gh0">
-                                    <rect key="frame" x="433" y="1" width="16" height="266"/>
+                                    <rect key="frame" x="434" y="1" width="15" height="266"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>

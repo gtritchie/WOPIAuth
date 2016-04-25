@@ -3,8 +3,7 @@ import Cocoa
 /**
 	Controller to manage display and editing of `ProviderInfo` objects.
 */
-class ProviderListViewController: NSViewController,
-	ProviderDetailEditor, NSTableViewDelegate {
+class ProviderListViewController: NSViewController,	ProviderDetailEditor, NSTableViewDelegate {
 
 	// MARK: Outlets
 	
@@ -15,6 +14,9 @@ class ProviderListViewController: NSViewController,
 	
 	/// List of `ProviderInfo`s
 	var providers = Preferences.providers
+	
+	/// Currently selected `ProviderInfo`
+	var selectedProvider = Preferences.selectedProvider
 	
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let AddProviderDetailSegueIdentifier = "AddProviderDetail"
@@ -28,6 +30,21 @@ class ProviderListViewController: NSViewController,
 
 		default:
 			print("Unknown segue: \(segue.identifier)")
+		}
+	}
+	
+	// MARK: Life Cycle
+	
+	override func viewWillAppear() {
+
+		super.viewWillAppear()
+		
+		if let defaultProvider = Preferences.selectedProvider where !defaultProvider.providerName.isEmpty {
+			if let defaultRow = providers?.indexOf({$0.providerName == defaultProvider.providerName}) {
+				let indices = NSIndexSet(index: defaultRow)
+				tableView.selectRowIndexes(indices, byExtendingSelection: false)
+				tableView.scrollRowToVisible(defaultRow)
+			}
 		}
 	}
 	
@@ -48,6 +65,20 @@ class ProviderListViewController: NSViewController,
 	}
 		
 	func updateExisting(provider: ProviderInfo) {
+	}
+	
+	// MARK: NSTableViewDelegate
+	
+	func tableViewSelectionDidChange(notification: NSNotification) {
+		let row = tableView.selectedRow
+		if row == -1 {
+			Preferences.selectedProvider = nil
+			return
+		}
+		
+		if let activeProvider = providers?[row] {
+			Preferences.selectedProvider = activeProvider
+		}
 	}
 	
 	// MARK: Actions
