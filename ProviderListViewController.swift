@@ -75,4 +75,8 @@ class ProviderListViewController: NSViewController,
 			
 		})
 	}
+	
+	@IBAction func addNewProvider(sender: AnyObject) {
+		self.performSegueWithIdentifier(AddProviderDetailSegueIdentifier, sender: self)
+	}
 }
