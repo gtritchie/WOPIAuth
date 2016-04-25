@@ -52,7 +52,7 @@
 		4E592BC81CBC867200A67FEF /* ProviderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfo.swift; sourceTree = "<group>"; };
 		4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfo.swift; sourceTree = "<group>"; };
 		4E592BCC1CBC869500A67FEF /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
-		4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapFetcher.swift; sourceTree = "<group>"; };
+		4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrapFetcher.swift; path = WOPIAuth/BootstrapFetcher.swift; sourceTree = "<group>"; };
 		4E8CB5BA1CB759C400769F0D /* WOPIAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOPIAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E8CB5C11CB759C400769F0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,6 +103,7 @@
 			children = (
 				4E592BCC1CBC869500A67FEF /* ClientInfo.swift */,
 				4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */,
+				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
 				4E592BC81CBC867200A67FEF /* ProviderInfo.swift */,
 				4E100ACB1CC0459100AFA37E /* Preferences.swift */,
 			);
@@ -133,7 +134,6 @@
 		4E8CB5BC1CB759C400769F0D /* WOPIAuth */ = {
 			isa = PBXGroup;
 			children = (
-				4EB2A6461CCACC920054E523 /* Network */,
 				4EB2A6451CCACC750054E523 /* Helpers */,
 				4E592BC71CBC865E00A67FEF /* Model */,
 				4EA620951CBCAB1200D631F4 /* Controller */,
@@ -185,14 +185,6 @@
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
 			);
 			name = Helpers;
-			sourceTree = "<group>";
-		};
-		4EB2A6461CCACC920054E523 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
