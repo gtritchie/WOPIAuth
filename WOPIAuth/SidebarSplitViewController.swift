@@ -2,7 +2,8 @@ import Cocoa
 
 /**
 	`NSSplitViewController` subclass for the splitter between sidebar and right-side
-	of the program.
+	of the program. This class manages tracking the currently selected `ProviderInfo`
+	object, and informs the right pane of the selection.
 */
 class SidebarSplitViewController: NSSplitViewController {
 

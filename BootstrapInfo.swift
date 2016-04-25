@@ -20,7 +20,7 @@ private let currentBootstrapInfoVersion = 1
 	/// Version of archived `BootstrapInfo`
 	var bootstrapInfoVersion = currentBootstrapInfoVersion
 	let bootstrapInfoVersionKey = "bootstrapInfoVersion"
-	
+
 	/// The authorization URL for the provider.
 	dynamic var authorizationURL: String = ""
 	let authorizationURLKey = "authorizationURL"
@@ -33,6 +33,13 @@ private let currentBootstrapInfoVersion = 1
 	dynamic var providerID: String = ""
 	let providerIDKey = "providerID"
 	
+	/// Summary of `BootstrapInfo` suitable for logging
+	override var description: String {
+		get {
+			return "[authUrl=\"\(authorizationURL)\", tokenUrl=\"\(tokenIssuanceURL)\", providerID=\"\(providerID)\"]"
+		}
+	}
+
 	// MARK: NSCoding
 	
 	/// Using `NSCoding` to restore from `NSUserDefaults`
@@ -44,7 +51,7 @@ private let currentBootstrapInfoVersion = 1
 			print("Unsupported \(bootstrapInfoVersionKey)")
 			return nil
 		}
-		
+
 		guard let authorizationURLStr = aDecoder.decodeObjectForKey(authorizationURLKey) as? String else {
 			print("Failed to unarchive \(authorizationURLKey)")
 			return nil
