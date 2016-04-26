@@ -8,7 +8,7 @@ class ProviderDetailsViewController: NSViewController {
 	// MARK: Properties
 	
 	dynamic var provider = ProviderInfo()
-	var delegate: ProviderDetailEditor?
+	var delegate: ProviderDetailEditing?
 	
 	// MARK: Life Cycle
 	

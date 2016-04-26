@@ -3,7 +3,7 @@ import Cocoa
 /**
 	Methods to control creation and editing of ProviderDetail records.
 */
-protocol ProviderDetailEditor {
+protocol ProviderDetailEditing {
 
 	/// Returns `true` if `providerName` is a unique providerName identifier.
 	func providerNameAvailable(providerName: String) -> Bool
