@@ -10,12 +10,19 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	@IBOutlet weak var tableView: NSTableView!
 	@IBOutlet weak var arrayController: NSArrayController!
 
+	// MARK: Actions
+	
+	@IBAction func deleteSelectedConnection(sender: AnyObject) {
+		WOPIAuthLogError("Removed connection")
+		self.arrayController.remove(sender)
+		Preferences.connections = self.connections
+	}
+	
 	// MARK: ProviderViewing Protocol
 	
 	/// Currently selected `ProviderInfo`
 	var selectedProvider: ProviderInfo? {
 		didSet {
-			print("connection split view controller got new provider")
 			for child in childViewControllers {
 				if var childProviderViewer = child as? ProviderViewing {
 					childProviderViewer.selectedProvider = selectedProvider
@@ -29,4 +36,17 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	/// List of `ConnectionInfo`s
 	var connections = Preferences.connections
 	
+	// MARK: NSTableViewDelegate
+	
+	/// When selection changes, update selected item preference and notify parent view
+	func tableViewSelectionDidChange(notification: NSNotification) {
+		let row = tableView.selectedRow
+		var activeConnection: ConnectionInfo?
+		if row != -1 {
+			activeConnection = connections?[row]
+		}
+		if var parent = parentViewController as? ConnectionViewing {
+			parent.selectedConnection = activeConnection
+		}
+	}
 }

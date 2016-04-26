@@ -668,27 +668,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <secureTextField toolTip="OAuth2 client secret" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v4p-8F-ow5" userLabel="Client Secret Secure Text Field">
-                                <rect key="frame" x="141" y="89" width="498" height="22"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="OAuth2 Client Secret for Office" drawsBackground="YES" usesSingleLineMode="YES" id="yj5-XC-ed7">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                                <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="V7t-W1-YaG">
-                                        <dictionary key="options">
-                                            <string key="NSMultipleValuesPlaceholder">OAuth2 Client Secret for Office</string>
-                                            <string key="NSNoSelectionPlaceholder">OAuth2 Client Secret for Office</string>
-                                            <string key="NSNotApplicablePlaceholder">OAuth2 Client Secret for Office</string>
-                                            <string key="NSNullPlaceholder">OAuth2 Client Secret for Office</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xWn-ba-ulm">
                                 <rect key="frame" x="18" y="60" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Redirect URL:" id="Iq8-Xm-YOB">
@@ -741,6 +720,27 @@ Gw
                                     <action selector="cancel:" target="2Cm-d8-fo4" id="1dg-c3-2kg"/>
                                 </connections>
                             </button>
+                            <secureTextField toolTip="OAuth2 client secret" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v4p-8F-ow5" userLabel="Client Secret Secure Text Field">
+                                <rect key="frame" x="141" y="89" width="498" height="22"/>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="OAuth2 Client Secret for Office" drawsBackground="YES" usesSingleLineMode="YES" id="yj5-XC-ed7">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                                <connections>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="V7t-W1-YaG">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNoSelectionPlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNotApplicablePlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNullPlaceholder">OAuth2 Client Secret for Office</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </secureTextField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xWn-ba-ulm" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="1ck-wz-z9y"/>
@@ -781,7 +781,7 @@ Gw
                 </viewController>
                 <customObject id="iWx-s6-0pK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.5" y="1746.5"/>
+            <point key="canvasLocation" x="-194.5" y="1724.5"/>
         </scene>
         <!--Right Pane Split View Controller-->
         <scene sceneID="iaf-6t-Est">
@@ -823,12 +823,12 @@ Gw
                 </splitViewController>
                 <customObject id="RpC-ae-NeJ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="1112"/>
+            <point key="canvasLocation" x="805" y="1163"/>
         </scene>
         <!--Connection Properties View Controller Scene-->
         <scene sceneID="cdd-1B-0e1">
             <objects>
-                <viewController id="afC-8R-Y3J" userLabel="Connection Properties View Controller Scene" sceneMemberID="viewController">
+                <viewController id="afC-8R-Y3J" userLabel="Connection Properties View Controller Scene" customClass="ConnectionPropertiesViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="szE-58-jxl">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -968,10 +968,13 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="dmd-w9-WRv" secondAttribute="bottom" id="Zek-TK-mVM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="FAG-Em-SFS" id="MAj-Kv-5a6"/>
+                    </connections>
                 </viewController>
                 <customObject id="cpj-Hw-hnt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="1298"/>
+            <point key="canvasLocation" x="1614" y="1163"/>
         </scene>
         <!--Connections List View Controller Scene-->
         <scene sceneID="ZJt-7z-C6m">
@@ -982,13 +985,13 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iy5-8u-iaA">
-                                <rect key="frame" x="0.0" y="0.0" width="232" height="300"/>
+                                <rect key="frame" x="0.0" y="32" width="232" height="268"/>
                                 <clipView key="contentView" id="U74-5I-iKA">
-                                    <rect key="frame" x="1" y="0.0" width="230" height="299"/>
+                                    <rect key="frame" x="1" y="0.0" width="230" height="267"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="caq-87-ULu" viewBased="YES" id="2mx-Sa-qTt">
-                                            <rect key="frame" x="0.0" y="0.0" width="230" height="276"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="230" height="244"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1033,6 +1036,9 @@ Gw
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="delegate" destination="hBX-vS-hZ1" id="b5w-Mj-has"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1054,18 +1060,50 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <button toolTip="Add connection" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PcW-4o-za3" userLabel="Add Button">
+                                <rect key="frame" x="12" y="0.0" width="11" height="32"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="liy-xB-ar9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button toolTip="Remove connection" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2o-vC-lhw" userLabel="Delete Button">
+                                <rect key="frame" x="31" y="0.0" width="11" height="32"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSRemoveTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="nTj-ge-6Hr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="deleteSelectedConnection:" target="hBX-vS-hZ1" id="vWq-hX-Zsz"/>
+                                    <binding destination="iLw-ba-yrx" name="enabled" keyPath="canRemove" id="scE-IZ-OMd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Iy5-8u-iaA" firstAttribute="leading" secondItem="doc-Jl-b5K" secondAttribute="leading" id="5gG-OI-fWt"/>
                             <constraint firstAttribute="trailing" secondItem="Iy5-8u-iaA" secondAttribute="trailing" id="H6J-UV-QlV"/>
-                            <constraint firstItem="Iy5-8u-iaA" firstAttribute="leading" secondItem="doc-Jl-b5K" secondAttribute="leading" id="I6l-tR-FSZ"/>
-                            <constraint firstAttribute="bottom" secondItem="Iy5-8u-iaA" secondAttribute="bottom" id="nAJ-FU-vBA"/>
+                            <constraint firstItem="PcW-4o-za3" firstAttribute="top" secondItem="Iy5-8u-iaA" secondAttribute="bottom" id="HOA-Zi-ssS"/>
+                            <constraint firstItem="PcW-4o-za3" firstAttribute="leading" secondItem="doc-Jl-b5K" secondAttribute="leading" constant="12" id="Iae-g9-JWl"/>
+                            <constraint firstAttribute="bottom" secondItem="q2o-vC-lhw" secondAttribute="bottom" id="Nqd-Z4-qFu"/>
+                            <constraint firstAttribute="bottom" secondItem="PcW-4o-za3" secondAttribute="bottom" id="TKC-nG-q6I"/>
+                            <constraint firstItem="PcW-4o-za3" firstAttribute="height" secondItem="q2o-vC-lhw" secondAttribute="height" id="cg0-Cn-4eJ"/>
+                            <constraint firstItem="q2o-vC-lhw" firstAttribute="leading" secondItem="PcW-4o-za3" secondAttribute="trailing" constant="8" id="hNA-O2-5Os"/>
                             <constraint firstItem="Iy5-8u-iaA" firstAttribute="top" secondItem="doc-Jl-b5K" secondAttribute="top" id="oae-Ce-pOe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="arrayController" destination="iLw-ba-yrx" id="Bap-ge-klv"/>
+                        <outlet property="tableView" destination="2mx-Sa-qTt" id="5Oz-p9-Kyc"/>
+                    </connections>
                 </viewController>
                 <customObject id="jBh-P0-Ka9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController objectClassName="WOPIAuth.ProviderInfo" id="iLw-ba-yrx">
+                    <connections>
+                        <binding destination="hBX-vS-hZ1" name="contentArray" keyPath="self.connections" id="F5i-NY-uPP"/>
+                    </connections>
+                </arrayController>
             </objects>
-            <point key="canvasLocation" x="1367" y="944"/>
+            <point key="canvasLocation" x="1227" y="1163"/>
         </scene>
         <!--Log View Controller-->
         <scene sceneID="dmc-5Q-zIq">
@@ -1144,7 +1182,7 @@ Gw
                 </viewController>
                 <customObject id="saf-lD-IxW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="1495"/>
+            <point key="canvasLocation" x="805" y="1506"/>
         </scene>
     </scenes>
     <resources>
