@@ -3,6 +3,7 @@ import Foundation
 
 private let providerArrayKey = "arrayOfProvidersKey"
 private let activeProviderKey = "activeProviderKey"
+private let connectionArrayKey = "arrayOfConnectionsKey"
 
 /**
 	Helper class for reading and saving user settings.
@@ -17,6 +18,7 @@ class Preferences {
 		let defaults = [
 			providerArrayKey : NSKeyedArchiver.archivedDataWithRootObject([ProviderInfo]()),
 			activeProviderKey : NSKeyedArchiver.archivedDataWithRootObject(ProviderInfo()),
+			connectionArrayKey : NSKeyedArchiver.archivedDataWithRootObject([ConnectionInfo]())
 		]
 		
 		NSUserDefaults.standardUserDefaults().registerDefaults(defaults)
@@ -47,4 +49,15 @@ class Preferences {
 		}
 	}
 
+	/// The array of persisted `ConnectionInfo`s.
+	static var connections: [ConnectionInfo]? {
+		set {
+			let arrayOfObjectsData = NSKeyedArchiver.archivedDataWithRootObject(newValue!)
+			NSUserDefaults.standardUserDefaults().setObject(arrayOfObjectsData, forKey: connectionArrayKey)
+		}
+		get {
+			let arrayOfObjectsUnarchivedData = NSUserDefaults.standardUserDefaults().dataForKey(connectionArrayKey)!
+			return NSKeyedUnarchiver.unarchiveObjectWithData(arrayOfObjectsUnarchivedData) as? [ConnectionInfo]
+		}
+	}
 }

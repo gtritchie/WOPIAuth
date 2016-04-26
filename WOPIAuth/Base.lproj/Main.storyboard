@@ -973,10 +973,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="1540" y="1298"/>
         </scene>
-        <!--User Names Controller Scene-->
+        <!--Connections List View Controller Scene-->
         <scene sceneID="ZJt-7z-C6m">
             <objects>
-                <viewController id="hBX-vS-hZ1" userLabel="User Names Controller Scene" sceneMemberID="viewController">
+                <viewController id="hBX-vS-hZ1" userLabel="Connections List View Controller Scene" customClass="ConnectionsListViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="doc-Jl-b5K">
                         <rect key="frame" x="0.0" y="0.0" width="232" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

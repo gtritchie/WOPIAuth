@@ -57,6 +57,10 @@ private let currentConnectionInfoVersion = 1
 	dynamic var refreshToken: String = ""
 	let refreshTokenKey = "refreshToken"
 	
+	/// Information obtained from an unauthenticated bootstrapper call
+	dynamic var bootstrapInfo: BootstrapInfo = BootstrapInfo()
+	let bootstrapInfoKey = "bootstrapInfo"	
+
 	/// Summary of `ConnectionInfo` suitable for logging
 	override var description: String {
 		get {
@@ -116,6 +120,11 @@ private let currentConnectionInfoVersion = 1
 			return nil
 		}
 		
+		guard let bootstrapInfoObj = aDecoder.decodeObjectForKey(bootstrapInfoKey) as? BootstrapInfo else {
+			print("Failed to unarchive \(bootstrapInfoKey)")
+			return nil
+		}
+		
 		self.connectionInfoVersion = connectionInfoVersionValue
 		self.providerName = providerNameStr
 		self.userName = userNameStr
@@ -125,6 +134,7 @@ private let currentConnectionInfoVersion = 1
 		self.accessToken = accessTokenStr
 		self.tokenExpiration = tokenExpirationValue
 		self.refreshToken = refreshTokenStr
+		self.bootstrapInfo = bootstrapInfoObj
 	}
 	
 	/// Using `NSCoding` to save to `NSUserDefaults`
@@ -138,5 +148,6 @@ private let currentConnectionInfoVersion = 1
 		aCoder.encodeObject(self.accessToken, forKey: accessTokenKey)
 		aCoder.encodeInt64(self.tokenExpiration, forKey: tokenExpirationKey)
 		aCoder.encodeObject(self.refreshToken, forKey: refreshTokenKey)
+		aCoder.encodeObject(self.bootstrapInfo, forKey: bootstrapInfoKey)
 	}
 }

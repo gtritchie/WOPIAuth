@@ -30,7 +30,6 @@ class ProviderDetailsViewController: NSViewController {
 		}
 		
 		WOPIAuthLogInfo("Info: Added Provider: \(String(provider))")
-		WOPIAuthLogInfo("Info: Provider \"\(provider.providerName)\" has not perfomed initial bootstrapper call. \(String(provider.bootstrapInfo))")
 		delegate?.addNew(provider)
 		delegate = nil
 		dismissController(sender)

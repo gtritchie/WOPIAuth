@@ -45,10 +45,6 @@ private let currentProviderInfoVersion = 1
 	dynamic var redirectUrl: String = ""
 	let redirectUrlKey = "redirectUrl"
 	
-	/// Information obtained from an unauthenticated bootstrapper call
-	dynamic var bootstrapInfo: BootstrapInfo = BootstrapInfo()
-	let bootstrapInfoKey = "bootstrapInfo"
-	
 	/// Summary of `ProviderInfo` suitable for logging
 	override var description: String {
 		get {
@@ -94,18 +90,12 @@ private let currentProviderInfoVersion = 1
 			return nil
 		}
 		
-		guard let bootstrapInfoObj = aDecoder.decodeObjectForKey(bootstrapInfoKey) as? BootstrapInfo else {
-			print("Failed to unarchive \(bootstrapInfoKey)")
-			return nil
-		}
-		
 		self.providerInfoVersion = providerInfoVersionValue
 		self.providerName = providerNameStr
 		self.bootstrapper = bootstrapperStr
 		self.clientId = clientIdStr
 		self.clientSecret = clientSecretStr
 		self.redirectUrl = redirectUrlStr
-		self.bootstrapInfo = bootstrapInfoObj
 	}
 	
 	/// Using `NSCoding` to save to `NSUserDefaults`
@@ -116,7 +106,6 @@ private let currentProviderInfoVersion = 1
 		aCoder.encodeObject(self.clientId, forKey: clientIdKey)
 		aCoder.encodeObject(self.clientSecret, forKey: clientSecretKey)
 		aCoder.encodeObject(self.redirectUrl, forKey: redirectUrlKey)
-		aCoder.encodeObject(self.bootstrapInfo, forKey: bootstrapInfoKey)
 	}
 	
 }
