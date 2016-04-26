@@ -1188,6 +1188,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <segue destination="ouQ-Yh-RV9" kind="sheet" id="hvv-bB-COh"/>
+                                </connections>
                             </button>
                             <button toolTip="Remove connection" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2o-vC-lhw" userLabel="Delete Button">
                                 <rect key="frame" x="31" y="0.0" width="11" height="32"/>
@@ -1226,6 +1229,113 @@ Gw
                 </arrayController>
             </objects>
             <point key="canvasLocation" x="1227" y="1163"/>
+        </scene>
+        <!--WOPI Flow Test Scene-->
+        <scene sceneID="xwg-aw-qzP">
+            <objects>
+                <viewController id="ouQ-Yh-RV9" userLabel="WOPI Flow Test Scene" customClass="WOPIFlowViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="wOP-Y3-7br">
+                        <rect key="frame" x="0.0" y="0.0" width="650" height="313"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-Lc-p56">
+                                <rect key="frame" x="18" y="260" width="390" height="33"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Testing WOPI client identity flow" id="zlx-yi-asT">
+                                    <font key="font" metaFont="system" size="27"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="BpA-W3-zNF">
+                                <rect key="frame" x="20" y="249" width="610" height="5"/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NmA-ux-rjZ">
+                                <rect key="frame" x="59" y="181" width="233" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="User authentication and authorization" id="JBg-v6-Reb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bIR-Fe-yq9">
+                                <rect key="frame" x="59" y="215" width="212" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unauthenticated bootstrapper call" id="9Pc-WU-gQW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJe-We-p6h">
+                                <rect key="frame" x="59" y="147" width="290" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Obtain access token and optional refresh token" id="ZAN-bx-nPO">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8T-MF-AzD">
+                                <rect key="frame" x="59" y="113" width="356" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Authenticated bootstrapper call to obtain user information" id="JCC-AA-yNd">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upc-Lq-RDh">
+                                <rect key="frame" x="20" y="210" width="22" height="26"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="GNz-eW-hJI"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5p6-rk-JYO">
+                                <rect key="frame" x="20" y="176" width="22" height="26"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ZEv-PM-VaF"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yC4-Uv-eKt">
+                                <rect key="frame" x="20" y="142" width="22" height="26"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Lz2-mc-MVe"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Soz-Hn-otz">
+                                <rect key="frame" x="20" y="108" width="22" height="26"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nVK-qL-ta2"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6zi-uC-Bgm">
+                                <rect key="frame" x="558" y="13" width="75" height="32"/>
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xEl-XV-0dI">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeSheet:" target="ouQ-Yh-RV9" id="Ult-6B-YuG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="BpA-W3-zNF" firstAttribute="top" secondItem="AsD-Lc-p56" secondAttribute="bottom" constant="8" symbolic="YES" id="EMV-bH-BIE"/>
+                            <constraint firstItem="BpA-W3-zNF" firstAttribute="centerX" secondItem="wOP-Y3-7br" secondAttribute="centerX" id="FlP-wO-pbo"/>
+                            <constraint firstItem="AsD-Lc-p56" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="iag-qq-cmQ"/>
+                            <constraint firstItem="AsD-Lc-p56" firstAttribute="top" secondItem="wOP-Y3-7br" secondAttribute="top" constant="20" symbolic="YES" id="jSM-OS-UHG"/>
+                            <constraint firstItem="BpA-W3-zNF" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="rNo-5S-XNo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bootstrapImage" destination="upc-Lq-RDh" id="BnO-1K-l6u"/>
+                        <outlet property="bootstrapText" destination="bIR-Fe-yq9" id="6dA-Df-cEu"/>
+                        <outlet property="profileImage" destination="Soz-Hn-otz" id="VBn-j6-2t7"/>
+                        <outlet property="profileText" destination="T8T-MF-AzD" id="uff-ME-2w2"/>
+                        <outlet property="signinImage" destination="5p6-rk-JYO" id="4AB-lC-FRl"/>
+                        <outlet property="signinText" destination="NmA-ux-rjZ" id="RFg-wG-edr"/>
+                        <outlet property="tokenImage" destination="yC4-Uv-eKt" id="rHV-02-SNW"/>
+                        <outlet property="tokenText" destination="uJe-We-p6h" id="P3F-tR-7WW"/>
+                    </connections>
+                </viewController>
+                <customObject id="fXs-cG-N5l" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1436" y="1632.5"/>
         </scene>
         <!--Log View Controller-->
         <scene sceneID="dmc-5Q-zIq">
