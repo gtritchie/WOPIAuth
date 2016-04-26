@@ -367,7 +367,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="WOPIAuth" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="52.5" y="-181"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -376,7 +376,7 @@
                     <window key="window" title="WOPI Native Auth Test Tool" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="205" y="309" width="697" height="429"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <toolbar key="toolbar" implicitIdentifier="CA14DA4E-F3EE-44B6-BE18-D0A4BD43A747" displayMode="iconOnly" sizeMode="regular" id="Vn9-5l-BFE">
                             <allowedToolbarItems>
@@ -411,7 +411,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="94.5" y="153.5"/>
         </scene>
         <!--Sidebar Split View Controller-->
         <scene sceneID="pyf-1I-mAO">
@@ -432,7 +432,7 @@
                 </splitViewController>
                 <customObject id="VoK-si-0Hg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="682"/>
+            <point key="canvasLocation" x="94" y="655"/>
         </scene>
         <!--Provider List View Controller-->
         <scene sceneID="oFp-um-HVb">
@@ -781,7 +781,7 @@ Gw
                 </viewController>
                 <customObject id="iWx-s6-0pK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-194.5" y="1815.5"/>
+            <point key="canvasLocation" x="34.5" y="1746.5"/>
         </scene>
         <!--Right Pane Split View Controller-->
         <scene sceneID="iaf-6t-Est">
@@ -804,10 +804,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="208" y="1319"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Connections Split View Controller-->
         <scene sceneID="Ty5-TX-uf5">
             <objects>
-                <splitViewController id="pxB-aZ-cpf" sceneMemberID="viewController">
+                <splitViewController id="pxB-aZ-cpf" customClass="ConnectionsSplitViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="WTF-oi-Fe1"/>
                         <splitViewItem id="nIF-ym-WuX"/>
@@ -825,10 +825,10 @@ Gw
             </objects>
             <point key="canvasLocation" x="878" y="1112"/>
         </scene>
-        <!--View Controller-->
+        <!--Connection Properties View Controller Scene-->
         <scene sceneID="cdd-1B-0e1">
             <objects>
-                <viewController id="afC-8R-Y3J" sceneMemberID="viewController">
+                <viewController id="afC-8R-Y3J" userLabel="Connection Properties View Controller Scene" sceneMemberID="viewController">
                     <view key="view" id="szE-58-jxl">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -971,7 +971,7 @@ Gw
                 </viewController>
                 <customObject id="cpj-Hw-hnt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="1300"/>
+            <point key="canvasLocation" x="1540" y="1298"/>
         </scene>
         <!--User Names Controller Scene-->
         <scene sceneID="ZJt-7z-C6m">

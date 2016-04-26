@@ -1,5 +1,6 @@
 import Cocoa
 
+/// `NSWindowController` for the application's single main window.
 class MainWindowController: NSWindowController {
 
 	/// Ensure defaults are registered
