@@ -13,15 +13,13 @@ class SidebarSplitViewController: NSSplitViewController, ProviderViewing {
 	/// Currently selected `ProviderInfo`
 	var selectedProvider: ProviderInfo? {
 		didSet {
-			// TODO: inform child view of changed selected
-			if (selectedProvider != nil) {
-				print("Selected \(String(selectedProvider!))")
-			} else {
-				print("No Provider selected")
+			for child in childViewControllers {
+				if var childProviderViewer = child as? ProviderViewing {
+					childProviderViewer.selectedProvider = selectedProvider
+				}
 			}
 		}
 	}
-	
 	
 	// MARK: Life Cycle
 	
