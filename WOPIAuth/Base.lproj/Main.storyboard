@@ -22,7 +22,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="v6w-uG-unE" kind="show" id="Nqa-iD-GgF"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -412,6 +416,124 @@
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="94.5" y="153.5"/>
+        </scene>
+        <!--Preferences-->
+        <scene sceneID="bPB-zq-cIe">
+            <objects>
+                <viewController title="Preferences" showSeguePresentationStyle="single" id="v6w-uG-unE" sceneMemberID="viewController">
+                    <view key="view" id="VDY-GS-SXV">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KMa-Td-0Zk">
+                                <rect key="frame" x="18" y="264" width="216" height="18"/>
+                                <buttonCell key="cell" type="check" title="Display Client Secret Value" bezelStyle="regularSquare" imagePosition="left" inset="2" id="8eF-iF-cbH">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bf9-f6-ycj">
+                                <rect key="frame" x="18" y="244" width="216" height="18"/>
+                                <buttonCell key="cell" type="check" title="Display Access Token Value" bezelStyle="regularSquare" imagePosition="left" inset="2" id="BxB-CO-dVO">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kEp-L1-1k5">
+                                <rect key="frame" x="18" y="224" width="221" height="18"/>
+                                <buttonCell key="cell" type="check" title="Display Refresh Token Value" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Hi6-pI-g1Z">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="77I-xR-gMv">
+                                <rect key="frame" x="18" y="180" width="107" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Platform Header:" id="TO3-mW-jnA">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JZh-kP-yA8">
+                                <rect key="frame" x="131" y="173" width="99" height="26"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="iOS" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="dN7-h2-0kL">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GxM-KV-ULh">
+                                <rect key="frame" x="18" y="142" width="100" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Culture Header:" id="kcR-FD-6Cy">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmb-wt-fIy">
+                                <rect key="frame" x="131" y="136" width="99" height="26"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="en-US" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="Cas-3u-8CU">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                            <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pFy-Aq-wuH">
+                                <rect key="frame" x="131" y="99" width="99" height="26"/>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="1.21.405.0" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="fBT-aY-38h">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <objectValues>
+                                        <string>Item 1</string>
+                                        <string>Item 2</string>
+                                        <string>Item 3</string>
+                                    </objectValues>
+                                </comboBoxCell>
+                            </comboBox>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PEU-kh-q9H">
+                                <rect key="frame" x="18" y="106" width="86" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Build Header:" id="9Wb-03-Ams">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PP-Ub-eWz">
+                                <rect key="frame" x="18" y="38" width="365" height="33"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NOT YET IMPLEMENTED" id="TeX-nJ-ldW">
+                                    <font key="font" metaFont="system" size="23"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="KMa-Td-0Zk" firstAttribute="leading" secondItem="VDY-GS-SXV" secondAttribute="leading" constant="20" symbolic="YES" id="2FJ-Vy-kAv"/>
+                            <constraint firstItem="kEp-L1-1k5" firstAttribute="top" secondItem="bf9-f6-ycj" secondAttribute="bottom" constant="6" id="9Vj-ed-RD8"/>
+                            <constraint firstItem="9PP-Ub-eWz" firstAttribute="leading" secondItem="VDY-GS-SXV" secondAttribute="leading" constant="20" id="CvJ-sD-Lnt"/>
+                            <constraint firstAttribute="bottom" secondItem="9PP-Ub-eWz" secondAttribute="bottom" constant="38" id="IuI-Mi-pee"/>
+                            <constraint firstItem="KMa-Td-0Zk" firstAttribute="top" secondItem="VDY-GS-SXV" secondAttribute="top" constant="20" id="Oy7-Hy-y8C"/>
+                            <constraint firstItem="kEp-L1-1k5" firstAttribute="leading" secondItem="VDY-GS-SXV" secondAttribute="leading" constant="20" symbolic="YES" id="UCT-xw-Epd"/>
+                            <constraint firstItem="bf9-f6-ycj" firstAttribute="top" secondItem="KMa-Td-0Zk" secondAttribute="bottom" constant="6" symbolic="YES" id="Wn8-VI-To6"/>
+                            <constraint firstItem="bf9-f6-ycj" firstAttribute="leading" secondItem="VDY-GS-SXV" secondAttribute="leading" constant="20" symbolic="YES" id="XHC-ja-ECh"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Nl9-kk-hTy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="ALZ-Kn-hia"/>
+            </objects>
+            <point key="canvasLocation" x="751" y="15"/>
         </scene>
         <!--Sidebar Split View Controller-->
         <scene sceneID="pyf-1I-mAO">
@@ -1116,11 +1238,11 @@ Gw
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4Y-6S-paS">
                                 <rect key="frame" x="0.0" y="32" width="450" height="268"/>
                                 <clipView key="contentView" id="8q5-vK-ugI">
-                                    <rect key="frame" x="1" y="1" width="448" height="266"/>
+                                    <rect key="frame" x="1" y="1" width="433" height="266"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="SNL-zh-0QY">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="266"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="433" height="266"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="433" height="266"/>
