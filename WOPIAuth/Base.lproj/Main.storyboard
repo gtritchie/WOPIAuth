@@ -1389,8 +1389,14 @@ DQ
                                     <action selector="closeSheet:" target="ouQ-Yh-RV9" id="Ult-6B-YuG"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-5q-tLx">
-                                <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-5q-tLx">
+                                <rect key="frame" x="269" y="142" width="16" height="16"/>
+                            </progressIndicator>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="SGr-xc-pqU">
+                                <rect key="frame" x="290" y="118" width="16" height="16"/>
+                            </progressIndicator>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vrw-vk-D2b">
+                                <rect key="frame" x="347" y="93" width="16" height="16"/>
                             </progressIndicator>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yC4-Uv-eKt">
                                 <rect key="frame" x="20" y="88" width="25" height="25"/>
@@ -1400,28 +1406,39 @@ DQ
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SuccessCheckCircle" id="Lz2-mc-MVe"/>
                             </imageView>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Dc6-PB-Tnj">
+                                <rect key="frame" x="413" y="68" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="NmA-ux-rjZ" firstAttribute="leading" secondItem="5p6-rk-JYO" secondAttribute="trailing" constant="8" symbolic="YES" id="3s0-8A-OF8"/>
                             <constraint firstAttribute="trailing" secondItem="6zi-uC-Bgm" secondAttribute="trailing" constant="20" symbolic="YES" id="6D5-nD-tRs"/>
                             <constraint firstItem="bIR-Fe-yq9" firstAttribute="leading" secondItem="upc-Lq-RDh" secondAttribute="trailing" constant="8" symbolic="YES" id="BwC-fM-fEC"/>
+                            <constraint firstItem="C3I-5q-tLx" firstAttribute="centerY" secondItem="bIR-Fe-yq9" secondAttribute="centerY" id="Bz3-8t-OtL"/>
                             <constraint firstItem="5p6-rk-JYO" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="CYb-zM-EVF"/>
                             <constraint firstItem="BpA-W3-zNF" firstAttribute="top" secondItem="AsD-Lc-p56" secondAttribute="bottom" constant="8" symbolic="YES" id="EMV-bH-BIE"/>
                             <constraint firstAttribute="bottom" secondItem="6zi-uC-Bgm" secondAttribute="bottom" constant="20" symbolic="YES" id="Eqt-iz-3vc"/>
                             <constraint firstItem="BpA-W3-zNF" firstAttribute="centerX" secondItem="wOP-Y3-7br" secondAttribute="centerX" id="FlP-wO-pbo"/>
+                            <constraint firstItem="C3I-5q-tLx" firstAttribute="leading" secondItem="bIR-Fe-yq9" secondAttribute="trailing" constant="8" symbolic="YES" id="GVL-BV-AzQ"/>
                             <constraint firstItem="bIR-Fe-yq9" firstAttribute="top" secondItem="BpA-W3-zNF" secondAttribute="bottom" constant="20" id="HFb-Gl-Pbb"/>
                             <constraint firstItem="uJe-We-p6h" firstAttribute="leading" secondItem="yC4-Uv-eKt" secondAttribute="trailing" constant="8" symbolic="YES" id="IAp-VD-pp4"/>
                             <constraint firstItem="upc-Lq-RDh" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="NWp-G4-DBb"/>
                             <constraint firstItem="upc-Lq-RDh" firstAttribute="centerY" secondItem="bIR-Fe-yq9" secondAttribute="centerY" id="Ovz-Kr-nXx"/>
                             <constraint firstItem="5p6-rk-JYO" firstAttribute="centerY" secondItem="NmA-ux-rjZ" secondAttribute="centerY" id="R5B-1B-zmJ"/>
+                            <constraint firstItem="vrw-vk-D2b" firstAttribute="leading" secondItem="uJe-We-p6h" secondAttribute="trailing" constant="8" symbolic="YES" id="T4S-jF-88m"/>
                             <constraint firstItem="uJe-We-p6h" firstAttribute="top" secondItem="NmA-ux-rjZ" secondAttribute="bottom" constant="8" symbolic="YES" id="TzZ-X4-mpV"/>
+                            <constraint firstItem="SGr-xc-pqU" firstAttribute="leading" secondItem="NmA-ux-rjZ" secondAttribute="trailing" constant="8" symbolic="YES" id="UYz-ha-Et5"/>
                             <constraint firstItem="NmA-ux-rjZ" firstAttribute="top" secondItem="bIR-Fe-yq9" secondAttribute="bottom" constant="8" symbolic="YES" id="Wg2-bi-5Kh"/>
+                            <constraint firstItem="Dc6-PB-Tnj" firstAttribute="centerY" secondItem="T8T-MF-AzD" secondAttribute="centerY" id="Xlv-Ca-B4t"/>
+                            <constraint firstItem="vrw-vk-D2b" firstAttribute="centerY" secondItem="uJe-We-p6h" secondAttribute="centerY" id="ZsD-hM-WBp"/>
                             <constraint firstItem="Soz-Hn-otz" firstAttribute="centerY" secondItem="T8T-MF-AzD" secondAttribute="centerY" id="bWN-pm-fBM"/>
                             <constraint firstItem="yC4-Uv-eKt" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="fUA-Ld-nDA"/>
                             <constraint firstItem="T8T-MF-AzD" firstAttribute="leading" secondItem="Soz-Hn-otz" secondAttribute="trailing" constant="8" symbolic="YES" id="h8V-pe-IKV"/>
                             <constraint firstItem="AsD-Lc-p56" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="iag-qq-cmQ"/>
                             <constraint firstItem="AsD-Lc-p56" firstAttribute="top" secondItem="wOP-Y3-7br" secondAttribute="top" constant="20" symbolic="YES" id="jSM-OS-UHG"/>
                             <constraint firstItem="BpA-W3-zNF" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="rNo-5S-XNo"/>
+                            <constraint firstItem="Dc6-PB-Tnj" firstAttribute="leading" secondItem="T8T-MF-AzD" secondAttribute="trailing" constant="8" symbolic="YES" id="tn3-9k-U0s"/>
+                            <constraint firstItem="SGr-xc-pqU" firstAttribute="centerY" secondItem="NmA-ux-rjZ" secondAttribute="centerY" id="tqe-g8-LNy"/>
                             <constraint firstItem="Soz-Hn-otz" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="uCL-p4-rhO"/>
                             <constraint firstItem="T8T-MF-AzD" firstAttribute="top" secondItem="uJe-We-p6h" secondAttribute="bottom" constant="8" symbolic="YES" id="uoY-e9-X4W"/>
                             <constraint firstItem="yC4-Uv-eKt" firstAttribute="centerY" secondItem="uJe-We-p6h" secondAttribute="centerY" id="w2f-Nl-9f9"/>
@@ -1429,12 +1446,16 @@ DQ
                     </view>
                     <connections>
                         <outlet property="bootstrapImage" destination="upc-Lq-RDh" id="BnO-1K-l6u"/>
+                        <outlet property="bootstrapProgress" destination="C3I-5q-tLx" id="FEG-G9-zO4"/>
                         <outlet property="bootstrapText" destination="bIR-Fe-yq9" id="6dA-Df-cEu"/>
                         <outlet property="profileImage" destination="Soz-Hn-otz" id="VBn-j6-2t7"/>
+                        <outlet property="profileProgress" destination="Dc6-PB-Tnj" id="Px2-GR-nbN"/>
                         <outlet property="profileText" destination="T8T-MF-AzD" id="uff-ME-2w2"/>
                         <outlet property="signinImage" destination="5p6-rk-JYO" id="4AB-lC-FRl"/>
+                        <outlet property="signinProgress" destination="SGr-xc-pqU" id="iBd-s9-WOA"/>
                         <outlet property="signinText" destination="NmA-ux-rjZ" id="RFg-wG-edr"/>
                         <outlet property="tokenImage" destination="yC4-Uv-eKt" id="rHV-02-SNW"/>
+                        <outlet property="tokenProgress" destination="vrw-vk-D2b" id="PXN-5a-TAl"/>
                         <outlet property="tokenText" destination="uJe-We-p6h" id="P3F-tR-7WW"/>
                     </connections>
                 </viewController>
