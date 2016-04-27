@@ -25,7 +25,7 @@ private let currentConnectionInfoVersion = 1
 	dynamic var providerName: String = ""
 	let providerNameKey = "providerName"
 	
-	/// The UserId for the signed-in user. Unique key for objects of this class.
+	/// The UserId for the signed-in user.
 	dynamic var userId: String = ""
 	let userIdKey = "userId"
 

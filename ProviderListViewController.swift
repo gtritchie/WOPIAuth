@@ -47,6 +47,13 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		}
 	}
 	
+	func setActiveProvider(activeProvider: ProviderInfo?) {
+		Preferences.selectedProvider = activeProvider
+		if var parent = parentViewController as? ProviderViewing {
+			parent.selectedProvider = activeProvider
+		}
+	}
+	
 	// MARK: ProviderDetailEditing Protocol
 	
 	func providerNameAvailable(providerName: String) -> Bool {
@@ -75,10 +82,7 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		if row != -1 {
 			activeProvider = providers?[row]
 		}
-		Preferences.selectedProvider = activeProvider
-		if var parent = parentViewController as? ProviderViewing {
-			parent.selectedProvider = activeProvider
-		}
+		setActiveProvider(activeProvider)
 	}
 	
 	// MARK: Actions
@@ -98,6 +102,9 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 				WOPIAuthLogError("Removed provider")
 				self.arrayController.remove(sender)
 				Preferences.providers = self.providers
+				if self.tableView.selectedRow == -1 {
+					self.setActiveProvider(ProviderInfo())
+				}
 				break
 				
 			default:

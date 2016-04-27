@@ -126,6 +126,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 			return false
 		}
 		
+		WOPIAuthLogInfo("Provider=\(String(provider!))")
+		
 		return true
 	}
 	
