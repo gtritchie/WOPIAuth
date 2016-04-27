@@ -108,4 +108,42 @@ private let currentProviderInfoVersion = 1
 		aCoder.encodeObject(self.redirectUrl, forKey: redirectUrlKey)
 	}
 	
+	// MARK: Validation
+	
+	/// Trim all leading and trailing whitespace from text fields
+	func trimSpaces() {
+		providerName = providerName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		bootstrapper = bootstrapper.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		clientId = clientId.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		clientSecret = clientSecret.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		redirectUrl = redirectUrl.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+	}
+	
+	func validateNonEmpty() -> Bool {
+		guard !providerName.isEmpty else {
+			WOPIAuthLogError("ProviderName cannot be empty")
+			return false
+		}
+		
+		guard !bootstrapper.isEmpty else {
+			WOPIAuthLogError("Boostrapper cannot be empty")
+			return false
+		}
+
+		guard !clientId.isEmpty else {
+			WOPIAuthLogError("ClientId cannot be empty")
+			return false
+		}
+		
+		guard !clientSecret.isEmpty else {
+			WOPIAuthLogError("ClientSecret cannot be empty")
+			return false
+		}
+		
+		return true
+	}
+	
+	func validate() -> Bool {
+		return validateNonEmpty()
+	}
 }

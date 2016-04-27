@@ -18,6 +18,8 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let AddProviderDetailSegueIdentifier = "AddProviderDetail"
 	
+	// MARK: Segue
+	
 	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
 		switch segue.identifier! {
 			

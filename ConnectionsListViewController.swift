@@ -35,6 +35,24 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	
 	/// List of `ConnectionInfo`s
 	var connections = Preferences.connections
+
+	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
+	let InvokeAuthFlowSegue = "InvokeWOPIAuthFlow"
+
+	// MARK: Segue
+	
+	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+		switch segue.identifier! {
+			
+		case InvokeAuthFlowSegue:
+			var destination = segue.destinationController as! ConnectionCreating
+			destination.provider = selectedProvider
+			destination.connections = connections
+			
+		default:
+			print("Unknown segue: \(segue.identifier)")
+		}
+	}
 	
 	// MARK: NSTableViewDelegate
 	

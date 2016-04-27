@@ -1257,7 +1257,7 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="ouQ-Yh-RV9" kind="sheet" id="hvv-bB-COh"/>
+                                    <segue destination="ouQ-Yh-RV9" kind="sheet" identifier="InvokeWOPIAuthFlow" id="hvv-bB-COh"/>
                                 </connections>
                             </button>
                             <button toolTip="Remove connection" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2o-vC-lhw" userLabel="Delete Button">

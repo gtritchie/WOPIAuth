@@ -40,7 +40,8 @@ class ProviderDetailsViewController: NSViewController {
 	func ShowValidationErrorMessage(sender: NSButton, message: String) {
 		let alert = NSAlert()
 		alert.messageText = message
-		alert.informativeText = NSLocalizedString("Please correct information and try again.", comment: "Provider fields failed validation informativeText")
+		alert.informativeText = NSLocalizedString("Please correct information and try again.",
+		                                          comment: "Provider fields failed validation informativeText")
 		alert.addButtonWithTitle(NSLocalizedString("Close", comment: "Confirm Provider close button"))
 
 		alert.beginSheetModalForWindow(sender.window!, completionHandler: { (response) -> Void in })
@@ -48,16 +49,8 @@ class ProviderDetailsViewController: NSViewController {
 	
 	func isProviderValid(sender: NSButton) -> Bool {
 		
-		// Cleanup any leading/trailing whitespace
-		provider.providerName = provider.providerName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.bootstrapper = provider.bootstrapper.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.clientId = provider.clientId.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.clientSecret = provider.clientSecret.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		provider.redirectUrl = provider.redirectUrl.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-		
-		if provider.providerName.isEmpty || provider.bootstrapper.isEmpty ||
-			provider.clientId.isEmpty || provider.clientSecret.isEmpty || provider.redirectUrl.isEmpty {
-			
+		provider.trimSpaces()
+		if !provider.validateNonEmpty() {
 			ShowValidationErrorMessage(sender, message: NSLocalizedString("All fields must contain information.",
 				comment: "Message for empty Provider field(s)"))
 			return false

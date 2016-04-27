@@ -33,6 +33,7 @@
 		4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6431CCACC680054E523 /* URLFormatter.swift */; };
 		4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918461CD021FE005A5186 /* ConnectionViewing.swift */; };
 		4EF918491CD02306005A5186 /* ConnectionPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */; };
+		4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		4EB2A6431CCACC680054E523 /* URLFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLFormatter.swift; sourceTree = "<group>"; };
 		4EF918461CD021FE005A5186 /* ConnectionViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewing.swift; sourceTree = "<group>"; };
 		4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionPropertiesViewController.swift; sourceTree = "<group>"; };
+		4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCreating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 				4EA5A3261CCFE1DB00828EE1 /* ProviderViewing.swift */,
 				4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */,
 				4EF918461CD021FE005A5186 /* ConnectionViewing.swift */,
+				4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */,
 				4EA5A3271CCFE1DB00828EE1 /* ProviderViewing.swift in Sources */,
 				4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */,
+				4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */,
 				4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditing.swift in Sources */,
 				4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */,
 				4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */,
