@@ -19,6 +19,11 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	// MARK: Actions
 	
 	@IBAction func closeSheet(sender: NSButton) {
+		if currentStep != nil {
+			failCurrentStep()
+			WOPIAuthLogError("FAILURE: Window closed before current step completed")
+			WOPIAuthLogError("====================================================")
+		}
 		dismissController(sender)
 	}
 	
@@ -84,6 +89,11 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		if let previousProgress = currentProgress {
 			previousProgress.stopAnimation(nil)
 		}
+		
+		currentStep = nil
+		currentImage = nil
+		currentTextLabel = nil
+		currentProgress = nil
 	}
 	
 	func startNewStep(step: String, image: NSImageView, text: NSTextField, progress: NSProgressIndicator) {
@@ -129,7 +139,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	/// Step Two: Interactive Sign-In UI
 	func signIn() {
 		startNewStep("signin", image: signinImage, text: signinText, progress: signinProgress)
-		getTokens()
+		performSegueWithIdentifier("ShowSignIn", sender: nil)
+		//getTokens()
 	}
 	
 	/// Step Three: Obtain tokens
@@ -151,4 +162,20 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		WOPIAuthLogInfo("SUCCESS WOPI client authentication flow")
 		WOPIAuthLogInfo("=======================================")
 	}
+	
+	
+	// MARK: Segue
+	
+	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+		switch segue.identifier! {
+			
+		case "ShowSignIn":
+			let _  = segue.destinationController as! SignInViewController
+			//signInView.loadURL(NSURL(string: "http://www.microsoft.com")!)
+
+		default:
+			print("Unknown segue: \(segue.identifier)")
+		}
+	}
+	
 }
