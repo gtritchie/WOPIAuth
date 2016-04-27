@@ -9,6 +9,7 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	
 	@IBOutlet weak var tableView: NSTableView!
 	@IBOutlet weak var arrayController: NSArrayController!
+	@IBOutlet weak var addButton: NSButton!
 
 	// MARK: Actions
 	
@@ -23,6 +24,9 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	/// Currently selected `ProviderInfo`
 	var selectedProvider: ProviderInfo? {
 		didSet {
+			if let provider = selectedProvider {
+				addButton.enabled = !provider.providerName.isEmpty
+			}
 			for child in childViewControllers {
 				if var childProviderViewer = child as? ProviderViewing {
 					childProviderViewer.selectedProvider = selectedProvider

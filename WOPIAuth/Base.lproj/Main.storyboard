@@ -1252,7 +1252,7 @@ Gw
                             </scrollView>
                             <button toolTip="Add connection" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PcW-4o-za3" userLabel="Add Button">
                                 <rect key="frame" x="12" y="0.0" width="11" height="32"/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="liy-xB-ar9">
+                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="liy-xB-ar9">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1285,6 +1285,7 @@ Gw
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addButton" destination="PcW-4o-za3" id="bJC-nN-eeA"/>
                         <outlet property="arrayController" destination="iLw-ba-yrx" id="Bap-ge-klv"/>
                         <outlet property="tableView" destination="2mx-Sa-qTt" id="5Oz-p9-Kyc"/>
                     </connections>
