@@ -23,3 +23,19 @@ class WOPIFlowViewController: NSViewController {
 	@IBOutlet weak var profileText: NSTextField!
 	
 }
+
+
+//progressIndicator.startAnimation(sender)
+//let fetcher = BootstrapFetcher()
+//
+//fetcher.fetchBootstrapInfoUsingCompletionHandler { (result) in
+//	switch result {
+//	case .Success:
+//		print("Got 200 response, NOT EXPECTED")
+//	case .Failure:
+//		print("Got expected 401 response")
+//	}
+//	
+//	self.progressIndicator.stopAnimation(nil)
+//	self.window!.sheetParent!.endSheet(self.window!, returnCode: NSModalResponseOK)
+//}
