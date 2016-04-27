@@ -1303,80 +1303,103 @@ Gw
         <scene sceneID="xwg-aw-qzP">
             <objects>
                 <viewController id="ouQ-Yh-RV9" userLabel="WOPI Flow Test Scene" customClass="WOPIFlowViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="wOP-Y3-7br">
-                        <rect key="frame" x="0.0" y="0.0" width="452" height="241"/>
+                    <view key="view" misplaced="YES" id="wOP-Y3-7br">
+                        <rect key="frame" x="0.0" y="0.0" width="452" height="232"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-Lc-p56">
-                                <rect key="frame" x="18" y="188" width="390" height="33"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AsD-Lc-p56">
+                                <rect key="frame" x="18" y="179" width="390" height="33"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Testing WOPI client identity flow" id="zlx-yi-asT">
                                     <font key="font" metaFont="system" size="27"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="BpA-W3-zNF">
-                                <rect key="frame" x="20" y="177" width="412" height="5"/>
+                            <box verticalHuggingPriority="750" misplaced="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="BpA-W3-zNF">
+                                <rect key="frame" x="20" y="168" width="412" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="412" id="MNC-FJ-rB8"/>
+                                </constraints>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NmA-ux-rjZ">
-                                <rect key="frame" x="51" y="117" width="233" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NmA-ux-rjZ">
+                                <rect key="frame" x="51" y="108" width="233" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="User authentication and authorization" id="JBg-v6-Reb">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bIR-Fe-yq9">
-                                <rect key="frame" x="51" y="142" width="212" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bIR-Fe-yq9">
+                                <rect key="frame" x="51" y="133" width="212" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Unauthenticated bootstrapper call" id="9Pc-WU-gQW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uJe-We-p6h">
-                                <rect key="frame" x="51" y="92" width="290" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uJe-We-p6h">
+                                <rect key="frame" x="51" y="83" width="290" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Obtain access token and optional refresh token" id="ZAN-bx-nPO">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T8T-MF-AzD">
-                                <rect key="frame" x="51" y="67" width="356" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T8T-MF-AzD">
+                                <rect key="frame" x="51" y="58" width="356" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Authenticated bootstrapper call to obtain user information" id="JCC-AA-yNd">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="upc-Lq-RDh">
-                                <rect key="frame" x="20" y="138" width="25" height="25"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upc-Lq-RDh">
+                                <rect key="frame" x="20" y="129" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="2C1-Xb-tsp"/>
                                     <constraint firstAttribute="height" constant="25" id="rf0-OC-WlI"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="ErrorXCircle" id="GNz-eW-hJI"/>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5p6-rk-JYO">
-                                <rect key="frame" x="20" y="113" width="25" height="25"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5p6-rk-JYO">
+                                <rect key="frame" x="20" y="104" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="6oh-vs-j99"/>
                                     <constraint firstAttribute="width" constant="25" id="f5l-Fn-NGa"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SuccessCheckCircle" id="ZEv-PM-VaF"/>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Soz-Hn-otz">
-                                <rect key="frame" x="20" y="63" width="25" height="25"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Soz-Hn-otz">
+                                <rect key="frame" x="20" y="54" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="jcf-qy-hln"/>
                                     <constraint firstAttribute="height" constant="25" id="s3D-hg-tIR"/>
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SuccessCheckCircle" id="nVK-qL-ta2"/>
                             </imageView>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-5q-tLx">
+                                <rect key="frame" x="269" y="133" width="16" height="16"/>
+                            </progressIndicator>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="SGr-xc-pqU">
+                                <rect key="frame" x="290" y="109" width="16" height="16"/>
+                            </progressIndicator>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vrw-vk-D2b">
+                                <rect key="frame" x="347" y="84" width="16" height="16"/>
+                            </progressIndicator>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yC4-Uv-eKt">
+                                <rect key="frame" x="20" y="79" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="7Np-bJ-0PU"/>
+                                    <constraint firstAttribute="width" constant="25" id="Kyd-qq-zKz"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SuccessCheckCircle" id="Lz2-mc-MVe"/>
+                            </imageView>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Dc6-PB-Tnj">
+                                <rect key="frame" x="413" y="59" width="16" height="16"/>
+                            </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6zi-uC-Bgm">
                                 <rect key="frame" x="363" y="13" width="75" height="32"/>
                                 <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xEl-XV-0dI">
@@ -1390,26 +1413,6 @@ DQ
                                     <action selector="closeSheet:" target="ouQ-Yh-RV9" id="Ult-6B-YuG"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-5q-tLx">
-                                <rect key="frame" x="269" y="142" width="16" height="16"/>
-                            </progressIndicator>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="SGr-xc-pqU">
-                                <rect key="frame" x="290" y="118" width="16" height="16"/>
-                            </progressIndicator>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vrw-vk-D2b">
-                                <rect key="frame" x="347" y="93" width="16" height="16"/>
-                            </progressIndicator>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yC4-Uv-eKt">
-                                <rect key="frame" x="20" y="88" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="7Np-bJ-0PU"/>
-                                    <constraint firstAttribute="width" constant="25" id="Kyd-qq-zKz"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SuccessCheckCircle" id="Lz2-mc-MVe"/>
-                            </imageView>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Dc6-PB-Tnj">
-                                <rect key="frame" x="413" y="68" width="16" height="16"/>
-                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="NmA-ux-rjZ" firstAttribute="leading" secondItem="5p6-rk-JYO" secondAttribute="trailing" constant="8" symbolic="YES" id="3s0-8A-OF8"/>
@@ -1433,6 +1436,7 @@ DQ
                             <constraint firstItem="Dc6-PB-Tnj" firstAttribute="centerY" secondItem="T8T-MF-AzD" secondAttribute="centerY" id="Xlv-Ca-B4t"/>
                             <constraint firstItem="vrw-vk-D2b" firstAttribute="centerY" secondItem="uJe-We-p6h" secondAttribute="centerY" id="ZsD-hM-WBp"/>
                             <constraint firstItem="Soz-Hn-otz" firstAttribute="centerY" secondItem="T8T-MF-AzD" secondAttribute="centerY" id="bWN-pm-fBM"/>
+                            <constraint firstItem="6zi-uC-Bgm" firstAttribute="top" secondItem="T8T-MF-AzD" secondAttribute="bottom" constant="15" id="esO-lS-Aci"/>
                             <constraint firstItem="yC4-Uv-eKt" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="fUA-Ld-nDA"/>
                             <constraint firstItem="T8T-MF-AzD" firstAttribute="leading" secondItem="Soz-Hn-otz" secondAttribute="trailing" constant="8" symbolic="YES" id="h8V-pe-IKV"/>
                             <constraint firstItem="AsD-Lc-p56" firstAttribute="leading" secondItem="wOP-Y3-7br" secondAttribute="leading" constant="20" symbolic="YES" id="iag-qq-cmQ"/>
@@ -1462,7 +1466,7 @@ DQ
                 </viewController>
                 <customObject id="fXs-cG-N5l" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1337" y="1596.5"/>
+            <point key="canvasLocation" x="1337" y="1592"/>
         </scene>
         <!--Log View Controller-->
         <scene sceneID="dmc-5Q-zIq">

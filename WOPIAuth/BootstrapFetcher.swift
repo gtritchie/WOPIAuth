@@ -2,10 +2,21 @@ import Foundation
 
 /**
 	Perform an unauthenticated call to the bootstrapper URL, and 
-	obtain the required properties from the response.
+	obtain the required properties from the response. A successful call will
+	respond with 401, and a WWW-Authenticate header of this form:
+
+	WWW-Authenticate: Bearer authorization_uri="https://contoso.com/api/oauth2/authorize",tokenIssuance_uri="https://contoso.com/api/oauth2/token",providerId="tp_contoso"
 */
 public class BootstrapFetcher {
 	
+	// MARK: Properties
+	
+	// Url of the bootstrapper
+	var urlString: String
+	
+	private let session: NSURLSession
+
+	/// Used to return results from async call
 	enum FetchBootstrapResult {
 		case Success(BootstrapInfo)
 		case Failure(NSError)
@@ -21,39 +32,59 @@ public class BootstrapFetcher {
 		}
 	}
 	
-	let session: NSURLSession
 	
-	public init() {
+	// MARK: Life Cycle
+	
+	public init(url: String) {
+		urlString = url
 		let config = NSURLSessionConfiguration.defaultSessionConfiguration()
 		session = NSURLSession(configuration: config)
 	}
 	
 	func errorWithCode(code: Int, localizedDescription: String) -> NSError {
-		return NSError(domain: "ScheduleFetcher", code: code, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
+		WOPIAuthLogError(localizedDescription)
+		return NSError(domain: "Bootstrapper", code: code, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
 	}
 	
-	
 	func fetchBootstrapInfoUsingCompletionHandler(completionHandler: FetchBootstrapResult -> Void) {
-		let urlString = "https://app.box.com/api/wopibootstrapper"
-		let url = NSURL(string: urlString)!
+		guard let url = NSURL(string: urlString) else {
+			let error = errorWithCode(1, localizedDescription: "Malformed bootstrapper URL: \"\(urlString)\"")
+			let result: FetchBootstrapResult = .Failure(error)
+			completionHandler(result)
+			return
+		}
+		
 		let request = NSURLRequest(URL: url)
-		print("Calling \(urlString)")
+		WOPIAuthLogInfo("Invoking bootstrapper: \"\(urlString)\"")
 		let task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchBootstrapResult
 			if let data = data {
+				WOPIAuthLogInfo("Received \(data.length) bytes")
 				if let response = response as? NSHTTPURLResponse {
-					print("\(data.length) bytes, HTTP \(response.statusCode).")
-					if response.statusCode == 200 {
-						result = FetchBootstrapResult { BootstrapInfo() }
+					if response.statusCode == 401 {
+						
+						if let authHeader = response.allHeaderFields["WWW-Authenticate"] as? String {
+							let info = BootstrapInfo()
+							if info.populateFromAuthenticateHeader(authHeader) == true {
+								result = FetchBootstrapResult { info }
+							} else {
+								let error = self.errorWithCode(1, localizedDescription: "Unable to parse WWW-Authenticate header: \"\(authHeader)\"")
+								result = .Failure(error)
+							}
+						} else {
+							let error = self.errorWithCode(1, localizedDescription: "No WWW-Authenticate header on response")
+							result = .Failure(error)
+						}
 					} else {
-						let error = self.errorWithCode(1, localizedDescription: "Bad status code \(response.statusCode)")
+						let error = self.errorWithCode(1, localizedDescription: "Non-401 status code: \(response.statusCode)")
 						result = .Failure(error)
 					}
 				} else {
-					let error = self.errorWithCode(1, localizedDescription: "Unexpected response object")
+					let error = self.errorWithCode(1, localizedDescription: "App Issue: Unexpected response object")
 					result = .Failure(error)
 				}
 			} else {
+				WOPIAuthLogError("Unable to make call to bootstrapper")
 				result = .Failure(error!)
 			}
 			NSOperationQueue.mainQueue().addOperationWithBlock {

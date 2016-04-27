@@ -15,6 +15,27 @@ private let currentBootstrapInfoVersion = 1
 		super.init()
 	}
 	
+	func populateFromAuthenticateHeader(header: String) -> Bool {
+		
+		// TODO: Attempt to populate fields using WWW-Authenticate header
+		
+		// Bearer
+		
+		// authorization_uri=
+		
+		authorizationURL = "https://contoso.com/api/oauth2/authorize"
+		
+		// tokenIssuance_uri
+		
+		tokenIssuanceURL = "https://contoso.com/api/oauth2/token"
+		
+		// providerId= (optional)
+		
+		providerID = "tp_contoso"
+		
+		return true
+	}
+	
 	// MARK: Properties
 
 	/// Version of archived `BootstrapInfo`

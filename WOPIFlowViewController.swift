@@ -14,6 +14,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	/// The array of `ConnectionInfo`s we will add to or update
 	var connections: [ConnectionInfo]?
 
+	private var connection: ConnectionInfo?
+	
 	// MARK: Actions
 	
 	@IBAction func closeSheet(sender: NSButton) {
@@ -60,6 +62,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		WOPIAuthLogInfo("START WOPI client authentication flow")
 		WOPIAuthLogInfo("=====================================")
 
+		connection = ConnectionInfo()
 		initialBootstrapperCall()
 	}
 
@@ -73,7 +76,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	
 	func completeCurrentStep() {
 		if let previousStep = currentStep {
-			WOPIAuthLogInfo("Completed step \(previousStep)")
+			WOPIAuthLogInfo("Completed \(previousStep)")
 		}
 		if let previousImage = currentImage {
 			previousImage.image = NSImage(named: "SuccessCheckCircle")
@@ -109,14 +112,16 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		}
 		
 		WOPIAuthLogInfo("Provider=\(String(provider!))")
-		let fetcher = BootstrapFetcher()
+		let fetcher = BootstrapFetcher(url: provider!.bootstrapper)
 		fetcher.fetchBootstrapInfoUsingCompletionHandler { (result) in
 			switch result {
-			case .Success:
-				WOPIAuthLogError("Bootstrapper 200 response, NOT EXPECTED")
-			case .Failure:
-				WOPIAuthLogInfo("Bootstrapper got expected 401 response")
+			case .Success(let bootstrapper):
+				WOPIAuthLogInfo("Bootstrapper got expected 401 response with header")
+				WOPIAuthLogInfo("bootstrapper=\(bootstrapper)")
+				self.connection!.bootstrapInfo = bootstrapper
 				self.signIn()
+			case .Failure:
+				self.failCurrentStep()
 			}
 		}
 	}
