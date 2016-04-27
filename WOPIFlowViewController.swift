@@ -1,7 +1,8 @@
 import Cocoa
 
 /**
-	Controller to manage WOPI client authentication flow test.
+	Controller to manage WOPI client authentication flow test. Each stage of the WOPI client auth flow
+	is exercised, and details are logged.
 */
 class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	
@@ -56,7 +57,10 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		assert(provider != nil, "Must supply a provider to WOPIFlowViewController")
 		assert(connections != nil, "Must supply array of connections to WOPIFlowViewController ")
 	
-		performAuthFlow()
+		WOPIAuthLogInfo("START WOPI client authentication flow")
+		WOPIAuthLogInfo("=====================================")
+
+		initialBootstrapperCall()
 	}
 
 	func failCurrentStep() {
@@ -92,79 +96,54 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		currentProgress!.startAnimation(nil)
 	}
 	
-	func performAuthFlow() {
-		
-		WOPIAuthLogInfo("START WOPI client authentication flow")
-		WOPIAuthLogInfo("=====================================")
-		
-		guard initialBootstrapperCall() else {
-			return
-		}
-		guard signIn() else {
-			return
-		}
-		guard getTokens() else {
-			return
-		}
-		guard getProfile() else {
-			return
-		}
-		
-		completeCurrentStep()
-		
-		WOPIAuthLogInfo("SUCCESS WOPI client authentication flow")
-		WOPIAuthLogInfo("=======================================")
-	}
+	// MARK: Identity Flow Stages
 	
 	/// Step One: Unauthenticated Bootstrapper call
-	func initialBootstrapperCall() -> Bool {
+	func initialBootstrapperCall() {
 		startNewStep("bootstrapper", image: bootstrapImage, text: bootstrapText, progress: bootstrapProgress)
 
 		// Sanity check on ProviderInfo
 		guard provider!.validate() == true else {
 			failCurrentStep()
-			return false
+			return
 		}
 		
 		WOPIAuthLogInfo("Provider=\(String(provider!))")
-		
-		return true
+		let fetcher = BootstrapFetcher()
+		fetcher.fetchBootstrapInfoUsingCompletionHandler { (result) in
+			switch result {
+			case .Success:
+				WOPIAuthLogError("Bootstrapper 200 response, NOT EXPECTED")
+			case .Failure:
+				WOPIAuthLogInfo("Bootstrapper got expected 401 response")
+				self.signIn()
+			}
+		}
 	}
 	
 	/// Step Two: Interactive Sign-In UI
-	func signIn() -> Bool {
+	func signIn() {
 		startNewStep("signin", image: signinImage, text: signinText, progress: signinProgress)
-
-		return true
+		getTokens()
 	}
 	
 	/// Step Three: Obtain tokens
-	func getTokens() -> Bool {
+	func getTokens()  {
 		startNewStep("tokens", image: tokenImage, text: tokenText, progress: tokenProgress)
-
-		return true
+		getProfile()
 	}
 	
 	// Step Four: Authenticated call to bootstrapper for user profile info
-	func getProfile() -> Bool {
+	func getProfile() {
 		startNewStep("profile", image: profileImage, text: profileText, progress: profileProgress)
-
-		return true
+		finishFlow()
 	}
 	
+	// Step Five: Success
+	func finishFlow() {
+		completeCurrentStep()
+		
+		WOPIAuthLogInfo("SUCCESS WOPI client authentication flow")
+		WOPIAuthLogInfo("=======================================")
+	}
 }
-
-
-//let fetcher = BootstrapFetcher()
-//
-//fetcher.fetchBootstrapInfoUsingCompletionHandler { (result) in
-//	switch result {
-//	case .Success:
-//		print("Got 200 response, NOT EXPECTED")
-//	case .Failure:
-//		print("Got expected 401 response")
-//	}
-//	
-//	self.progressIndicator.stopAnimation(nil)
-//	self.window!.sheetParent!.endSheet(self.window!, returnCode: NSModalResponseOK)
-//}
