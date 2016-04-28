@@ -53,10 +53,6 @@ private let currentBootstrapInfoVersion = 1
 		authorizationURL = authUri
 		tokenIssuanceURL = tokenUri
 		
-		if let provId = nameValue["providerID"] {
-			providerID = provId
-		}
-		
 		return true
 	}
 	
@@ -74,14 +70,10 @@ private let currentBootstrapInfoVersion = 1
 	dynamic var tokenIssuanceURL: String = ""
 	let tokenIssuanceURLKey = "tokenIssuanceURL"
 
-	/// The Microsoft-supplied internal name for the provider.
-	dynamic var providerID: String = ""
-	let providerIDKey = "providerID"
-	
 	/// Summary of `BootstrapInfo` suitable for logging
 	override var description: String {
 		get {
-			return "[authUrl=\"\(authorizationURL)\", tokenUrl=\"\(tokenIssuanceURL)\", providerID=\"\(providerID)\"]"
+			return "[authUrl=\"\(authorizationURL)\", tokenUrl=\"\(tokenIssuanceURL)\"]"
 		}
 	}
 
@@ -106,16 +98,11 @@ private let currentBootstrapInfoVersion = 1
 			print("Failed to unarchive \(tokenIssuanceURLKey)")
 			return nil
 		}
-		
-		guard let providerIDStr = aDecoder.decodeObjectForKey(providerIDKey) as? String else {
-			print("Failed to unarchive \(providerIDKey)")
-			return nil
-		}
+
 		
 		self.bootstrapInfoVersion = bootstrapInfoVersionValue
 		self.authorizationURL = authorizationURLStr
 		self.tokenIssuanceURL = tokenIssuanceURLStr
-		self.providerID = providerIDStr
 	}
 	
 	/// Using `NSCoding` to save to `NSUserDefaults`
@@ -123,6 +110,5 @@ private let currentBootstrapInfoVersion = 1
 		aCoder.encodeInteger(self.bootstrapInfoVersion, forKey: bootstrapInfoVersionKey)
 		aCoder.encodeObject(self.authorizationURL, forKey: authorizationURLKey)
 		aCoder.encodeObject(self.tokenIssuanceURL, forKey: tokenIssuanceURLKey)
-		aCoder.encodeObject(self.providerID, forKey: providerIDKey)
 	}
 }

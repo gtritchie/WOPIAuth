@@ -46,7 +46,7 @@ class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceL
 	// MARK: WebFrameLoadDelegate
 	
 	func webView(sender: WebView!, didStartProvisionalLoadForFrame frame: WebFrame!) {
-		print("Did Start Provisional Load for Frame")
+		//print("Did Start Provisional Load for Frame")
 	}
 	
 	// MARK: WebResourceLoadDelegate
@@ -56,7 +56,7 @@ class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceL
 	             redirectResponse: NSURLResponse!,
 	             fromDataSource: WebDataSource!) -> NSURLRequest! {
 		
-		print(willSendRequest.URL!.absoluteString)
+		//print(willSendRequest.URL!.absoluteString)
 
 		return willSendRequest
 	}
