@@ -4,20 +4,19 @@ import WebKit
 /**
 	Controller to manage sign-in UI in a webview for WOPI auth flow.
 */
-class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceLoadDelegate {
+class SignInViewController: NSViewController, WKNavigationDelegate {
 
-	// MARK: Outlets
-	
-	@IBOutlet weak var webView: WebView!
-	
 	// MARK: Properties
 	
+	/// Our web view; implicitly unwrapped so do not attempt to use it unless isViewLoaded() returns true.
+	var webView: WKWebView!
+
 	var connection: ConnectionInfo?
 	var clientInfo: ClientInfo?
 	var providerInfo: ProviderInfo?
 	var completionHandler: ((FetchAuthResult) -> Void)?
 	
-	var stopUrl: NSURL?
+	var stopUrl: NSURLComponents?
 	var authResult: AuthResult?
 	
 	// MARK: Embedded Types
@@ -44,7 +43,28 @@ class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceL
 	}
 
 	// MARK: Life Cycle
+
+	// MARK: - View Handling
 	
+	internal static let WebViewWindowWidth = CGFloat(600.0)
+	internal static let WebViewWindowHeight = CGFloat(500.0)
+	
+	override func loadView() {
+		view = NSView(frame: NSMakeRect(0, 0, SignInViewController.WebViewWindowWidth, SignInViewController.WebViewWindowHeight))
+		view.translatesAutoresizingMaskIntoConstraints = false
+		
+		webView = WKWebView(frame: view.bounds, configuration: WKWebViewConfiguration())
+		webView.translatesAutoresizingMaskIntoConstraints = false
+		webView.navigationDelegate = self
+		webView.alphaValue = 0.0
+		
+		view.addSubview(webView)
+		view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0.0))
+		view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
+		view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0))
+		view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0))
+	}
+
 	override func viewDidAppear() {
 		
 		assert(stopUrl == nil)
@@ -65,13 +85,15 @@ class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceL
 			completionHandler!(result)
 			return
 		}
-		stopUrl = redirectUrl
+		stopUrl = NSURLComponents(URL: redirectUrl, resolvingAgainstBaseURL: true)
 
-		webView.frameLoadDelegate = self
-		webView.resourceLoadDelegate = self
+		//webView.frameLoadDelegate = self
+		//webView.resourceLoadDelegate = self
+		webView.navigationDelegate = self
+
 		let request = NSURLRequest(URL: signInPageUrl)
 		WOPIAuthLogInfo("Loading page: \(authPageUrl)")
-		webView.mainFrame.loadRequest(request)
+		webView.loadRequest(request)
 	}
 	
 	override func viewWillDisappear() {
@@ -91,21 +113,71 @@ class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceL
 		}
 	}
 	
-	// MARK: WebFrameLoadDelegate
-	
-	func webView(sender: WebView!, didStartProvisionalLoadForFrame frame: WebFrame!) {
-		//print("Did Start Provisional Load for Frame")
-	}
-	
-	// MARK: WebResourceLoadDelegate
-	func webView(sender: WebView!,
-	             resource: AnyObject!,
-	             willSendRequest: NSURLRequest!,
-	             redirectResponse: NSURLResponse!,
-	             fromDataSource: WebDataSource!) -> NSURLRequest! {
+	func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+		let request = navigationAction.request
 		
-		//print(willSendRequest.URL!.absoluteString)
-
-		return willSendRequest
+		if let url = request.URL where url.scheme == stopUrl?.scheme && url.host == stopUrl?.host {
+			let haveComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
+			if let hp = haveComponents?.path, ip = stopUrl?.path where hp == ip || ("/" == hp + ip) {
+				WOPIAuthLogInfo("Redirect URI protocol and path was invoked")
+				if let query = haveComponents?.query {
+					WOPIAuthLogInfo("The redirect URI was invoked with \(query)")
+					var code = ""
+					var tk = ""
+					var sc = ""
+					if let queryArray = haveComponents?.queryItems {
+						for queryParam in queryArray {
+							switch queryParam.name {
+							case "code":
+								if let codeStr = queryParam.value {
+									code = codeStr
+								}
+							case "tk":
+								if let tkValue = queryParam.value {
+									tk = tkValue
+								}
+							case "sc":
+								if let scValue = queryParam.value {
+									sc = scValue
+								}
+							default:
+								WOPIAuthLogError("Unrecognized redir parameter: \(queryParam.name)")
+							}
+						}
+					}
+					if !code.isEmpty {
+						WOPIAuthLogInfo("Extracted auth_code from redir: \(code)")
+						if !tk.isEmpty {
+							WOPIAuthLogInfo("Extracted postauthTokenUrl from redir: \(tk)")
+						}
+						if !sc.isEmpty {
+							WOPIAuthLogInfo("Extracted sessionContext from redir: \(sc)")
+						}
+						
+						authResult = AuthResult()
+						authResult!.authCode = code
+						authResult!.postAuthTokenIssuanceURL = tk
+						authResult!.sessionContext = sc
+						
+						decisionHandler(.Cancel)
+					}
+					else {
+						WOPIAuthLogError("Did not find valid auth_code on redir")
+					}
+				}
+			}
+		}
+		decisionHandler(.Allow)
 	}
+
+	func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+		if NSURLErrorDomain == error.domain && NSURLErrorCancelled == error.code {
+			return
+		}
+		// do we still need to intercept "WebKitErrorDomain" error 102?
+		
+		WOPIAuthLogError("error!!!")
+		//showErrorMessage(error.localizedDescription, animated: true)
+	}
+
 }

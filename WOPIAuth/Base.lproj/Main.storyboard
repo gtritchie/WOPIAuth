@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="10116"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
@@ -1477,28 +1476,7 @@ DQ
                     <view key="view" id="1Zg-3P-oQX">
                         <rect key="frame" x="0.0" y="0.0" width="850" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <webView maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmr-G6-CIm">
-                                <rect key="frame" x="0.0" y="0.0" width="850" height="600"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="850" id="She-1V-oWL"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="600" id="Z0o-Ns-vVM"/>
-                                </constraints>
-                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" javaEnabled="NO">
-                                    <nil key="identifier"/>
-                                </webPreferences>
-                            </webView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="Hmr-G6-CIm" firstAttribute="leading" secondItem="1Zg-3P-oQX" secondAttribute="leading" id="6hf-C3-nt5"/>
-                            <constraint firstItem="Hmr-G6-CIm" firstAttribute="top" secondItem="1Zg-3P-oQX" secondAttribute="top" id="EZX-6I-cLH"/>
-                            <constraint firstAttribute="trailing" secondItem="Hmr-G6-CIm" secondAttribute="trailing" id="peu-Fv-aoG"/>
-                            <constraint firstAttribute="bottom" secondItem="Hmr-G6-CIm" secondAttribute="bottom" id="rAe-aK-CHp"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="webView" destination="Hmr-G6-CIm" id="Vok-qz-ixW"/>
-                    </connections>
                 </viewController>
                 <customObject id="zzx-FF-LTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
