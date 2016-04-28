@@ -5,5 +5,5 @@ import Cocoa
 */
 protocol ConnectionCreating {
 	var provider: ProviderInfo? { get set }
-	var connections: [ConnectionInfo]? { get set }
+	var container: ConnectionContaining? { get set }
 }

@@ -16,8 +16,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	/// The `ProviderInfo` used to begin the identity flow
 	var provider: ProviderInfo?
 	
-	/// The array of `ConnectionInfo`s we will add to or update
-	var connections: [ConnectionInfo]?
+	/// Who to notify when we have a new connection
+	var container: ConnectionContaining?
 
 	private var connection: ConnectionInfo?
 	
@@ -67,7 +67,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		super.viewWillAppear()
 		
 		assert(provider != nil, "Must supply a provider to WOPIFlowViewController")
-		assert(connections != nil, "Must supply array of connections to WOPIFlowViewController ")
+		assert(container != nil, "Must supply container ")
 	
 		WOPIAuthLogInfo("START WOPI client authentication flow")
 		WOPIAuthLogInfo("=====================================")
@@ -175,6 +175,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	// Step Five: Success
 	func finishFlow() {
 		completeCurrentStep()
+		
+		container!.addNew(connection!)
 		
 		WOPIAuthLogInfo("SUCCESS WOPI client authentication flow")
 		WOPIAuthLogInfo("=======================================")

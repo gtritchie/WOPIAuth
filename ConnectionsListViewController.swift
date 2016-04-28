@@ -3,7 +3,7 @@ import Cocoa
 /**
 	Controller to manage creation and display of `ConnectionInfo` objects.
 */
-class ConnectionsListViewController: NSViewController, NSTableViewDelegate, ProviderViewing {
+class ConnectionsListViewController: NSViewController, NSTableViewDelegate, ProviderViewing, ConnectionContaining {
 	
 	// MARK: Outlets
 	
@@ -51,7 +51,7 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 		case InvokeAuthFlowSegue:
 			var destination = segue.destinationController as! ConnectionCreating
 			destination.provider = selectedProvider
-			destination.connections = connections
+			destination.container = self
 			
 		default:
 			print("Unknown segue: \(segue.identifier)")
@@ -71,4 +71,12 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 			parent.selectedConnection = activeConnection
 		}
 	}
+	
+	// MARK: ConnectionContaining
+	/// Add `provider` to the list of `ProviderInfo` objects.
+	func addNew(connection: ConnectionInfo) {
+		arrayController.addObject(connection)
+		Preferences.connections = connections
+	}
+	
 }

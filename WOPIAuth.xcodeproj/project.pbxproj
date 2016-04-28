@@ -33,6 +33,7 @@
 		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */; };
 		4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */; };
 		4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6431CCACC680054E523 /* URLFormatter.swift */; };
+		4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */; };
 		4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918461CD021FE005A5186 /* ConnectionViewing.swift */; };
 		4EF918491CD02306005A5186 /* ConnectionPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */; };
 		4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */; };
@@ -88,6 +89,7 @@
 		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderDetailEditing.swift; path = ../ProviderDetailEditing.swift; sourceTree = "<group>"; };
 		4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		4EB2A6431CCACC680054E523 /* URLFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLFormatter.swift; sourceTree = "<group>"; };
+		4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionContaining.swift; sourceTree = "<group>"; };
 		4EF918461CD021FE005A5186 /* ConnectionViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewing.swift; sourceTree = "<group>"; };
 		4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionPropertiesViewController.swift; sourceTree = "<group>"; };
 		4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCreating.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */,
 				4EF918461CD021FE005A5186 /* ConnectionViewing.swift */,
 				4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */,
+				4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E100ACA1CC03FED00AFA37E /* RightPaneSplitViewController.swift in Sources */,
+				4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */,
 				4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */,
 				4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */,
 				4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */,
