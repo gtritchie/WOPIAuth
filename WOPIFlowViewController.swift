@@ -163,12 +163,22 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	/// Step Three: Obtain tokens
 	func getTokens()  {
 		startNewStep("tokens", image: tokenImage, text: tokenText, progress: tokenProgress)
+		
+		connection!.accessToken = "temporary token"
+		connection!.tokenExpiration = 1234
+		connection!.refreshToken = "refresh token"
+		
 		getProfile()
 	}
 	
 	// Step Four: Authenticated call to bootstrapper for user profile info
 	func getProfile() {
 		startNewStep("profile", image: profileImage, text: profileText, progress: profileProgress)
+		
+		connection!.userName = "Sample User Name"
+		connection!.userId = "userId23423"
+		connection!.friendlyName = "Friendy Name"
+		
 		finishFlow()
 	}
 	

@@ -1036,7 +1036,7 @@ Gw
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="tmE-po-Otm">
+                                                <tableColumn identifier="Property" width="116" minWidth="40" maxWidth="1000" id="tmE-po-Otm">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Property">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1060,6 +1060,9 @@ Gw
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="IJM-ac-WVa" name="value" keyPath="objectValue" id="8TV-su-c9b"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -1068,7 +1071,7 @@ Gw
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="200" minWidth="40" maxWidth="1000" id="NMX-gz-PW9">
+                                                <tableColumn identifier="Value" width="200" minWidth="40" maxWidth="1000" id="NMX-gz-PW9">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Value">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1092,6 +1095,9 @@ Gw
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="EPT-AC-jCU" name="value" keyPath="objectValue" id="6Zx-v8-nO0"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -1100,7 +1106,7 @@ Gw
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="119.50964142720456" minWidth="40" maxWidth="1000" id="6qq-WY-tVj">
+                                                <tableColumn identifier="Source" width="119.50964142720456" minWidth="40" maxWidth="1000" id="6qq-WY-tVj">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Source">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1124,6 +1130,9 @@ Gw
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="654-dF-LDo" name="value" keyPath="objectValue" id="iEh-0t-dq9"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
@@ -1133,6 +1142,10 @@ Gw
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="afC-8R-Y3J" id="2Rq-Un-2er"/>
+                                                <outlet property="delegate" destination="afC-8R-Y3J" id="zri-Nb-hat"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1211,6 +1224,9 @@ Gw
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="Q80-kI-h1Z" name="value" keyPath="objectValue.userName" id="Mz1-Pj-YiM"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
@@ -1227,6 +1243,7 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <binding destination="iLw-ba-yrx" name="content" keyPath="arrangedObjects" id="o6D-Ye-9Px"/>
                                                 <outlet property="delegate" destination="hBX-vS-hZ1" id="b5w-Mj-has"/>
                                             </connections>
                                         </tableView>

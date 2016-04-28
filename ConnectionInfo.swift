@@ -110,10 +110,7 @@ private let currentConnectionInfoVersion = 1
 			return nil
 		}
 
-		guard let tokenExpirationValue = aDecoder.decodeObjectForKey(tokenExpirationKey) as? Int64 else {
-			print("Failed to unarchive \(tokenExpirationKey)")
-			return nil
-		}
+		let tokenExpirationValue = aDecoder.decodeInt64ForKey(tokenExpirationKey)
 		
 		guard let refreshTokenStr = aDecoder.decodeObjectForKey(refreshTokenKey) as? String else {
 			print("Failed to unarchive \(refreshTokenKey)")
