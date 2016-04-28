@@ -73,6 +73,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		WOPIAuthLogInfo("=====================================")
 
 		connection = ConnectionInfo()
+		connection!.providerName = provider!.providerName
 		initialBootstrapperCall()
 	}
 

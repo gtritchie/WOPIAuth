@@ -41,13 +41,15 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 	
 	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
 		var rowCount = 0
-		if selectedProvider != nil {
-			rowCount = 5
+		if let provider = selectedProvider {
+			if !provider.providerName.isEmpty {
+				rowCount = 5
+			}
 		}
 		
-//		if selectedConnection != nil {
-//			rowCount += 1
-//		}
+		if rowCount > 0 && selectedConnection != nil {
+			rowCount += 4
+		}
 		return rowCount
 	}
 	
@@ -106,6 +108,50 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 				return selectedProvider!.redirectUrl
 			case "Source":
 				return "Provider Info"
+			default:
+				return "Unknown"
+			}
+		case 5:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "Authorization URL"
+			case "Value":
+				return selectedConnection!.bootstrapInfo.authorizationURL
+			case "Source":
+				return "Bootstrapper"
+			default:
+				return "Unknown"
+			}
+		case 6:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "Token URL"
+			case "Value":
+				return selectedConnection!.bootstrapInfo.tokenIssuanceURL
+			case "Source":
+				return "Bootstrapper"
+			default:
+				return "Unknown"
+			}
+		case 7:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "Access Token"
+			case "Value":
+				return selectedConnection!.accessToken
+			case "Source":
+				return "Token Endpoint"
+			default:
+				return "Unknown"
+			}
+		case 8:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "UserId"
+			case "Value":
+				return selectedConnection!.userId
+			case "Source":
+				return "Authenticated Bootstrapper"
 			default:
 				return "Unknown"
 			}
