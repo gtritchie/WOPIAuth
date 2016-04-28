@@ -92,6 +92,5 @@ public class BootstrapFetcher {
 			}
 		}
 		task.resume()
-		print("End of fetch call")
 	}
 }

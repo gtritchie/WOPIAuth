@@ -14,7 +14,11 @@ class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceL
 	
 	var connection: ConnectionInfo?
 	var clientInfo: ClientInfo?
+	var providerInfo: ProviderInfo?
 	var completionHandler: ((FetchAuthResult) -> Void)?
+	
+	var stopUrl: NSURL?
+	var authResult: AuthResult?
 	
 	// MARK: Embedded Types
 	
@@ -34,13 +38,57 @@ class SignInViewController: NSViewController, WebFrameLoadDelegate, WebResourceL
 		}
 	}
 	
+	func errorWithCode(code: Int, localizedDescription: String) -> NSError {
+		WOPIAuthLogError(localizedDescription)
+		return NSError(domain: "SignIn", code: code, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
+	}
+
 	// MARK: Life Cycle
 	
 	override func viewDidAppear() {
+		
+		assert(stopUrl == nil)
+		assert(authResult == nil)
+		
+		let authPageUrl = "\(connection!.bootstrapInfo.authorizationURL)?client_id=\(providerInfo!.clientId)&redirect_uri=\(providerInfo!.redirectUrl)&response_type=code&scope=&rs=\(clientInfo!.culture)&build=\(clientInfo!.clientBuild)&platform=\(clientInfo!.clientPlatform)"
+		
+		guard let signInPageUrl = NSURL(string: authPageUrl) else {
+			let error = errorWithCode(1, localizedDescription: "Malformed signIn URL: \"\(connection!.bootstrapInfo.authorizationURL)\"")
+			let result: FetchAuthResult = .Failure(error)
+			completionHandler!(result)
+			return
+		}
+
+		guard let redirectUrl = NSURL(string: providerInfo!.redirectUrl) else {
+			let error = errorWithCode(1, localizedDescription: "Malformed redirect URL: \"\(providerInfo!.redirectUrl)\"")
+			let result: FetchAuthResult = .Failure(error)
+			completionHandler!(result)
+			return
+		}
+		stopUrl = redirectUrl
+
 		webView.frameLoadDelegate = self
 		webView.resourceLoadDelegate = self
-		let request = NSURLRequest(URL: NSURL(string: "http://www.box.com")!)
+		let request = NSURLRequest(URL: signInPageUrl)
+		WOPIAuthLogInfo("Loading page: \(authPageUrl)")
 		webView.mainFrame.loadRequest(request)
+	}
+	
+	override func viewWillDisappear() {
+		super.viewWillDisappear()
+		
+		webView.stopLoading(self)
+		
+		WOPIAuthLogInfo("Closing sign-in window")
+
+		if let authInfo = authResult {
+			let result = FetchAuthResult { authInfo }
+			completionHandler!(result)
+		} else {
+			let error = errorWithCode(1, localizedDescription: "Failed to obtain required auth information from sign-in")
+			let result: FetchAuthResult = .Failure(error)
+			completionHandler!(result)
+		}
 	}
 	
 	// MARK: WebFrameLoadDelegate

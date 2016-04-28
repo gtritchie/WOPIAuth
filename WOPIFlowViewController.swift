@@ -190,6 +190,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 			signInController.connection = connection
 			signInController.clientInfo = ClientInfo() // TODO: set via preferences
 			signInController.completionHandler = self.signInResult
+			signInController.providerInfo = provider
 		default:
 			print("Unknown segue: \(segue.identifier)")
 		}
