@@ -6,6 +6,11 @@ import Cocoa
 */
 class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	
+	// MARK: Properties
+	
+	/// OAuth2 auth_code
+	var authCode: String?
+
 	// MARK: ConnectionCreating
 	
 	/// The `ProviderInfo` used to begin the identity flow
@@ -140,7 +145,19 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	func signIn() {
 		startNewStep("signin", image: signinImage, text: signinText, progress: signinProgress)
 		performSegueWithIdentifier("ShowSignIn", sender: nil)
-		//getTokens()
+	}
+	
+	/// Step Two+: Completion Handler for Sign-In UI
+	func signInResult(signInResult: SignInViewController.FetchAuthResult) {
+		switch signInResult {
+		case .Success(let authResult):
+			self.authCode = authResult.authCode
+			self.connection!.postAuthTokenIssuanceURL = authResult.postAuthTokenIssuanceURL
+			self.connection!.sessionContext = authResult.sessionContext
+			getTokens()
+		case .Failure:
+			self.failCurrentStep()
+		}
 	}
 	
 	/// Step Three: Obtain tokens
@@ -163,16 +180,16 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		WOPIAuthLogInfo("=======================================")
 	}
 	
-	
 	// MARK: Segue
 	
 	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
 		switch segue.identifier! {
 			
 		case "ShowSignIn":
-			let _  = segue.destinationController as! SignInViewController
-			//signInView.loadURL(NSURL(string: "http://www.microsoft.com")!)
-
+			let signInController  = segue.destinationController as! SignInViewController
+			signInController.connection = connection
+			signInController.clientInfo = ClientInfo() // TODO: set via preferences
+			signInController.completionHandler = self.signInResult
 		default:
 			print("Unknown segue: \(segue.identifier)")
 		}

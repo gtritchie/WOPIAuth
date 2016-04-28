@@ -11,8 +11,8 @@ public class BootstrapFetcher {
 	
 	// MARK: Properties
 	
-	// Url of the bootstrapper
-	var urlString: String
+	/// Url of the bootstrapper
+	private var urlString: String
 	
 	private let session: NSURLSession
 
@@ -35,7 +35,7 @@ public class BootstrapFetcher {
 	
 	// MARK: Life Cycle
 	
-	public init(url: String) {
+	init(url: String) {
 		urlString = url
 		let config = NSURLSessionConfiguration.defaultSessionConfiguration()
 		session = NSURLSession(configuration: config)

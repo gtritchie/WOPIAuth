@@ -1,6 +1,5 @@
 import Cocoa
 
-
 /**
 	`ClientInfo` contains metadata used to identity the calling client.
 */

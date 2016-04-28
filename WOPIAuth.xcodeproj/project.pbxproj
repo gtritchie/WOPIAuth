@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4E01D58A1CD178200073DBD9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01D5891CD178200073DBD9 /* SignInViewController.swift */; };
+		4E0D651A1CD25D6E00E4F336 /* SignInFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D65191CD25D6E00E4F336 /* SignInFetcher.swift */; };
+		4E0D651C1CD25DFC00E4F336 /* AuthResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0D651B1CD25DFC00E4F336 /* AuthResult.swift */; };
 		4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */; };
 		4E100ACA1CC03FED00AFA37E /* RightPaneSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */; };
 		4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100ACB1CC0459100AFA37E /* Preferences.swift */; };
@@ -56,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		4E01D5891CD178200073DBD9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = WOPIAuth/SignInViewController.swift; sourceTree = "<group>"; };
+		4E0D65191CD25D6E00E4F336 /* SignInFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInFetcher.swift; sourceTree = "<group>"; };
+		4E0D651B1CD25DFC00E4F336 /* AuthResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarSplitViewController.swift; path = WOPIAuth/SidebarSplitViewController.swift; sourceTree = "<group>"; };
 		4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightPaneSplitViewController.swift; sourceTree = "<group>"; };
 		4E100ACB1CC0459100AFA37E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 				4E592BC81CBC867200A67FEF /* ProviderInfo.swift */,
 				4E100ACB1CC0459100AFA37E /* Preferences.swift */,
 				4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */,
+				4E0D65191CD25D6E00E4F336 /* SignInFetcher.swift */,
+				4E0D651B1CD25DFC00E4F336 /* AuthResult.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -364,11 +370,13 @@
 				4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */,
 				4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */,
 				4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */,
+				4E0D651A1CD25D6E00E4F336 /* SignInFetcher.swift in Sources */,
 				4E43AAED1CD02F3900DF044C /* WOPIFlowViewController.swift in Sources */,
 				4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */,
 				4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */,
 				4E6F606C1CC448C600F4F826 /* BootstrapFetcher.swift in Sources */,
 				4EA2C86A1CD0090D00487818 /* ConnectionsListViewController.swift in Sources */,
+				4E0D651C1CD25DFC00E4F336 /* AuthResult.swift in Sources */,
 				4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */,
 				4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */,
 				4E456F271CD000DF00E1BE18 /* ConnectionsSplitViewController.swift in Sources */,
