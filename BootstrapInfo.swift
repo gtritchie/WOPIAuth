@@ -17,21 +17,45 @@ private let currentBootstrapInfoVersion = 1
 	
 	func populateFromAuthenticateHeader(header: String) -> Bool {
 		
-		// TODO: Attempt to populate fields using WWW-Authenticate header
+		WOPIAuthLogInfo("WWW-Authenticate: \(header)")
 		
-		// Bearer
+		// Replace all "Bearer" with nothing; this is dubious but is what Office clients are doing
+		let trimHeader = header.stringByReplacingOccurrencesOfString("Bearer", withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+	
+		let separators = NSCharacterSet(charactersInString: "=,")
+		let tokens: [String] = trimHeader.componentsSeparatedByCharactersInSet(separators)
 		
-		// authorization_uri=
+		var nameValue = [String: String]()
+
+		// TODO: I'm pretty sure there's a much tidier way to do all of this
+		var lastKey = ""
+		for (index, token) in tokens.enumerate() {
+			var trimmedToken = token.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+			trimmedToken = trimmedToken.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "\""))
+			
+			if index % 2 == 0 {
+				lastKey = trimmedToken
+				nameValue[trimmedToken] = ""
+			} else {
+				nameValue[lastKey] = trimmedToken
+			}
+		}
+
+		guard let authUri = nameValue["authorization_uri"] else {
+			WOPIAuthLogError("No authorization_uri in WWW-Authenticated header")
+			return false
+		}
+		guard let tokenUri = nameValue["tokenIssuance_uri"] else {
+			WOPIAuthLogError("No tokenIssuance_uri in WWW-Authenticated header")
+			return false
+		}
 		
-		authorizationURL = "https://contoso.com/api/oauth2/authorize"
+		authorizationURL = authUri
+		tokenIssuanceURL = tokenUri
 		
-		// tokenIssuance_uri
-		
-		tokenIssuanceURL = "https://contoso.com/api/oauth2/token"
-		
-		// providerId= (optional)
-		
-		providerID = "tp_contoso"
+		if let provId = nameValue["providerID"] {
+			providerID = provId
+		}
 		
 		return true
 	}
