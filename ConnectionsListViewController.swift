@@ -32,26 +32,14 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 					childProviderViewer.selectedProvider = selectedProvider
 				}
 			}
-			
-			// elminate previously visible connections
-			connections = [ConnectionInfo]()
-			
-			for connection in allConnections! {
-				if connection.providerName == selectedProvider!.providerName {
-					connections!.append(connection)
-				}
-			}
 		}
 	}
 	
 	// MARK: Properties
 	
 	/// List of `ConnectionInfo`s for current provider
-	var connections: [ConnectionInfo]?
+	var connections = Preferences.connections
 
-	/// List of all `ConnectionInfo`s
-	var allConnections = Preferences.connections
-	
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let InvokeAuthFlowSegue = "InvokeWOPIAuthFlow"
 
@@ -88,8 +76,7 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	/// Add `provider` to the list of `ProviderInfo` objects.
 	func addNew(connection: ConnectionInfo) {
 		arrayController.addObject(connection)
-		allConnections!.append(connection)
-		Preferences.connections = allConnections
+		Preferences.connections = connections
 	}
 	
 }

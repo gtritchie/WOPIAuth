@@ -139,7 +139,12 @@ private let currentProviderInfoVersion = 1
 			WOPIAuthLogError("ClientSecret cannot be empty")
 			return false
 		}
-		
+
+		guard !redirectUrl.isEmpty else {
+			WOPIAuthLogError("RedirectUri cannot be empty")
+			return false
+		}
+
 		return true
 	}
 	
