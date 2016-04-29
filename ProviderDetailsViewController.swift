@@ -50,9 +50,9 @@ class ProviderDetailsViewController: NSViewController {
 	func isProviderValid(sender: NSButton) -> Bool {
 		
 		provider.trimSpaces()
-		if !provider.validateNonEmpty() {
-			ShowValidationErrorMessage(sender, message: NSLocalizedString("All fields must contain information.",
-				comment: "Message for empty Provider field(s)"))
+		if !provider.validate() {
+			ShowValidationErrorMessage(sender, message: NSLocalizedString("Invalid or missing information entered. Correct and try again.",
+				comment: "Message for failure of provider metadata validation"))
 			return false
 		}
 		
@@ -60,7 +60,7 @@ class ProviderDetailsViewController: NSViewController {
 			where nameAvailable else {
 				
 			ShowValidationErrorMessage(sender, message: NSLocalizedString("Provider Name must be unique.",
-				comment: "Message for duplicate Provider Name value"))
+				comment: "Message for trying to add item with duplicate Provider Name value"))
 			return false
 		}
 		

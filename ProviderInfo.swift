@@ -1,12 +1,11 @@
 import Foundation
 
-/// Version of archived data
+/// Version of archived `ProviderInfo` data
 private let currentProviderInfoVersion = 1
 
 /**
 	`ProviderInfo` contains information needed to perform auth for
-	one Third Party Provider. The `ProviderInfo.bootstrapper` field
-	is treated as the primary unique key.
+	a Third Party Provider.
 */
 @objc class ProviderInfo: NSObject, NSCoding {
 	
@@ -96,6 +95,9 @@ private let currentProviderInfoVersion = 1
 		self.clientId = clientIdStr
 		self.clientSecret = clientSecretStr
 		self.redirectUrl = redirectUrlStr
+		
+		trimSpaces()
+		validate()
 	}
 	
 	/// Using `NSCoding` to save to `NSUserDefaults`
@@ -148,7 +150,37 @@ private let currentProviderInfoVersion = 1
 		return true
 	}
 	
+	/**
+		Validate contents of `ProviderInfo` object. Logs an error message for first problem found.
+	
+		- Returns: True if valid, False if invalid
+	*/
 	func validate() -> Bool {
-		return validateNonEmpty()
+		guard validateNonEmpty() else {
+			return false
+		}
+		
+		guard let bootstrapperUrl = NSURLComponents(string: bootstrapper) else {
+			WOPIAuthLogError("Bootstrapper must be a valid URL: \(bootstrapper)")
+			return false
+		}
+		
+		guard bootstrapperUrl.scheme == "https" else {
+			WOPIAuthLogError("Bootstrapper must use https scheme: \(bootstrapper)")
+			return false
+		}
+		
+		let bootstrapperSuffix = "/wopibootstrapper"
+		guard let bootstrapperPath = bootstrapperUrl.path where bootstrapperPath.hasSuffix(bootstrapperSuffix) else {
+			WOPIAuthLogError("Bootstrapper must end with \(bootstrapperSuffix): \(bootstrapper)")
+			return false
+		}
+		
+		if NSURLComponents(string: redirectUrl) == nil {
+			WOPIAuthLogError("RedirectUri must be a valid URI: \(redirectUrl)")
+			return false
+		}
+		
+		return true
 	}
 }
