@@ -12,6 +12,8 @@
 		4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */; };
 		4E100ACA1CC03FED00AFA37E /* RightPaneSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */; };
 		4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100ACB1CC0459100AFA37E /* Preferences.swift */; };
+		4E1CBB871CD40AA3001235DB /* ProviderInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CBB861CD40AA3001235DB /* ProviderInfoTests.swift */; };
+		4E1CBB891CD40F58001235DB /* LoggingSenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CBB881CD40F58001235DB /* LoggingSenderTests.swift */; };
 		4E43AAED1CD02F3900DF044C /* WOPIFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43AAEC1CD02F3900DF044C /* WOPIFlowViewController.swift */; };
 		4E456F251CCFF9F700E1BE18 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */; };
 		4E456F271CD000DF00E1BE18 /* ConnectionsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E456F261CD000DF00E1BE18 /* ConnectionsSplitViewController.swift */; };
@@ -22,7 +24,6 @@
 		4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */; };
 		4E8CB5C21CB759C400769F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C11CB759C400769F0D /* Assets.xcassets */; };
 		4E8CB5C51CB759C400769F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C31CB759C400769F0D /* Main.storyboard */; };
-		4E8CB5D01CB759C400769F0D /* WOPIAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5CF1CB759C400769F0D /* WOPIAuthTests.swift */; };
 		4E8CB5DB1CB759C400769F0D /* WOPIAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */; };
 		4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */; };
 		4EA2C86A1CD0090D00487818 /* ConnectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2C8691CD0090D00487818 /* ConnectionsListViewController.swift */; };
@@ -32,7 +33,6 @@
 		4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620981CBD723200D631F4 /* ProviderListViewController.swift */; };
 		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */; };
 		4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */; };
-		4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6431CCACC680054E523 /* URLFormatter.swift */; };
 		4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */; };
 		4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918461CD021FE005A5186 /* ConnectionViewing.swift */; };
 		4EF918491CD02306005A5186 /* ConnectionPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */; };
@@ -62,6 +62,8 @@
 		4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarSplitViewController.swift; path = WOPIAuth/SidebarSplitViewController.swift; sourceTree = "<group>"; };
 		4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightPaneSplitViewController.swift; sourceTree = "<group>"; };
 		4E100ACB1CC0459100AFA37E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		4E1CBB861CD40AA3001235DB /* ProviderInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfoTests.swift; sourceTree = "<group>"; };
+		4E1CBB881CD40F58001235DB /* LoggingSenderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingSenderTests.swift; sourceTree = "<group>"; };
 		4E43AAEC1CD02F3900DF044C /* WOPIFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WOPIFlowViewController.swift; sourceTree = "<group>"; };
 		4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
 		4E456F261CD000DF00E1BE18 /* ConnectionsSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsSplitViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +77,6 @@
 		4E8CB5C41CB759C400769F0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E8CB5C61CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E8CB5CB1CB759C400769F0D /* WOPIAuthTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E8CB5CF1CB759C400769F0D /* WOPIAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOPIAuthTests.swift; sourceTree = "<group>"; };
 		4E8CB5D11CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E8CB5D61CB759C400769F0D /* WOPIAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOPIAuthUITests.swift; sourceTree = "<group>"; };
@@ -88,7 +89,6 @@
 		4EA620981CBD723200D631F4 /* ProviderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderListViewController.swift; sourceTree = "<group>"; };
 		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderDetailEditing.swift; path = ../ProviderDetailEditing.swift; sourceTree = "<group>"; };
 		4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
-		4EB2A6431CCACC680054E523 /* URLFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLFormatter.swift; sourceTree = "<group>"; };
 		4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionContaining.swift; sourceTree = "<group>"; };
 		4EF918461CD021FE005A5186 /* ConnectionViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewing.swift; sourceTree = "<group>"; };
 		4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionPropertiesViewController.swift; sourceTree = "<group>"; };
@@ -172,8 +172,9 @@
 		4E8CB5CE1CB759C400769F0D /* WOPIAuthTests */ = {
 			isa = PBXGroup;
 			children = (
-				4E8CB5CF1CB759C400769F0D /* WOPIAuthTests.swift */,
 				4E8CB5D11CB759C400769F0D /* Info.plist */,
+				4E1CBB861CD40AA3001235DB /* ProviderInfoTests.swift */,
+				4E1CBB881CD40F58001235DB /* LoggingSenderTests.swift */,
 			);
 			path = WOPIAuthTests;
 			sourceTree = "<group>";
@@ -221,7 +222,6 @@
 		4EB2A6451CCACC750054E523 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				4EB2A6431CCACC680054E523 /* URLFormatter.swift */,
 				4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */,
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
 			);
@@ -362,7 +362,6 @@
 				4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */,
 				4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */,
 				4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */,
-				4EB2A6441CCACC680054E523 /* URLFormatter.swift in Sources */,
 				4EA5A3271CCFE1DB00828EE1 /* ProviderViewing.swift in Sources */,
 				4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */,
 				4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */,
@@ -391,7 +390,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E8CB5D01CB759C400769F0D /* WOPIAuthTests.swift in Sources */,
+				4E1CBB871CD40AA3001235DB /* ProviderInfoTests.swift in Sources */,
+				4E1CBB891CD40F58001235DB /* LoggingSenderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
