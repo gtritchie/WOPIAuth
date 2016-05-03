@@ -47,7 +47,8 @@ private let currentProviderInfoVersion = 1
 	/// Summary of `ProviderInfo` suitable for logging
 	override var description: String {
 		get {
-			return "[providerName=\"\(providerName)\", bootstrapper=\"\(bootstrapper)\", clientId=\"\(clientId)\", clientSecret=\"***\", redirectUrl=\"\(redirectUrl)\"]"
+			return "[providerName=\"\(providerName)\", bootstrapper=\"\(bootstrapper)\", " +
+				"clientId=\"\(clientId)\", clientSecret=\"***\", redirectUrl=\"\(redirectUrl)\"]"
 		}
 	}
 		
@@ -176,8 +177,13 @@ private let currentProviderInfoVersion = 1
 			return false
 		}
 		
-		if NSURLComponents(string: redirectUrl) == nil {
+		guard let redirUrl = NSURLComponents(string: redirectUrl) else {
 			WOPIAuthLogError("RedirectUri must be a valid URI: \(redirectUrl)")
+			return false
+		}
+		
+		guard redirUrl.scheme == "https" else {
+			WOPIAuthLogError("RedirectUri must use https scheme: \(redirectUrl)")
 			return false
 		}
 		
