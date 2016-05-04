@@ -1,7 +1,19 @@
 import Foundation
 
 /// Version of archived `ProviderInfo` data
-private let currentProviderInfoVersion = 1
+let currentProviderInfoVersion = 1
+
+func == (left: ProviderInfo, right: ProviderInfo) -> Bool {
+	return left.providerInfoVersion == right.providerInfoVersion &&
+		left.providerName == right.providerName &&
+		left.clientId == right.clientId &&
+		left.clientSecret == right.clientSecret &&
+		left.redirectUrl == right.redirectUrl
+}
+
+func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
+	return !(left == right)
+}
 
 /**
 	`ProviderInfo` contains information needed to perform auth for
@@ -24,7 +36,6 @@ private let currentProviderInfoVersion = 1
 	/// The Provider Name. For display purposes only, and treated as a unique key in this application.
 	dynamic var providerName: String = ""
 	let providerNameKey = "providerName"
-
 	/// The WOPI bootstrap endpoint URL. This is treated as the primary unique key.
 	dynamic var bootstrapper: String = ""
 	let bootstrapperKey = "bootstrapper"
@@ -65,30 +76,11 @@ private let currentProviderInfoVersion = 1
 			return nil
 		}
 
-		guard let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as? String else {
-			print("Failed to unarchive \(providerNameKey)")
-			return nil
-		}
-	
-		guard let bootstrapperStr = aDecoder.decodeObjectForKey(bootstrapperKey) as? String else {
-			print("Failed to unarchive \(bootstrapperKey)")
-			return nil
-		}
-		
-		guard let clientIdStr = aDecoder.decodeObjectForKey(clientIdKey) as? String else {
-			print("Failed to unarchive \(clientIdKey)")
-			return nil
-		}
-
-		guard let clientSecretStr = aDecoder.decodeObjectForKey(clientSecretKey) as? String else {
-			print("Failed to unarchive \(clientSecretKey)")
-			return nil
-		}
-
-		guard let redirectUrlStr = aDecoder.decodeObjectForKey(redirectUrlKey) as? String else {
-			print("Failed to unarchive \(redirectUrlKey)")
-			return nil
-		}
+		let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as! String
+		let bootstrapperStr = aDecoder.decodeObjectForKey(bootstrapperKey) as! String
+		let clientIdStr = aDecoder.decodeObjectForKey(clientIdKey) as! String
+		let clientSecretStr = aDecoder.decodeObjectForKey(clientSecretKey) as! String
+		let redirectUrlStr = aDecoder.decodeObjectForKey(redirectUrlKey) as! String
 		
 		self.providerInfoVersion = providerInfoVersionValue
 		self.providerName = providerNameStr
@@ -189,4 +181,5 @@ private let currentProviderInfoVersion = 1
 		
 		return true
 	}
+	
 }

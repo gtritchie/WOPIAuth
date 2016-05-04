@@ -3,6 +3,16 @@ import Cocoa
 /// Version of archived data
 private let currentBootstrapInfoVersion = 1
 
+func == (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
+	return left.bootstrapInfoVersion == right.bootstrapInfoVersion &&
+		left.authorizationURL == right.authorizationURL &&
+		left.tokenIssuanceURL == right.tokenIssuanceURL
+}
+
+func != (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
+	return !(left == right)
+}
+
 /**
 	`BootstrapInfo` contains metadata returned by an unauthenticated call
 	to the WOPI bootstrapper endpoint.
@@ -20,7 +30,8 @@ private let currentBootstrapInfoVersion = 1
 		WOPIAuthLogInfo("WWW-Authenticate: \(header)")
 		
 		// Replace all "Bearer" with nothing; this is dubious but is what Office clients are doing
-		let trimHeader = header.stringByReplacingOccurrencesOfString("Bearer", withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		var trimHeader = header.stringByReplacingOccurrencesOfString("Bearer", withString: "")
+		trimHeader = trimHeader.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 	
 		let separators = NSCharacterSet(charactersInString: "=,")
 		let tokens: [String] = trimHeader.componentsSeparatedByCharactersInSet(separators)
@@ -89,16 +100,8 @@ private let currentBootstrapInfoVersion = 1
 			return nil
 		}
 
-		guard let authorizationURLStr = aDecoder.decodeObjectForKey(authorizationURLKey) as? String else {
-			print("Failed to unarchive \(authorizationURLKey)")
-			return nil
-		}
-		
-		guard let tokenIssuanceURLStr = aDecoder.decodeObjectForKey(tokenIssuanceURLKey) as? String else {
-			print("Failed to unarchive \(tokenIssuanceURLKey)")
-			return nil
-		}
-
+		let authorizationURLStr = aDecoder.decodeObjectForKey(authorizationURLKey) as! String
+		let tokenIssuanceURLStr = aDecoder.decodeObjectForKey(tokenIssuanceURLKey) as! String
 		
 		self.bootstrapInfoVersion = bootstrapInfoVersionValue
 		self.authorizationURL = authorizationURLStr

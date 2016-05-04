@@ -13,6 +13,26 @@ class ProviderInfoTests: XCTestCase {
 		provider.redirectUrl = "https://localhost"
 		return provider
 	}
+
+	private func CreateAlternateValidProviderInfo() -> ProviderInfo {
+		let provider = ProviderInfo()
+		provider.providerName = "Provider Name 2"
+		provider.bootstrapper = "https://contoso2.com/wopibootstrapper"
+		provider.clientId = "abc123$%^2"
+		provider.clientSecret = "def9872!42"
+		provider.redirectUrl = "https://localhost2"
+		return provider
+	}
+
+	private func EncodeProvider(provider: ProviderInfo) -> NSData {
+		let data = NSMutableData()
+		let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+		
+		// archive known object
+		provider.encodeWithCoder(archiver)
+		archiver.finishEncoding()
+		return data
+	}
 	
 	override func setUp() {
 		super.setUp()
@@ -42,7 +62,19 @@ class ProviderInfoTests: XCTestCase {
 		provider.trimSpaces()
 		XCTAssertFalse(provider.validateNonEmpty())
 	}
-	
+
+	func testValidProvider() {
+		XCTAssertTrue(CreateValidProviderInfo().validate())
+	}
+
+	func testAlternateValidProvider() {
+		XCTAssertTrue(CreateAlternateValidProviderInfo().validate())
+	}
+
+	func testProvidersNotEqual() {
+		XCTAssertTrue(CreateValidProviderInfo() != CreateAlternateValidProviderInfo())
+	}
+
 	func testEmptyProviderNameIsInvalid() {
 		let provider = CreateValidProviderInfo()
 		provider.providerName = ""
@@ -115,43 +147,26 @@ class ProviderInfoTests: XCTestCase {
 		XCTAssertFalse(provider.description.isEmpty)
 	}
 	
-//	/// The Provider Name. For display purposes only, and treated as a unique key in this application.
-//	dynamic var providerName: String = ""
-//	let providerNameKey = "providerName"
-//	
-//	/// The WOPI bootstrap endpoint URL. This is treated as the primary unique key.
-//	dynamic var bootstrapper: String = ""
-//	let bootstrapperKey = "bootstrapper"
-//	
-//	/// The OAuth2 Client ID issued by the provider for Microsoft Office.
-//	dynamic var clientId: String = ""
-//	let clientIdKey = "clientId"
-//	
-//	/// The OAuth2 Client Secret issued by the provider for Microsoft Office.
-//	dynamic var clientSecret: String = ""
-//	let clientSecretKey = "clientSecret"
-//	
-//	/**
-//	The redirect URL used to indicate that authorization has completed and
-//	is returning an authorization_code via the code URL parameter.
-//	*/
-//	dynamic var redirectUrl: String = ""
-//	let redirectUrlKey = "redirectUrl"
-//	
-//	/// Summary of `ProviderInfo` suitable for logging
-//	override var description: String {
-//		get {
-//			return "[providerName=\"\(providerName)\", bootstrapper=\"\(bootstrapper)\", clientId=\"\(clientId)\", clientSecret=\"***\", redirectUrl=\"\(redirectUrl)\"]"
-//		}
-//	}
+	func testProviderEncodeDecode() {
+		let origProvider = CreateValidProviderInfo()
+		let data = EncodeProvider(origProvider)
 
-	
-	
-//	func testPerformanceExample() {
-//		// This is an example of a performance test case.
-//		self.measureBlock {
-//			// Put the code you want to measure the time of here.
-//		}
-//	}
-	
+		// create new object from the archive
+		let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+		let newProvider = ProviderInfo(coder: unarchiver)
+		XCTAssertNotNil(newProvider)
+		XCTAssertTrue(newProvider! == origProvider)
+	}
+
+	func testProviderDecodeFailInvalidVersion() {
+		let origProvider = CreateValidProviderInfo()
+		origProvider.providerInfoVersion = 99999
+		let data = EncodeProvider(origProvider)
+
+		// create new object from the archive
+		let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+		let newProvider = ProviderInfo(coder: unarchiver)
+		XCTAssertNil(newProvider)
+	}
+
 }

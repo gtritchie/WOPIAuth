@@ -3,6 +3,24 @@ import Cocoa
 /// Version of archived data
 private let currentConnectionInfoVersion = 1
 
+func == (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
+	return left.connectionInfoVersion == right.connectionInfoVersion &&
+		left.providerName == right.providerName &&
+		left.userId == right.userId &&
+		left.userName == right.userName &&
+		left.friendlyName == right.friendlyName &&
+		left.postAuthTokenIssuanceURL == right.postAuthTokenIssuanceURL &&
+		left.sessionContext == right.sessionContext &&
+		left.accessToken == right.accessToken &&
+		left.tokenExpiration == right.tokenExpiration &&
+		left.refreshToken == right.refreshToken &&
+		left.bootstrapInfo == right.bootstrapInfo
+}
+
+func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
+	return !(left == right)
+}
+
 /**
 	`ConnectionInfo` contains metadata obtained by the sign-in flow against
 	a third-party storage service.
@@ -64,7 +82,9 @@ private let currentConnectionInfoVersion = 1
 	/// Summary of `ConnectionInfo` suitable for logging
 	override var description: String {
 		get {
-			return "[provider=\"\(providerName)\", userId=\"\(userId)\", userName=\"\", friendlyName=\"\", postAuthURL=\"\", sessionContext=\"\", accessToken=\"...\", expiration=\(tokenExpiration), refreshToken=\"...\"]"
+			return "[provider=\"\(providerName)\", userId=\"\(userId)\", userName=\"\", " +
+				"friendlyName=\"\", postAuthURL=\"\", sessionContext=\"\", accessToken=\"...\", " +
+				"expiration=\(tokenExpiration), refreshToken=\"...\"]"
 		}
 	}
 	
@@ -80,47 +100,15 @@ private let currentConnectionInfoVersion = 1
 			return nil
 		}
 
-		guard let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as? String else {
-			print("Failed to unarchive \(providerNameKey)")
-			return nil
-		}
-
-		guard let userNameStr = aDecoder.decodeObjectForKey(userNameKey) as? String else {
-			print("Failed to unarchive \(userNameKey)")
-			return nil
-		}
-		
-		guard let friendlyNameStr = aDecoder.decodeObjectForKey(friendlyNameKey) as? String else {
-			print("Failed to unarchive \(friendlyNameKey)")
-			return nil
-		}
-		
-		guard let postAuthTokenIssuanceURLStr = aDecoder.decodeObjectForKey(postAuthTokenIssuanceURLKey) as? String else {
-			print("Failed to unarchive \(postAuthTokenIssuanceURLKey)")
-			return nil
-		}
-
-		guard let sessionContextStr = aDecoder.decodeObjectForKey(sessionContextKey) as? String else {
-			print("Failed to unarchive \(sessionContextKey)")
-			return nil
-		}
-
-		guard let accessTokenStr = aDecoder.decodeObjectForKey(accessTokenKey) as? String else {
-			print("Failed to unarchive \(accessTokenKey)")
-			return nil
-		}
-
+		let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as! String
+		let userNameStr = aDecoder.decodeObjectForKey(userNameKey) as! String
+		let friendlyNameStr = aDecoder.decodeObjectForKey(friendlyNameKey) as! String
+		let postAuthTokenIssuanceURLStr = aDecoder.decodeObjectForKey(postAuthTokenIssuanceURLKey) as! String
+		let sessionContextStr = aDecoder.decodeObjectForKey(sessionContextKey) as! String
+		let accessTokenStr = aDecoder.decodeObjectForKey(accessTokenKey) as! String
 		let tokenExpirationValue = aDecoder.decodeInt64ForKey(tokenExpirationKey)
-		
-		guard let refreshTokenStr = aDecoder.decodeObjectForKey(refreshTokenKey) as? String else {
-			print("Failed to unarchive \(refreshTokenKey)")
-			return nil
-		}
-		
-		guard let bootstrapInfoObj = aDecoder.decodeObjectForKey(bootstrapInfoKey) as? BootstrapInfo else {
-			print("Failed to unarchive \(bootstrapInfoKey)")
-			return nil
-		}
+		let refreshTokenStr = aDecoder.decodeObjectForKey(refreshTokenKey) as! String
+		let bootstrapInfoObj = aDecoder.decodeObjectForKey(bootstrapInfoKey) as! BootstrapInfo
 		
 		self.connectionInfoVersion = connectionInfoVersionValue
 		self.providerName = providerNameStr

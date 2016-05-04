@@ -25,7 +25,8 @@ class LogViewController: NSViewController {
         super.viewDidLoad()
 
 		let notificationCenter = NSNotificationCenter.defaultCenter()
-		notificationCenter.addObserver(self, selector: #selector(self.didReceiveLogLineNotification(_:)), name: LogLineNotification, object: nil)
+		notificationCenter.addObserver(self, selector: #selector(self.didReceiveLogLineNotification(_:)),
+		                               name: LogLineNotification, object: nil)
     }
 	
 	// MARK: Notifications
@@ -50,7 +51,8 @@ class LogViewController: NSViewController {
 			messageFormat = NSLocalizedString("%1$@: %2$@", comment: "Date: message")
 		}
 
-		let logLine = NSMutableAttributedString(string: String(format: messageFormat, LogViewController.getCurrentTime(), message))
+		let logLine = NSMutableAttributedString(string: String(format: messageFormat, LogViewController.getCurrentTime(),
+			message))
 		if isError {
 			logLine.addAttribute(NSForegroundColorAttributeName,
 			                     value: NSColor.redColor(),
