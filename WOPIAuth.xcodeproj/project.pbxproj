@@ -14,6 +14,7 @@
 		4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E100ACB1CC0459100AFA37E /* Preferences.swift */; };
 		4E1CBB871CD40AA3001235DB /* ProviderInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CBB861CD40AA3001235DB /* ProviderInfoTests.swift */; };
 		4E1CBB891CD40F58001235DB /* LoggingSenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1CBB881CD40F58001235DB /* LoggingSenderTests.swift */; };
+		4E223AC51CDA9AFB0035665C /* BootstrapInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E223AC41CDA9AFB0035665C /* BootstrapInfoTests.swift */; };
 		4E267E5F1CD97B3700C8F4D9 /* ConnectionInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E267E5E1CD97B3600C8F4D9 /* ConnectionInfoTests.swift */; };
 		4E43AAED1CD02F3900DF044C /* WOPIFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43AAEC1CD02F3900DF044C /* WOPIFlowViewController.swift */; };
 		4E456F251CCFF9F700E1BE18 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */; };
@@ -65,6 +66,7 @@
 		4E100ACB1CC0459100AFA37E /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		4E1CBB861CD40AA3001235DB /* ProviderInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfoTests.swift; sourceTree = "<group>"; };
 		4E1CBB881CD40F58001235DB /* LoggingSenderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingSenderTests.swift; sourceTree = "<group>"; };
+		4E223AC41CDA9AFB0035665C /* BootstrapInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfoTests.swift; sourceTree = "<group>"; };
 		4E267E5E1CD97B3600C8F4D9 /* ConnectionInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionInfoTests.swift; sourceTree = "<group>"; };
 		4E43AAEC1CD02F3900DF044C /* WOPIFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WOPIFlowViewController.swift; sourceTree = "<group>"; };
 		4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				4E1CBB861CD40AA3001235DB /* ProviderInfoTests.swift */,
 				4E1CBB881CD40F58001235DB /* LoggingSenderTests.swift */,
 				4E267E5E1CD97B3600C8F4D9 /* ConnectionInfoTests.swift */,
+				4E223AC41CDA9AFB0035665C /* BootstrapInfoTests.swift */,
 			);
 			path = WOPIAuthTests;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E223AC51CDA9AFB0035665C /* BootstrapInfoTests.swift in Sources */,
 				4E1CBB871CD40AA3001235DB /* ProviderInfoTests.swift in Sources */,
 				4E267E5F1CD97B3700C8F4D9 /* ConnectionInfoTests.swift in Sources */,
 				4E1CBB891CD40F58001235DB /* LoggingSenderTests.swift in Sources */,

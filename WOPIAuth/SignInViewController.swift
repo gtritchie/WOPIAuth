@@ -14,6 +14,8 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 	var connection: ConnectionInfo?
 	var clientInfo: ClientInfo?
 	var providerInfo: ProviderInfo?
+	
+	/// Called to indicate success or failure of the sign-in flow
 	var completionHandler: ((FetchAuthResult) -> Void)?
 	
 	var stopUrl: NSURLComponents?
@@ -160,6 +162,7 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 						authResult!.sessionContext = sc
 						
 						decisionHandler(.Cancel)
+						dismissController(self)
 					}
 					else {
 						WOPIAuthLogError("Did not find valid auth_code on redir")
