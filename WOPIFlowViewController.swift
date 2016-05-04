@@ -3,6 +3,11 @@ import Cocoa
 /**
 	Controller to manage WOPI client authentication flow test. Each stage of the WOPI client auth flow
 	is exercised, and details are logged.
+
+	1. Bootstrapper call
+	2. Sign-In UI
+	3. Fetch tokens
+	4. Fetch profile information from bootstrapper
 */
 class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	
@@ -119,7 +124,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	
 	/// Step One: Unauthenticated Bootstrapper call
 	func initialBootstrapperCall() {
-		startNewStep("bootstrapper", image: bootstrapImage, text: bootstrapText, progress: bootstrapProgress)
+		startNewStep("1: Bootstrapper", image: bootstrapImage, text: bootstrapText, progress: bootstrapProgress)
 
 		// Sanity check on ProviderInfo
 		guard provider!.validate() == true else {
@@ -144,7 +149,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	
 	/// Step Two: Interactive Sign-In UI
 	func signIn() {
-		startNewStep("signin", image: signinImage, text: signinText, progress: signinProgress)
+		startNewStep("2: Signin", image: signinImage, text: signinText, progress: signinProgress)
 		performSegueWithIdentifier("ShowSignIn", sender: nil)
 	}
 	
@@ -163,18 +168,34 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	
 	/// Step Three: Obtain tokens
 	func getTokens()  {
-		startNewStep("tokens", image: tokenImage, text: tokenText, progress: tokenProgress)
+		startNewStep("3: Tokens", image: tokenImage, text: tokenText, progress: tokenProgress)
 		
-		connection!.accessToken = "temporary token"
-		connection!.tokenExpiration = 1234
-		connection!.refreshToken = "refresh token"
-		
-		getProfile()
+		var tokenEndpointUrl = connection!.bootstrapInfo.tokenIssuanceURL
+		if !connection!.postAuthTokenIssuanceURL.isEmpty {
+			tokenEndpointUrl = connection!.postAuthTokenIssuanceURL
+			WOPIAuthLogInfo("Using post-auth token exchange URL: \(tokenEndpointUrl)")
+		} else {
+			WOPIAuthLogInfo("Using standard token exchange URL: \(tokenEndpointUrl)")
+		}
+		let tokenFetcher = TokenFetcher(tokenUrl: tokenEndpointUrl, clientId: provider!.clientId,
+		                                clientSecret: provider!.clientSecret, sessionContext: connection!.sessionContext)
+		tokenFetcher.fetchTokensUsingCompletionHandler { (result) in
+			switch result {
+			case .Success(let tokenResult):
+				WOPIAuthLogInfo("Token endpoint returned info")
+				self.connection!.accessToken = tokenResult.accessToken
+				self.connection!.tokenExpiration = tokenResult.tokenExpiration
+				self.connection!.refreshToken = tokenResult.refreshToken
+				self.getProfile()
+			case .Failure:
+				self.failCurrentStep()
+			}
+		}
 	}
 	
 	// Step Four: Authenticated call to bootstrapper for user profile info
 	func getProfile() {
-		startNewStep("profile", image: profileImage, text: profileText, progress: profileProgress)
+		startNewStep("4: Profile", image: profileImage, text: profileText, progress: profileProgress)
 		
 		connection!.userName = "Sample User Name"
 		connection!.userId = "userId23423"
