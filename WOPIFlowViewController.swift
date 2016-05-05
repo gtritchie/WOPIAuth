@@ -178,7 +178,9 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 			WOPIAuthLogInfo("Using standard token exchange URL: \(tokenEndpointUrl)")
 		}
 		let tokenFetcher = TokenFetcher(tokenUrl: tokenEndpointUrl, clientId: provider!.clientId,
-		                                clientSecret: provider!.clientSecret, sessionContext: connection!.sessionContext)
+		                                clientSecret: provider!.clientSecret, authCode: authCode!,
+		                                redirectUri: provider!.redirectUrl,
+		                                sessionContext: connection!.sessionContext)
 		tokenFetcher.fetchTokensUsingCompletionHandler { (result) in
 			switch result {
 			case .Success(let tokenResult):

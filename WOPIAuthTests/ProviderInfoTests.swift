@@ -17,7 +17,7 @@ class ProviderInfoTests: XCTestCase {
 	private func CreateAlternateValidProviderInfo() -> ProviderInfo {
 		let provider = ProviderInfo()
 		provider.providerName = "Provider Name 2"
-		provider.bootstrapper = "https://contoso2.com/wopibootstrapper"
+		provider.bootstrapper = "https://contoso2.com/wopibootstrapper/"
 		provider.clientId = "abc123$%^2"
 		provider.clientSecret = "def9872!42"
 		provider.redirectUrl = "https://localhost2"

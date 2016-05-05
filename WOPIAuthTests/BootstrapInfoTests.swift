@@ -83,48 +83,5 @@ class BootstrapInfoTests: XCTestCase {
 		
 		XCTAssertFalse(bootstrap.populateFromAuthenticateHeader("Bearer authorization_uri=\"https://contoso.com/auth\""))
 	}
-
-	
-//	func populateFromAuthenticateHeader(header: String) -> Bool {
-//		
-//		WOPIAuthLogInfo("WWW-Authenticate: \(header)")
-//		
-//		// Replace all "Bearer" with nothing; this is dubious but is what Office clients are doing
-//		var trimHeader = header.stringByReplacingOccurrencesOfString("Bearer", withString: "")
-//		trimHeader = trimHeader.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-//		
-//		let separators = NSCharacterSet(charactersInString: "=,")
-//		let tokens: [String] = trimHeader.componentsSeparatedByCharactersInSet(separators)
-//		
-//		var nameValue = [String: String]()
-//		
-//		// TODO: I'm pretty sure there's a much tidier way to do all of this
-//		var lastKey = ""
-//		for (index, token) in tokens.enumerate() {
-//			var trimmedToken = token.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-//			trimmedToken = trimmedToken.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: "\""))
-//			
-//			if index % 2 == 0 {
-//				lastKey = trimmedToken
-//				nameValue[trimmedToken] = ""
-//			} else {
-//				nameValue[lastKey] = trimmedToken
-//			}
-//		}
-//		
-//		guard let authUri = nameValue["authorization_uri"] else {
-//			WOPIAuthLogError("No authorization_uri in WWW-Authenticated header")
-//			return false
-//		}
-//		guard let tokenUri = nameValue["tokenIssuance_uri"] else {
-//			WOPIAuthLogError("No tokenIssuance_uri in WWW-Authenticated header")
-//			return false
-//		}
-//		
-//		authorizationURL = authUri
-//		tokenIssuanceURL = tokenUri
-//		
-//		return true
-//	}
 	
 }

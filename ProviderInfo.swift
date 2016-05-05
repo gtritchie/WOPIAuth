@@ -164,7 +164,9 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 		}
 		
 		let bootstrapperSuffix = "/wopibootstrapper"
-		guard let bootstrapperPath = bootstrapperUrl.path where bootstrapperPath.hasSuffix(bootstrapperSuffix) else {
+		let bootstrapperSuffixTrailingSlash = "\(bootstrapperSuffix)/"
+		guard let bootstrapperPath = bootstrapperUrl.path where bootstrapperPath.hasSuffix(bootstrapperSuffix) ||
+				bootstrapperPath.hasSuffix(bootstrapperSuffixTrailingSlash) else {
 			WOPIAuthLogError("Bootstrapper must end with \(bootstrapperSuffix): \(bootstrapper)")
 			return false
 		}
