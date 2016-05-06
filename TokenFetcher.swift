@@ -47,6 +47,9 @@ func formEncodedQueryStringFor(params: [String: String]) -> String {
 	return arr.joinWithSeparator("&")
 }
 
+public enum TokenExchangeError: ErrorType {
+	case NSError(Foundation.NSError)
+}
 
 /**
 	Perform a POST to the token exchange endpoint, following oauth2 standards.
@@ -107,7 +110,6 @@ public class TokenFetcher {
 		}
 		
 		let request = NSMutableURLRequest(URL: url)
-		WOPIAuthLogInfo("Invoking token endpoint: \"\(tokenUrlString)\"")
 		
 		request.HTTPMethod = "POST"
 
@@ -128,8 +130,12 @@ public class TokenFetcher {
 		postParams["code"] = authCode
 		postParams["grant_type"] = "authorization_code"
 		postParams["redirect_uri"] = redirectUri
-		
+
 		let postString = formEncodedQueryStringFor(postParams)
+
+		WOPIAuthLogInfo("Invoking token endpoint via POST: \"\(tokenUrlString)\"")
+		WOPIAuthLogInfo("POST body=\(postString)")
+
 		guard let encoded = postString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) else {
 			WOPIAuthLogError("Unable to encode Token POST body")
 			let error = errorWithCode(1, localizedDescription: "Unable to encode Token POST body")
@@ -142,33 +148,45 @@ public class TokenFetcher {
 
 		let task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchTokenResult
-			if let data = data {
-				WOPIAuthLogInfo("Token call received \(data.length) bytes")
-				if let response = response as? NSHTTPURLResponse {
-					if response.statusCode == 200 {
-						let info = TokenResult()
-						if info.populateFromResponseData(data) == true {
-							result = FetchTokenResult { info }
-						} else {
-							let error = self.errorWithCode(1, localizedDescription: "Unable to parse response body")
-							result = .Failure(error)
-						}
-					} else {
-						let error = self.errorWithCode(1, localizedDescription: "Non-200 status code: \(response.statusCode)")
-						result = .Failure(error)
-					}
-				} else {
-					let error = self.errorWithCode(1, localizedDescription: "App Issue: Unexpected response object")
-					result = .Failure(error)
-				}
-			} else {
-				WOPIAuthLogError("Unable to make call to token endpoint")
-				result = .Failure(error!)
+			
+			do {
+				let info = try self.handleTokenResponse(data, response: response, error: error)
+				result = FetchTokenResult { info }
+			}
+			catch TokenExchangeError.NSError(let error) {
+				result = .Failure(error)
+			}
+			catch {
+				WOPIAuthLogError("Expected exception from token parser")
+				let error = self.errorWithCode(1, localizedDescription: "Unable to parse response body")
+				result = .Failure(error)
 			}
 			NSOperationQueue.mainQueue().addOperationWithBlock {
 				completionHandler(result)
 			}
 		}
 		task.resume()
+	}
+	
+	func handleTokenResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> TokenResult {
+		guard let data = data else {
+			WOPIAuthLogError("Unable to make call to token endpoint")
+			throw TokenExchangeError.NSError(error!)
+		}
+
+		guard let response = response as? NSHTTPURLResponse else {
+			let error = self.errorWithCode(1, localizedDescription: "App Issue: Unexpected response object")
+			throw TokenExchangeError.NSError(error)
+		}
+
+		WOPIAuthLogInfo("Token call responded with http \(response.statusCode)")
+
+		let info = TokenResult()
+		guard info.populateFromResponseData(data) == true else {
+			let error = self.errorWithCode(1, localizedDescription: "Unable to parse response body")
+			throw TokenExchangeError.NSError(error)
+		}
+		
+		return info
 	}
 }

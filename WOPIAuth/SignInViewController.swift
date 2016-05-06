@@ -121,7 +121,6 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		if let url = request.URL where url.scheme == stopUrl?.scheme && url.host == stopUrl?.host {
 			let haveComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
 			if let hp = haveComponents?.path, ip = stopUrl?.path where hp == ip || ("/" == hp + ip) {
-				WOPIAuthLogInfo("Redirect URI protocol and path was invoked")
 				if let query = haveComponents?.query {
 					WOPIAuthLogInfo("The redirect URI was invoked with \(query)")
 					var code = ""

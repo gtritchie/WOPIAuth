@@ -189,7 +189,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				self.connection!.tokenExpiration = tokenResult.tokenExpiration
 				self.connection!.refreshToken = tokenResult.refreshToken
 				self.getProfile()
-			case .Failure:
+			case .Failure(let error):
+				WOPIAuthLogError(error.localizedDescription)
 				self.failCurrentStep()
 			}
 		}
