@@ -7,6 +7,7 @@ class ConnectionInfoTests: XCTestCase {
 	private func CreateConnectionInfo() -> ConnectionInfo {
 		let connection = ConnectionInfo()
 		connection.providerName = "Provider Name"
+		connection.userId = "12345abc"
 		connection.userName = "User Name"
 		connection.friendlyName = "Friendly Name"
 		connection.postAuthTokenIssuanceURL = "https://contoso.com/auth"
@@ -39,7 +40,9 @@ class ConnectionInfoTests: XCTestCase {
 	}
 
 	func testConnectionsEqual() {
-		XCTAssertTrue(CreateConnectionInfo() == CreateConnectionInfo())
+		let a = CreateConnectionInfo()
+		let b = CreateConnectionInfo()
+		XCTAssertTrue(a == b)
 	}
 
 	func testConnectionsNotEqual() {
@@ -59,7 +62,7 @@ class ConnectionInfoTests: XCTestCase {
 		let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
 		let newConnection = ConnectionInfo(coder: unarchiver)
 		XCTAssertNotNil(newConnection)
-		XCTAssertTrue(newConnection != origConnection)
+		XCTAssertTrue(newConnection! == origConnection)
 	}
 	
 	func testConnectionDecodeFailInvalidVersion() {

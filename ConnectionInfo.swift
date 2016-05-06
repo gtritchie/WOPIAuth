@@ -101,6 +101,7 @@ func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
 		}
 
 		let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as! String
+		let userIdStr = aDecoder.decodeObjectForKey(userIdKey) as! String
 		let userNameStr = aDecoder.decodeObjectForKey(userNameKey) as! String
 		let friendlyNameStr = aDecoder.decodeObjectForKey(friendlyNameKey) as! String
 		let postAuthTokenIssuanceURLStr = aDecoder.decodeObjectForKey(postAuthTokenIssuanceURLKey) as! String
@@ -112,6 +113,7 @@ func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
 		
 		self.connectionInfoVersion = connectionInfoVersionValue
 		self.providerName = providerNameStr
+		self.userId = userIdStr
 		self.userName = userNameStr
 		self.friendlyName = friendlyNameStr
 		self.postAuthTokenIssuanceURL = postAuthTokenIssuanceURLStr
@@ -126,6 +128,7 @@ func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
 	func encodeWithCoder(aCoder: NSCoder) {
 		aCoder.encodeInteger(self.connectionInfoVersion, forKey: connectionInfoVersionKey)
 		aCoder.encodeObject(self.providerName, forKey: providerNameKey)
+		aCoder.encodeObject(self.userId, forKey: userIdKey)
 		aCoder.encodeObject(self.userName, forKey: userNameKey)
 		aCoder.encodeObject(self.friendlyName, forKey: friendlyNameKey)
 		aCoder.encodeObject(self.postAuthTokenIssuanceURL, forKey: postAuthTokenIssuanceURLKey)

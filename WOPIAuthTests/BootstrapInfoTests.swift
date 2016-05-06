@@ -32,11 +32,15 @@ class BootstrapInfoTests: XCTestCase {
 	}
 	
 	func testBootstrapEqual() {
-		XCTAssertTrue(CreateBootstrapInfo() == CreateBootstrapInfo())
+		let a = CreateBootstrapInfo()
+		let b = CreateBootstrapInfo()
+		XCTAssertTrue(a == b)
 	}
 	
 	func testBootstrapNotEqual() {
-		XCTAssertFalse(CreateBootstrapInfo() != CreateBootstrapInfo())
+		let a = CreateBootstrapInfo()
+		let b = CreateBootstrapInfo()
+		XCTAssertFalse(a != b)
 	}
 	
 	func testBootstrapDescriptionNotEmpty() {
@@ -52,7 +56,7 @@ class BootstrapInfoTests: XCTestCase {
 		let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
 		let newBootstrap = BootstrapInfo(coder: unarchiver)
 		XCTAssertNotNil(newBootstrap)
-		XCTAssertTrue(newBootstrap != origBootstrap)
+		XCTAssertTrue(newBootstrap! == origBootstrap)
 	}
 	
 	func testBootstrapDecodeFailInvalidVersion() {

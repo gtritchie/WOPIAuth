@@ -184,7 +184,6 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		tokenFetcher.fetchTokensUsingCompletionHandler { (result) in
 			switch result {
 			case .Success(let tokenResult):
-				WOPIAuthLogInfo("Token endpoint returned info")
 				self.connection!.accessToken = tokenResult.accessToken
 				self.connection!.tokenExpiration = tokenResult.tokenExpiration
 				self.connection!.refreshToken = tokenResult.refreshToken
@@ -200,11 +199,22 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	func getProfile() {
 		startNewStep("4: Profile", image: profileImage, text: profileText, progress: profileProgress)
 		
-		connection!.userName = "Sample User Name"
-		connection!.userId = "userId23423"
-		connection!.friendlyName = "Friendy Name"
-		
-		finishFlow()
+		let profileFetcher = ProfileFetcher(profileUrl: provider!.bootstrapper,
+		                                    accessToken: connection!.accessToken,
+		                                    sessionContext: connection!.sessionContext)
+		profileFetcher.fetchProfileUsingCompletionHandler { (result) in
+			switch result {
+			case .Success(let profileResult):
+				self.connection!.userId = profileResult.userId
+				self.connection!.userName = profileResult.signInName
+				self.connection!.friendlyName = profileResult.friendlyName
+				WOPIAuthLogInfo("Ecosystem URL: \(profileResult.ecosystemUrl)")
+				self.finishFlow()
+			case .Failure(let error):
+				WOPIAuthLogError(error.localizedDescription)
+				self.failCurrentStep()
+			}
+		}
 	}
 	
 	// Step Five: Success

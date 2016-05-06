@@ -48,7 +48,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 		}
 		
 		if rowCount > 0 && selectedConnection != nil {
-			rowCount += 6
+			rowCount += 8
 		}
 		return rowCount
 	}
@@ -177,6 +177,29 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
+		case 11:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "User Name"
+			case "Value":
+				return selectedConnection!.userName
+			case "Source":
+				return "Authenticated Bootstrapper"
+			default:
+				return "Unknown"
+			}
+		case 12:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "Friendly Name"
+			case "Value":
+				return selectedConnection!.friendlyName
+			case "Source":
+				return "Authenticated Bootstrapper"
+			default:
+				return "Unknown"
+			}
+
 		default:
 			return "Unknown"
 		}
