@@ -179,7 +179,11 @@ public class TokenFetcher {
 			throw TokenExchangeError.NSError(error)
 		}
 
-		WOPIAuthLogInfo("Token call responded with http \(response.statusCode)")
+		guard response.statusCode == 200 else {
+			let error = self.errorWithCode(1, localizedDescription: "Token endpoint responsed with \(response.statusCode)")
+			throw TokenExchangeError.NSError(error)
+
+		}
 
 		let info = TokenResult()
 		guard info.populateFromResponseData(data) == true else {

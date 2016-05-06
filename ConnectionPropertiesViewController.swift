@@ -48,7 +48,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 		}
 		
 		if rowCount > 0 && selectedConnection != nil {
-			rowCount += 4
+			rowCount += 6
 		}
 		return rowCount
 	}
@@ -94,7 +94,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			case "Property":
 				return "Client Secret"
 			case "Value":
-				return "****"
+				return selectedProvider!.clientSecret
 			case "Source":
 				return "Provider Info"
 			default:
@@ -145,6 +145,28 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 				return "Unknown"
 			}
 		case 8:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "Expiration (seconds)"
+			case "Value":
+				return String(selectedConnection!.tokenExpiration)
+			case "Source":
+				return "Token Endpoint"
+			default:
+				return "Unknown"
+			}
+		case 9:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "Refresh Token"
+			case "Value":
+				return selectedConnection!.refreshToken
+			case "Source":
+				return "Token Endpoint"
+			default:
+				return "Unknown"
+			}
+		case 10:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "UserId"
