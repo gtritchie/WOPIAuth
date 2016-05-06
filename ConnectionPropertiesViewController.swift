@@ -88,13 +88,12 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-			
 		case 3:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Client Secret"
 			case "Value":
-				return selectedProvider!.clientSecret
+				return "***************" // selectedProvider!.clientSecret
 			case "Source":
 				return "Provider Info"
 			default:
@@ -158,6 +157,28 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 		case 9:
 			switch tableColumn!.identifier {
 			case "Property":
+				return "Post-Auth Token Endpoint"
+			case "Value":
+				return selectedConnection!.postAuthTokenIssuanceURL
+			case "Source":
+				return "302 Redir"
+			default:
+				return "Unknown"
+			}
+		case 10:
+			switch tableColumn!.identifier {
+			case "Property":
+				return "Session Context"
+			case "Value":
+				return String(selectedConnection!.sessionContext)
+			case "Source":
+				return "302 Redir"
+			default:
+				return "Unknown"
+			}
+		case 11:
+			switch tableColumn!.identifier {
+			case "Property":
 				return "Refresh Token"
 			case "Value":
 				return selectedConnection!.refreshToken
@@ -166,7 +187,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 10:
+		case 12:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "UserId"
@@ -177,7 +198,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 11:
+		case 13:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "User Name"
@@ -188,7 +209,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 12:
+		case 14:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Friendly Name"
