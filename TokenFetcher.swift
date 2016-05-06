@@ -128,22 +128,36 @@ public class TokenFetcher {
 		}
 
 		guard let response = response as? NSHTTPURLResponse else {
+			logErrorBody(data)
 			let error = self.errorWithCode(1, localizedDescription: "App Issue: Unexpected response object")
 			throw TokenExchangeError.NSError(error)
 		}
 
 		guard response.statusCode == 200 else {
+			logErrorBody(data)
 			let error = self.errorWithCode(1, localizedDescription: "Token endpoint responsed with \(response.statusCode)")
 			throw TokenExchangeError.NSError(error)
-
 		}
 
 		let info = TokenResult()
 		guard info.populateFromResponseData(data) == true else {
+			logErrorBody(data)
 			let error = self.errorWithCode(1, localizedDescription: "Unable to parse response body")
 			throw TokenExchangeError.NSError(error)
 		}
 		
 		return info
+	}
+	
+	func logErrorBody(data: NSData) {
+		WOPIAuthLogError("Token call unsuccessful. Body of response follows.")
+		if data.length == 0 {
+			WOPIAuthLogError("<no response body>")
+			return
+		}
+		
+		if let body = NSString(data: data, encoding: NSUTF8StringEncoding) {
+			WOPIAuthLogError(body as String)
+		}
 	}
 }
