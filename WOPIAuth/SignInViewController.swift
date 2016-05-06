@@ -133,11 +133,13 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 								if let codeStr = queryParam.value {
 									code = codeStr
 								}
-							case "tk":
+							case "tk",
+							     "TK":
 								if let tkValue = queryParam.value {
 									tk = tkValue
 								}
-							case "sc":
+							case "sc",
+							     "SC":
 								if let scValue = queryParam.value {
 									sc = scValue
 								}
