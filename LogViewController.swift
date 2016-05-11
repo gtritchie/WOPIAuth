@@ -29,6 +29,11 @@ class LogViewController: NSViewController {
 		                               name: LogLineNotification, object: nil)
     }
 	
+	deinit {
+		let notificationCenter = NSNotificationCenter.defaultCenter()
+		notificationCenter.removeObserver(self)
+	}
+	
 	// MARK: Notifications
 	
 	/**
