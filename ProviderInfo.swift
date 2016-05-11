@@ -163,15 +163,6 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 			return false
 		}
 		
-// TODO: edmodo bootstrapper not conforming
-//		let bootstrapperSuffix = "/wopibootstrapper"
-//		let bootstrapperSuffixTrailingSlash = "\(bootstrapperSuffix)/"
-//		guard let bootstrapperPath = bootstrapperUrl.path where bootstrapperPath.hasSuffix(bootstrapperSuffix) ||
-//				bootstrapperPath.hasSuffix(bootstrapperSuffixTrailingSlash) else {
-//			WOPIAuthLogError("Bootstrapper must end with \(bootstrapperSuffix): \(bootstrapper)")
-//			return false
-//		}
-		
 		guard let redirUrl = NSURLComponents(string: redirectUrl) else {
 			WOPIAuthLogError("RedirectUri must be a valid URI: \(redirectUrl)")
 			return false

@@ -116,14 +116,6 @@ class ProviderInfoTests: XCTestCase {
 		XCTAssertFalse(provider.validate())
 	}
 
-	func testBootstrapperUrlNotEndingWopiBootstrapperFails() {
-		let provider = CreateValidProviderInfo()
-		provider.bootstrapper = "https://contoso.com"
-		XCTAssertFalse(provider.validate())
-		provider.bootstrapper = "https://contoso.com/wopi"
-		XCTAssertFalse(provider.validate())
-	}
-
 	func testBootstrapperUrlNotValidUrlFails() {
 		let provider = CreateValidProviderInfo()
 		provider.bootstrapper = "one two three@34"
