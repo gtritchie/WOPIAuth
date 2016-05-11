@@ -8,6 +8,7 @@ class LogViewController: NSViewController {
 	dynamic var log: NSAttributedString = NSAttributedString(string: "")
 	
 	private static var RFC3339DateFormatter: NSDateFormatter?
+	private var logObserver: NSObjectProtocol?
 
 	// MARK: Outlets
 	
@@ -25,13 +26,16 @@ class LogViewController: NSViewController {
         super.viewDidLoad()
 
 		let notificationCenter = NSNotificationCenter.defaultCenter()
-		notificationCenter.addObserver(self, selector: #selector(self.didReceiveLogLineNotification(_:)),
-		                               name: LogLineNotification, object: nil)
+		self.logObserver = notificationCenter.addObserverForName(LogLineNotification, object: nil, queue: nil) { note in
+			self.performSelectorOnMainThread(#selector(self.didReceiveLogLineNotification(_:)), withObject: note, waitUntilDone: true)
+		}
     }
-	
+
 	deinit {
-		let notificationCenter = NSNotificationCenter.defaultCenter()
-		notificationCenter.removeObserver(self)
+		if let observer = self.logObserver {
+			let notificationCenter = NSNotificationCenter.defaultCenter()
+			notificationCenter.removeObserver(observer)
+		}
 	}
 	
 	// MARK: Notifications
