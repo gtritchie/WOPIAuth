@@ -36,6 +36,7 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 	/// The Provider Name. For display purposes only, and treated as a unique key in this application.
 	dynamic var providerName: String = ""
 	let providerNameKey = "providerName"
+	
 	/// The WOPI bootstrap endpoint URL. This is treated as the primary unique key.
 	dynamic var bootstrapper: String = ""
 	let bootstrapperKey = "bootstrapper"

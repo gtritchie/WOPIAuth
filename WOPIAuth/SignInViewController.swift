@@ -178,10 +178,5 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		if NSURLErrorDomain == error.domain && NSURLErrorCancelled == error.code {
 			return
 		}
-		// do we still need to intercept "WebKitErrorDomain" error 102?
-		
-		WOPIAuthLogError("error!!!")
-		//showErrorMessage(error.localizedDescription, animated: true)
 	}
-
 }
