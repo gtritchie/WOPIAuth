@@ -1303,7 +1303,6 @@ Gw
                                 </buttonCell>
                                 <connections>
                                     <action selector="deleteSelectedConnection:" target="hBX-vS-hZ1" id="vWq-hX-Zsz"/>
-                                    <binding destination="iLw-ba-yrx" name="enabled" keyPath="canRemove" id="scE-IZ-OMd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1322,6 +1321,7 @@ Gw
                     <connections>
                         <outlet property="addButton" destination="PcW-4o-za3" id="bJC-nN-eeA"/>
                         <outlet property="arrayController" destination="iLw-ba-yrx" id="Bap-ge-klv"/>
+                        <outlet property="removeButton" destination="q2o-vC-lhw" id="iAa-3m-jUg"/>
                         <outlet property="tableView" destination="2mx-Sa-qTt" id="5Oz-p9-Kyc"/>
                     </connections>
                 </viewController>

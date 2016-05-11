@@ -78,9 +78,9 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	/// When selection changes, update selected item preference and notify parent view
 	func tableViewSelectionDidChange(notification: NSNotification) {
 		let row = tableView.selectedRow
-		var activeProvider: ProviderInfo?
+		var activeProvider: ProviderInfo = ProviderInfo()
 		if row != -1 {
-			activeProvider = providers?[row]
+			activeProvider = providers![row]
 		}
 		setActiveProvider(activeProvider)
 	}

@@ -10,11 +10,11 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	@IBOutlet weak var tableView: NSTableView!
 	@IBOutlet weak var arrayController: NSArrayController!
 	@IBOutlet weak var addButton: NSButton!
+	@IBOutlet weak var removeButton: NSButton!
 
 	// MARK: Actions
 	
 	@IBAction func deleteSelectedConnection(sender: AnyObject) {
-		WOPIAuthLogError("Removed connection")
 		self.arrayController.remove(sender)
 		Preferences.connections = self.connections
 		if var parent = parentViewController as? ConnectionViewing {
@@ -29,18 +29,21 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 		didSet {
 			if let provider = selectedProvider {
 				addButton.enabled = !provider.providerName.isEmpty
+				let args = ["providerName", provider.providerName]
+				arrayController.filterPredicate =  NSPredicate(format: "%K MATCHES %@", argumentArray: args)
 			}
 			for child in childViewControllers {
 				if var childProviderViewer = child as? ProviderViewing {
 					childProviderViewer.selectedProvider = selectedProvider
 				}
 			}
+			notifyParentOfSelectedConnection()
 		}
 	}
 	
 	// MARK: Properties
 	
-	/// List of `ConnectionInfo`s for current provider
+	/// List of `ConnectionInfo`s
 	var connections = Preferences.connections
 
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
@@ -65,14 +68,7 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	
 	/// When selection changes, update selected item preference and notify parent view
 	func tableViewSelectionDidChange(notification: NSNotification) {
-		let row = tableView.selectedRow
-		var activeConnection: ConnectionInfo?
-		if row != -1 {
-			activeConnection = connections?[row]
-		}
-		if var parent = parentViewController as? ConnectionViewing {
-			parent.selectedConnection = activeConnection
-		}
+		notifyParentOfSelectedConnection()
 	}
 	
 	// MARK: ConnectionContaining
@@ -82,4 +78,17 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 		Preferences.connections = connections
 	}
 	
+	func notifyParentOfSelectedConnection() {
+		let row = tableView.selectedRow
+		var activeConnection: ConnectionInfo?
+		if row != -1 {
+			removeButton.enabled = true
+			activeConnection = connections?[row]
+		} else {
+			removeButton.enabled = false
+		}
+		if var parent = parentViewController as? ConnectionViewing {
+			parent.selectedConnection = activeConnection
+		}
+	}
 }
