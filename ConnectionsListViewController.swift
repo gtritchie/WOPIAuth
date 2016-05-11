@@ -17,6 +17,9 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 		WOPIAuthLogError("Removed connection")
 		self.arrayController.remove(sender)
 		Preferences.connections = self.connections
+		if var parent = parentViewController as? ConnectionViewing {
+			parent.selectedConnection = nil
+		}
 	}
 	
 	// MARK: ProviderViewing Protocol
