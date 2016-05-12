@@ -10,7 +10,6 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	@IBOutlet weak var tableView: NSTableView!
 	@IBOutlet weak var arrayController: NSArrayController!
 	@IBOutlet weak var addButton: NSButton!
-	@IBOutlet weak var removeButton: NSButton!
 
 	// MARK: Actions
 	
@@ -82,10 +81,7 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 		let row = tableView.selectedRow
 		var activeConnection: ConnectionInfo?
 		if row != -1 {
-			removeButton.enabled = true
 			activeConnection = connections?[row]
-		} else {
-			removeButton.enabled = false
 		}
 		if var parent = parentViewController as? ConnectionViewing {
 			parent.selectedConnection = activeConnection
