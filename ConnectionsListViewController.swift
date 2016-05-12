@@ -26,16 +26,8 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	/// Currently selected `ProviderInfo`
 	var selectedProvider: ProviderInfo? {
 		didSet {
-			if let provider = selectedProvider {
-				addButton.enabled = !provider.providerName.isEmpty
-				let args = ["providerName", provider.providerName]
-				arrayController.filterPredicate =  NSPredicate(format: "%K MATCHES %@", argumentArray: args)
-			}
-			for child in childViewControllers {
-				if var childProviderViewer = child as? ProviderViewing {
-					childProviderViewer.selectedProvider = selectedProvider
-				}
-			}
+			filterConnectionsForSelectedProvider()
+			notifyChildrenOfSelectedProvider(selectedProvider)
 			notifyParentOfSelectedConnection()
 		}
 	}
@@ -48,6 +40,9 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let InvokeAuthFlowSegue = "InvokeWOPIAuthFlow"
 
+	/// Filters tableview to only show connections associated with selected provider
+	dynamic var predicate: NSPredicate = NSPredicate(value: false)
+	
 	// MARK: Segue
 	
 	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
@@ -75,7 +70,10 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	func addNew(connection: ConnectionInfo) {
 		arrayController.addObject(connection)
 		Preferences.connections = connections
+		filterConnectionsForSelectedProvider()
 	}
+	
+	// MARK: Helpers
 	
 	func notifyParentOfSelectedConnection() {
 		let row = tableView.selectedRow
@@ -85,6 +83,17 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 		}
 		if var parent = parentViewController as? ConnectionViewing {
 			parent.selectedConnection = activeConnection
+		}
+	}
+
+	func filterConnectionsForSelectedProvider() {
+		if let provider = selectedProvider {
+			addButton.enabled = !provider.providerName.isEmpty
+			let args = ["providerName", provider.providerName]
+			predicate = NSPredicate(format: "%K MATCHES %@", argumentArray: args)
+		}
+		else {
+			predicate = NSPredicate(value: false)
 		}
 	}
 }

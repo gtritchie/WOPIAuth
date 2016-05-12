@@ -1329,6 +1329,7 @@ Gw
                 <customObject id="jBh-P0-Ka9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController objectClassName="WOPIAuth.ProviderInfo" id="iLw-ba-yrx">
                     <connections>
+                        <binding destination="hBX-vS-hZ1" name="filterPredicate" keyPath="self.predicate" id="CR5-e5-jvd"/>
                         <binding destination="hBX-vS-hZ1" name="contentArray" keyPath="self.connections" id="F5i-NY-uPP"/>
                     </connections>
                 </arrayController>

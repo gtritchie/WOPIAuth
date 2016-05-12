@@ -13,11 +13,7 @@ class ConnectionsSplitViewController: NSSplitViewController, ProviderViewing, Co
 	/// Currently selected `ProviderInfo`
 	var selectedProvider: ProviderInfo? {
 		didSet {
-			for child in childViewControllers {
-				if var childProviderViewer = child as? ProviderViewing {
-					childProviderViewer.selectedProvider = selectedProvider
-				}
-			}
+			notifyChildrenOfSelectedProvider(selectedProvider)
 		}
 	}
 	
