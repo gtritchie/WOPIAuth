@@ -22,11 +22,7 @@ class ConnectionsSplitViewController: NSSplitViewController, ProviderViewing, Co
 	/// Currently selected `ConnectionInfo`
 	var selectedConnection: ConnectionInfo? {
 		didSet {
-			for child in childViewControllers {
-				if var childConnectionViewer = child as? ConnectionViewing {
-					childConnectionViewer.selectedConnection = selectedConnection
-				}
-			}
+			notifyChildrenOfSelectedConnection(selectedConnection)
 		}
 	}
 

@@ -6,3 +6,13 @@ import Cocoa
 protocol ConnectionViewing {
 	var selectedConnection: ConnectionInfo? { get set }
 }
+
+extension NSViewController {
+	func notifyChildrenOfSelectedConnection(selectedConnection: ConnectionInfo?) {
+		for child in childViewControllers {
+			if var childConnectionViewer = child as? ConnectionViewing {
+				childConnectionViewer.selectedConnection = selectedConnection
+			}
+		}
+	}
+}
