@@ -68,6 +68,8 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	// MARK: ConnectionContaining
 	/// Add `provider` to the list of `ProviderInfo` objects.
 	func addNew(connection: ConnectionInfo) {
+		WOPIAuthLogInfo("Adding connection \(connection.description)")
+		WOPIAuthLogInfo("Adding bootstrapper \(connection.bootstrapInfo.description)")
 		arrayController.addObject(connection)
 		Preferences.connections = connections
 		filterConnectionsForSelectedProvider()
@@ -76,13 +78,9 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	// MARK: Helpers
 	
 	func notifyParentOfSelectedConnection() {
-		let row = tableView.selectedRow
-		var activeConnection: ConnectionInfo?
-		if row != -1 {
-			activeConnection = connections?[row]
-		}
+		let selectedConnection = arrayController.selectedObjects.first as? ConnectionInfo
 		if var parent = parentViewController as? ConnectionViewing {
-			parent.selectedConnection = activeConnection
+			parent.selectedConnection = selectedConnection
 		}
 	}
 

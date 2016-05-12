@@ -40,7 +40,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 		}
 		
 		if rowCount > 0 && selectedConnection != nil {
-			rowCount += 8
+			rowCount += 10
 		}
 		return rowCount
 	}
