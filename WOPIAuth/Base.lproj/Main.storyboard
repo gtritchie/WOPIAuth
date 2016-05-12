@@ -765,11 +765,11 @@
             <objects>
                 <viewController id="2Cm-d8-fo4" customClass="ProviderDetailsViewController" customModule="WOPIAuth" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="9Cn-f0-qBf">
-                        <rect key="frame" x="0.0" y="0.0" width="659" height="227"/>
+                        <rect key="frame" x="0.0" y="0.0" width="659" height="267"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wrf-fk-iiP">
-                                <rect key="frame" x="18" y="188" width="117" height="17"/>
+                                <rect key="frame" x="18" y="228" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Provider Name:" id="bJl-gn-8Qb">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -777,7 +777,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="For display only" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="em6-GU-mfa" userLabel="Provider Name Text Field">
-                                <rect key="frame" x="141" y="185" width="498" height="22"/>
+                                <rect key="frame" x="141" y="225" width="498" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="LRA-IX-KMY"/>
                                 </constraints>
@@ -786,6 +786,7 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility identifier="ProviderName"/>
                                 <connections>
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="Yeg-zQ-Tmz">
                                         <dictionary key="options">
@@ -799,20 +800,21 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vh0-Wz-JTT">
-                                <rect key="frame" x="18" y="156" width="117" height="17"/>
+                                <rect key="frame" x="18" y="196" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bootstrapper URL:" id="dzy-xz-4JM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="Must end in wopibootstrapper" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vmy-eY-TwH" userLabel="Bootstrapper Text Field">
-                                <rect key="frame" x="141" y="153" width="498" height="22"/>
+                            <textField toolTip="Bootstrapper / Profile URL" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Vmy-eY-TwH" userLabel="Bootstrapper Text Field">
+                                <rect key="frame" x="141" y="193" width="498" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://contoso.com/wopiboostrapper" drawsBackground="YES" usesSingleLineMode="YES" id="4nD-yc-fqa">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility identifier="BootstrapperUrl"/>
                                 <connections>
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.bootstrapper" id="YrS-yU-20u">
                                         <dictionary key="options">
@@ -825,7 +827,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Gd-0n-Nw1">
-                                <rect key="frame" x="18" y="124" width="117" height="17"/>
+                                <rect key="frame" x="18" y="164" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Client ID:" id="h7I-dv-Znj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -833,12 +835,13 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="OAuth2 client ID" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="naz-pA-8qI" userLabel="Client ID Text Field">
-                                <rect key="frame" x="141" y="121" width="498" height="22"/>
+                                <rect key="frame" x="141" y="161" width="498" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="OAuth2 Client ID for Office" drawsBackground="YES" usesSingleLineMode="YES" id="yup-eP-w5W">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility identifier="ClientId"/>
                                 <connections>
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientId" id="fn5-qE-08z">
                                         <dictionary key="options">
@@ -851,15 +854,37 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6k7-4B-hGe">
-                                <rect key="frame" x="18" y="92" width="117" height="17"/>
+                                <rect key="frame" x="18" y="132" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Client Secret:" id="8LZ-Ck-amM">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <secureTextField toolTip="OAuth2 client secret" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v4p-8F-ow5" userLabel="Client Secret Secure Text Field">
+                                <rect key="frame" x="141" y="129" width="498" height="22"/>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="OAuth2 Client Secret for Office" drawsBackground="YES" usesSingleLineMode="YES" id="yj5-XC-ed7">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                                <accessibility identifier="ClientSecret"/>
+                                <connections>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="V7t-W1-YaG">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNoSelectionPlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNotApplicablePlaceholder">OAuth2 Client Secret for Office</string>
+                                            <string key="NSNullPlaceholder">OAuth2 Client Secret for Office</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </secureTextField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xWn-ba-ulm">
-                                <rect key="frame" x="18" y="60" width="117" height="17"/>
+                                <rect key="frame" x="18" y="100" width="117" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Redirect URL:" id="Iq8-Xm-YOB">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -867,12 +892,13 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="Treated as stop URL" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JYR-6R-Zgn" userLabel="Redirect URL Text Field">
-                                <rect key="frame" x="141" y="57" width="498" height="22"/>
+                                <rect key="frame" x="141" y="97" width="498" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://localhost" drawsBackground="YES" usesSingleLineMode="YES" id="vMu-hF-hTJ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility identifier="RedirectUrl"/>
                                 <connections>
                                     <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.redirectUrl" id="PUS-0r-k0y">
                                         <dictionary key="options">
@@ -883,6 +909,23 @@
                                         </dictionary>
                                     </binding>
                                 </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lJz-T5-svB">
+                                <rect key="frame" x="18" y="68" width="117" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scopes:" id="QD2-kg-QeI">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField toolTip="OAuth2 Scopes" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9u4-J9-mo9" userLabel="Scopes Text Field">
+                                <rect key="frame" x="141" y="65" width="498" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Optional OAuth2 Scopes" drawsBackground="YES" usesSingleLineMode="YES" id="WTW-N1-u1b">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility identifier="Scopes"/>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-mn-xxB">
                                 <rect key="frame" x="575" y="13" width="70" height="32"/>
@@ -910,37 +953,19 @@ Gw
                                     <action selector="cancel:" target="2Cm-d8-fo4" id="1dg-c3-2kg"/>
                                 </connections>
                             </button>
-                            <secureTextField toolTip="OAuth2 client secret" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v4p-8F-ow5" userLabel="Client Secret Secure Text Field">
-                                <rect key="frame" x="141" y="89" width="498" height="22"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="OAuth2 Client Secret for Office" drawsBackground="YES" usesSingleLineMode="YES" id="yj5-XC-ed7">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                                <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="V7t-W1-YaG">
-                                        <dictionary key="options">
-                                            <string key="NSMultipleValuesPlaceholder">OAuth2 Client Secret for Office</string>
-                                            <string key="NSNoSelectionPlaceholder">OAuth2 Client Secret for Office</string>
-                                            <string key="NSNotApplicablePlaceholder">OAuth2 Client Secret for Office</string>
-                                            <string key="NSNullPlaceholder">OAuth2 Client Secret for Office</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
-                            </secureTextField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xWn-ba-ulm" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="1ck-wz-z9y"/>
                             <constraint firstItem="em6-GU-mfa" firstAttribute="leading" secondItem="wrf-fk-iiP" secondAttribute="trailing" constant="8" symbolic="YES" id="1y0-0D-DAF"/>
+                            <constraint firstItem="lJz-T5-svB" firstAttribute="baseline" secondItem="9u4-J9-mo9" secondAttribute="baseline" id="393-5o-nUC"/>
                             <constraint firstAttribute="trailing" secondItem="naz-pA-8qI" secondAttribute="trailing" constant="20" symbolic="YES" id="4lh-m7-VVD"/>
                             <constraint firstAttribute="trailing" secondItem="4JK-mn-xxB" secondAttribute="trailing" constant="20" symbolic="YES" id="6qi-ej-6iS"/>
                             <constraint firstItem="Vmy-eY-TwH" firstAttribute="top" secondItem="em6-GU-mfa" secondAttribute="bottom" constant="10" symbolic="YES" id="77s-yX-E6C"/>
                             <constraint firstItem="Vmy-eY-TwH" firstAttribute="leading" secondItem="vh0-Wz-JTT" secondAttribute="trailing" constant="8" symbolic="YES" id="EYz-RU-vvW"/>
                             <constraint firstItem="7Gd-0n-Nw1" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="Hnt-bc-Wuj"/>
                             <constraint firstAttribute="trailing" secondItem="Vmy-eY-TwH" secondAttribute="trailing" constant="20" symbolic="YES" id="JYo-ET-wOD"/>
+                            <constraint firstItem="lJz-T5-svB" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="K3Q-Hc-C4V"/>
+                            <constraint firstItem="em6-GU-mfa" firstAttribute="width" secondItem="9u4-J9-mo9" secondAttribute="width" id="N0Y-g4-h0a"/>
                             <constraint firstItem="jFF-Z1-XFf" firstAttribute="centerY" secondItem="4JK-mn-xxB" secondAttribute="centerY" id="Nab-Wl-Zm0"/>
                             <constraint firstItem="JYR-6R-Zgn" firstAttribute="top" secondItem="v4p-8F-ow5" secondAttribute="bottom" constant="10" symbolic="YES" id="O4P-N1-xL0"/>
                             <constraint firstItem="naz-pA-8qI" firstAttribute="leading" secondItem="7Gd-0n-Nw1" secondAttribute="trailing" constant="8" symbolic="YES" id="Odd-uj-hti"/>
@@ -948,14 +973,17 @@ Gw
                             <constraint firstItem="em6-GU-mfa" firstAttribute="width" secondItem="Vmy-eY-TwH" secondAttribute="width" id="Qad-X1-3AY"/>
                             <constraint firstItem="em6-GU-mfa" firstAttribute="width" secondItem="naz-pA-8qI" secondAttribute="width" id="Srv-HI-Hh4"/>
                             <constraint firstItem="4JK-mn-xxB" firstAttribute="leading" secondItem="jFF-Z1-XFf" secondAttribute="trailing" constant="12" symbolic="YES" id="UX3-uz-euS"/>
+                            <constraint firstAttribute="trailing" secondItem="9u4-J9-mo9" secondAttribute="trailing" constant="20" symbolic="YES" id="UuJ-eN-TTi"/>
                             <constraint firstItem="6k7-4B-hGe" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="W0C-Yx-PeV"/>
                             <constraint firstAttribute="trailing" secondItem="v4p-8F-ow5" secondAttribute="trailing" constant="20" symbolic="YES" id="Y1U-Ux-n9G"/>
                             <constraint firstItem="wrf-fk-iiP" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="YgT-eV-eDA"/>
                             <constraint firstItem="v4p-8F-ow5" firstAttribute="baseline" secondItem="6k7-4B-hGe" secondAttribute="baseline" id="Zfp-xq-yVy"/>
                             <constraint firstItem="vh0-Wz-JTT" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="am7-aC-19f"/>
-                            <constraint firstItem="4JK-mn-xxB" firstAttribute="top" secondItem="JYR-6R-Zgn" secondAttribute="bottom" constant="16" id="cgH-4Q-Pez"/>
                             <constraint firstItem="em6-GU-mfa" firstAttribute="width" secondItem="JYR-6R-Zgn" secondAttribute="width" id="cuE-cY-9AF"/>
                             <constraint firstItem="v4p-8F-ow5" firstAttribute="leading" secondItem="6k7-4B-hGe" secondAttribute="trailing" constant="8" symbolic="YES" id="dhZ-Kc-4tP"/>
+                            <constraint firstItem="4JK-mn-xxB" firstAttribute="top" secondItem="9u4-J9-mo9" secondAttribute="bottom" constant="24" id="g0F-a4-Ctv"/>
+                            <constraint firstItem="9u4-J9-mo9" firstAttribute="top" secondItem="JYR-6R-Zgn" secondAttribute="bottom" constant="10" symbolic="YES" id="g67-Kq-jgc"/>
+                            <constraint firstItem="9u4-J9-mo9" firstAttribute="leading" secondItem="lJz-T5-svB" secondAttribute="trailing" constant="8" symbolic="YES" id="gry-24-JbW"/>
                             <constraint firstItem="vh0-Wz-JTT" firstAttribute="baseline" secondItem="Vmy-eY-TwH" secondAttribute="baseline" id="iYx-Sw-VQK"/>
                             <constraint firstItem="em6-GU-mfa" firstAttribute="width" secondItem="v4p-8F-ow5" secondAttribute="width" id="izg-H4-qDM"/>
                             <constraint firstItem="xWn-ba-ulm" firstAttribute="baseline" secondItem="JYR-6R-Zgn" secondAttribute="baseline" id="kLk-Jj-okz"/>
@@ -964,6 +992,7 @@ Gw
                             <constraint firstItem="em6-GU-mfa" firstAttribute="top" secondItem="9Cn-f0-qBf" secondAttribute="top" constant="20" symbolic="YES" id="urk-bd-tg0"/>
                             <constraint firstItem="naz-pA-8qI" firstAttribute="top" secondItem="Vmy-eY-TwH" secondAttribute="bottom" constant="10" symbolic="YES" id="waK-jc-wu9"/>
                             <constraint firstItem="7Gd-0n-Nw1" firstAttribute="baseline" secondItem="naz-pA-8qI" secondAttribute="baseline" id="xdT-1w-xFq"/>
+                            <constraint firstAttribute="bottom" secondItem="4JK-mn-xxB" secondAttribute="bottom" constant="20" symbolic="YES" id="xsV-JL-ptu"/>
                             <constraint firstItem="JYR-6R-Zgn" firstAttribute="leading" secondItem="xWn-ba-ulm" secondAttribute="trailing" constant="8" symbolic="YES" id="yUa-2N-hrd"/>
                             <constraint firstItem="em6-GU-mfa" firstAttribute="baseline" secondItem="wrf-fk-iiP" secondAttribute="baseline" id="yn8-iD-VQA"/>
                         </constraints>
@@ -971,7 +1000,7 @@ Gw
                 </viewController>
                 <customObject id="iWx-s6-0pK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-194.5" y="1724.5"/>
+            <point key="canvasLocation" x="-194.5" y="1745"/>
         </scene>
         <!--Right Pane Split View Controller-->
         <scene sceneID="iaf-6t-Est">
@@ -1329,8 +1358,8 @@ Gw
                 <customObject id="jBh-P0-Ka9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController objectClassName="WOPIAuth.ProviderInfo" id="iLw-ba-yrx">
                     <connections>
-                        <binding destination="hBX-vS-hZ1" name="filterPredicate" keyPath="self.predicate" id="CR5-e5-jvd"/>
                         <binding destination="hBX-vS-hZ1" name="contentArray" keyPath="self.connections" id="F5i-NY-uPP"/>
+                        <binding destination="hBX-vS-hZ1" name="filterPredicate" keyPath="self.predicate" id="CR5-e5-jvd"/>
                     </connections>
                 </arrayController>
             </objects>

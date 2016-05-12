@@ -24,7 +24,7 @@ class ProviderDetailsViewController: NSViewController {
 	}
 	
 	@IBAction func save(sender: NSButton) {
-		
+		sender.window!.endEditingFor(nil)
 		guard isProviderValid(sender) else {
 			return
 		}
