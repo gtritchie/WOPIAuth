@@ -5,6 +5,7 @@ import Cocoa
 let LogLineNotification = "com.microsoft.office.WOPIAuth.LogLineNotification"
 let LogLineNotificationMessageKey = "com.microsoft.office.WOPIAuth.LogLineNotificationMsgKey"
 let LogLineNotificationIsErrorKey = "com.microsoft.office.WOPIAuth.LogLineNotificationErrorKey"
+let LogLineNotificationIsWarningKey = "com.microsoft.office.WOPIAuth.LogLineNotificationWarningKey"
 
 /**
 	Log one line of text.
@@ -21,5 +22,14 @@ func WOPIAuthLogInfo(lineOfText: String) {
 func WOPIAuthLogError(lineOfText: String) {
 	let notificationCenter = NSNotificationCenter.defaultCenter()
 	let userInfo = [LogLineNotificationMessageKey : lineOfText, LogLineNotificationIsErrorKey : "ErrorFlag"]
+	notificationCenter.postNotificationName(LogLineNotification, object: nil, userInfo: userInfo)
+}
+
+/**
+	Log one line of text as a warning
+*/
+func WOPIAuthLogWarning(lineOfText: String) {
+	let notificationCenter = NSNotificationCenter.defaultCenter()
+	let userInfo = [LogLineNotificationMessageKey : lineOfText, LogLineNotificationIsWarningKey : "WarningFlag"]
 	notificationCenter.postNotificationName(LogLineNotification, object: nil, userInfo: userInfo)
 }

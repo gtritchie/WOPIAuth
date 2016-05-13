@@ -126,7 +126,7 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 	
 	func validateNonEmpty() -> Bool {
 		guard !providerName.isEmpty else {
-			WOPIAuthLogError("ProviderName cannot be empty")
+			WOPIAuthLogWarning("ProviderName cannot be empty")
 			return false
 		}
 		

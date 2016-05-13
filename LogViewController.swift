@@ -53,9 +53,13 @@ class LogViewController: NSViewController {
 
 		var messageFormat: String
 		var isError = false
+		var isWarning = false
 		if userInfo[LogLineNotificationIsErrorKey] != nil {
 			messageFormat = NSLocalizedString("%1@: ERROR: %2$@", comment: "Date: error message")
 			isError = true
+		} else if userInfo[LogLineNotificationIsWarningKey] != nil {
+			messageFormat = NSLocalizedString("%1@: WARNING: %2$@", comment: "Date: warning message")
+			isWarning = true
 		} else {
 			messageFormat = NSLocalizedString("%1$@: %2$@", comment: "Date: message")
 		}
@@ -65,6 +69,10 @@ class LogViewController: NSViewController {
 		if isError {
 			logLine.addAttribute(NSForegroundColorAttributeName,
 			                     value: NSColor.redColor(),
+			                     range: NSRange(0..<logLine.length))
+		} else if isWarning {
+			logLine.addAttribute(NSForegroundColorAttributeName,
+			                     value: NSColor.brownColor(),
 			                     range: NSRange(0..<logLine.length))
 		}
 

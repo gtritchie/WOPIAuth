@@ -31,8 +31,6 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	@IBAction func closeSheet(sender: NSButton) {
 		if currentStep != nil {
 			failCurrentStep()
-			WOPIAuthLogError("FAILURE: Window closed before current step completed")
-			WOPIAuthLogError("====================================================")
 		}
 		dismissController(sender)
 	}

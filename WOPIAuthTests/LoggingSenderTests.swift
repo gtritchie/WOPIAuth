@@ -7,6 +7,7 @@ class LoggingReceiver: NSObject {
 	var message = ""
 	var gotNotified = false
 	var gotError = false
+	var gotWarning = false
 	
 	override init() {
 		super.init()
@@ -28,6 +29,8 @@ class LoggingReceiver: NSObject {
 		
 		if userInfo[LogLineNotificationIsErrorKey] != nil {
 			gotError = true
+		} else if userInfo[LogLineNotificationIsWarningKey] != nil {
+			gotWarning = true
 		}
 	}
 }
@@ -52,6 +55,7 @@ class LoggingSenderTests: XCTestCase {
 		
 		XCTAssert(receiver.message == message)
 		XCTAssert(receiver.gotError == false)
+		XCTAssert(receiver.gotWarning == false)
 	}
 	
 	func testLogError() {
@@ -62,5 +66,18 @@ class LoggingSenderTests: XCTestCase {
 		
 		XCTAssert(receiver.message == message)
 		XCTAssert(receiver.gotError == true)
+		XCTAssert(receiver.gotWarning == false)
 	}
+	
+	func testLogWarning() {
+		let message = "I guess it's not so bad."
+		let receiver = LoggingReceiver()
+		
+		WOPIAuthLogWarning(message)
+		
+		XCTAssert(receiver.message == message)
+		XCTAssert(receiver.gotError == false)
+		XCTAssert(receiver.gotWarning == true)
+	}
+
 }
