@@ -31,6 +31,7 @@
 		4E8CB5DB1CB759C400769F0D /* WOPIAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */; };
 		4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */; };
 		4EA2C86A1CD0090D00487818 /* ConnectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2C8691CD0090D00487818 /* ConnectionsListViewController.swift */; };
+		4EA398E21CE65ABF00105C5B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA398E11CE65ABF00105C5B /* extensions.swift */; };
 		4EA5A3271CCFE1DB00828EE1 /* ProviderViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5A3261CCFE1DB00828EE1 /* ProviderViewing.swift */; };
 		4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620931CBC9EB100D631F4 /* MainWindowController.swift */; };
 		4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */; };
@@ -39,7 +40,7 @@
 		4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */; };
 		4EB39DA21CDD124A004101CF /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA11CDD124A004101CF /* ProfileResult.swift */; };
 		4EB39DA41CDD1254004101CF /* ProfileFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */; };
-		4EB39DA61CDD12B5004101CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA51CDD12B5004101CF /* Extensions.swift */; };
+		4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */; };
 		4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */; };
 		4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918461CD021FE005A5186 /* ConnectionViewing.swift */; };
 		4EF918491CD02306005A5186 /* ConnectionPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */; };
@@ -94,6 +95,7 @@
 		4E8CB5DC1CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
 		4EA2C8691CD0090D00487818 /* ConnectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsListViewController.swift; sourceTree = "<group>"; };
+		4EA398E11CE65ABF00105C5B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		4EA5A3261CCFE1DB00828EE1 /* ProviderViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderViewing.swift; path = ../ProviderViewing.swift; sourceTree = "<group>"; };
 		4EA620931CBC9EB100D631F4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = WOPIAuth/MainWindowController.swift; sourceTree = "<group>"; };
 		4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailsViewController.swift; sourceTree = "<group>"; };
@@ -102,7 +104,7 @@
 		4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		4EB39DA11CDD124A004101CF /* ProfileResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFetcher.swift; sourceTree = "<group>"; };
-		4EB39DA51CDD12B5004101CF /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscExtensions.swift; sourceTree = "<group>"; };
 		4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionContaining.swift; sourceTree = "<group>"; };
 		4EF918461CD021FE005A5186 /* ConnectionViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewing.swift; sourceTree = "<group>"; };
 		4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionPropertiesViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +246,8 @@
 			children = (
 				4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */,
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
-				4EB39DA51CDD12B5004101CF /* Extensions.swift */,
+				4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */,
+				4EA398E11CE65ABF00105C5B /* extensions.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				4E43AAED1CD02F3900DF044C /* WOPIFlowViewController.swift in Sources */,
 				4E223AC71CDAAB090035665C /* TokenFetcher.swift in Sources */,
 				4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */,
+				4EA398E21CE65ABF00105C5B /* extensions.swift in Sources */,
 				4E100ACC1CC0459100AFA37E /* Preferences.swift in Sources */,
 				4E6F606C1CC448C600F4F826 /* BootstrapFetcher.swift in Sources */,
 				4EA2C86A1CD0090D00487818 /* ConnectionsListViewController.swift in Sources */,
@@ -404,7 +408,7 @@
 				4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */,
 				4E456F271CD000DF00E1BE18 /* ConnectionsSplitViewController.swift in Sources */,
 				4E01D58A1CD178200073DBD9 /* SignInViewController.swift in Sources */,
-				4EB39DA61CDD12B5004101CF /* Extensions.swift in Sources */,
+				4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */,
 				4E456F251CCFF9F700E1BE18 /* ConnectionInfo.swift in Sources */,
 				4EF918491CD02306005A5186 /* ConnectionPropertiesViewController.swift in Sources */,
 				4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */,

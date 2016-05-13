@@ -28,9 +28,14 @@ class WOPIAuthUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAddProviderShowCancel() {
+		
+		let wopiNativeAuthTestToolWindow = XCUIApplication().windows["WOPI Native Auth Test Tool"]
+		let splitGroup = wopiNativeAuthTestToolWindow.childrenMatchingType(.SplitGroup).element
+		splitGroup.childrenMatchingType(.Button)["Add provider"].click()
+		wopiNativeAuthTestToolWindow.sheets.buttons["Cancel"].click()
+	
+		// Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
 }

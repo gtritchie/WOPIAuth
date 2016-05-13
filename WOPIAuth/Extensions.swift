@@ -1,4 +1,36 @@
+//
+//  extensions.swift
+//  OAuth2
+//
+//  Created by Pascal Pfiffner on 6/6/14.
+//  Copyright 2014 Pascal Pfiffner
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+//
+
 import Foundation
+
+
+extension NSHTTPURLResponse
+{
+	/// A localized string explaining the current `statusCode`.
+	public var statusString: String {
+		get {
+			return NSHTTPURLResponse.localizedStringForStatusCode(self.statusCode)
+		}
+	}
+}
+
 
 extension String
 {
@@ -16,6 +48,7 @@ extension String
 		return rep.stringByRemovingPercentEncoding ?? rep
 	}
 }
+
 
 extension NSMutableCharacterSet
 {
@@ -39,10 +72,19 @@ extension NSMutableCharacterSet
 	}
 }
 
-func formEncodedQueryStringFor(params: [String: String]) -> String {
-	var arr: [String] = []
-	for (key, val) in params {
-		arr.append("\(key)=\(val.wwwFormURLEncodedString)")
+
+extension NSURLRequest {
+	
+	/** Print the requests's headers and body to stdout. */
+	public func oauth2_print() {
+		print("---")
+		print("HTTP/1.1 \(HTTPMethod ?? "METHOD") \(URL?.description ?? "/")")
+		allHTTPHeaderFields?.forEach() { print("\($0): \($1)") }
+		print("")
+		if let data = HTTPBody, let body = NSString(data: data, encoding: NSUTF8StringEncoding) {
+			print(body as String)
+		}
+		print("---")
 	}
-	return arr.joinWithSeparator("&")
 }
+

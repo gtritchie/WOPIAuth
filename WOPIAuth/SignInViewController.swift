@@ -72,10 +72,31 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		assert(stopUrl == nil)
 		assert(authResult == nil)
 		
-		let authPageUrl = "\(connection!.bootstrapInfo.authorizationURL)?client_id=\(providerInfo!.clientId)&redirect_uri=\(providerInfo!.redirectUrl)&response_type=code&scope=&rs=\(clientInfo!.culture)&build=\(clientInfo!.clientBuild)&platform=\(clientInfo!.clientPlatform)"
 		
-		guard let signInPageUrl = NSURL(string: authPageUrl) else {
+//		let authPageUrl = "\(connection!.bootstrapInfo.authorizationURL)"
+
+		guard let pageUrl = NSURLComponents(string: connection!.bootstrapInfo.authorizationURL) else {
 			let error = errorWithCode(1, localizedDescription: "Malformed signIn URL: \"\(connection!.bootstrapInfo.authorizationURL)\"")
+			let result: FetchAuthResult = .Failure(error)
+			completionHandler!(result)
+			return
+		}
+		
+		let scopeStr = unwrapStringReplaceNilWithEmpty(providerInfo!.scope)
+		
+		let queryItems: [NSURLQueryItem] = [
+			NSURLQueryItem(name: "client_id", value: providerInfo!.clientId),
+			NSURLQueryItem(name: "redirect_uri", value: providerInfo!.redirectUrl),
+			NSURLQueryItem(name: "response_type", value: "code"),
+			NSURLQueryItem(name: "rs", value: clientInfo!.culture),
+			NSURLQueryItem(name: "build", value: clientInfo!.clientBuild),
+			NSURLQueryItem(name: "platform", value: clientInfo!.clientPlatform),
+			NSURLQueryItem(name: "scope", value: scopeStr)
+		]
+		pageUrl.queryItems = queryItems
+
+		guard let signInPageUrl = pageUrl.URL else {
+			let error = errorWithCode(1, localizedDescription: "Unable to construct full signIn URL")
 			let result: FetchAuthResult = .Failure(error)
 			completionHandler!(result)
 			return
@@ -89,12 +110,10 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		}
 		stopUrl = NSURLComponents(URL: redirectUrl, resolvingAgainstBaseURL: true)
 
-		//webView.frameLoadDelegate = self
-		//webView.resourceLoadDelegate = self
 		webView.navigationDelegate = self
 
 		let request = NSURLRequest(URL: signInPageUrl)
-		WOPIAuthLogInfo("Loading page: \(authPageUrl)")
+		WOPIAuthLogInfo("Loading page: \(pageUrl.string)")
 		webView.loadRequest(request)
 	}
 	

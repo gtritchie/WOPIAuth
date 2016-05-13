@@ -56,11 +56,16 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 	dynamic var redirectUrl: String = ""
 	let redirectUrlKey = "redirectUrl"
 	
+	/// The optional OAuth2 scope string
+	dynamic var scope: String?
+	let scopeKey = "scope"
+	
 	/// Summary of `ProviderInfo` suitable for logging
 	override var description: String {
 		get {
+			
 			return "[providerName=\"\(providerName)\", bootstrapper=\"\(bootstrapper)\", " +
-				"clientId=\"\(clientId)\", clientSecret=\"***\", redirectUrl=\"\(redirectUrl)\"]"
+				"clientId=\"\(clientId)\", clientSecret=\"*\", redirectUrl=\"\(redirectUrl)\", scope=\"\(unwrapStringReplaceNilWithEmpty(scope))\"]"
 		}
 	}
 		
@@ -82,6 +87,7 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 		let clientIdStr = aDecoder.decodeObjectForKey(clientIdKey) as! String
 		let clientSecretStr = aDecoder.decodeObjectForKey(clientSecretKey) as! String
 		let redirectUrlStr = aDecoder.decodeObjectForKey(redirectUrlKey) as! String
+		let scopeStr = aDecoder.decodeObjectForKey(scopeKey) as! String?
 		
 		self.providerInfoVersion = providerInfoVersionValue
 		self.providerName = providerNameStr
@@ -89,6 +95,7 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 		self.clientId = clientIdStr
 		self.clientSecret = clientSecretStr
 		self.redirectUrl = redirectUrlStr
+		self.scope = scopeStr
 		
 		trimSpaces()
 		validate()
@@ -102,6 +109,7 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 		aCoder.encodeObject(self.clientId, forKey: clientIdKey)
 		aCoder.encodeObject(self.clientSecret, forKey: clientSecretKey)
 		aCoder.encodeObject(self.redirectUrl, forKey: redirectUrlKey)
+		aCoder.encodeObject(self.scope, forKey: scopeKey)
 	}
 	
 	// MARK: Validation
@@ -113,6 +121,7 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 		clientId = clientId.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		clientSecret = clientSecret.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		redirectUrl = redirectUrl.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		scope = scope?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 	}
 	
 	func validateNonEmpty() -> Bool {

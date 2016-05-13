@@ -712,12 +712,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <button toolTip="Add provider" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V6k-MX-aIB" userLabel="Add Button">
+                            <button toolTip="Add provider" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V6k-MX-aIB" userLabel="Add provider">
                                 <rect key="frame" x="12" y="0.0" width="11" height="32"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="Jcs-JV-FZb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <accessibility description="Add provider"/>
                                 <connections>
                                     <segue destination="2Cm-d8-fo4" kind="sheet" identifier="AddProviderDetail" id="epH-W0-G0P"/>
                                 </connections>
@@ -918,15 +919,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="OAuth2 Scopes" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9u4-J9-mo9" userLabel="Scopes Text Field">
-                                <rect key="frame" x="141" y="65" width="498" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Optional OAuth2 Scopes" drawsBackground="YES" usesSingleLineMode="YES" id="WTW-N1-u1b">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <accessibility identifier="Scopes"/>
-                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-mn-xxB">
                                 <rect key="frame" x="575" y="13" width="70" height="32"/>
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="leH-K7-dmU">
@@ -953,6 +945,25 @@ Gw
                                     <action selector="cancel:" target="2Cm-d8-fo4" id="1dg-c3-2kg"/>
                                 </connections>
                             </button>
+                            <textField toolTip="OAuth2 Scopes" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9u4-J9-mo9" userLabel="Scopes Text Field">
+                                <rect key="frame" x="141" y="65" width="498" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Optional OAuth2 Scopes" drawsBackground="YES" usesSingleLineMode="YES" id="WTW-N1-u1b">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility identifier="Scopes"/>
+                                <connections>
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.scope" id="yrP-3D-gpi">
+                                        <dictionary key="options">
+                                            <string key="NSMultipleValuesPlaceholder">Optional OAuth2 Scopes</string>
+                                            <string key="NSNoSelectionPlaceholder">Optional OAuth2 Scopes</string>
+                                            <string key="NSNotApplicablePlaceholder">Optional OAuth2 Scopes</string>
+                                            <string key="NSNullPlaceholder">Optional OAuth2 Scopes</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="xWn-ba-ulm" firstAttribute="leading" secondItem="9Cn-f0-qBf" secondAttribute="leading" constant="20" symbolic="YES" id="1ck-wz-z9y"/>

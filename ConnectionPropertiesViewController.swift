@@ -35,7 +35,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 		var rowCount = 0
 		if let provider = selectedProvider {
 			if !provider.providerName.isEmpty {
-				rowCount = 5
+				rowCount = 6
 			}
 		}
 		
@@ -105,6 +105,17 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 		case 5:
 			switch tableColumn!.identifier {
 			case "Property":
+				return "Scopes"
+			case "Value":
+				return selectedProvider!.scope
+			case "Source":
+				return "Provider Info"
+			default:
+				return "Unknown"
+			}
+		case 6:
+			switch tableColumn!.identifier {
+			case "Property":
 				return "Authorization URL"
 			case "Value":
 				return selectedConnection!.bootstrapInfo.authorizationURL
@@ -113,7 +124,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 6:
+		case 7:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Token URL"
@@ -124,7 +135,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 7:
+		case 8:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Access Token"
@@ -135,7 +146,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 8:
+		case 9:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Expiration (seconds)"
@@ -146,7 +157,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 9:
+		case 10:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Post-Auth Token Endpoint"
@@ -157,7 +168,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 10:
+		case 11:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Session Context"
@@ -168,7 +179,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 11:
+		case 12:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Refresh Token"
@@ -179,7 +190,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 12:
+		case 13:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "UserId"
@@ -190,7 +201,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 13:
+		case 14:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "User Name"
@@ -201,7 +212,7 @@ class ConnectionPropertiesViewController: NSViewController, NSTableViewDelegate,
 			default:
 				return "Unknown"
 			}
-		case 14:
+		case 15:
 			switch tableColumn!.identifier {
 			case "Property":
 				return "Friendly Name"
