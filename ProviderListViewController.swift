@@ -17,6 +17,7 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let AddProviderDetailSegueIdentifier = "AddProviderDetail"
+	let EditProviderDetailSegueIdentier = "EditProviderDetail"
 	
 	// MARK: Segue
 	
@@ -26,9 +27,22 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		case AddProviderDetailSegueIdentifier:
 			let destination = segue.destinationController as! ProviderDetailsViewController
 			destination.delegate = self
-
+			
+		case EditProviderDetailSegueIdentier:
+			let destination = segue.destinationController as! ProviderDetailsViewController
+			destination.delegate = self
+			
 		default:
 			print("Unknown segue: \(segue.identifier)")
+		}
+	}
+	
+	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+		switch identifier {
+		case EditProviderDetailSegueIdentier:
+			return isProviderSelected()
+		default:
+			return true
 		}
 	}
 	
@@ -99,11 +113,7 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 			switch response {
 			
 			case NSAlertFirstButtonReturn:
-				self.arrayController.remove(sender)
-				Preferences.providers = self.providers
-				if self.tableView.selectedRow == -1 {
-					self.setActiveProvider(ProviderInfo())
-				}
+				self.deleteProvider(sender)
 				break
 				
 			default:
@@ -116,4 +126,33 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	@IBAction func addNewProvider(sender: AnyObject) {
 		self.performSegueWithIdentifier(AddProviderDetailSegueIdentifier, sender: self)
 	}
+	
+	@IBAction func editCurrentProvider(sender: AnyObject) {
+		self.performSegueWithIdentifier(EditProviderDetailSegueIdentier, sender: self)
+	}
+	
+	// MARK: Helpers
+	
+	/// Delete selected `ProviderInfo`
+	func deleteProvider(sender: AnyObject) {
+		self.arrayController.remove(sender)
+		Preferences.providers = self.providers
+		if self.tableView.selectedRow == -1 {
+			self.setActiveProvider(ProviderInfo())
+		}
+	}
+
+	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+		switch menuItem.action {
+		case #selector(editCurrentProvider(_:)):
+			return isProviderSelected()
+		default:
+			return super.validateMenuItem(menuItem)
+		}
+	}
+	
+	func isProviderSelected() -> Bool {
+		return arrayController.selectedObjects.count > 0
+	}
+	
 }
