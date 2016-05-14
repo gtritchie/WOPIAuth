@@ -645,7 +645,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="S3o-rS-2SI" viewBased="YES" id="mTI-Vu-pdO">
-                                            <rect key="frame" x="0.0" y="0.0" width="175" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="176" height="245"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -668,8 +668,8 @@
                                                             <rect key="frame" x="1" y="1" width="173" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-1q-w5G">
-                                                                    <rect key="frame" x="-2" y="0.0" width="176" height="17"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-1q-w5G">
+                                                                    <rect key="frame" x="-2" y="0.0" width="177" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="pWi-Kr-TAS">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -705,7 +705,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="klV-yt-Qn6"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="0E8-6Z-ghZ">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="0E8-6Z-ghZ">
                                     <rect key="frame" x="0.0" y="252" width="175" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -714,7 +714,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="S3o-rS-2SI">
-                                    <rect key="frame" x="0.0" y="0.0" width="175" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="176" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -741,8 +741,8 @@
                                     <binding destination="4oR-nD-lvo" name="enabled" keyPath="canRemove" id="GoQ-i7-bJA"/>
                                 </connections>
                             </button>
-                            <popUpButton toolTip="Provider Actions" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srF-bM-lIn" userLabel="Action Menu Button">
-                                <rect key="frame" x="123" y="3" width="35" height="26"/>
+                            <popUpButton toolTip="Provider Actions" translatesAutoresizingMaskIntoConstraints="NO" id="srF-bM-lIn" userLabel="Action Menu Button">
+                                <rect key="frame" x="125" y="7" width="38" height="19"/>
                                 <popUpButtonCell key="cell" type="smallSquare" bezelStyle="smallSquare" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="q2D-gF-mw8">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -811,19 +811,19 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="LRA-IX-KMY"/>
                                 </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Contoso" drawsBackground="YES" id="oMK-cJ-R4g">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="TP_CONTOSO" drawsBackground="YES" id="oMK-cJ-R4g">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <accessibility identifier="ProviderName"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="Yeg-zQ-Tmz">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="0sy-j1-h4S">
                                         <dictionary key="options">
-                                            <string key="NSMultipleValuesPlaceholder">Contoso</string>
-                                            <string key="NSNoSelectionPlaceholder">Contoso</string>
-                                            <string key="NSNotApplicablePlaceholder">Contoso</string>
-                                            <string key="NSNullPlaceholder">Contoso</string>
+                                            <string key="NSMultipleValuesPlaceholder">TP_CONTOSO</string>
+                                            <string key="NSNoSelectionPlaceholder">TP_CONTOSO</string>
+                                            <string key="NSNotApplicablePlaceholder">TP_CONTOSO</string>
+                                            <string key="NSNullPlaceholder">TP_CONTOSO</string>
                                             <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
@@ -959,6 +959,7 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="save:" target="2Cm-d8-fo4" id="gcu-fV-uqc"/>
+                                    <binding destination="2Cm-d8-fo4" name="enabled" keyPath="self" id="gTQ-2g-Af6"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jFF-Z1-XFf">
@@ -983,7 +984,7 @@ Gw
                                 </textFieldCell>
                                 <accessibility identifier="Scopes"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.scope" id="yrP-3D-gpi">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.scope" id="loL-Xf-Wuc">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">Optional OAuth2 Scopes</string>
                                             <string key="NSNoSelectionPlaceholder">Optional OAuth2 Scopes</string>

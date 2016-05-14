@@ -114,6 +114,16 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 	
 	// MARK: Validation
 	
+//	func validateProviderName(providerStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+//		let name = providerStringPointer.memory
+//		if name == nil {
+//			let domain = "UserInputValidationErrorDomain"
+//			let code = 0
+//			let userInfo = [NSLocalizedDescriptionKey : "ProviderName cannot be empty"]
+//			throw NSError(domain: domain, code: code, userInfo: userInfo)
+//		}
+//	}
+//	
 	/// Trim all leading and trailing whitespace from text fields
 	func trimSpaces() {
 		providerName = providerName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
