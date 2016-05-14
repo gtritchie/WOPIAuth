@@ -645,7 +645,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="S3o-rS-2SI" viewBased="YES" id="mTI-Vu-pdO">
-                                            <rect key="frame" x="0.0" y="0.0" width="176" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="245"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -714,7 +714,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="S3o-rS-2SI">
-                                    <rect key="frame" x="0.0" y="0.0" width="176" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="175.5" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -959,7 +959,6 @@ DQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="save:" target="2Cm-d8-fo4" id="gcu-fV-uqc"/>
-                                    <binding destination="2Cm-d8-fo4" name="enabled" keyPath="self" id="gTQ-2g-Af6"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jFF-Z1-XFf">
@@ -1679,6 +1678,6 @@ DQ
         <image name="TrashCanTemplate" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FWI-7D-vOR"/>
+        <segue reference="epH-W0-G0P"/>
     </inferredMetricsTieBreakers>
 </document>
