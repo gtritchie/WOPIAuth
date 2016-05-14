@@ -114,16 +114,59 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 	
 	// MARK: Validation
 	
-//	func validateProviderName(providerStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
-//		let name = providerStringPointer.memory
-//		if name == nil {
-//			let domain = "UserInputValidationErrorDomain"
-//			let code = 0
-//			let userInfo = [NSLocalizedDescriptionKey : "ProviderName cannot be empty"]
-//			throw NSError(domain: domain, code: code, userInfo: userInfo)
-//		}
-//	}
-//	
+	func validateProviderName(providerStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		let name = providerStringPointer.memory
+		if name == nil {
+			let domain = "UserInputValidationErrorDomain"
+			let code = 0
+			let userInfo = [NSLocalizedDescriptionKey : "ProviderName cannot be empty"]
+			throw NSError(domain: domain, code: code, userInfo: userInfo)
+		}
+	}
+
+	func validateBootstrapper(bootstrapperStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		let name = bootstrapperStringPointer.memory
+		if name == nil {
+			let domain = "UserInputValidationErrorDomain"
+			let code = 0
+			let userInfo = [NSLocalizedDescriptionKey : "Bootstrapper cannot be empty"]
+			throw NSError(domain: domain, code: code, userInfo: userInfo)
+		}
+	}
+
+	func validateClientId(clientIdStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		let name = clientIdStringPointer.memory
+		if name == nil {
+			let domain = "UserInputValidationErrorDomain"
+			let code = 0
+			let userInfo = [NSLocalizedDescriptionKey : "ClientId cannot be empty"]
+			throw NSError(domain: domain, code: code, userInfo: userInfo)
+		}
+	}
+
+	func validateClientSecret(clientSecretStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		let name = clientSecretStringPointer.memory
+		if name == nil {
+			let domain = "UserInputValidationErrorDomain"
+			let code = 0
+			let userInfo = [NSLocalizedDescriptionKey : "ClientSecret cannot be empty"]
+			throw NSError(domain: domain, code: code, userInfo: userInfo)
+		}
+	}
+
+	func validateRedirectUrl(redirectUrlStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		let name = redirectUrlStringPointer.memory
+		if name == nil {
+			let domain = "UserInputValidationErrorDomain"
+			let code = 0
+			let userInfo = [NSLocalizedDescriptionKey : "RedirectUrl cannot be empty"]
+			throw NSError(domain: domain, code: code, userInfo: userInfo)
+		}
+	}
+
+	func validateScope(scopeStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+	}
+
 	/// Trim all leading and trailing whitespace from text fields
 	func trimSpaces() {
 		providerName = providerName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())

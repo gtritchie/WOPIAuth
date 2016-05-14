@@ -846,12 +846,13 @@
                                 </textFieldCell>
                                 <accessibility identifier="BootstrapperUrl"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.bootstrapper" id="YrS-yU-20u">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.bootstrapper" id="SW8-d5-F1B">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">https://contoso.com/wopiboostrapper</string>
                                             <string key="NSNoSelectionPlaceholder">https://contoso.com/wopiboostrapper</string>
                                             <string key="NSNotApplicablePlaceholder">https://contoso.com/wopiboostrapper</string>
                                             <string key="NSNullPlaceholder">https://contoso.com/wopiboostrapper</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
                                 </connections>
@@ -873,12 +874,13 @@
                                 </textFieldCell>
                                 <accessibility identifier="ClientId"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientId" id="fn5-qE-08z">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientId" id="nmX-5G-xzx">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">OAuth2 Client ID for Office</string>
                                             <string key="NSNoSelectionPlaceholder">OAuth2 Client ID for Office</string>
                                             <string key="NSNotApplicablePlaceholder">OAuth2 Client ID for Office</string>
                                             <string key="NSNullPlaceholder">OAuth2 Client ID for Office</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
                                 </connections>
@@ -903,12 +905,13 @@
                                 </secureTextFieldCell>
                                 <accessibility identifier="ClientSecret"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="V7t-W1-YaG">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="vi2-sR-v58">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">OAuth2 Client Secret for Office</string>
                                             <string key="NSNoSelectionPlaceholder">OAuth2 Client Secret for Office</string>
                                             <string key="NSNotApplicablePlaceholder">OAuth2 Client Secret for Office</string>
                                             <string key="NSNullPlaceholder">OAuth2 Client Secret for Office</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
                                 </connections>
@@ -930,12 +933,13 @@
                                 </textFieldCell>
                                 <accessibility identifier="RedirectUrl"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.redirectUrl" id="PUS-0r-k0y">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.redirectUrl" id="r6M-lF-4wN">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">https://localhost</string>
                                             <string key="NSNoSelectionPlaceholder">https://localhost</string>
                                             <string key="NSNotApplicablePlaceholder">https://localhost</string>
                                             <string key="NSNullPlaceholder">https://localhost</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
                                 </connections>
@@ -983,12 +987,13 @@ Gw
                                 </textFieldCell>
                                 <accessibility identifier="Scopes"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.scope" id="loL-Xf-Wuc">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.scope" id="o2R-d2-xnI">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">Optional OAuth2 Scopes</string>
                                             <string key="NSNoSelectionPlaceholder">Optional OAuth2 Scopes</string>
                                             <string key="NSNotApplicablePlaceholder">Optional OAuth2 Scopes</string>
                                             <string key="NSNullPlaceholder">Optional OAuth2 Scopes</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
                                 </connections>
