@@ -1,4 +1,3 @@
-
 import Foundation
 
 private let providerArrayKey = "arrayOfProvidersKey"

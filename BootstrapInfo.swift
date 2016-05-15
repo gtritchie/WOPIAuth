@@ -1,28 +1,25 @@
-import Cocoa
+import Foundation
 
 /// Version of archived data
 private let currentBootstrapInfoVersion = 1
-
-func == (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
-	return left.bootstrapInfoVersion == right.bootstrapInfoVersion &&
-		left.authorizationURL == right.authorizationURL &&
-		left.tokenIssuanceURL == right.tokenIssuanceURL
-}
-
-func != (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
-	return !(left == right)
-}
 
 /**
 	`BootstrapInfo` contains metadata returned by an unauthenticated call
 	to the WOPI bootstrapper endpoint.
 */
-@objc class BootstrapInfo: NSObject, NSCoding {
+class BootstrapInfo: ModelInfo, NSCoding {
 
 	// MARK: Init
 	
 	override init() {
 		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init()
+		guard loadFromDecoder(aDecoder) else {
+			return nil
+		}
 	}
 	
 	func populateFromAuthenticateHeader(header: String) -> Bool {
@@ -38,7 +35,7 @@ func != (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
 		
 		var nameValue = [String: String]()
 
-		// TODO: I'm pretty sure there's a much tidier way to do all of this
+		// TODO: Pretty sure there's a Swiftier way to do all of this
 		var lastKey = ""
 		for (index, token) in tokens.enumerate() {
 			var trimmedToken = token.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -91,13 +88,12 @@ func != (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
 	// MARK: NSCoding
 	
 	/// Using `NSCoding` to restore from `NSUserDefaults`
-	required init?(coder aDecoder: NSCoder) {
-		super.init()
+	func loadFromDecoder(aDecoder: NSCoder) -> Bool {
 		
 		let bootstrapInfoVersionValue = aDecoder.decodeIntegerForKey(bootstrapInfoVersionKey)
 		guard bootstrapInfoVersionValue == currentBootstrapInfoVersion else {
-			print("Unsupported \(bootstrapInfoVersionKey)")
-			return nil
+			WOPIAuthLogError("Unsupported \(bootstrapInfoVersionKey)")
+			return false
 		}
 
 		let authorizationURLStr = aDecoder.decodeObjectForKey(authorizationURLKey) as! String
@@ -106,6 +102,7 @@ func != (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
 		self.bootstrapInfoVersion = bootstrapInfoVersionValue
 		self.authorizationURL = authorizationURLStr
 		self.tokenIssuanceURL = tokenIssuanceURLStr
+		return true
 	}
 	
 	/// Using `NSCoding` to save to `NSUserDefaults`
@@ -114,4 +111,58 @@ func != (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
 		aCoder.encodeObject(self.authorizationURL, forKey: authorizationURLKey)
 		aCoder.encodeObject(self.tokenIssuanceURL, forKey: tokenIssuanceURLKey)
 	}
+	
+	// MARK: KVC Validation
+	
+	func validateAuthorizationURL(authURLStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		try validateAuthorizationURLString(authURLStringPointer.memory as? String)
+	}
+
+	func validateTokenIssuanceURL(tokenURLStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		try validateTokenIssuanceURLString(tokenURLStringPointer.memory as? String)
+	}
+	
+	// MARK: Validation
+	
+	func validateAuthorizationURLString(authURL: String?) throws {
+		let authURLString = try getNonEmptyString(authURL,
+		                                         errorMessage: NSLocalizedString("Authorization URL cannot be empty.",
+													comment: "Error message for empty Authorization URL"))
+		let url = try getValidURLComponents(authURLString,
+		                                    errorMessage: NSLocalizedString("Authorization URL must be a valid URL.",
+												comment: "Error message for invalid Authorization URL"))
+		try verifyUrlSchemeHttps(url,
+		                         errorMessage: NSLocalizedString("Authorization URL must use https.",
+									comment: "Error message for non-https Authorization URL"))
+	}
+
+	func validateTokenIssuanceURLString(tokenURL: String?) throws {
+		let tokenURLString = try getNonEmptyString(tokenURL,
+		                                          errorMessage: NSLocalizedString("Token Issuance URL cannot be empty.",
+													comment: "Error message for empty Token Issuance URL"))
+		let url = try getValidURLComponents(tokenURLString,
+		                                    errorMessage: NSLocalizedString("Token Issuance URL must be a valid URL.",
+												comment: "Error message for invalid Token Issuance URL"))
+		try verifyUrlSchemeHttps(url,
+		                         errorMessage: NSLocalizedString("Token Issuance URL must use https.",
+									comment: "Error message for non-https Token Issuance URL"))
+	}
+
+	/**
+		Validate contents of `BootstrapInfo` object. Throws an NSError for first problem found.
+	*/
+	override func validate() throws {
+		try validateAuthorizationURLString(authorizationURL)
+		try validateTokenIssuanceURLString(tokenIssuanceURL)
+	}
+}
+
+func == (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
+	return left.bootstrapInfoVersion == right.bootstrapInfoVersion &&
+		left.authorizationURL == right.authorizationURL &&
+		left.tokenIssuanceURL == right.tokenIssuanceURL
+}
+
+func != (left: BootstrapInfo, right: BootstrapInfo) -> Bool {
+	return !(left == right)
 }

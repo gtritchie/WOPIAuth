@@ -72,9 +72,6 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		assert(stopUrl == nil)
 		assert(authResult == nil)
 		
-		
-//		let authPageUrl = "\(connection!.bootstrapInfo.authorizationURL)"
-
 		guard let pageUrl = NSURLComponents(string: connection!.bootstrapInfo.authorizationURL) else {
 			let error = errorWithCode(1, localizedDescription: "Malformed signIn URL: \"\(connection!.bootstrapInfo.authorizationURL)\"")
 			let result: FetchAuthResult = .Failure(error)

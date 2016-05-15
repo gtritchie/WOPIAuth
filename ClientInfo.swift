@@ -1,9 +1,9 @@
-import Cocoa
+import Foundation
 
 /**
 	`ClientInfo` contains metadata used to identity the calling client.
 */
-class ClientInfo: NSObject {
+class ClientInfo: ModelInfo {
 
 	// MARK: Properties
 	
@@ -11,7 +11,7 @@ class ClientInfo: NSObject {
 	dynamic var culture: String = "en-US"
 	
 	/// Which build string to send in the request header.
-	dynamic var clientBuild: String = "1234"
+	dynamic var clientBuild: String = "1.16.1234.1234"
 	
 	/// Which client platform string to send in the request header.
 	dynamic var clientPlatform: String = "iOS"

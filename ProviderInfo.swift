@@ -7,7 +7,7 @@ let currentProviderInfoVersion = 1
 	`ProviderInfo` contains information needed to perform auth for
 	a Third Party Provider.
 */
-class ProviderInfo: NSObject, NSCoding {
+class ProviderInfo: ModelInfo, NSCoding {
 	
 	// MARK: Init
 	
@@ -44,12 +44,6 @@ class ProviderInfo: NSObject, NSCoding {
 	dynamic var clientSecret: String = ""
 	let clientSecretKey = "clientSecret"
 	
-	/// Domain for throwing validation errors
-	let validationDomain = "UserInputValidationErrorDomain"
-	
-	/// Error code for throwing validation errors
-	let validationCode = 0
-
 	/**
 		The redirect URL used to indicate that authorization has completed and
 		is returning an authorization_code via the code URL parameter.
@@ -184,67 +178,16 @@ class ProviderInfo: NSObject, NSCoding {
 	}
 	
 	/**
-		Given a potentially nil string, either return a non-empty whitespace trimmed
-		copy of the string, or throw an `NSError` with the given error message.
-	*/
-	func getNonEmptyString(str: String?, errorMessage: String) throws -> String {
-		if var str = str {
-			str = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-			if !str.isEmpty {
-				return str
-			}
-		}
-
-		let userInfo = [NSLocalizedDescriptionKey : errorMessage]
-		throw NSError(domain: validationDomain, code: validationCode, userInfo: userInfo)
-	}
-
-	/**
-		Given a string, try to create an `NSURLComponent` object. Throws an `NSError` with
-		the given error message if unsuccessful.
-	*/
-	func getValidURLComponents(urlStr: String, errorMessage: String) throws -> NSURLComponents {
-		guard let url = NSURLComponents(string: urlStr) else {
-			let userInfo = [NSLocalizedDescriptionKey : errorMessage]
-			throw NSError(domain: validationDomain, code: validationCode, userInfo: userInfo)
-		}
-		return url
-	}
-	
-	/**
-		Given an `NSURLComponents` object, verify it has the https scheme. If not, throws
-		an `NSError` with the given error message.
-	*/
-	func verifyUrlSchemeHttps(url: NSURLComponents, errorMessage: String) throws {
-		guard url.scheme == "https" else {
-			let userInfo = [NSLocalizedDescriptionKey : errorMessage]
-			throw NSError(domain: validationDomain, code: validationCode, userInfo: userInfo)
-		}
-	}
-
-	/**
 		Validate contents of `ProviderInfo` object. Throws an NSError for first problem found.
 	*/
-	func validate() throws {
+	override func validate() throws {
 		try validateProviderNameString(providerName)
 		try validateBootstrapperString(bootstrapper)
 		try validateClientIdString(clientId)
 		try validateClientSecretString(clientSecret)
 		try validateRedirectUrlString(redirectUrl)
+		try validateScopeString(scope)
 	}
-	
-	/**
-		Convenience method for automation.
-	*/
-	func nonThrowValidate() -> Bool {
-		do {
-			try validate()
-		} catch {
-			return false
-		}
-		return true
-	}
-
 	
 	/// Trim all leading and trailing whitespace from text fields
 	func trimSpaces() {

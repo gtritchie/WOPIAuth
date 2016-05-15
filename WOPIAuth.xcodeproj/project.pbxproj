@@ -25,6 +25,7 @@
 		4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */; };
 		4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCC1CBC869500A67FEF /* ClientInfo.swift */; };
 		4E6F606C1CC448C600F4F826 /* BootstrapFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */; };
+		4E7C88321CE936370064DF66 /* ModelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7C88311CE936370064DF66 /* ModelInfo.swift */; };
 		4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */; };
 		4E8CB5C21CB759C400769F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C11CB759C400769F0D /* Assets.xcassets */; };
 		4E8CB5C51CB759C400769F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C31CB759C400769F0D /* Main.storyboard */; };
@@ -83,6 +84,7 @@
 		4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfo.swift; sourceTree = "<group>"; };
 		4E592BCC1CBC869500A67FEF /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
 		4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrapFetcher.swift; path = WOPIAuth/BootstrapFetcher.swift; sourceTree = "<group>"; };
+		4E7C88311CE936370064DF66 /* ModelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelInfo.swift; sourceTree = "<group>"; };
 		4E8CB5BA1CB759C400769F0D /* WOPIAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOPIAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E8CB5C11CB759C400769F0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				4E223AC81CDAACF30035665C /* TokenResult.swift */,
 				4EB39DA11CDD124A004101CF /* ProfileResult.swift */,
 				4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */,
+				4E7C88311CE936370064DF66 /* ModelInfo.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -389,6 +392,7 @@
 				4EA5A3271CCFE1DB00828EE1 /* ProviderViewing.swift in Sources */,
 				4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */,
 				4EB39DA21CDD124A004101CF /* ProfileResult.swift in Sources */,
+				4E7C88321CE936370064DF66 /* ModelInfo.swift in Sources */,
 				4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */,
 				4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditing.swift in Sources */,
 				4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */,

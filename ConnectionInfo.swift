@@ -1,36 +1,25 @@
-import Cocoa
+import Foundation
 
 /// Version of archived data
 private let currentConnectionInfoVersion = 1
-
-func == (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
-	return left.connectionInfoVersion == right.connectionInfoVersion &&
-		left.providerName == right.providerName &&
-		left.userId == right.userId &&
-		left.userName == right.userName &&
-		left.friendlyName == right.friendlyName &&
-		left.postAuthTokenIssuanceURL == right.postAuthTokenIssuanceURL &&
-		left.sessionContext == right.sessionContext &&
-		left.accessToken == right.accessToken &&
-		left.tokenExpiration == right.tokenExpiration &&
-		left.refreshToken == right.refreshToken &&
-		left.bootstrapInfo == right.bootstrapInfo
-}
-
-func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
-	return !(left == right)
-}
 
 /**
 	`ConnectionInfo` contains metadata obtained by the sign-in flow against
 	a third-party storage service.
 */
-@objc class ConnectionInfo: NSObject, NSCoding {
+class ConnectionInfo: ModelInfo, NSCoding {
 	
 	// MARK: Init
 	
 	override init() {
 		super.init()
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		super.init()
+		guard loadFromDecoder(aDecoder) else {
+			return nil
+		}
 	}
 	
 	// MARK: Properties
@@ -91,13 +80,12 @@ func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
 	// MARK: NSCoding
 	
 	/// Using `NSCoding` to restore from `NSUserDefaults`
-	required init?(coder aDecoder: NSCoder) {
-		super.init()
+	func loadFromDecoder(aDecoder: NSCoder) -> Bool {
 		
 		let connectionInfoVersionValue = aDecoder.decodeIntegerForKey(connectionInfoVersionKey)
 		guard connectionInfoVersionValue == currentConnectionInfoVersion else {
 			print("Unsupported \(connectionInfoVersionKey)")
-			return nil
+			return false
 		}
 
 		let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as! String
@@ -122,6 +110,7 @@ func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
 		self.tokenExpiration = tokenExpirationValue
 		self.refreshToken = refreshTokenStr
 		self.bootstrapInfo = bootstrapInfoObj
+		return true
 	}
 	
 	/// Using `NSCoding` to save to `NSUserDefaults`
@@ -138,4 +127,22 @@ func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
 		aCoder.encodeObject(self.refreshToken, forKey: refreshTokenKey)
 		aCoder.encodeObject(self.bootstrapInfo, forKey: bootstrapInfoKey)
 	}
+}
+
+func == (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
+	return left.connectionInfoVersion == right.connectionInfoVersion &&
+		left.providerName == right.providerName &&
+		left.userId == right.userId &&
+		left.userName == right.userName &&
+		left.friendlyName == right.friendlyName &&
+		left.postAuthTokenIssuanceURL == right.postAuthTokenIssuanceURL &&
+		left.sessionContext == right.sessionContext &&
+		left.accessToken == right.accessToken &&
+		left.tokenExpiration == right.tokenExpiration &&
+		left.refreshToken == right.refreshToken &&
+		left.bootstrapInfo == right.bootstrapInfo
+}
+
+func != (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
+	return !(left == right)
 }
