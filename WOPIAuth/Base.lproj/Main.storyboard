@@ -645,7 +645,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="S3o-rS-2SI" viewBased="YES" id="mTI-Vu-pdO">
-                                            <rect key="frame" x="0.0" y="0.0" width="175.5" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="245"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -705,7 +705,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="klV-yt-Qn6"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="0E8-6Z-ghZ">
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="0E8-6Z-ghZ">
                                     <rect key="frame" x="0.0" y="252" width="175" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -714,7 +714,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="S3o-rS-2SI">
-                                    <rect key="frame" x="0.0" y="0.0" width="175.5" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -818,13 +818,12 @@
                                 </textFieldCell>
                                 <accessibility identifier="ProviderName"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="0sy-j1-h4S">
+                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="y8c-UJ-GjZ">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">TP_CONTOSO</string>
                                             <string key="NSNoSelectionPlaceholder">TP_CONTOSO</string>
                                             <string key="NSNotApplicablePlaceholder">TP_CONTOSO</string>
                                             <string key="NSNullPlaceholder">TP_CONTOSO</string>
-                                            <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
                                 </connections>

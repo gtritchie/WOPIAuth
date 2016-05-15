@@ -3,18 +3,6 @@ import Foundation
 /// Version of archived `ProviderInfo` data
 let currentProviderInfoVersion = 1
 
-func == (left: ProviderInfo, right: ProviderInfo) -> Bool {
-	return left.providerInfoVersion == right.providerInfoVersion &&
-		left.providerName == right.providerName &&
-		left.clientId == right.clientId &&
-		left.clientSecret == right.clientSecret &&
-		left.redirectUrl == right.redirectUrl
-}
-
-func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
-	return !(left == right)
-}
-
 /**
 	`ProviderInfo` contains information needed to perform auth for
 	a Third Party Provider.
@@ -116,12 +104,23 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 	
 	func validateProviderName(providerStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
 		let name = providerStringPointer.memory
-		if name == nil {
+		var isEmpty = true
+
+		if name != nil {
+			var str = name as! String
+			str = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+			if !str.isEmpty {
+				isEmpty = false
+			}
+		}
+
+		if isEmpty {
 			let domain = "UserInputValidationErrorDomain"
 			let code = 0
 			let userInfo = [NSLocalizedDescriptionKey : "ProviderName cannot be empty"]
 			throw NSError(domain: domain, code: code, userInfo: userInfo)
 		}
+		
 	}
 
 	func validateBootstrapper(bootstrapperStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
@@ -239,4 +238,16 @@ func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
 		return true
 	}
 	
+}
+
+func == (left: ProviderInfo, right: ProviderInfo) -> Bool {
+	return left.providerInfoVersion == right.providerInfoVersion &&
+		left.providerName == right.providerName &&
+		left.clientId == right.clientId &&
+		left.clientSecret == right.clientSecret &&
+		left.redirectUrl == right.redirectUrl
+}
+
+func != (left: ProviderInfo, right: ProviderInfo) -> Bool {
+	return !(left == right)
 }

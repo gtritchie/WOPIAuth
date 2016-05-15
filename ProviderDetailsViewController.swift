@@ -29,7 +29,6 @@ class ProviderDetailsViewController: NSViewController {
 			return
 		}
 		
-		WOPIAuthLogInfo("Info: Added Provider: \(String(provider))")
 		delegate?.addNew(provider)
 		delegate = nil
 		dismissController(sender)
