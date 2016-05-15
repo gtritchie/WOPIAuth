@@ -818,12 +818,13 @@
                                 </textFieldCell>
                                 <accessibility identifier="ProviderName"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.providerName" id="y8c-UJ-GjZ">
+                                    <binding destination="4HO-fY-cyu" name="value" keyPath="selection.providerName" id="IbF-AB-B0s">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">TP_CONTOSO</string>
                                             <string key="NSNoSelectionPlaceholder">TP_CONTOSO</string>
                                             <string key="NSNotApplicablePlaceholder">TP_CONTOSO</string>
                                             <string key="NSNullPlaceholder">TP_CONTOSO</string>
+                                            <bool key="NSValidatesImmediately" value="YES"/>
                                         </dictionary>
                                     </binding>
                                 </connections>
@@ -845,7 +846,7 @@
                                 </textFieldCell>
                                 <accessibility identifier="BootstrapperUrl"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.bootstrapper" id="SW8-d5-F1B">
+                                    <binding destination="4HO-fY-cyu" name="value" keyPath="selection.bootstrapper" id="WbM-F1-Qyc">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">https://contoso.com/wopiboostrapper</string>
                                             <string key="NSNoSelectionPlaceholder">https://contoso.com/wopiboostrapper</string>
@@ -873,7 +874,7 @@
                                 </textFieldCell>
                                 <accessibility identifier="ClientId"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientId" id="nmX-5G-xzx">
+                                    <binding destination="4HO-fY-cyu" name="value" keyPath="selection.clientId" id="6ZG-rg-p1h">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">OAuth2 Client ID for Office</string>
                                             <string key="NSNoSelectionPlaceholder">OAuth2 Client ID for Office</string>
@@ -904,7 +905,7 @@
                                 </secureTextFieldCell>
                                 <accessibility identifier="ClientSecret"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.clientSecret" id="vi2-sR-v58">
+                                    <binding destination="4HO-fY-cyu" name="value" keyPath="selection.clientSecret" id="FLG-jw-dWg">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">OAuth2 Client Secret for Office</string>
                                             <string key="NSNoSelectionPlaceholder">OAuth2 Client Secret for Office</string>
@@ -932,7 +933,7 @@
                                 </textFieldCell>
                                 <accessibility identifier="RedirectUrl"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.redirectUrl" id="r6M-lF-4wN">
+                                    <binding destination="4HO-fY-cyu" name="value" keyPath="selection.redirectUrl" id="Ttn-sq-nE1">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">https://localhost</string>
                                             <string key="NSNoSelectionPlaceholder">https://localhost</string>
@@ -986,7 +987,7 @@ Gw
                                 </textFieldCell>
                                 <accessibility identifier="Scopes"/>
                                 <connections>
-                                    <binding destination="2Cm-d8-fo4" name="value" keyPath="self.provider.scope" id="o2R-d2-xnI">
+                                    <binding destination="4HO-fY-cyu" name="value" keyPath="selection.scope" id="qPo-0h-seX">
                                         <dictionary key="options">
                                             <string key="NSMultipleValuesPlaceholder">Optional OAuth2 Scopes</string>
                                             <string key="NSNoSelectionPlaceholder">Optional OAuth2 Scopes</string>
@@ -1041,8 +1042,20 @@ Gw
                             <constraint firstItem="em6-GU-mfa" firstAttribute="baseline" secondItem="wrf-fk-iiP" secondAttribute="baseline" id="yn8-iD-VQA"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="objectController" destination="4HO-fY-cyu" id="jBn-GU-OEb"/>
+                    </connections>
                 </viewController>
                 <customObject id="iWx-s6-0pK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <objectController objectClassName="ProviderInfo" id="4HO-fY-cyu">
+                    <connections>
+                        <binding destination="2Cm-d8-fo4" name="contentObject" keyPath="provider" id="iVd-Wy-uHW">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </objectController>
             </objects>
             <point key="canvasLocation" x="-331.5" y="1815.5"/>
         </scene>

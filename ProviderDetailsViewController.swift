@@ -5,6 +5,10 @@ import Cocoa
 */
 class ProviderDetailsViewController: NSViewController {
 
+	// MARK: Outlets
+	
+	@IBOutlet var objectController: NSObjectController!
+	
 	// MARK: Properties
 	
 	dynamic var provider = ProviderInfo()
@@ -19,19 +23,20 @@ class ProviderDetailsViewController: NSViewController {
 	// MARK: Actions
 	
 	@IBAction func cancel(sender: NSButton) {
+		objectController.discardEditing()
 		delegate = nil
 		dismissController(sender)
 	}
 	
 	@IBAction func save(sender: NSButton) {
-		sender.window!.endEditingFor(nil)
-		guard isProviderValid(sender) else {
-			return
+		if objectController.commitEditing() == true {
+			guard isProviderValid(sender) else {
+				return
+			}
+			delegate?.addNew(provider)
+			delegate = nil
+			dismissController(sender)
 		}
-		
-		delegate?.addNew(provider)
-		delegate = nil
-		dismissController(sender)
 	}
 	
 	/// MARK: Helpers
