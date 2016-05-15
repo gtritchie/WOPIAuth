@@ -7,12 +7,19 @@ let currentProviderInfoVersion = 1
 	`ProviderInfo` contains information needed to perform auth for
 	a Third Party Provider.
 */
-@objc class ProviderInfo: NSObject, NSCoding {
+class ProviderInfo: NSObject, NSCoding {
 	
 	// MARK: Init
 	
 	override init() {
 		super.init()
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init()
+		guard loadFromDecoder(aDecoder) else {
+			return nil
+		}
 	}
 	
 	// MARK: Properties
@@ -37,6 +44,12 @@ let currentProviderInfoVersion = 1
 	dynamic var clientSecret: String = ""
 	let clientSecretKey = "clientSecret"
 	
+	/// Domain for throwing validation errors
+	let validationDomain = "UserInputValidationErrorDomain"
+	
+	/// Error code for throwing validation errors
+	let validationCode = 0
+
 	/**
 		The redirect URL used to indicate that authorization has completed and
 		is returning an authorization_code via the code URL parameter.
@@ -60,16 +73,14 @@ let currentProviderInfoVersion = 1
 	// MARK: NSCoding
 	
 	/// Using `NSCoding` to restore from `NSUserDefaults`
-	required init?(coder aDecoder: NSCoder) {
-		super.init()
-		
+	func loadFromDecoder(aDecoder: NSCoder) -> Bool {
 		let providerInfoVersionValue = aDecoder.decodeIntegerForKey(providerInfoVersionKey)
 		guard providerInfoVersionValue == currentProviderInfoVersion else {
-				
-			print("Unsupported \(providerInfoVersionKey)")
-			return nil
+		
+		WOPIAuthLogError("Unsupported \(providerInfoVersionKey)")
+			return false
 		}
-
+		
 		let providerNameStr = aDecoder.decodeObjectForKey(providerNameKey) as! String
 		let bootstrapperStr = aDecoder.decodeObjectForKey(bootstrapperKey) as! String
 		let clientIdStr = aDecoder.decodeObjectForKey(clientIdKey) as! String
@@ -84,9 +95,7 @@ let currentProviderInfoVersion = 1
 		self.clientSecret = clientSecretStr
 		self.redirectUrl = redirectUrlStr
 		self.scope = scopeStr
-		
-		trimSpaces()
-		validate()
+		return true
 	}
 	
 	/// Using `NSCoding` to save to `NSUserDefaults`
@@ -100,72 +109,143 @@ let currentProviderInfoVersion = 1
 		aCoder.encodeObject(self.scope, forKey: scopeKey)
 	}
 	
-	// MARK: Validation
+	// MARK: KVC Validation
 	
 	func validateProviderName(providerStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
-		let name = providerStringPointer.memory
-		var isEmpty = true
-
-		if name != nil {
-			var str = name as! String
-			str = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-			if !str.isEmpty {
-				isEmpty = false
-			}
-		}
-
-		if isEmpty {
-			let domain = "UserInputValidationErrorDomain"
-			let code = 0
-			let userInfo = [NSLocalizedDescriptionKey : "ProviderName cannot be empty"]
-			throw NSError(domain: domain, code: code, userInfo: userInfo)
-		}
-		
+		try validateProviderNameString(providerStringPointer.memory as? String)
 	}
 
 	func validateBootstrapper(bootstrapperStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
-		let name = bootstrapperStringPointer.memory
-		if name == nil {
-			let domain = "UserInputValidationErrorDomain"
-			let code = 0
-			let userInfo = [NSLocalizedDescriptionKey : "Bootstrapper cannot be empty"]
-			throw NSError(domain: domain, code: code, userInfo: userInfo)
-		}
+		try validateBootstrapperString(bootstrapperStringPointer.memory as? String)
 	}
 
 	func validateClientId(clientIdStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
-		let name = clientIdStringPointer.memory
-		if name == nil {
-			let domain = "UserInputValidationErrorDomain"
-			let code = 0
-			let userInfo = [NSLocalizedDescriptionKey : "ClientId cannot be empty"]
-			throw NSError(domain: domain, code: code, userInfo: userInfo)
-		}
+		try validateClientIdString(clientIdStringPointer.memory as? String)
 	}
 
 	func validateClientSecret(clientSecretStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
-		let name = clientSecretStringPointer.memory
-		if name == nil {
-			let domain = "UserInputValidationErrorDomain"
-			let code = 0
-			let userInfo = [NSLocalizedDescriptionKey : "ClientSecret cannot be empty"]
-			throw NSError(domain: domain, code: code, userInfo: userInfo)
-		}
+		try validateClientSecretString(clientSecretStringPointer.memory as? String)
 	}
 
 	func validateRedirectUrl(redirectUrlStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
-		let name = redirectUrlStringPointer.memory
-		if name == nil {
-			let domain = "UserInputValidationErrorDomain"
-			let code = 0
-			let userInfo = [NSLocalizedDescriptionKey : "RedirectUrl cannot be empty"]
-			throw NSError(domain: domain, code: code, userInfo: userInfo)
-		}
+		try validateRedirectUrlString(redirectUrlStringPointer.memory as? String)
 	}
 
 	func validateScope(scopeStringPointer: AutoreleasingUnsafeMutablePointer<NSString?>) throws {
+		// No restrictions on scope string
 	}
 
+	// MARK: Validation
+	
+	func validateProviderNameString(providerName: String?) throws {
+			try getNonEmptyString(providerName,
+			                      errorMessage: NSLocalizedString("Provider Name cannot be empty.",
+									comment: "Error message for empty ProviderName"))
+	}
+	
+	func validateBootstrapperString(bootstrapper: String?) throws {
+		let bootstrapper = try getNonEmptyString(bootstrapper,
+		                                         errorMessage: NSLocalizedString("Bootstrapper URL cannot be empty.",
+													comment: "Error message for empty Bootstrapper URL"))
+		let url = try getValidURLComponents(bootstrapper,
+		                                    errorMessage: NSLocalizedString("Bootstrapper must be a valid URL.",
+												comment: "Error message for invalid Bootstrapper URL"))
+		try verifyUrlSchemeHttps(url,
+		                         errorMessage: NSLocalizedString("Bootstrapper URL must use https.",
+									comment: "Error message for non-https Bootstrapper URL"))
+	}
+
+	func validateClientIdString(clientId: String?) throws {
+		try getNonEmptyString(clientId,
+		                      errorMessage: NSLocalizedString("Client ID cannot be empty.",
+								comment: "Error message for empty ClientId"))
+	}
+
+	func validateClientSecretString(clientSecret: String?) throws {
+		try getNonEmptyString(clientSecret,
+		                      errorMessage: NSLocalizedString("Client Secret cannot be empty.",
+								comment: "Error message for empty ClientSecret"))
+	}
+	
+	func validateRedirectUrlString(redirectUrl: String?) throws {
+		let redir = try getNonEmptyString(redirectUrl,
+		                      errorMessage: NSLocalizedString("Redirect URL cannot be empty.",
+								comment: "Error message for empty RedirectUrl"))
+		let url = try getValidURLComponents(redir,
+		                                    errorMessage: NSLocalizedString("Redirect URL must be a valid URL.",
+												comment: "Error message for invalid Redirect URL"))
+		try verifyUrlSchemeHttps(url,
+		                         errorMessage: NSLocalizedString("Redirect URL must use https.",
+									comment: "Error message for non-https Redirect URL"))
+	}
+	
+	func validateScopeString(scope: String?) throws {
+		// No restrictions on scope string
+	}
+	
+	/**
+		Given a potentially nil string, either return a non-empty whitespace trimmed
+		copy of the string, or throw an `NSError` with the given error message.
+	*/
+	func getNonEmptyString(str: String?, errorMessage: String) throws -> String {
+		if var str = str {
+			str = str.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+			if !str.isEmpty {
+				return str
+			}
+		}
+
+		let userInfo = [NSLocalizedDescriptionKey : errorMessage]
+		throw NSError(domain: validationDomain, code: validationCode, userInfo: userInfo)
+	}
+
+	/**
+		Given a string, try to create an `NSURLComponent` object. Throws an `NSError` with
+		the given error message if unsuccessful.
+	*/
+	func getValidURLComponents(urlStr: String, errorMessage: String) throws -> NSURLComponents {
+		guard let url = NSURLComponents(string: urlStr) else {
+			let userInfo = [NSLocalizedDescriptionKey : errorMessage]
+			throw NSError(domain: validationDomain, code: validationCode, userInfo: userInfo)
+		}
+		return url
+	}
+	
+	/**
+		Given an `NSURLComponents` object, verify it has the https scheme. If not, throws
+		an `NSError` with the given error message.
+	*/
+	func verifyUrlSchemeHttps(url: NSURLComponents, errorMessage: String) throws {
+		guard url.scheme == "https" else {
+			let userInfo = [NSLocalizedDescriptionKey : errorMessage]
+			throw NSError(domain: validationDomain, code: validationCode, userInfo: userInfo)
+		}
+	}
+
+	/**
+		Validate contents of `ProviderInfo` object. Throws an NSError for first problem found.
+	*/
+	func validate() throws {
+		try validateProviderNameString(providerName)
+		try validateBootstrapperString(bootstrapper)
+		try validateClientIdString(clientId)
+		try validateClientSecretString(clientSecret)
+		try validateRedirectUrlString(redirectUrl)
+	}
+	
+	/**
+		Convenience method for automation.
+	*/
+	func nonThrowValidate() -> Bool {
+		do {
+			try validate()
+		} catch {
+			return false
+		}
+		return true
+	}
+
+	
 	/// Trim all leading and trailing whitespace from text fields
 	func trimSpaces() {
 		providerName = providerName.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -175,69 +255,6 @@ let currentProviderInfoVersion = 1
 		redirectUrl = redirectUrl.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 		scope = scope?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 	}
-	
-	func validateNonEmpty() -> Bool {
-		guard !providerName.isEmpty else {
-			WOPIAuthLogWarning("ProviderName cannot be empty")
-			return false
-		}
-		
-		guard !bootstrapper.isEmpty else {
-			WOPIAuthLogError("Boostrapper cannot be empty")
-			return false
-		}
-
-		guard !clientId.isEmpty else {
-			WOPIAuthLogError("ClientId cannot be empty")
-			return false
-		}
-		
-		guard !clientSecret.isEmpty else {
-			WOPIAuthLogError("ClientSecret cannot be empty")
-			return false
-		}
-
-		guard !redirectUrl.isEmpty else {
-			WOPIAuthLogError("RedirectUri cannot be empty")
-			return false
-		}
-
-		return true
-	}
-	
-	/**
-		Validate contents of `ProviderInfo` object. Logs an error message for first problem found.
-	
-		- Returns: True if valid, False if invalid
-	*/
-	func validate() -> Bool {
-		guard validateNonEmpty() else {
-			return false
-		}
-		
-		guard let bootstrapperUrl = NSURLComponents(string: bootstrapper) else {
-			WOPIAuthLogError("Bootstrapper must be a valid URL: \(bootstrapper)")
-			return false
-		}
-		
-		guard bootstrapperUrl.scheme == "https" else {
-			WOPIAuthLogError("Bootstrapper must use https scheme: \(bootstrapper)")
-			return false
-		}
-		
-		guard let redirUrl = NSURLComponents(string: redirectUrl) else {
-			WOPIAuthLogError("RedirectUri must be a valid URI: \(redirectUrl)")
-			return false
-		}
-		
-		guard redirUrl.scheme == "https" else {
-			WOPIAuthLogError("RedirectUri must use https scheme: \(redirectUrl)")
-			return false
-		}
-		
-		return true
-	}
-	
 }
 
 func == (left: ProviderInfo, right: ProviderInfo) -> Bool {

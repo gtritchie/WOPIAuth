@@ -54,15 +54,16 @@ class ProviderDetailsViewController: NSViewController {
 	func isProviderValid(sender: NSButton) -> Bool {
 		
 		provider.trimSpaces()
-		if !provider.validate() {
-			ShowValidationErrorMessage(sender, message: NSLocalizedString("Invalid or missing information entered. Correct and try again.",
-				comment: "Message for failure of provider metadata validation"))
+		do {
+			try provider.validate()
+		} catch let error as NSError {
+			ShowValidationErrorMessage(sender, message: error.localizedDescription)
 			return false
 		}
 		
 		guard let nameAvailable = delegate?.providerNameAvailable(provider.providerName)
 			where nameAvailable else {
-				
+
 			ShowValidationErrorMessage(sender, message: NSLocalizedString("Provider Name must be unique.",
 				comment: "Message for trying to add item with duplicate Provider Name value"))
 			return false

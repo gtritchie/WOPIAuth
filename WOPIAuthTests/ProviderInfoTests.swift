@@ -11,6 +11,7 @@ class ProviderInfoTests: XCTestCase {
 		provider.clientId = "abc123$%^"
 		provider.clientSecret = "def9872!4"
 		provider.redirectUrl = "https://localhost"
+		provider.scope = ""
 		return provider
 	}
 
@@ -21,6 +22,7 @@ class ProviderInfoTests: XCTestCase {
 		provider.clientId = "abc123$%^2"
 		provider.clientSecret = "def9872!42"
 		provider.redirectUrl = "https://localhost2"
+		provider.scope = "sample scope"
 		return provider
 	}
 
@@ -47,8 +49,7 @@ class ProviderInfoTests: XCTestCase {
 	func testDefaultObjectNotValid() {
 		let provider = ProviderInfo()
 		
-		XCTAssertFalse(provider.validate())
-		XCTAssertFalse(provider.validateNonEmpty())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 	
 	func testTrimmedObjectIsEmpty() {
@@ -58,17 +59,16 @@ class ProviderInfoTests: XCTestCase {
 		provider.clientId = "\t\n  "
 		provider.clientSecret = "  \r\n\t"
 		provider.redirectUrl = " "
-		XCTAssertTrue(provider.validateNonEmpty())
 		provider.trimSpaces()
-		XCTAssertFalse(provider.validateNonEmpty())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testValidProvider() {
-		XCTAssertTrue(CreateValidProviderInfo().validate())
+		XCTAssertTrue(CreateValidProviderInfo().nonThrowValidate())
 	}
 
 	func testAlternateValidProvider() {
-		XCTAssertTrue(CreateAlternateValidProviderInfo().validate())
+		XCTAssertTrue(CreateAlternateValidProviderInfo().nonThrowValidate())
 	}
 
 	func testProvidersNotEqual() {
@@ -78,60 +78,60 @@ class ProviderInfoTests: XCTestCase {
 	func testEmptyProviderNameIsInvalid() {
 		let provider = CreateValidProviderInfo()
 		provider.providerName = ""
-		XCTAssertFalse(provider.validateNonEmpty())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testEmptyBootstrapperIsInvalid() {
 		let provider = CreateValidProviderInfo()
 		provider.bootstrapper = ""
-		XCTAssertFalse(provider.validateNonEmpty())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testEmptyClientIdIsInvalid() {
 		let provider = CreateValidProviderInfo()
 		provider.clientId = ""
-		XCTAssertFalse(provider.validateNonEmpty())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testEmptyClientSecretIsInvalid() {
 		let provider = CreateValidProviderInfo()
 		provider.clientSecret = ""
-		XCTAssertFalse(provider.validateNonEmpty())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 	
 	func testEmptyRedirectUriIsInvalid() {
 		let provider = CreateValidProviderInfo()
 		provider.redirectUrl = ""
-		XCTAssertFalse(provider.validateNonEmpty())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testValidObjectIsValid() {
 		let provider = CreateValidProviderInfo()
-		XCTAssertTrue(provider.validate())
+		XCTAssertTrue(provider.nonThrowValidate())
 	}
 	
 	func testBootstrapperUrlNotHTTPSFails() {
 		let provider = CreateValidProviderInfo()
 		provider.bootstrapper = "http://contoso.com/wopibootstrapper"
-		XCTAssertFalse(provider.validate())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testBootstrapperUrlNotValidUrlFails() {
 		let provider = CreateValidProviderInfo()
 		provider.bootstrapper = "one two three@34"
-		XCTAssertFalse(provider.validate())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testRedirectUrlNotHTTPSFails() {
 		let provider = CreateValidProviderInfo()
 		provider.redirectUrl = "http://localhost"
-		XCTAssertFalse(provider.validate())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testRedirectUrlNotValidUrlFails() {
 		let provider = CreateValidProviderInfo()
 		provider.redirectUrl = "one two three@34"
-		XCTAssertFalse(provider.validate())
+		XCTAssertFalse(provider.nonThrowValidate())
 	}
 
 	func testProviderDescriptionNotEmpty() {

@@ -125,7 +125,10 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		startNewStep("1: Bootstrapper", image: bootstrapImage, text: bootstrapText, progress: bootstrapProgress)
 
 		// Sanity check on ProviderInfo
-		guard provider!.validate() == true else {
+		
+		do {
+			try provider!.validate()
+		} catch {
 			failCurrentStep()
 			return
 		}
