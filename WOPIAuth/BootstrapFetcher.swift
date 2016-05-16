@@ -5,7 +5,7 @@ import Foundation
 	obtain the required properties from the response. A successful call will
 	respond with 401, and a WWW-Authenticate header of this form:
 
-	WWW-Authenticate: Bearer authorization_uri="https://contoso.com/api/oauth2/authorize",tokenIssuance_uri="https://contoso.com/api/oauth2/token",providerId="tp_contoso"
+	WWW-Authenticate: Bearer authorization_uri="https://contoso.com/api/oauth2/authorize",tokenIssuance_uri="https://contoso.com/api/oauth2/token"
 */
 public class BootstrapFetcher {
 	
