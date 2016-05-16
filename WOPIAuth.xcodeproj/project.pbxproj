@@ -38,13 +38,13 @@
 		4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */; };
 		4EA620991CBD723200D631F4 /* ProviderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620981CBD723200D631F4 /* ProviderListViewController.swift */; };
 		4EA6209B1CBD7C2400D631F4 /* ProviderDetailEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */; };
+		4EA698341CEA5D7800B97D55 /* ConnectionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA698331CEA5D7800B97D55 /* ConnectionDetailsViewController.swift */; };
 		4EB2A6421CCA9FDD0054E523 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */; };
 		4EB39DA21CDD124A004101CF /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA11CDD124A004101CF /* ProfileResult.swift */; };
 		4EB39DA41CDD1254004101CF /* ProfileFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */; };
 		4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */; };
 		4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */; };
 		4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918461CD021FE005A5186 /* ConnectionViewing.swift */; };
-		4EF918491CD02306005A5186 /* ConnectionPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */; };
 		4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,13 +103,13 @@
 		4EA620961CBCAB7E00D631F4 /* ProviderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailsViewController.swift; sourceTree = "<group>"; };
 		4EA620981CBD723200D631F4 /* ProviderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderListViewController.swift; sourceTree = "<group>"; };
 		4EA6209A1CBD7C2400D631F4 /* ProviderDetailEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderDetailEditing.swift; path = ../ProviderDetailEditing.swift; sourceTree = "<group>"; };
+		4EA698331CEA5D7800B97D55 /* ConnectionDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionDetailsViewController.swift; sourceTree = "<group>"; };
 		4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		4EB39DA11CDD124A004101CF /* ProfileResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFetcher.swift; sourceTree = "<group>"; };
 		4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscExtensions.swift; sourceTree = "<group>"; };
 		4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionContaining.swift; sourceTree = "<group>"; };
 		4EF918461CD021FE005A5186 /* ConnectionViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewing.swift; sourceTree = "<group>"; };
-		4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionPropertiesViewController.swift; sourceTree = "<group>"; };
 		4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCreating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,9 +236,9 @@
 				4EB2A6411CCA9FDD0054E523 /* LogViewController.swift */,
 				4E456F261CD000DF00E1BE18 /* ConnectionsSplitViewController.swift */,
 				4EA2C8691CD0090D00487818 /* ConnectionsListViewController.swift */,
-				4EF918481CD02306005A5186 /* ConnectionPropertiesViewController.swift */,
 				4E43AAEC1CD02F3900DF044C /* WOPIFlowViewController.swift */,
 				4E01D5891CD178200073DBD9 /* SignInViewController.swift */,
+				4EA698331CEA5D7800B97D55 /* ConnectionDetailsViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -414,8 +414,8 @@
 				4E01D58A1CD178200073DBD9 /* SignInViewController.swift in Sources */,
 				4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */,
 				4E456F251CCFF9F700E1BE18 /* ConnectionInfo.swift in Sources */,
-				4EF918491CD02306005A5186 /* ConnectionPropertiesViewController.swift in Sources */,
 				4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */,
+				4EA698341CEA5D7800B97D55 /* ConnectionDetailsViewController.swift in Sources */,
 				4E223AC91CDAACF30035665C /* TokenResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
