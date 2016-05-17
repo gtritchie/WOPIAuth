@@ -25,8 +25,17 @@ class ConnectionDetailsViewController: NSViewController, ProviderViewing, Connec
 	dynamic var selectedConnection: ConnectionInfo? {
 		didSet {
 			notifyChildrenOfSelectedConnection(selectedConnection)
+			setRefreshButtonState()
 		}
 	}
 	
-
+	// MARK: Utility
+	
+	func setRefreshButtonState() {
+		var enabled = false
+		if let connection = selectedConnection where !connection.refreshToken.isEmpty {
+			enabled = true
+		}
+		refreshButton.enabled = enabled
+	}
 }
