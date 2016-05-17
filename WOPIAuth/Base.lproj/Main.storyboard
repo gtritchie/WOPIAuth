@@ -788,7 +788,7 @@
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="-331.5" y="1379"/>
+            <point key="canvasLocation" x="-152.5" y="1319"/>
         </scene>
         <!--Edit Provider-->
         <scene sceneID="uau-Mq-LfY">
@@ -1057,7 +1057,7 @@ Gw
                     </connections>
                 </objectController>
             </objects>
-            <point key="canvasLocation" x="60.5" y="1928.5"/>
+            <point key="canvasLocation" x="-152.5" y="1732.5"/>
         </scene>
         <!--Right Pane Split View Controller-->
         <scene sceneID="iaf-6t-Est">
@@ -1535,7 +1535,7 @@ Gw
                 </viewController>
                 <customObject id="g9g-N1-MMT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.5" y="1062.5"/>
+            <point key="canvasLocation" x="1697.5" y="1162.5"/>
         </scene>
         <!--WOPI Flow Test Scene-->
         <scene sceneID="xwg-aw-qzP">
