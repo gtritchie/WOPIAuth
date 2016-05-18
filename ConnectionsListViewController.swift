@@ -31,11 +31,26 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 			notifyParentOfSelectedConnection()
 		}
 	}
-	
+
+	func renameProvider(oldProviderName: String) {
+		notifyChildrenOfRenamedProvider(oldProviderName)
+		deleteConnectionsWithProviderName(oldProviderName)
+	}
+
+	func deleteConnectionsWithProviderName(providerName: String) {
+		let connectionsCopy = connections!
+		for element in connectionsCopy {
+			if element.providerName == providerName {
+				arrayController.removeObject(element)
+			}
+		}
+		Preferences.connections = self.connections
+	}
+
 	// MARK: Properties
 	
 	/// List of `ConnectionInfo`s
-	var connections = Preferences.connections
+	dynamic var connections = Preferences.connections
 
 	/// Must match identifier of segue from `ProviderListViewController` to `ProviderDetailViewController`
 	let InvokeAuthFlowSegue = "InvokeWOPIAuthFlow"

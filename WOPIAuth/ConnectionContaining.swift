@@ -5,6 +5,6 @@ import Cocoa
 */
 protocol ConnectionContaining {
 	
-	/// Add `provider` to the list of `ProviderInfo` objects.
+	/// Add `connection` to the list of `ConnectionInfo` objects.
 	func addNew(connection: ConnectionInfo)
 }

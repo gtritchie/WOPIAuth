@@ -15,6 +15,10 @@ class RightPaneSplitViewController: NSSplitViewController, ProviderViewing {
 		}
 	}
 
+	func renameProvider(providerName: String) {
+		notifyChildrenOfRenamedProvider(providerName)
+	}
+
 	// MARK: Life Cycle
 	
 	// For some reason, setting this in the Storyboard doesn't work, have to

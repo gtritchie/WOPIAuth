@@ -17,6 +17,10 @@ class SidebarSplitViewController: NSSplitViewController, ProviderViewing {
 		}
 	}
 	
+	func renameProvider(providerName: String) {
+		notifyChildrenOfRenamedProvider(providerName)
+	}
+
 	// MARK: Life Cycle
 	
 	override func viewDidLoad() {

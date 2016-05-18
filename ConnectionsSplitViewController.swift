@@ -16,6 +16,10 @@ class ConnectionsSplitViewController: NSSplitViewController, ProviderViewing, Co
 			notifyChildrenOfSelectedProvider(selectedProvider)
 		}
 	}
+
+	func renameProvider(providerName: String) {
+		notifyChildrenOfRenamedProvider(providerName)
+	}
 	
 	// MARK: ConnectionViewing Protocol
 	

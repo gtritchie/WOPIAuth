@@ -18,6 +18,10 @@ class ConnectionDetailsViewController: NSViewController, ProviderViewing, Connec
 			notifyChildrenOfSelectedProvider(selectedProvider)
 		}
 	}
+
+	func renameProvider(providerName: String) {
+		notifyChildrenOfRenamedProvider(providerName)
+	}
 	
 	// MARK: ConnectionViewing Protocol
 	

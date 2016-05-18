@@ -37,9 +37,7 @@ class ProviderDetailsViewController: NSViewController, ProviderDetailEditingView
 			}
 			
 			if providerToEdit != nil {
-				providerContainer?.updateExisting(provider)
-				dismissController(sender)
-
+				saveProviderAndDismiss(sender)
 			} else if isProviderNameAvailable(sender) {
 				providerContainer?.addNew(provider)
 				dismissController(sender)
@@ -65,7 +63,6 @@ class ProviderDetailsViewController: NSViewController, ProviderDetailEditingView
 	}
 	
 	func isProviderValid(sender: NSButton) -> Bool {
-		
 		provider.trimSpaces()
 		do {
 			try provider.validate()
@@ -85,5 +82,39 @@ class ProviderDetailsViewController: NSViewController, ProviderDetailEditingView
 			return false
 		}
 		return true
+	}
+	
+	func saveProviderAndDismiss(sender: NSButton) {
+		
+		// If provider name was not changed, save and dismiss
+		if providerToEdit!.providerName == provider.providerName {
+			self.saveEditedProvider(sender)
+			return
+		}
+		
+		let alert = NSAlert()
+		alert.messageText = NSLocalizedString("Rename this provider?", comment: "Confirm Provider rename messageText")
+		alert.informativeText = NSLocalizedString("All existing connections will be permanently deleted.", comment: "Confirm Provider rename delete connections informativeText")
+		alert.addButtonWithTitle(NSLocalizedString("Rename", comment: "Confirm Provider rename button"))
+		alert.addButtonWithTitle(NSLocalizedString("Cancel", comment: "Confirm Provider rename cancel button"))
+		let window = sender.window!
+		alert.beginSheetModalForWindow(window, completionHandler: { (response) -> Void in
+			
+			switch response {
+				
+			case NSAlertFirstButtonReturn:
+				self.saveEditedProvider(sender)
+				break
+				
+			default:
+				break
+			}
+			
+		})
+	}
+	
+	func saveEditedProvider(sender: NSButton) {
+		providerContainer?.updateExisting(provider)
+		dismissController(sender)
 	}
 }

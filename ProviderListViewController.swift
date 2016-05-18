@@ -75,6 +75,12 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		}
 	}
 	
+	func renameProvider(providerName: String) {
+		if let parent = parentViewController as? ProviderViewing {
+			parent.renameProvider(providerName)
+		}
+	}
+	
 	// MARK: ProviderDetailEditing Protocol
 	
 	func providerNameAvailable(providerName: String) -> Bool {
@@ -93,7 +99,11 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	
 	func updateExisting(provider: ProviderInfo) {
 		if let activeProvider = arrayController.selectedObjects.first as! ProviderInfo? {
+			if activeProvider.providerName != provider.providerName {
+				renameProvider(activeProvider.providerName)
+			}
 			activeProvider.setPropertiesFrom(provider)
+			setActiveProvider(activeProvider)
 		}
 	}
 	
@@ -164,5 +174,4 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	func isProviderSelected() -> Bool {
 		return arrayController.selectedObjects.count > 0
 	}
-	
 }
