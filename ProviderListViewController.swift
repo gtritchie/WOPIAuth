@@ -40,7 +40,12 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
 		switch identifier {
 		case EditProviderDetailSegueIdentier:
-			return isProviderSelected()
+			if isProviderSelected() {
+				return true
+			} else {
+				NSBeep()
+				return false
+			}
 		default:
 			return true
 		}

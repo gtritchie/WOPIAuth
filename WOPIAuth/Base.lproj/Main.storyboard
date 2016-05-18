@@ -668,7 +668,7 @@
                                                             <rect key="frame" x="1" y="1" width="173" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-1q-w5G">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-1q-w5G">
                                                                     <rect key="frame" x="-2" y="0.0" width="177" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="pWi-Kr-TAS">
                                                                         <font key="font" metaFont="system"/>
@@ -1738,10 +1738,10 @@ DQ
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="266"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="448" height="266"/>
+                                            <size key="minSize" width="433" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="448" height="266"/>
+                                            <size key="minSize" width="433" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <connections>
                                                 <binding destination="2j6-cB-pb3" name="attributedString" keyPath="log" id="Ejk-HI-Evk">
@@ -1763,7 +1763,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Ngi-zc-Gh0">
-                                    <rect key="frame" x="433" y="1" width="16" height="266"/>
+                                    <rect key="frame" x="434" y="1" width="15" height="266"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>

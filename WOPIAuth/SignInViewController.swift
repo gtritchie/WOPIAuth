@@ -131,6 +131,8 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		}
 	}
 	
+	// MARK: WKNavigationDelegate
+	
 	func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
 		let request = navigationAction.request
 		
@@ -144,23 +146,25 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 					var sc = ""
 					if let queryArray = haveComponents?.queryItems {
 						for queryParam in queryArray {
-							switch queryParam.name {
+							let paramLower = queryParam.name.lowercaseString
+							switch paramLower {
 							case "code":
+								warnMixedCaseParam("code", matchedStr: queryParam.name)
 								if let codeStr = queryParam.value {
 									code = codeStr
 								}
-							case "tk",
-							     "TK":
+							case "tk":
+								warnMixedCaseParam("tk", matchedStr: queryParam.name)
 								if let tkValue = queryParam.value {
 									tk = tkValue
 								}
-							case "sc",
-							     "SC":
+							case "sc":
+								warnMixedCaseParam("sc", matchedStr: queryParam.name)
 								if let scValue = queryParam.value {
 									sc = scValue
 								}
 							default:
-								WOPIAuthLogError("Unrecognized redir parameter: \(queryParam.name)")
+								WOPIAuthLogWarning("Unrecognized redir parameter: \(queryParam.name)")
 							}
 						}
 					}
@@ -193,6 +197,15 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 	func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
 		if NSURLErrorDomain == error.domain && NSURLErrorCancelled == error.code {
 			return
+		}
+	}
+	
+	// MARK: Utility
+	
+	/// Log a warning if the matched parameter and expected parameter differed only by case
+	func warnMixedCaseParam(expectedStr: String, matchedStr: String) {
+		if expectedStr != matchedStr {
+			WOPIAuthLogWarning("Redirect params must be lowercase: matched \(expectedStr) as \(matchedStr)")
 		}
 	}
 }
