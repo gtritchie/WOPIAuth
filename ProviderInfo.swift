@@ -22,6 +22,16 @@ class ProviderInfo: ModelInfo, NSCoding {
 		}
 	}
 	
+	required init(instance: ProviderInfo) {
+		self.providerInfoVersion = instance.providerInfoVersion
+		self.providerName = instance.providerName
+		self.bootstrapper = instance.bootstrapper
+		self.clientId = instance.clientId
+		self.clientSecret = instance.clientSecret
+		self.redirectUrl = instance.redirectUrl
+		self.scope = instance.scope
+	}
+	
 	// MARK: Properties
 	
 	/// Version of archived `ProviderInfo`
@@ -205,7 +215,9 @@ func == (left: ProviderInfo, right: ProviderInfo) -> Bool {
 		left.providerName == right.providerName &&
 		left.clientId == right.clientId &&
 		left.clientSecret == right.clientSecret &&
-		left.redirectUrl == right.redirectUrl
+		left.redirectUrl == right.redirectUrl &&
+		left.bootstrapper == right.bootstrapper &&
+		left.scope == right.scope
 }
 
 func != (left: ProviderInfo, right: ProviderInfo) -> Bool {

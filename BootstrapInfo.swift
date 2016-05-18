@@ -22,6 +22,12 @@ class BootstrapInfo: ModelInfo, NSCoding {
 		}
 	}
 	
+	required init(instance: BootstrapInfo) {
+		self.bootstrapInfoVersion = instance.bootstrapInfoVersion
+		self.authorizationURL = instance.authorizationURL
+		self.tokenIssuanceURL = instance.tokenIssuanceURL
+	}
+	
 	func populateFromAuthenticateHeader(header: String) -> Bool {
 		
 		WOPIAuthLogInfo("WWW-Authenticate: \(header)")

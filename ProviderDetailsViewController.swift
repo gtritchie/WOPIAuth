@@ -3,7 +3,7 @@ import Cocoa
 /**
 	View controller for displaying and editing `ProviderInfo` properties.
 */
-class ProviderDetailsViewController: NSViewController {
+class ProviderDetailsViewController: NSViewController, ProviderDetailEditingView {
 
 	// MARK: Outlets
 	
@@ -12,19 +12,21 @@ class ProviderDetailsViewController: NSViewController {
 	// MARK: Properties
 	
 	dynamic var provider = ProviderInfo()
-	var delegate: ProviderDetailEditing?
 	
 	// MARK: Life Cycle
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		if providerToEdit != nil {
+			provider = ProviderInfo(instance: providerToEdit!)
+		}
     }
 	
 	// MARK: Actions
 	
 	@IBAction func cancel(sender: NSButton) {
 		objectController.discardEditing()
-		delegate = nil
 		dismissController(sender)
 	}
 	
@@ -33,13 +35,17 @@ class ProviderDetailsViewController: NSViewController {
 			guard isProviderValid(sender) else {
 				return
 			}
-			delegate?.addNew(provider)
-			delegate = nil
+			providerContainer?.addNew(provider)
 			dismissController(sender)
 		}
 	}
 	
-	/// MARK: Helpers
+	// MARK: ProviderDetailEditingView
+
+	var providerContainer: ProviderDetailEditing?
+	var providerToEdit: ProviderInfo?
+
+	// MARK: Helpers
 	
 	func ShowValidationErrorMessage(sender: NSButton, message: String) {
 		let alert = NSAlert()
@@ -61,7 +67,7 @@ class ProviderDetailsViewController: NSViewController {
 			return false
 		}
 		
-		guard let nameAvailable = delegate?.providerNameAvailable(provider.providerName)
+		guard let nameAvailable = providerContainer?.providerNameAvailable(provider.providerName)
 			where nameAvailable else {
 
 			ShowValidationErrorMessage(sender, message: NSLocalizedString("Provider Name must be unique.",

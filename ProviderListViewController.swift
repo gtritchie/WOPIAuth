@@ -1,7 +1,7 @@
 import Cocoa
 
 /**
-	Controller to manage display and editing of `ProviderInfo` objects.
+	Controller to manage creation, display and editing of `ProviderInfo` objects.
 */
 class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTableViewDelegate {
 
@@ -25,13 +25,14 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		switch segue.identifier! {
 			
 		case AddProviderDetailSegueIdentifier:
-			let destination = segue.destinationController as! ProviderDetailsViewController
-			destination.delegate = self
+			var destination = segue.destinationController as! ProviderDetailEditingView
+			destination.providerContainer = self
 			
 		case EditProviderDetailSegueIdentier:
-			let destination = segue.destinationController as! ProviderDetailsViewController
-			destination.delegate = self
-			
+			var destination = segue.destinationController as! ProviderDetailEditingView
+			destination.providerContainer = self
+			destination.providerToEdit = arrayController.selectedObjects.first as! ProviderInfo?
+
 		default:
 			print("Unknown segue: \(segue.identifier)")
 		}
@@ -88,7 +89,7 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		arrayController.addObject(provider)
 		Preferences.providers = providers
 	}
-		
+	
 	func updateExisting(provider: ProviderInfo) {
 	}
 	
@@ -99,7 +100,7 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		let row = tableView.selectedRow
 		var activeProvider: ProviderInfo = ProviderInfo()
 		if row != -1 {
-			activeProvider = providers![row]
+			activeProvider = arrayController.selectedObjects.first as! ProviderInfo
 		}
 		setActiveProvider(activeProvider)
 	}

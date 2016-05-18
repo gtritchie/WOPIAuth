@@ -160,5 +160,19 @@ class ProviderInfoTests: XCTestCase {
 		let newProvider = ProviderInfo(coder: unarchiver)
 		XCTAssertNil(newProvider)
 	}
-
+	
+	func testProviderCopyMatches() {
+		let origProvider = CreateValidProviderInfo()
+		let otherProvider = ProviderInfo(instance: origProvider)
+		XCTAssertTrue(origProvider == otherProvider)
+	}
+	
+	func testProviderCopyIsSeparateInstance() {
+		let origProvider = CreateValidProviderInfo()
+		let otherProvider = ProviderInfo(instance: origProvider)
+		XCTAssertTrue(origProvider == otherProvider)
+		
+		otherProvider.bootstrapper = "this is something different"
+		XCTAssertTrue(origProvider != otherProvider)
+	}
 }

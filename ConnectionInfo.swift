@@ -22,6 +22,20 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		}
 	}
 	
+	required init(instance: ConnectionInfo) {
+		self.connectionInfoVersion = instance.connectionInfoVersion
+		self.providerName = instance.providerName
+		self.userId = instance.userId
+		self.userName = instance.userName
+		self.friendlyName = instance.friendlyName
+		self.postAuthTokenIssuanceURL = instance.postAuthTokenIssuanceURL
+		self.sessionContext = instance.sessionContext
+		self.accessToken = instance.accessToken
+		self.tokenExpiration = instance.tokenExpiration
+		self.refreshToken = instance.refreshToken
+		self.bootstrapInfo = instance.bootstrapInfo.copy() as! BootstrapInfo
+	}
+	
 	// MARK: Properties
 	
 	/// Version of archived `ConnectionInfo`

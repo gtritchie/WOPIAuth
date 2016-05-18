@@ -21,6 +21,7 @@
 		4E43AAED1CD02F3900DF044C /* WOPIFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E43AAEC1CD02F3900DF044C /* WOPIFlowViewController.swift */; };
 		4E456F251CCFF9F700E1BE18 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */; };
 		4E456F271CD000DF00E1BE18 /* ConnectionsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E456F261CD000DF00E1BE18 /* ConnectionsSplitViewController.swift */; };
+		4E4767941CECF3BE002C982D /* ProviderDetailEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4767931CECF3BE002C982D /* ProviderDetailEditingView.swift */; };
 		4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BC81CBC867200A67FEF /* ProviderInfo.swift */; };
 		4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */; };
 		4E592BCD1CBC869500A67FEF /* ClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E592BCC1CBC869500A67FEF /* ClientInfo.swift */; };
@@ -80,6 +81,7 @@
 		4E43AAEC1CD02F3900DF044C /* WOPIFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WOPIFlowViewController.swift; sourceTree = "<group>"; };
 		4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
 		4E456F261CD000DF00E1BE18 /* ConnectionsSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsSplitViewController.swift; sourceTree = "<group>"; };
+		4E4767931CECF3BE002C982D /* ProviderDetailEditingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailEditingView.swift; sourceTree = "<group>"; };
 		4E592BC81CBC867200A67FEF /* ProviderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfo.swift; sourceTree = "<group>"; };
 		4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfo.swift; sourceTree = "<group>"; };
 		4E592BCC1CBC869500A67FEF /* ClientInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientInfo.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				4EF918461CD021FE005A5186 /* ConnectionViewing.swift */,
 				4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */,
 				4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */,
+				4E4767931CECF3BE002C982D /* ProviderDetailEditingView.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			files = (
 				4E100ACA1CC03FED00AFA37E /* RightPaneSplitViewController.swift in Sources */,
 				4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */,
+				4E4767941CECF3BE002C982D /* ProviderDetailEditingView.swift in Sources */,
 				4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */,
 				4E592BCB1CBC868500A67FEF /* BootstrapInfo.swift in Sources */,
 				4EA5A3271CCFE1DB00828EE1 /* ProviderViewing.swift in Sources */,
