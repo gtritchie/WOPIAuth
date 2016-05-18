@@ -23,6 +23,7 @@ class BootstrapInfo: ModelInfo, NSCoding {
 	}
 	
 	required init(instance: BootstrapInfo) {
+		super.init()
 		self.bootstrapInfoVersion = instance.bootstrapInfoVersion
 		self.authorizationURL = instance.authorizationURL
 		self.tokenIssuanceURL = instance.tokenIssuanceURL

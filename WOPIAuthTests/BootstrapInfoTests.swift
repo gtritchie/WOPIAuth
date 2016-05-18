@@ -88,4 +88,10 @@ class BootstrapInfoTests: XCTestCase {
 		XCTAssertFalse(bootstrap.populateFromAuthenticateHeader("Bearer authorization_uri=\"https://contoso.com/auth\""))
 	}
 	
+	func testBootstrapInitFromAnother() {
+		let bootstrap = CreateBootstrapInfo()
+		let newBootstrap = BootstrapInfo(instance: bootstrap)
+		XCTAssertTrue(bootstrap == newBootstrap)
+	}
+	
 }

@@ -75,6 +75,7 @@ public class TokenFetcher {
 			request.setValue(sessionContext, forHTTPHeaderField: "X-WOPI-SessionContext")
 		}
 		request.setValue("Microsoft Office Identity Service", forHTTPHeaderField: "user-agent")
+		request.HTTPShouldHandleCookies = false
 
 		// Set POST body
 		var postParams = [String : String]()

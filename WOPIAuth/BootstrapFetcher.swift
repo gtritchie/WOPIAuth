@@ -54,7 +54,11 @@ public class BootstrapFetcher {
 			return
 		}
 		
-		let request = NSURLRequest(URL: url)
+		let request = NSMutableURLRequest(URL: url)
+		// TODO make this a preferences setting
+		request.setValue("Word/1.22.16051600 CFNetwork/758.2.8 Darwin/15.4.0", forHTTPHeaderField: "User-Agent")
+		request.HTTPShouldHandleCookies = false
+
 		WOPIAuthLogInfo("Invoking bootstrapper: \"\(urlString)\"")
 		let task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchBootstrapResult

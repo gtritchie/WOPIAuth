@@ -23,6 +23,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 	}
 	
 	required init(instance: ConnectionInfo) {
+		super.init()
 		self.connectionInfoVersion = instance.connectionInfoVersion
 		self.providerName = instance.providerName
 		self.userId = instance.userId

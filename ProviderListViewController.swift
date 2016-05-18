@@ -27,6 +27,7 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 		case AddProviderDetailSegueIdentifier:
 			var destination = segue.destinationController as! ProviderDetailEditingView
 			destination.providerContainer = self
+			destination.providerToEdit = nil
 			
 		case EditProviderDetailSegueIdentier:
 			var destination = segue.destinationController as! ProviderDetailEditingView
@@ -91,6 +92,9 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 	}
 	
 	func updateExisting(provider: ProviderInfo) {
+		if let activeProvider = arrayController.selectedObjects.first as! ProviderInfo? {
+			activeProvider.setPropertiesFrom(provider)
+		}
 	}
 	
 	// MARK: NSTableViewDelegate

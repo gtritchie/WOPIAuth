@@ -35,8 +35,15 @@ class ProviderDetailsViewController: NSViewController, ProviderDetailEditingView
 			guard isProviderValid(sender) else {
 				return
 			}
-			providerContainer?.addNew(provider)
-			dismissController(sender)
+			
+			if providerToEdit != nil {
+				providerContainer?.updateExisting(provider)
+				dismissController(sender)
+
+			} else if isProviderNameAvailable(sender) {
+				providerContainer?.addNew(provider)
+				dismissController(sender)
+			}
 		}
 	}
 	
@@ -66,7 +73,10 @@ class ProviderDetailsViewController: NSViewController, ProviderDetailEditingView
 			ShowValidationErrorMessage(sender, message: error.localizedDescription)
 			return false
 		}
-		
+		return true
+	}
+	
+	func isProviderNameAvailable(sender: NSButton) -> Bool {
 		guard let nameAvailable = providerContainer?.providerNameAvailable(provider.providerName)
 			where nameAvailable else {
 
@@ -74,7 +84,6 @@ class ProviderDetailsViewController: NSViewController, ProviderDetailEditingView
 				comment: "Message for trying to add item with duplicate Provider Name value"))
 			return false
 		}
-		
 		return true
 	}
 }

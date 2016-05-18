@@ -23,13 +23,8 @@ class ProviderInfo: ModelInfo, NSCoding {
 	}
 	
 	required init(instance: ProviderInfo) {
-		self.providerInfoVersion = instance.providerInfoVersion
-		self.providerName = instance.providerName
-		self.bootstrapper = instance.bootstrapper
-		self.clientId = instance.clientId
-		self.clientSecret = instance.clientSecret
-		self.redirectUrl = instance.redirectUrl
-		self.scope = instance.scope
+		super.init()
+		setPropertiesFrom(instance)
 	}
 	
 	// MARK: Properties
@@ -72,6 +67,16 @@ class ProviderInfo: ModelInfo, NSCoding {
 			return "[providerName=\"\(providerName)\", bootstrapper=\"\(bootstrapper)\", " +
 				"clientId=\"\(clientId)\", clientSecret=\"*\", redirectUrl=\"\(redirectUrl)\", scope=\"\(unwrapStringReplaceNilWithEmpty(scope))\"]"
 		}
+	}
+	
+	func setPropertiesFrom(instance: ProviderInfo) {
+		self.providerInfoVersion = instance.providerInfoVersion
+		self.providerName = instance.providerName
+		self.bootstrapper = instance.bootstrapper
+		self.clientId = instance.clientId
+		self.clientSecret = instance.clientSecret
+		self.redirectUrl = instance.redirectUrl
+		self.scope = instance.scope
 	}
 		
 	// MARK: NSCoding

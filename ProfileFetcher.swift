@@ -70,6 +70,7 @@ public class ProfileFetcher {
 		
 		let authValue = "Bearer \(accessToken)"
 		request.setValue(authValue, forHTTPHeaderField: "Authorization")
+		request.HTTPShouldHandleCookies = false
 		
 		WOPIAuthLogInfo("Invoking profile endpoint via GET: \"\(profileUrlString)\"")
 
