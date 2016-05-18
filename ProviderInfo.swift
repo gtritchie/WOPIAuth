@@ -196,6 +196,7 @@ class ProviderInfo: ModelInfo, NSCoding {
 		Validate contents of `ProviderInfo` object. Throws an NSError for first problem found.
 	*/
 	override func validate() throws {
+		try super.validate()
 		try validateProviderNameString(providerName)
 		try validateBootstrapperString(bootstrapper)
 		try validateClientIdString(clientId)

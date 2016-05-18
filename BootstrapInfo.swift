@@ -159,6 +159,7 @@ class BootstrapInfo: ModelInfo, NSCoding {
 		Validate contents of `BootstrapInfo` object. Throws an NSError for first problem found.
 	*/
 	override func validate() throws {
+		try super.validate()
 		try validateAuthorizationURLString(authorizationURL)
 		try validateTokenIssuanceURLString(tokenIssuanceURL)
 	}

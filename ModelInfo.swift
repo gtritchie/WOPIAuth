@@ -1,7 +1,7 @@
 import Foundation
 
 /**
-`ModelInfo` is abstract base class for model classes.
+	`ModelInfo` is abstract base class for model classes.
 */
 class ModelInfo: NSObject {
 
