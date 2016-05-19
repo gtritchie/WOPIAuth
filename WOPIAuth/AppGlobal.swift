@@ -1,5 +1,4 @@
-
-import Cocoa
+import Foundation
 
 /// Notification used to log a line of text
 let LogLineNotification = "com.microsoft.office.WOPIAuth.LogLineNotification"

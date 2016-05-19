@@ -49,6 +49,12 @@ class ConnectionInfoTests: XCTestCase {
 		XCTAssertFalse(CreateConnectionInfo() != CreateConnectionInfo())
 	}
 
+	func testConnectionCopyConstructionEqual() {
+		let a = CreateConnectionInfo()
+		let b = ConnectionInfo(instance: a)
+		XCTAssertTrue(a == b)
+	}
+
 	func testConnectionDescriptionNotEmpty() {
 		let connection = CreateConnectionInfo()
 		XCTAssertFalse(connection.description.isEmpty)

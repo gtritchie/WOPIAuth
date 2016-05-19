@@ -175,4 +175,76 @@ class ProviderInfoTests: XCTestCase {
 		otherProvider.bootstrapper = "this is something different"
 		XCTAssertTrue(origProvider != otherProvider)
 	}
+	
+	func testProviderKVCValidateProviderName() {
+		let provider = CreateValidProviderInfo()
+		do {
+			var str: NSString? = provider.providerName as NSString?
+			let strPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try provider.validateProviderName(strPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
+	
+	func testProviderKVCValidateBootstrapper() {
+		let provider = CreateValidProviderInfo()
+		do {
+			var str: NSString? = provider.bootstrapper as NSString?
+			let strPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try provider.validateBootstrapper(strPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
+	
+	func testProviderKVCValidateClientId() {
+		let provider = CreateValidProviderInfo()
+		do {
+			var str: NSString? = provider.clientId as NSString?
+			let strPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try provider.validateClientId(strPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
+	
+	func testProviderKVCValidateClientSecret() {
+		let provider = CreateValidProviderInfo()
+		do {
+			var str: NSString? = provider.clientSecret as NSString?
+			let strPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try provider.validateClientSecret(strPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
+	
+	func testProviderKVCValidateRedirectURL() {
+		let provider = CreateValidProviderInfo()
+		do {
+			var str: NSString? = provider.redirectUrl as NSString?
+			let strPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try provider.validateRedirectUrl(strPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
+	
+	func testProviderKVCValidateScope() {
+		let provider = CreateValidProviderInfo()
+		do {
+			var str: NSString? = provider.scope as NSString?
+			let strPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try provider.validateScope(strPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
 }

@@ -94,4 +94,82 @@ class BootstrapInfoTests: XCTestCase {
 		XCTAssertTrue(bootstrap == newBootstrap)
 	}
 	
+	func testBootstrapValidateValidObject() {
+		let bootstrap = CreateBootstrapInfo()
+		XCTAssertTrue(bootstrap.nonThrowValidate())
+	}
+	
+	func testBootstrapValidateInvalidObjectNonHttpsAuthURL() {
+		let bootstrap = CreateBootstrapInfo()
+		bootstrap.authorizationURL = "http://foo.com/auth" // needs to be HTTPS
+		XCTAssertFalse(bootstrap.nonThrowValidate())
+	}
+
+	func testBootstrapValidateInvalidObjectNonHttpsTokenURL() {
+		let bootstrap = CreateBootstrapInfo()
+		bootstrap.tokenIssuanceURL = "http://foo.com/auth" // needs to be HTTPS
+		XCTAssertFalse(bootstrap.nonThrowValidate())
+	}
+
+	func testBootstrapValidateInvalidObjectEmptyTokenURL() {
+		let bootstrap = CreateBootstrapInfo()
+		bootstrap.tokenIssuanceURL = ""
+		XCTAssertFalse(bootstrap.nonThrowValidate())
+	}
+
+	func testBootstrapValidateInvalidObjectEmptyAuthURL() {
+		let bootstrap = CreateBootstrapInfo()
+		bootstrap.authorizationURL = ""
+		XCTAssertFalse(bootstrap.nonThrowValidate())
+	}
+	
+	func testBootstrapValidateAuthURLViaKVCSuccess() {
+		let bootstrap = CreateBootstrapInfo()
+		do {
+			var str: NSString? = bootstrap.authorizationURL as NSString?
+			let authURLStringPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try bootstrap.validateAuthorizationURL(authURLStringPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
+
+	func testBootstrapValidateAuthURLViaKVCFailure() {
+		let bootstrap = CreateBootstrapInfo()
+		do {
+			bootstrap.authorizationURL = "not an https url"
+			var str: NSString? = bootstrap.authorizationURL as NSString?
+			let authURLStringPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try bootstrap.validateAuthorizationURL(authURLStringPointer)
+			XCTAssertTrue(false)
+		} catch {
+			XCTAssertTrue(true)
+		}
+	}
+
+	func testBootstrapValidateTokenURLViaKVCSuccess() {
+		let bootstrap = CreateBootstrapInfo()
+		do {
+			var str: NSString? = bootstrap.tokenIssuanceURL as NSString?
+			let tokenURLStringPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try bootstrap.validateTokenIssuanceURL(tokenURLStringPointer)
+			XCTAssertTrue(true)
+		} catch {
+			XCTAssertTrue(false)
+		}
+	}
+	
+	func testBootstrapValidateTokenURLViaKVCFailure() {
+		let bootstrap = CreateBootstrapInfo()
+		do {
+			bootstrap.tokenIssuanceURL = "not an https url"
+			var str: NSString? = bootstrap.tokenIssuanceURL as NSString?
+			let tokenURLStringPointer = AutoreleasingUnsafeMutablePointer<NSString?>(&str)
+			try bootstrap.validateTokenIssuanceURL(tokenURLStringPointer)
+			XCTAssertTrue(false)
+		} catch {
+			XCTAssertTrue(true)
+		}
+	}
 }

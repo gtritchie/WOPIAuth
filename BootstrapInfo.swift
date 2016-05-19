@@ -9,6 +9,27 @@ private let currentBootstrapInfoVersion = 1
 */
 class BootstrapInfo: ModelInfo, NSCoding {
 
+	// MARK: Properties
+	
+	/// Version of archived `BootstrapInfo`
+	var bootstrapInfoVersion = currentBootstrapInfoVersion
+	let bootstrapInfoVersionKey = "bootstrapInfoVersion"
+	
+	/// The authorization URL for the provider.
+	dynamic var authorizationURL: String = ""
+	let authorizationURLKey = "authorizationURL"
+	
+	/// The token issuance endpoint URL for the provider.
+	dynamic var tokenIssuanceURL: String = ""
+	let tokenIssuanceURLKey = "tokenIssuanceURL"
+	
+	/// Summary of `BootstrapInfo` suitable for logging
+	override var description: String {
+		get {
+			return "[authUrl=\"\(authorizationURL)\", tokenUrl=\"\(tokenIssuanceURL)\"]"
+		}
+	}
+
 	// MARK: Init
 	
 	override init() {
@@ -70,31 +91,9 @@ class BootstrapInfo: ModelInfo, NSCoding {
 		
 		return true
 	}
-	
-	// MARK: Properties
-
-	/// Version of archived `BootstrapInfo`
-	var bootstrapInfoVersion = currentBootstrapInfoVersion
-	let bootstrapInfoVersionKey = "bootstrapInfoVersion"
-
-	/// The authorization URL for the provider.
-	dynamic var authorizationURL: String = ""
-	let authorizationURLKey = "authorizationURL"
-
-	/// The token issuance endpoint URL for the provider.
-	dynamic var tokenIssuanceURL: String = ""
-	let tokenIssuanceURLKey = "tokenIssuanceURL"
-
-	/// Summary of `BootstrapInfo` suitable for logging
-	override var description: String {
-		get {
-			return "[authUrl=\"\(authorizationURL)\", tokenUrl=\"\(tokenIssuanceURL)\"]"
-		}
-	}
 
 	// MARK: NSCoding
 	
-	/// Using `NSCoding` to restore from `NSUserDefaults`
 	func loadFromDecoder(aDecoder: NSCoder) -> Bool {
 		
 		let bootstrapInfoVersionValue = aDecoder.decodeIntegerForKey(bootstrapInfoVersionKey)
@@ -112,7 +111,6 @@ class BootstrapInfo: ModelInfo, NSCoding {
 		return true
 	}
 	
-	/// Using `NSCoding` to save to `NSUserDefaults`
 	func encodeWithCoder(aCoder: NSCoder) {
 		aCoder.encodeInteger(self.bootstrapInfoVersion, forKey: bootstrapInfoVersionKey)
 		aCoder.encodeObject(self.authorizationURL, forKey: authorizationURLKey)

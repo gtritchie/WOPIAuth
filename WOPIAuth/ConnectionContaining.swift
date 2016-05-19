@@ -1,4 +1,4 @@
-import Cocoa
+import Foundation
 
 /**
 	Protocol for an object that can add a new `ConnectionInfo`.

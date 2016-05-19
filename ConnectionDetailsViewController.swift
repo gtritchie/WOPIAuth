@@ -1,27 +1,14 @@
 import Cocoa
 
 /**
-	Controller to manage detailed display of one `ConnectionInfo` and one `ProviderInfo` objects.
+	Controller to manage detailed display of one `ConnectionInfo` object.
 */
-class ConnectionDetailsViewController: NSViewController, ProviderViewing, ConnectionViewing {
+class ConnectionDetailsViewController: NSViewController, ConnectionViewing {
 
 	// MARK: Outlets
 	
 	@IBOutlet weak var refreshButton: NSButton!
 	@IBOutlet weak var refreshProgress: NSProgressIndicator!
-	
-	// MARK: ProviderViewing Protocol
-	
-	/// Currently selected `ProviderInfo`
-	dynamic var selectedProvider: ProviderInfo? {
-		didSet {
-			notifyChildrenOfSelectedProvider(selectedProvider)
-		}
-	}
-
-	func renameProvider(providerName: String) {
-		notifyChildrenOfRenamedProvider(providerName)
-	}
 	
 	// MARK: ConnectionViewing Protocol
 	

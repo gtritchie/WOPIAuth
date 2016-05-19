@@ -34,7 +34,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		self.accessToken = instance.accessToken
 		self.tokenExpiration = instance.tokenExpiration
 		self.refreshToken = instance.refreshToken
-		self.bootstrapInfo = instance.bootstrapInfo.copy() as! BootstrapInfo
+		self.bootstrapInfo = BootstrapInfo(instance: instance.bootstrapInfo)
 	}
 	
 	// MARK: Properties
