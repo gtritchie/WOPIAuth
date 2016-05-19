@@ -144,6 +144,9 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 					var code = ""
 					var tk = ""
 					var sc = ""
+					var error = ""
+					var errorDescription = ""
+					var errorURI = ""
 					if let queryArray = haveComponents?.queryItems {
 						for queryParam in queryArray {
 							let paramLower = queryParam.name.lowercaseString
@@ -163,9 +166,33 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 								if let scValue = queryParam.value {
 									sc = scValue
 								}
+							case "error":
+								warnMixedCaseParam("error", matchedStr: queryParam.name)
+								if let errorValue = queryParam.value {
+									error = errorValue
+								}
+							case "error_description":
+								warnMixedCaseParam("error_description", matchedStr: queryParam.name)
+								if let errorDescriptionValue = queryParam.value {
+									errorDescription = errorDescriptionValue
+								}
+							case "error_uri":
+								warnMixedCaseParam("error_uri", matchedStr: queryParam.name)
+								if let errorURIValue = queryParam.value {
+									errorURI = errorURIValue
+								}
 							default:
 								WOPIAuthLogWarning("Unrecognized redir parameter: \(queryParam.name)")
 							}
+						}
+					}
+					if !error.isEmpty {
+						WOPIAuthLogError("Error from redir: \(error)")
+						if !errorDescription.isEmpty {
+							WOPIAuthLogError("Error Description: \(errorDescription)")
+						}
+						if !errorURI.isEmpty {
+							WOPIAuthLogError("Error URI: \(errorURI)")
 						}
 					}
 					if !code.isEmpty {
@@ -181,13 +208,16 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 						authResult!.authCode = code
 						authResult!.postAuthTokenIssuanceURL = tk
 						authResult!.sessionContext = sc
+						authResult!.error = error
+						authResult!.errorDescription = errorDescription
+						authResult!.errorURI = errorURI
 						
-						decisionHandler(.Cancel)
-						dismissController(self)
 					}
 					else {
 						WOPIAuthLogError("Did not find valid auth_code on redir")
 					}
+					decisionHandler(.Cancel)
+					dismissController(self)
 				}
 			}
 		}

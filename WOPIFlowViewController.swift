@@ -86,6 +86,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		currentProgress!.stopAnimation(nil)
 		WOPIAuthLogError("FAILURE: WOPI client authentication flow during \(currentStep!) phase.")
 		WOPIAuthLogError("======================================================================")
+		currentStep = nil
 	}
 	
 	func completeCurrentStep() {
