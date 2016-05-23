@@ -72,7 +72,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 	let accessTokenKey = "accessToken"
 	
 	/// The expiration time for the access-token in seconds (0 means never expires)
-	dynamic var tokenExpiration: Int64 = 0
+	dynamic var tokenExpiration: Int32 = 0
 	let tokenExpirationKey = "tokenExpiration"
 
 	/// The refresh-token
@@ -110,7 +110,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		let postAuthTokenIssuanceURLStr = aDecoder.decodeObjectForKey(postAuthTokenIssuanceURLKey) as! String
 		let sessionContextStr = aDecoder.decodeObjectForKey(sessionContextKey) as! String
 		let accessTokenStr = aDecoder.decodeObjectForKey(accessTokenKey) as! String
-		let tokenExpirationValue = aDecoder.decodeInt64ForKey(tokenExpirationKey)
+		let tokenExpirationValue = aDecoder.decodeIntForKey(tokenExpirationKey)
 		let refreshTokenStr = aDecoder.decodeObjectForKey(refreshTokenKey) as! String
 		let bootstrapInfoObj = aDecoder.decodeObjectForKey(bootstrapInfoKey) as! BootstrapInfo
 		
@@ -138,7 +138,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		aCoder.encodeObject(self.postAuthTokenIssuanceURL, forKey: postAuthTokenIssuanceURLKey)
 		aCoder.encodeObject(self.sessionContext, forKey: sessionContextKey)
 		aCoder.encodeObject(self.accessToken, forKey: accessTokenKey)
-		aCoder.encodeInt64(self.tokenExpiration, forKey: tokenExpirationKey)
+		aCoder.encodeInt32(self.tokenExpiration, forKey: tokenExpirationKey)
 		aCoder.encodeObject(self.refreshToken, forKey: refreshTokenKey)
 		aCoder.encodeObject(self.bootstrapInfo, forKey: bootstrapInfoKey)
 	}

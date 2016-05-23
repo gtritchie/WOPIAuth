@@ -5,7 +5,7 @@ import Foundation
 */
 class TokenResult {
 	var accessToken: String = ""
-	var tokenExpiration: Int64 = 0
+	var tokenExpiration: Int32 = 0
 	var refreshToken: String = ""
 	
 	/**
@@ -18,6 +18,11 @@ class TokenResult {
 				WOPIAuthLogError("Unable to extract access_token")
 				return false
 			}
+			guard !token.isEmpty else {
+				WOPIAuthLogError("Empty access_token")
+				return false
+			}
+			
 			let expiration = topLevelDict["expires_in"] as? NSNumber
 			let refresh = topLevelDict["refresh_token"] as? String
 			
@@ -25,7 +30,7 @@ class TokenResult {
 			WOPIAuthLogInfo("Access token received")
 			if expiration != nil {
 				WOPIAuthLogInfo("Expiration time received")
-				tokenExpiration = expiration!.longLongValue
+				tokenExpiration = expiration!.intValue
 			}
 			if refresh != nil {
 				WOPIAuthLogInfo("Refresh token received")
