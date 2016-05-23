@@ -132,11 +132,7 @@ public class TokenFetcher {
 		}
 
 		let info = TokenResult()
-		guard info.populateFromResponseData(data) == true else {
-			logErrorBody(data)
-			throw self.errorWithMessage("Unable to parse response body")
-		}
-		
+		try info.populateFromResponseData(data)
 		return info
 	}
 	

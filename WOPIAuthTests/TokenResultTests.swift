@@ -64,26 +64,43 @@ class TokenResultTests: XCTestCase {
 	}
 
 	func testEmptyJSONTokenResult() {
-		XCTAssertFalse(TokenResult().populateFromResponseData(noJSON()))
+		do {
+			try TokenResult().populateFromResponseData(noJSON())
+			XCTAssertTrue(false)
+		} catch {
+			XCTAssertTrue(true)
+		}
 	}
 	
 	func testNoAccessTokenJSONTokenResult() {
-		XCTAssertFalse(TokenResult().populateFromResponseData(noAccessTokenJSON()))
+		do {
+			try TokenResult().populateFromResponseData(noAccessTokenJSON())
+			XCTAssertTrue(false)
+		} catch {
+			XCTAssertTrue(true)
+		}
 	}
 
 	func testValidTokenResult() {
 		let tokenResult = TokenResult()
-		tokenResult.populateFromResponseData(validJSON())
-
-		XCTAssertTrue(tokenResult.populateFromResponseData(validJSON()))
-		XCTAssertEqual(tokenResult.accessToken, accessTokenValue)
-		XCTAssertEqual(tokenResult.refreshToken, refreshTokenValue)
-		XCTAssertTrue(tokenResult.tokenExpiration == expirationValue)
+		do {
+			try tokenResult.populateFromResponseData(validJSON())
+			XCTAssertEqual(tokenResult.accessToken, accessTokenValue)
+			XCTAssertEqual(tokenResult.refreshToken, refreshTokenValue)
+			XCTAssertTrue(tokenResult.tokenExpiration == expirationValue)
+		} catch {
+			XCTAssertTrue(false)
+		}
 	}
 	
 	func testEmptyTokenResult() {
 		let tokenResult = TokenResult()
-		XCTAssertFalse(tokenResult.populateFromResponseData(emptyAccessTokenJSON()))
+		do {
+			try tokenResult.populateFromResponseData(emptyAccessTokenJSON())
+			XCTAssertTrue(false)
+		} catch {
+			XCTAssertTrue(true)
+		}
 	}
 
 }
