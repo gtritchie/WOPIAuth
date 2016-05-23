@@ -143,7 +143,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				WOPIAuthLogInfo("bootstrapper=\(bootstrapper)")
 				self.connection!.bootstrapInfo = bootstrapper
 				self.signIn()
-			case .Failure:
+			case .Failure(let error):
+				WOPIAuthLogNSError(error)
 				self.failCurrentStep()
 			}
 		}
@@ -163,7 +164,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 			self.connection!.postAuthTokenIssuanceURL = authResult.postAuthTokenIssuanceURL
 			self.connection!.sessionContext = authResult.sessionContext
 			getTokens()
-		case .Failure:
+		case .Failure(let error):
+			WOPIAuthLogNSError(error)
 			self.failCurrentStep()
 		}
 	}
@@ -191,7 +193,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				self.connection!.refreshToken = tokenResult.refreshToken
 				self.getProfile()
 			case .Failure(let error):
-				WOPIAuthLogError(error.localizedDescription)
+				WOPIAuthLogNSError(error)
 				self.failCurrentStep()
 			}
 		}
@@ -213,7 +215,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				WOPIAuthLogInfo("Ecosystem URL: \(profileResult.ecosystemUrl)")
 				self.finishFlow()
 			case .Failure(let error):
-				WOPIAuthLogError(error.localizedDescription)
+				WOPIAuthLogNSError(error)
 				self.failCurrentStep()
 			}
 		}

@@ -79,5 +79,17 @@ class LoggingSenderTests: XCTestCase {
 		XCTAssert(receiver.gotError == false)
 		XCTAssert(receiver.gotWarning == true)
 	}
+	
+	func testLogNSError() {
+		let message = "Doom and more doom!"
+		let receiver = LoggingReceiver()
+
+		let error = NSError(domain: "gloom", code: 2, userInfo: [NSLocalizedDescriptionKey: message])
+		WOPIAuthLogNSError(error)
+		
+		XCTAssert(receiver.message == message)
+		XCTAssert(receiver.gotError == true)
+		XCTAssert(receiver.gotWarning == false)
+	}
 
 }

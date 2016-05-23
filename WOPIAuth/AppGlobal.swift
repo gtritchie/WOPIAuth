@@ -32,3 +32,10 @@ func WOPIAuthLogWarning(lineOfText: String) {
 	let userInfo = [LogLineNotificationMessageKey : lineOfText, LogLineNotificationIsWarningKey : "WarningFlag"]
 	notificationCenter.postNotificationName(LogLineNotification, object: nil, userInfo: userInfo)
 }
+
+/**
+	Log an NSError as an error message
+*/
+func WOPIAuthLogNSError(error: NSError) {
+	WOPIAuthLogError(error.localizedDescription)
+}
