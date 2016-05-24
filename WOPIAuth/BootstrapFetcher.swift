@@ -62,8 +62,7 @@ public class BootstrapFetcher {
 		WOPIAuthLogInfo(String(format: NSLocalizedString("Invoking bootstrapper: %@", comment: ""), urlString))
 		let task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchBootstrapResult
-			if let data = data {
-				WOPIAuthLogInfo("Received \(data.length) bytes")
+			if data != nil {
 				if let response = response as? NSHTTPURLResponse {
 					if response.statusCode == 401 {
 						
@@ -72,7 +71,8 @@ public class BootstrapFetcher {
 							if info.populateFromAuthenticateHeader(authHeader) == true {
 								result = FetchBootstrapResult { info }
 							} else {
-								let error = self.errorWithCode(1, localizedDescription: "Unable to parse WWW-Authenticate header: \"\(authHeader)\"")
+								let error = self.errorWithCode(1, localizedDescription:
+									String(format: NSLocalizedString("Unable to parse WWW-Authenticate header: \"%@\"", comment: ""), authHeader))
 								result = .Failure(error)
 							}
 						} else {
@@ -80,7 +80,8 @@ public class BootstrapFetcher {
 							result = .Failure(error)
 						}
 					} else {
-						let error = self.errorWithCode(1, localizedDescription: "Non-401 status code: \(response.statusCode)")
+						let error = self.errorWithCode(1, localizedDescription: String(format: NSLocalizedString("Non-401 status code: %d", comment: ""),
+							response.statusCode))
 						result = .Failure(error)
 					}
 				} else {
