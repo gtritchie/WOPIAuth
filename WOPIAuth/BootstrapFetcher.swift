@@ -48,7 +48,7 @@ public class BootstrapFetcher {
 	
 	func fetchBootstrapInfoUsingCompletionHandler(completionHandler: FetchBootstrapResult -> Void) {
 		guard let url = NSURL(string: urlString) else {
-			let error = errorWithCode(1, localizedDescription: "Malformed bootstrapper URL: \"\(urlString)\"")
+			let error = errorWithCode(1, localizedDescription: String(format: NSLocalizedString("Malformed bootstrapper URL: %@", comment: ""), urlString))
 			let result: FetchBootstrapResult = .Failure(error)
 			completionHandler(result)
 			return
@@ -59,7 +59,7 @@ public class BootstrapFetcher {
 		request.setValue("Word/1.22.16051600 CFNetwork/758.2.8 Darwin/15.4.0", forHTTPHeaderField: "User-Agent")
 		request.HTTPShouldHandleCookies = false
 
-		WOPIAuthLogInfo("Invoking bootstrapper: \"\(urlString)\"")
+		WOPIAuthLogInfo(String(format: NSLocalizedString("Invoking bootstrapper: %@", comment: ""), urlString))
 		let task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchBootstrapResult
 			if let data = data {
@@ -76,7 +76,7 @@ public class BootstrapFetcher {
 								result = .Failure(error)
 							}
 						} else {
-							let error = self.errorWithCode(1, localizedDescription: "No WWW-Authenticate header on response")
+							let error = self.errorWithCode(1, localizedDescription: NSLocalizedString("No WWW-Authenticate header on response", comment: ""))
 							result = .Failure(error)
 						}
 					} else {
@@ -84,11 +84,11 @@ public class BootstrapFetcher {
 						result = .Failure(error)
 					}
 				} else {
-					let error = self.errorWithCode(1, localizedDescription: "App Issue: Unexpected response object")
+					let error = self.errorWithCode(1, localizedDescription: NSLocalizedString("App Issue: Unexpected response object", comment: ""))
 					result = .Failure(error)
 				}
 			} else {
-				WOPIAuthLogError("Unable to make call to bootstrapper")
+				WOPIAuthLogError(NSLocalizedString("Unable to make call to bootstrapper", comment: ""))
 				result = .Failure(error!)
 			}
 			NSOperationQueue.mainQueue().addOperationWithBlock {

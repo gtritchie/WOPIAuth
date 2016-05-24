@@ -26,7 +26,8 @@ class BootstrapInfo: ModelInfo, NSCoding {
 	/// Summary of `BootstrapInfo` suitable for logging
 	override var description: String {
 		get {
-			return "[authUrl=\"\(authorizationURL)\", tokenUrl=\"\(tokenIssuanceURL)\"]"
+			return String(format: NSLocalizedString("[authUrl=\"%1$@\", tokenUrl=\"%2$@\"]", comment: ""),
+			              authorizationURL, tokenIssuanceURL)
 		}
 	}
 
@@ -62,8 +63,6 @@ class BootstrapInfo: ModelInfo, NSCoding {
 		let tokens: [String] = trimHeader.componentsSeparatedByCharactersInSet(separators)
 		
 		var nameValue = [String: String]()
-
-		// TODO: Pretty sure there's a Swiftier way to do all of this
 		var lastKey = ""
 		for (index, token) in tokens.enumerate() {
 			var trimmedToken = token.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -78,11 +77,11 @@ class BootstrapInfo: ModelInfo, NSCoding {
 		}
 
 		guard let authUri = nameValue["authorization_uri"] else {
-			WOPIAuthLogError("No authorization_uri in WWW-Authenticated header")
+			WOPIAuthLogError(NSLocalizedString("No authorization_uri in WWW-Authenticate header", comment: ""))
 			return false
 		}
 		guard let tokenUri = nameValue["tokenIssuance_uri"] else {
-			WOPIAuthLogError("No tokenIssuance_uri in WWW-Authenticated header")
+			WOPIAuthLogError(NSLocalizedString("No tokenIssuance_uri in WWW-Authenticate header", comment: ""))
 			return false
 		}
 		
@@ -98,7 +97,7 @@ class BootstrapInfo: ModelInfo, NSCoding {
 		
 		let bootstrapInfoVersionValue = aDecoder.decodeIntegerForKey(bootstrapInfoVersionKey)
 		guard bootstrapInfoVersionValue == currentBootstrapInfoVersion else {
-			WOPIAuthLogError("Unsupported \(bootstrapInfoVersionKey)")
+			WOPIAuthLogError(NSLocalizedString("Unsupported boostrapper archive version", comment: ""))
 			return false
 		}
 
