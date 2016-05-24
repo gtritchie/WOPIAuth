@@ -25,7 +25,7 @@ class TokenResultTests: XCTestCase {
 		do {
 			return try NSJSONSerialization.dataWithJSONObject(jsonItems, options: NSJSONWritingOptions(rawValue: 0))
 		} catch {
-			XCTAssertFalse(true)
+			XCTFail()
 			return noJSON()
 		}
 	}
@@ -42,7 +42,7 @@ class TokenResultTests: XCTestCase {
 		do {
 			return try NSJSONSerialization.dataWithJSONObject(jsonItems, options: NSJSONWritingOptions(rawValue: 0))
 		} catch {
-			XCTAssertFalse(true)
+			XCTFail()
 			return noJSON()
 		}
 	}
@@ -58,48 +58,92 @@ class TokenResultTests: XCTestCase {
 		do {
 			return try NSJSONSerialization.dataWithJSONObject(jsonItems, options: NSJSONWritingOptions(rawValue: 0))
 		} catch {
-			XCTAssertFalse(true)
+			XCTFail()
 			return noJSON()
 		}
 	}
+	
+	private func validResponse() -> NSHTTPURLResponse {
+		return NSHTTPURLResponse(URL: NSURL(), statusCode: 200, HTTPVersion: "HTTP/1.1", headerFields: nil)!
+	}
 
-	func testEmptyJSONTokenResult() {
+	private func invalidResponse() -> NSHTTPURLResponse {
+		return NSHTTPURLResponse(URL: NSURL(), statusCode: 500, HTTPVersion: "HTTP/1.1", headerFields: nil)!
+	}
+	
+	func testValidTokenResponse() {
 		do {
-			try TokenResult().populateFromResponseData(noJSON())
-			XCTAssertTrue(false)
+			let result = try TokenResult.createFromResponse(validJSON(), response: validResponse(), error: nil)
+			XCTAssertEqual(result.accessToken, accessTokenValue)
+			XCTAssertEqual(result.refreshToken, refreshTokenValue)
+			XCTAssertTrue(result.tokenExpiration == expirationValue)
 		} catch {
-			XCTAssertTrue(true)
+			XCTFail()
+		}
+	}
+
+	func testEmptyJSONTokenResponse() {
+		do {
+			try TokenResult.createFromResponse(noJSON(), response: validResponse(), error: nil)
+			XCTFail()
+		} catch {
 		}
 	}
 	
-	func testNoAccessTokenJSONTokenResult() {
+	func testNoAccessTokenJSONTokenResponse() {
 		do {
-			try TokenResult().populateFromResponseData(noAccessTokenJSON())
-			XCTAssertTrue(false)
+			try TokenResult.createFromResponse(noAccessTokenJSON(), response: validResponse(), error: nil)
+			XCTFail()
 		} catch {
-			XCTAssertTrue(true)
-		}
-	}
-
-	func testValidTokenResult() {
-		let tokenResult = TokenResult()
-		do {
-			try tokenResult.populateFromResponseData(validJSON())
-			XCTAssertEqual(tokenResult.accessToken, accessTokenValue)
-			XCTAssertEqual(tokenResult.refreshToken, refreshTokenValue)
-			XCTAssertTrue(tokenResult.tokenExpiration == expirationValue)
-		} catch {
-			XCTAssertTrue(false)
 		}
 	}
 	
-	func testEmptyTokenResult() {
-		let tokenResult = TokenResult()
+	func testEmptyTokenResponse() {
 		do {
-			try tokenResult.populateFromResponseData(emptyAccessTokenJSON())
-			XCTAssertTrue(false)
+			try TokenResult.createFromResponse(emptyAccessTokenJSON(), response: validResponse(), error: nil)
+			XCTFail()
 		} catch {
-			XCTAssertTrue(true)
+		}
+	}
+
+	func testNilTokenResponseDataNilError() {
+		do {
+			try TokenResult.createFromResponse(nil, response: nil, error: nil)
+			XCTFail()
+		} catch {
+		}
+	}
+
+	func testNilTokenResponseDataWithError() {
+		let error = NSError(domain: "test", code: 1, userInfo: nil)
+		do {
+			try TokenResult.createFromResponse(nil, response: nil, error: error)
+			XCTFail()
+		} catch {
+		}
+	}
+
+	func testNilTokenResponse() {
+		do {
+			try TokenResult.createFromResponse(validJSON(), response: nil, error: nil)
+			XCTFail()
+		} catch {
+		}
+	}
+
+	func testNilTokenResponseWithEmptyData() {
+		do {
+			try TokenResult.createFromResponse(noJSON(), response: nil, error: nil)
+			XCTFail()
+		} catch {
+		}
+	}
+
+	func testInvalidResponseCode() {
+		do {
+			try TokenResult.createFromResponse(noJSON(), response: invalidResponse(), error: nil)
+			XCTFail()
+		} catch {
 		}
 	}
 
