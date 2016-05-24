@@ -1231,7 +1231,7 @@ Gw
                     </connections>
                 </viewController>
                 <customObject id="jBh-P0-Ka9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController objectClassName="WOPIAuth.ProviderInfo" id="iLw-ba-yrx">
+                <arrayController objectClassName="WOPIAuth.ProviderInfo" preservesSelection="NO" avoidsEmptySelection="NO" id="iLw-ba-yrx">
                     <connections>
                         <binding destination="hBX-vS-hZ1" name="contentArray" keyPath="self.connections" id="F5i-NY-uPP"/>
                         <binding destination="hBX-vS-hZ1" name="filterPredicate" keyPath="self.predicate" id="CR5-e5-jvd"/>
@@ -1738,10 +1738,10 @@ DQ
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="266"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="433" height="266"/>
+                                            <size key="minSize" width="448" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="433" height="266"/>
+                                            <size key="minSize" width="448" height="266"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <connections>
                                                 <binding destination="2j6-cB-pb3" name="attributedString" keyPath="log" id="Ejk-HI-Evk">
@@ -1763,7 +1763,7 @@ DQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Ngi-zc-Gh0">
-                                    <rect key="frame" x="434" y="1" width="15" height="266"/>
+                                    <rect key="frame" x="433" y="1" width="16" height="266"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
