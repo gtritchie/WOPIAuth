@@ -44,6 +44,7 @@
 		4EB39DA21CDD124A004101CF /* ProfileResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA11CDD124A004101CF /* ProfileResult.swift */; };
 		4EB39DA41CDD1254004101CF /* ProfileFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */; };
 		4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */; };
+		4EBFBA441CF4BAEB00E75267 /* ProfileResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFBA431CF4BAEB00E75267 /* ProfileResultTests.swift */; };
 		4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */; };
 		4EE81E3B1CF3B4B500B481BD /* TokenResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE81E3A1CF3B4B500B481BD /* TokenResultTests.swift */; };
 		4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918461CD021FE005A5186 /* ConnectionViewing.swift */; };
@@ -111,6 +112,7 @@
 		4EB39DA11CDD124A004101CF /* ProfileResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFetcher.swift; sourceTree = "<group>"; };
 		4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscExtensions.swift; sourceTree = "<group>"; };
+		4EBFBA431CF4BAEB00E75267 /* ProfileResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileResultTests.swift; sourceTree = "<group>"; };
 		4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionContaining.swift; sourceTree = "<group>"; };
 		4EE81E3A1CF3B4B500B481BD /* TokenResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResultTests.swift; sourceTree = "<group>"; };
 		4EF918461CD021FE005A5186 /* ConnectionViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewing.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				4E267E5E1CD97B3600C8F4D9 /* ConnectionInfoTests.swift */,
 				4E223AC41CDA9AFB0035665C /* BootstrapInfoTests.swift */,
 				4EE81E3A1CF3B4B500B481BD /* TokenResultTests.swift */,
+				4EBFBA431CF4BAEB00E75267 /* ProfileResultTests.swift */,
 			);
 			path = WOPIAuthTests;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EBFBA441CF4BAEB00E75267 /* ProfileResultTests.swift in Sources */,
 				4E223AC51CDA9AFB0035665C /* BootstrapInfoTests.swift in Sources */,
 				4E1CBB871CD40AA3001235DB /* ProviderInfoTests.swift in Sources */,
 				4EE81E3B1CF3B4B500B481BD /* TokenResultTests.swift in Sources */,

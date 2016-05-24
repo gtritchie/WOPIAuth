@@ -212,7 +212,6 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				self.connection!.userId = profileResult.userId
 				self.connection!.userName = profileResult.signInName
 				self.connection!.friendlyName = profileResult.friendlyName
-				WOPIAuthLogInfo("Ecosystem URL: \(profileResult.ecosystemUrl)")
 				self.finishFlow()
 			case .Failure(let error):
 				WOPIAuthLogNSError(error)

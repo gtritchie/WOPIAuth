@@ -60,7 +60,7 @@ class TokenResult {
 		}
 	}
 	
-	/// Return an `NSError` object with this object
+	/// Return an `NSError` object with message
 	static func errorWithMessage(localizedDescription: String) -> NSError {
 		WOPIAuthLogError(localizedDescription)
 		return NSError(domain: "Token Result", code: 1, userInfo: [NSLocalizedDescriptionKey: localizedDescription])

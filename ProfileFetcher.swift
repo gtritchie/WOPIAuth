@@ -74,7 +74,7 @@ public class ProfileFetcher {
 			let result: FetchProfileResult
 			
 			do {
-				let info = try self.handleProfileResponse(data, response: response, error: error)
+				let info = try ProfileResult.createFromResponse(data, response: response, error: error)
 				result = FetchProfileResult { info }
 			}
 			catch let error as NSError {
@@ -89,27 +89,5 @@ public class ProfileFetcher {
 			}
 		}
 		task.resume()
-	}
-	
-	func handleProfileResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> ProfileResult {
-		guard let data = data else {
-			WOPIAuthLogError("Unable to make call to profile endpoint")
-			throw error!
-		}
-		
-		guard let response = response as? NSHTTPURLResponse else {
-			throw errorWithMessage("App Issue: Unexpected response object")
-		}
-		
-		guard response.statusCode == 200 else {
-			throw errorWithMessage("Profile endpoint responsed with \(response.statusCode)")
-		}
-		
-		let info = ProfileResult()
-		guard info.populateFromResponseData(data) == true else {
-			throw errorWithMessage("Unable to parse profile response body")
-		}
-		
-		return info
 	}
 }
