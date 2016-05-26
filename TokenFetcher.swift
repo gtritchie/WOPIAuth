@@ -3,18 +3,15 @@ import Foundation
 /**
 	Perform a POST to the token exchange endpoint, following oauth2 standards.
 */
-class TokenFetcher {
+class TokenFetcher: Fetcher {
 	
 	// MARK: Properties
 	
-	private var tokenUrlString: String
 	private var clientId: String
 	private var clientSecret: String
 	private var authCode: String
 	private var redirectUri: String
 	private var sessionContext: String
-	
-	private let session: NSURLSession
 	
 	/// Used to return results from async call
 	enum FetchTokenResult {
@@ -34,29 +31,16 @@ class TokenFetcher {
 	
 	// MARK: Life Cycle
 	
-	init(tokenUrl: String, clientId: String, clientSecret: String, authCode: String, redirectUri: String, sessionContext: String) {
-		tokenUrlString = tokenUrl
+	init(tokenURL: NSURL, clientId: String, clientSecret: String, authCode: String, redirectUri: String, sessionContext: String) {
 		self.clientId = clientId
 		self.clientSecret = clientSecret
 		self.authCode = authCode
 		self.redirectUri = redirectUri
 		self.sessionContext = sessionContext
-		let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-		session = NSURLSession(configuration: config)
+		super.init(url: tokenURL, errorDomain: "Token Exchange")
 	}
 
-	func errorWithMessage(localizedDescription: String) -> NSError {
-		WOPIAuthLogError(localizedDescription)
-		return NSError(domain: "Token Exchange", code: 1, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
-	}
-	
 	func fetchTokensUsingCompletionHandler(completionHandler: FetchTokenResult -> Void) {
-		guard let url = NSURL(string: tokenUrlString) else {
-			let result: FetchTokenResult = .Failure(errorWithMessage("Malformed token endpoint URL: \"\(tokenUrlString)\""))
-			completionHandler(result)
-			return
-		}
-		
 		let request = NSMutableURLRequest(URL: url)
 		
 		request.HTTPMethod = "POST"
@@ -82,7 +66,7 @@ class TokenFetcher {
 
 		let postString = formEncodedQueryStringFor(postParams)
 
-		WOPIAuthLogInfo("Invoking token endpoint via POST: \"\(tokenUrlString)\"")
+		WOPIAuthLogInfo("Invoking token endpoint via POST: \"\(url.absoluteString)\"")
 		WOPIAuthLogInfo("POST body=\(postString)")
 
 		guard let encoded = postString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) else {
@@ -94,7 +78,7 @@ class TokenFetcher {
 		
 		request.HTTPBody = encoded
 
-		let task = session.dataTaskWithRequest(request) { data, response, error in
+		task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchTokenResult
 			
 			do {
@@ -111,7 +95,7 @@ class TokenFetcher {
 				completionHandler(result)
 			}
 		}
-		task.resume()
+		task!.resume()
 	}
 
 }

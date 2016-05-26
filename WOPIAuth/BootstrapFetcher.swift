@@ -52,21 +52,21 @@ class BootstrapFetcher: Fetcher {
 							if info.populateFromAuthenticateHeader(authHeader) == true {
 								result = FetchBootstrapResult { info }
 							} else {
-								let error = self.errorWithCode(1, localizedDescription:
+								let error = self.errorWithMessage(
 									String(format: NSLocalizedString("Unable to parse WWW-Authenticate header: \"%@\"", comment: ""), authHeader))
 								result = .Failure(error)
 							}
 						} else {
-							let error = self.errorWithCode(1, localizedDescription: NSLocalizedString("No WWW-Authenticate header on response", comment: ""))
+							let error = self.errorWithMessage(NSLocalizedString("No WWW-Authenticate header on response", comment: ""))
 							result = .Failure(error)
 						}
 					} else {
-						let error = self.errorWithCode(1, localizedDescription: String(format: NSLocalizedString("Non-401 status code: %d", comment: ""),
+						let error = self.errorWithMessage(String(format: NSLocalizedString("Non-401 status code: %d", comment: ""),
 							response.statusCode))
 						result = .Failure(error)
 					}
 				} else {
-					let error = self.errorWithCode(1, localizedDescription: NSLocalizedString("App Issue: Unexpected response object", comment: ""))
+					let error = self.errorWithMessage(NSLocalizedString("App Issue: Unexpected response object", comment: ""))
 					result = .Failure(error)
 				}
 			} else if let error = error {

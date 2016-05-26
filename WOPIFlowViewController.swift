@@ -25,22 +25,23 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	var container: ConnectionContaining?
 
 	private var connection: ConnectionInfo?
-	
+
+	/// In-process request
+	var activeFetcher: Fetcher?
+
 	// MARK: Actions
 	
 	@IBAction func closeSheet(sender: NSButton) {
 		if currentStep != nil {
 			failCurrentStep()
 		}
-		if bootstrapFetcher != nil {
-			bootstrapFetcher!.cancel()
-			bootstrapFetcher = nil
+		if activeFetcher != nil {
+			activeFetcher!.cancel()
+			activeFetcher = nil
 		}
 		dismissController(sender)
 	}
 	
-	// TEMPORARY
-	var bootstrapFetcher: BootstrapFetcher?
 	
 	// MARK: Outlets
 	
@@ -150,8 +151,9 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 			return
 		}
 
-		bootstrapFetcher = BootstrapFetcher(url: url)
-		bootstrapFetcher!.fetchBootstrapInfoUsingCompletionHandler { (result) in
+		let bootstrapFetcher = BootstrapFetcher(url: url)
+		activeFetcher = bootstrapFetcher
+		bootstrapFetcher.fetchBootstrapInfoUsingCompletionHandler { (result) in
 			switch result {
 			case .Success(let bootstrapper):
 				WOPIAuthLogInfo("Bootstrapper got expected 401 response with header")
@@ -162,7 +164,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				WOPIAuthLogNSError(error)
 				self.failCurrentStep()
 			}
-			self.bootstrapFetcher = nil
+			self.activeFetcher = nil
 		}
 	}
 	
@@ -197,10 +199,18 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		} else {
 			WOPIAuthLogInfo("Using standard token exchange URL: \(tokenEndpointUrl)")
 		}
-		let tokenFetcher = TokenFetcher(tokenUrl: tokenEndpointUrl, clientId: provider!.clientId,
+		
+		guard let tokenUrl = NSURL(string: tokenEndpointUrl) else {
+			WOPIAuthLogError("Malformed token endpoint URL: \"\(tokenEndpointUrl)\"")
+			failCurrentStep()
+			return
+		}
+
+		let tokenFetcher = TokenFetcher(tokenURL: tokenUrl, clientId: provider!.clientId,
 		                                clientSecret: provider!.clientSecret, authCode: authCode!,
 		                                redirectUri: provider!.redirectUrl,
 		                                sessionContext: connection!.sessionContext)
+		activeFetcher = tokenFetcher
 		tokenFetcher.fetchTokensUsingCompletionHandler { (result) in
 			switch result {
 			case .Success(let tokenResult):
@@ -212,6 +222,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				WOPIAuthLogNSError(error)
 				self.failCurrentStep()
 			}
+			self.activeFetcher = nil
 		}
 	}
 	
