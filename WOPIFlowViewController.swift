@@ -32,8 +32,15 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		if currentStep != nil {
 			failCurrentStep()
 		}
+		if bootstrapFetcher != nil {
+			bootstrapFetcher!.cancel()
+			bootstrapFetcher = nil
+		}
 		dismissController(sender)
 	}
+	
+	// TEMPORARY
+	var bootstrapFetcher: BootstrapFetcher?
 	
 	// MARK: Outlets
 	
@@ -135,8 +142,16 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		}
 		
 		WOPIAuthLogInfo("Provider=\(String(provider!))")
-		let fetcher = BootstrapFetcher(url: provider!.bootstrapper)
-		fetcher.fetchBootstrapInfoUsingCompletionHandler { (result) in
+		
+		guard let url = NSURL(string: provider!.bootstrapper) else {
+			WOPIAuthLogError(String(format: NSLocalizedString("Malformed bootstrapper URL: %@", comment: ""),
+				provider!.bootstrapper))
+			failCurrentStep()
+			return
+		}
+
+		bootstrapFetcher = BootstrapFetcher(url: url)
+		bootstrapFetcher!.fetchBootstrapInfoUsingCompletionHandler { (result) in
 			switch result {
 			case .Success(let bootstrapper):
 				WOPIAuthLogInfo("Bootstrapper got expected 401 response with header")
@@ -147,6 +162,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				WOPIAuthLogNSError(error)
 				self.failCurrentStep()
 			}
+			self.bootstrapFetcher = nil
 		}
 	}
 	

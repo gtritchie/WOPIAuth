@@ -32,6 +32,7 @@
 		4E8CB5C51CB759C400769F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C31CB759C400769F0D /* Main.storyboard */; };
 		4E8CB5DB1CB759C400769F0D /* WOPIAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */; };
 		4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */; };
+		4E9C96071CF6A42500EA8EFE /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C96061CF6A42500EA8EFE /* Fetcher.swift */; };
 		4EA2C86A1CD0090D00487818 /* ConnectionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA2C8691CD0090D00487818 /* ConnectionsListViewController.swift */; };
 		4EA398E21CE65ABF00105C5B /* P_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA398E11CE65ABF00105C5B /* P_extensions.swift */; };
 		4EA5A3271CCFE1DB00828EE1 /* ProviderViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA5A3261CCFE1DB00828EE1 /* ProviderViewing.swift */; };
@@ -100,6 +101,7 @@
 		4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOPIAuthUITests.swift; sourceTree = "<group>"; };
 		4E8CB5DC1CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
+		4E9C96061CF6A42500EA8EFE /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		4EA2C8691CD0090D00487818 /* ConnectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsListViewController.swift; sourceTree = "<group>"; };
 		4EA398E11CE65ABF00105C5B /* P_extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P_extensions.swift; sourceTree = "<group>"; };
 		4EA5A3261CCFE1DB00828EE1 /* ProviderViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderViewing.swift; path = ../ProviderViewing.swift; sourceTree = "<group>"; };
@@ -149,16 +151,17 @@
 			children = (
 				4E592BCC1CBC869500A67FEF /* ClientInfo.swift */,
 				4E592BCA1CBC868500A67FEF /* BootstrapInfo.swift */,
-				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
 				4E592BC81CBC867200A67FEF /* ProviderInfo.swift */,
 				4E100ACB1CC0459100AFA37E /* Preferences.swift */,
 				4E456F241CCFF9F700E1BE18 /* ConnectionInfo.swift */,
 				4E0D651B1CD25DFC00E4F336 /* AuthResult.swift */,
-				4E223AC61CDAAB090035665C /* TokenFetcher.swift */,
-				4E223AC81CDAACF30035665C /* TokenResult.swift */,
 				4EB39DA11CDD124A004101CF /* ProfileResult.swift */,
-				4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */,
 				4E7C88311CE936370064DF66 /* ModelInfo.swift */,
+				4E223AC81CDAACF30035665C /* TokenResult.swift */,
+				4E9C96061CF6A42500EA8EFE /* Fetcher.swift */,
+				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
+				4E223AC61CDAAB090035665C /* TokenFetcher.swift */,
+				4EB39DA31CDD1254004101CF /* ProfileFetcher.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -409,6 +412,7 @@
 				4E592BC91CBC867200A67FEF /* ProviderInfo.swift in Sources */,
 				4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */,
 				4EA620971CBCAB7E00D631F4 /* ProviderDetailsViewController.swift in Sources */,
+				4E9C96071CF6A42500EA8EFE /* Fetcher.swift in Sources */,
 				4EB39DA41CDD1254004101CF /* ProfileFetcher.swift in Sources */,
 				4E43AAED1CD02F3900DF044C /* WOPIFlowViewController.swift in Sources */,
 				4E223AC71CDAAB090035665C /* TokenFetcher.swift in Sources */,

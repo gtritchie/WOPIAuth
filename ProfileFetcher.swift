@@ -3,7 +3,7 @@ import Foundation
 /**
 	Perform an authenticated GET to the profile endpoint.
 */
-public class ProfileFetcher {
+class ProfileFetcher {
 	
 	// MARK: Properties
 	

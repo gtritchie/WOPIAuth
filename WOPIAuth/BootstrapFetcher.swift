@@ -7,15 +7,10 @@ import Foundation
 
 	WWW-Authenticate: Bearer authorization_uri="https://contoso.com/api/oauth2/authorize",tokenIssuance_uri="https://contoso.com/api/oauth2/token"
 */
-public class BootstrapFetcher {
+class BootstrapFetcher: Fetcher {
 	
 	// MARK: Properties
 	
-	/// Url of the bootstrapper
-	private var urlString: String
-	
-	private let session: NSURLSession
-
 	/// Used to return results from async call
 	enum FetchBootstrapResult {
 		case Success(BootstrapInfo)
@@ -32,35 +27,21 @@ public class BootstrapFetcher {
 		}
 	}
 	
-	
 	// MARK: Life Cycle
 	
-	init(url: String) {
-		urlString = url
-		let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-		session = NSURLSession(configuration: config)
-	}
-	
-	func errorWithCode(code: Int, localizedDescription: String) -> NSError {
-		WOPIAuthLogError(localizedDescription)
-		return NSError(domain: "Bootstrapper", code: code, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
+	required init(url: NSURL) {
+		super.init(url: url, errorDomain: "Bootstrapper")
 	}
 	
 	func fetchBootstrapInfoUsingCompletionHandler(completionHandler: FetchBootstrapResult -> Void) {
-		guard let url = NSURL(string: urlString) else {
-			let error = errorWithCode(1, localizedDescription: String(format: NSLocalizedString("Malformed bootstrapper URL: %@", comment: ""), urlString))
-			let result: FetchBootstrapResult = .Failure(error)
-			completionHandler(result)
-			return
-		}
-		
+
 		let request = NSMutableURLRequest(URL: url)
 		// TODO make this a preferences setting
 		request.setValue("Word/1.22.16051600 CFNetwork/758.2.8 Darwin/15.4.0", forHTTPHeaderField: "User-Agent")
 		request.HTTPShouldHandleCookies = false
 
-		WOPIAuthLogInfo(String(format: NSLocalizedString("Invoking bootstrapper: %@", comment: ""), urlString))
-		let task = session.dataTaskWithRequest(request) { data, response, error in
+		WOPIAuthLogInfo(String(format: NSLocalizedString("Invoking bootstrapper: %@", comment: ""), url.absoluteString))
+		task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchBootstrapResult
 			if data != nil {
 				if let response = response as? NSHTTPURLResponse {
@@ -88,6 +69,12 @@ public class BootstrapFetcher {
 					let error = self.errorWithCode(1, localizedDescription: NSLocalizedString("App Issue: Unexpected response object", comment: ""))
 					result = .Failure(error)
 				}
+			} else if let error = error {
+				if error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
+					// canceled: don't call the completion handler
+					return
+				}
+				result = .Failure(error)
 			} else {
 				WOPIAuthLogError(NSLocalizedString("Unable to make call to bootstrapper", comment: ""))
 				result = .Failure(error!)
@@ -96,6 +83,6 @@ public class BootstrapFetcher {
 				completionHandler(result)
 			}
 		}
-		task.resume()
+		task!.resume()
 	}
 }

@@ -3,7 +3,7 @@ import Foundation
 /**
 	Perform a POST to the token exchange endpoint, following oauth2 standards.
 */
-public class TokenFetcher {
+class TokenFetcher {
 	
 	// MARK: Properties
 	
