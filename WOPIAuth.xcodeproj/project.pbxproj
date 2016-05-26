@@ -71,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		4E01D5891CD178200073DBD9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = WOPIAuth/SignInViewController.swift; sourceTree = "<group>"; };
+		4E0A514C1CF784C800F4F64C /* WOPIAuthModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E0D651B1CD25DFC00E4F336 /* AuthResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthResult.swift; sourceTree = "<group>"; };
 		4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarSplitViewController.swift; path = WOPIAuth/SidebarSplitViewController.swift; sourceTree = "<group>"; };
 		4E100AC91CC03FED00AFA37E /* RightPaneSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightPaneSplitViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +123,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4E0A51491CF784C800F4F64C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E8CB5B71CB759C400769F0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +191,7 @@
 				4E8CB5BA1CB759C400769F0D /* WOPIAuth.app */,
 				4E8CB5CB1CB759C400769F0D /* WOPIAuthTests.xctest */,
 				4E8CB5D61CB759C400769F0D /* WOPIAuthUITests.xctest */,
+				4E0A514C1CF784C800F4F64C /* WOPIAuthModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -270,6 +279,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4E0A514B1CF784C800F4F64C /* WOPIAuthModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E0A51511CF784C800F4F64C /* Build configuration list for PBXNativeTarget "WOPIAuthModelTests" */;
+			buildPhases = (
+				4E0A51481CF784C800F4F64C /* Sources */,
+				4E0A51491CF784C800F4F64C /* Frameworks */,
+				4E0A514A1CF784C800F4F64C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WOPIAuthModelTests;
+			productName = WOPIAuthModelTests;
+			productReference = 4E0A514C1CF784C800F4F64C /* WOPIAuthModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		4E8CB5B91CB759C400769F0D /* WOPIAuth */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E8CB5DF1CB759C400769F0D /* Build configuration list for PBXNativeTarget "WOPIAuth" */;
@@ -333,6 +359,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Gary Ritchie";
 				TargetAttributes = {
+					4E0A514B1CF784C800F4F64C = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					4E8CB5B91CB759C400769F0D = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -362,11 +391,19 @@
 				4E8CB5B91CB759C400769F0D /* WOPIAuth */,
 				4E8CB5CA1CB759C400769F0D /* WOPIAuthTests */,
 				4E8CB5D51CB759C400769F0D /* WOPIAuthUITests */,
+				4E0A514B1CF784C800F4F64C /* WOPIAuthModelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4E0A514A1CF784C800F4F64C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E8CB5B81CB759C400769F0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -393,6 +430,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4E0A51481CF784C800F4F64C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E8CB5B61CB759C400769F0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,6 +526,28 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		4E0A51521CF784C800F4F64C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = WOPIAuthModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.office.WOPIAuthModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		4E0A51531CF784C800F4F64C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = WOPIAuthModelTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.office.WOPIAuthModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		4E8CB5DD1CB759C400769F0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -643,6 +709,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4E0A51511CF784C800F4F64C /* Build configuration list for PBXNativeTarget "WOPIAuthModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E0A51521CF784C800F4F64C /* Debug */,
+				4E0A51531CF784C800F4F64C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		4E8CB5B51CB759C400769F0D /* Build configuration list for PBXProject "WOPIAuth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -73,7 +73,8 @@ class BootstrapInfoTests: XCTestCase {
 	func testValidAuthHeaderParse() {
 		let bootstrap = BootstrapInfo()
 		
-		XCTAssertTrue(bootstrap.populateFromAuthenticateHeader("Bearer authorization_uri=\"https://contoso.com/auth\",tokenIssuance_uri=\"https://contoso.com/token\""))
+		XCTAssertTrue(bootstrap.populateFromAuthenticateHeader(
+			"Bearer authorization_uri=\"https://contoso.com/auth\",tokenIssuance_uri=\"https://contoso.com/token\""))
 	}
 	
 	func testAuthHeaderMissingAuthUri() {
