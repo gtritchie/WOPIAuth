@@ -33,6 +33,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		self.sessionContext = instance.sessionContext
 		self.accessToken = instance.accessToken
 		self.tokenExpiration = instance.tokenExpiration
+		self.expiresAt = instance.expiresAt
 		self.refreshToken = instance.refreshToken
 		self.bootstrapInfo = BootstrapInfo(instance: instance.bootstrapInfo)
 	}
@@ -75,6 +76,10 @@ class ConnectionInfo: ModelInfo, NSCoding {
 	dynamic var tokenExpiration: Int32 = 0
 	let tokenExpirationKey = "tokenExpiration"
 
+	/// Absolute expiration time of the access-token
+	dynamic var expiresAt: NSDate?
+	let expiresAtKey = "expiresAt"
+
 	/// The refresh-token
 	dynamic var refreshToken: String = ""
 	let refreshTokenKey = "refreshToken"
@@ -111,6 +116,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		let sessionContextStr = aDecoder.decodeObjectForKey(sessionContextKey) as! String
 		let accessTokenStr = aDecoder.decodeObjectForKey(accessTokenKey) as! String
 		let tokenExpirationValue = aDecoder.decodeIntForKey(tokenExpirationKey)
+		let expiresAtValue = aDecoder.decodeObjectForKey(expiresAtKey) as! NSDate?
 		let refreshTokenStr = aDecoder.decodeObjectForKey(refreshTokenKey) as! String
 		let bootstrapInfoObj = aDecoder.decodeObjectForKey(bootstrapInfoKey) as! BootstrapInfo
 		
@@ -123,6 +129,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		self.sessionContext = sessionContextStr
 		self.accessToken = accessTokenStr
 		self.tokenExpiration = tokenExpirationValue
+		self.expiresAt = expiresAtValue
 		self.refreshToken = refreshTokenStr
 		self.bootstrapInfo = bootstrapInfoObj
 		return true
@@ -138,6 +145,7 @@ class ConnectionInfo: ModelInfo, NSCoding {
 		aCoder.encodeObject(self.postAuthTokenIssuanceURL, forKey: postAuthTokenIssuanceURLKey)
 		aCoder.encodeObject(self.sessionContext, forKey: sessionContextKey)
 		aCoder.encodeObject(self.accessToken, forKey: accessTokenKey)
+		aCoder.encodeObject(expiresAt, forKey: expiresAtKey)
 		aCoder.encodeInt32(self.tokenExpiration, forKey: tokenExpirationKey)
 		aCoder.encodeObject(self.refreshToken, forKey: refreshTokenKey)
 		aCoder.encodeObject(self.bootstrapInfo, forKey: bootstrapInfoKey)
@@ -154,6 +162,7 @@ func == (left: ConnectionInfo, right: ConnectionInfo) -> Bool {
 		left.sessionContext == right.sessionContext &&
 		left.accessToken == right.accessToken &&
 		left.tokenExpiration == right.tokenExpiration &&
+		left.expiresAt == right.expiresAt &&
 		left.refreshToken == right.refreshToken &&
 		left.bootstrapInfo == right.bootstrapInfo
 }

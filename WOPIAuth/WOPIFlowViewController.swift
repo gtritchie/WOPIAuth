@@ -214,6 +214,10 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 			case .Success(let tokenResult):
 				self.connection!.accessToken = tokenResult.accessToken
 				self.connection!.tokenExpiration = tokenResult.tokenExpiration
+				self.connection!.expiresAt = nil
+				if tokenResult.tokenExpiration > 0 {
+					self.connection!.expiresAt = NSDate().dateByAddingTimeInterval(NSTimeInterval(tokenResult.tokenExpiration))
+				}
 				self.connection!.refreshToken = tokenResult.refreshToken
 				self.getProfile()
 			case .Failure(let error):

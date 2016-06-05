@@ -4,6 +4,8 @@ import XCTest
 
 class ConnectionInfoTests: XCTestCase {
 	
+	var expirationTime : NSDate? = nil
+	
 	private func CreateConnectionInfo() -> ConnectionInfo {
 		let connection = ConnectionInfo()
 		connection.providerName = "Provider Name"
@@ -14,6 +16,7 @@ class ConnectionInfoTests: XCTestCase {
 		connection.sessionContext = "Session Context"
 		connection.accessToken = "abc123$%^"
 		connection.tokenExpiration = 60
+		connection.expiresAt = expirationTime
 		connection.refreshToken = "def567*()"
 		connection.bootstrapInfo = BootstrapInfo()
 		return connection
@@ -31,11 +34,10 @@ class ConnectionInfoTests: XCTestCase {
 
 	override func setUp() {
 		super.setUp()
-		// Put setup code here. This method is called before the invocation of each test method in the class.
+		expirationTime = NSDate().dateByAddingTimeInterval(NSTimeInterval(1000));
 	}
 	
 	override func tearDown() {
-		// Put teardown code here. This method is called after the invocation of each test method in the class.
 		super.tearDown()
 	}
 
