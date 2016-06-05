@@ -81,7 +81,6 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		assert(container != nil, "Must supply container ")
 	
 		WOPIAuthLogInfo("START WOPI client authentication flow")
-		WOPIAuthLogInfo("=====================================")
 
 		connection = ConnectionInfo()
 		connection!.providerName = provider!.providerName
@@ -93,7 +92,6 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		currentTextLabel!.textColor = NSColor.redColor()
 		currentProgress!.stopAnimation(nil)
 		WOPIAuthLogError("FAILURE: WOPI client authentication flow during \(currentStep!) phase.")
-		WOPIAuthLogError("======================================================================")
 		currentStep = nil
 	}
 	
@@ -262,7 +260,6 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 		container!.addNew(connection!)
 		
 		WOPIAuthLogInfo("SUCCESS WOPI client authentication flow")
-		WOPIAuthLogInfo("=======================================")
 	}
 	
 	// MARK: Segue

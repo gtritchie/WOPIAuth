@@ -40,7 +40,6 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 	}
 	
 	func errorWithCode(code: Int, localizedDescription: String) -> NSError {
-		WOPIAuthLogError(localizedDescription)
 		return NSError(domain: "SignIn", code: code, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
 	}
 

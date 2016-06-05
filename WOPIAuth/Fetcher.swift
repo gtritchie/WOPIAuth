@@ -25,9 +25,7 @@ class Fetcher {
 	}
 	
 	func errorWithMessage(localizedDescription: String) -> NSError {
-		WOPIAuthLogError(localizedDescription)
 		return NSError(domain: errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
 	}
-	
 
 }
