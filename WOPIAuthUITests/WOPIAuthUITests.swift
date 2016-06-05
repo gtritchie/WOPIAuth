@@ -28,14 +28,19 @@ class WOPIAuthUITests: XCTestCase {
         super.tearDown()
     }
     
-//    func testAddProviderShowCancel() {
-//		
-//		let wopiNativeAuthTestToolWindow = XCUIApplication().windows["WOPI Native Auth Test Tool"]
-//		let splitGroup = wopiNativeAuthTestToolWindow.childrenMatchingType(.SplitGroup).element
-//		splitGroup.childrenMatchingType(.Button)["Add provider"].click()
-//		wopiNativeAuthTestToolWindow.sheets.buttons["Cancel"].click()
-//	
-//		// Use XCTAssert and related functions to verify your tests produce the correct results.
-//    }
+    func testAddProviderShowCancelDoesntChangeProviderCount() {
+		
+		let wopiNativeAuthTestToolWindow = XCUIApplication().windows["WOPI Native Auth Test Tool"]
+		let splitGroup = wopiNativeAuthTestToolWindow.childrenMatchingType(.SplitGroup).element
+		
+		let startingProviderCount = splitGroup.tables["Providers"].cells.count;
+
+		
+		splitGroup.childrenMatchingType(.Button)["Add provider"].click()
+		wopiNativeAuthTestToolWindow.sheets.buttons["Cancel"].click()
+	
+		let endingProviderCount = splitGroup.tables["Providers"].cells.count;
+		XCTAssertEqual(startingProviderCount, endingProviderCount);
+    }
 	
 }
