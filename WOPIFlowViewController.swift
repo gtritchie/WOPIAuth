@@ -230,9 +230,16 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	func getProfile() {
 		startNewStep("4: Profile", image: profileImage, text: profileText, progress: profileProgress)
 		
-		let profileFetcher = ProfileFetcher(profileUrl: provider!.bootstrapper,
+		guard let profileUrl = NSURL(string: provider!.bootstrapper) else {
+			WOPIAuthLogInfo("Malformed profile endpoint URL: \"\(provider!.bootstrapper)\"")
+			failCurrentStep()
+			return
+		}
+
+		let profileFetcher = ProfileFetcher(profileUrl: profileUrl,
 		                                    accessToken: connection!.accessToken,
 		                                    sessionContext: connection!.sessionContext)
+		activeFetcher = profileFetcher
 		profileFetcher.fetchProfileUsingCompletionHandler { (result) in
 			switch result {
 			case .Success(let profileResult):
@@ -244,6 +251,7 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 				WOPIAuthLogNSError(error)
 				self.failCurrentStep()
 			}
+			self.activeFetcher = nil
 		}
 	}
 	

@@ -3,15 +3,12 @@ import Foundation
 /**
 	Perform an authenticated GET to the profile endpoint.
 */
-class ProfileFetcher {
+class ProfileFetcher : Fetcher {
 	
 	// MARK: Properties
 	
-	private var profileUrlString: String
 	private var accessToken: String
 	private var sessionContext: String
-	
-	private let session: NSURLSession
 	
 	/// Used to return results from async call
 	enum FetchProfileResult {
@@ -31,26 +28,13 @@ class ProfileFetcher {
 	
 	// MARK: Life Cycle
 	
-	init(profileUrl: String, accessToken: String, sessionContext: String) {
-		self.profileUrlString = profileUrl
+	init(profileUrl: NSURL, accessToken: String, sessionContext: String) {
 		self.accessToken = accessToken
 		self.sessionContext = sessionContext
-		let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-		session = NSURLSession(configuration: config)
-	}
-	
-	func errorWithMessage(localizedDescription: String) -> NSError {
-		WOPIAuthLogError(localizedDescription)
-		return NSError(domain: "Profile fetch", code: 1, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
+		super.init(url: profileUrl, errorDomain: "Profile")
 	}
 	
 	func fetchProfileUsingCompletionHandler(completionHandler: FetchProfileResult -> Void) {
-		guard let url = NSURL(string: profileUrlString) else {
-			let error = errorWithMessage("Malformed profile endpoint URL: \"\(profileUrlString)\"")
-			let result: FetchProfileResult = .Failure(error)
-			completionHandler(result)
-			return
-		}
 		
 		let request = NSMutableURLRequest(URL: url)
 		
@@ -68,7 +52,7 @@ class ProfileFetcher {
 		request.setValue(authValue, forHTTPHeaderField: "Authorization")
 		request.HTTPShouldHandleCookies = false
 		
-		WOPIAuthLogInfo("Invoking profile endpoint via GET: \"\(profileUrlString)\"")
+		WOPIAuthLogInfo("Invoking profile endpoint via GET: \"\(url.absoluteString)\"")
 
 		let task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchProfileResult
