@@ -13,11 +13,11 @@ class ProfileResult {
 		Create a `ProfileResult` by parsing response, or throw an error.
 	*/
 	static func createFromResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> ProfileResult {
-		guard let data = data else {
-			guard let error = error else {
-				throw errorWithMessage("Unable to get data from profile response")
-			}
+		if let error = error {
 			throw error
+		}
+		guard let data = data else {
+			throw errorWithMessage("Unable to get data from profile response")
 		}
 		
 		guard let response = response as? NSHTTPURLResponse else {
@@ -27,7 +27,7 @@ class ProfileResult {
 		
 		guard response.statusCode == 200 else {
 			logErrorBody(data)
-			throw self.errorWithMessage("Token endpoint responded with \(response.statusCode)")
+			throw self.errorWithMessage("Bootstrapper profile endpoint responded with \(response.statusCode)")
 		}
 		
 		let info = ProfileResult()
@@ -62,7 +62,6 @@ class ProfileResult {
 	
 	/// Return an `NSError` object with message
 	static func errorWithMessage(localizedDescription: String) -> NSError {
-		WOPIAuthLogError(localizedDescription)
 		return NSError(domain: "Profile Result", code: 1, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
 	}
 

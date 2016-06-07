@@ -56,6 +56,15 @@ class TokenFetcher: Fetcher {
 		request.setValue("Microsoft Office Identity Service", forHTTPHeaderField: "user-agent")
 		request.HTTPShouldHandleCookies = false
 
+		// Set LOGGING POST body (remove sensitive information)
+		var loggingPostParams = [String : String]()
+		loggingPostParams["client_id"] = clientId
+		loggingPostParams["client_secret"] = "***"
+		loggingPostParams["code"] = authCode
+		loggingPostParams["grant_type"] = "authorization_code"
+		loggingPostParams["redirect_uri"] = redirectUri
+		let loggingPostString = formEncodedQueryStringFor(loggingPostParams)
+		
 		// Set POST body
 		var postParams = [String : String]()
 		postParams["client_id"] = clientId
@@ -67,7 +76,7 @@ class TokenFetcher: Fetcher {
 		let postString = formEncodedQueryStringFor(postParams)
 
 		WOPIAuthLogInfo("Invoking token endpoint via POST: \"\(url.absoluteString)\"")
-		WOPIAuthLogInfo("POST body=\(postString)")
+		WOPIAuthLogInfo("POST body=\(loggingPostString)")
 
 		guard let encoded = postString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true) else {
 			WOPIAuthLogError("Unable to encode Token POST body")
@@ -86,6 +95,10 @@ class TokenFetcher: Fetcher {
 				result = FetchTokenResult { info }
 			}
 			catch let error as NSError {
+				if error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
+					// user canceled, don't invoke completion handler
+					return
+				}
 				result = .Failure(error)
 			}
 			catch {

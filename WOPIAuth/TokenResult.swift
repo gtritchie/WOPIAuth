@@ -12,11 +12,11 @@ class TokenResult {
 		Create a TokenResult by parsing response, or throw an error.
 	*/
 	static func createFromResponse(data: NSData?, response: NSURLResponse?, error: NSError?) throws -> TokenResult {
+		if let error = error {
+			throw error;
+		}
 		guard let data = data else {
-			guard let error = error else {
-				throw errorWithMessage("Unable to get data from token response")
-			}
-			throw error
+			throw errorWithMessage("Unable to get data from token response")
 		}
 		
 		guard let response = response as? NSHTTPURLResponse else {

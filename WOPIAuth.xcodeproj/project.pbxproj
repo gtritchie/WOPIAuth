@@ -238,10 +238,10 @@
 			children = (
 				4E64FE3D1D04B7470034E235 /* ProviderViewing.swift */,
 				4E64FE391D04B7470034E235 /* ProviderDetailEditing.swift */,
+				4E4767931CECF3BE002C982D /* ProviderDetailEditingView.swift */,
 				4EF918461CD021FE005A5186 /* ConnectionViewing.swift */,
 				4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */,
 				4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */,
-				4E4767931CECF3BE002C982D /* ProviderDetailEditingView.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -364,6 +364,7 @@
 					};
 					4E8CB5B91CB759C400769F0D = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = CMFNTP23SX;
 					};
 					4E8CB5CA1CB759C400769F0D = {
 						CreatedOnToolsVersion = 7.3;
@@ -634,6 +635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WOPIAuth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -647,6 +649,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WOPIAuth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

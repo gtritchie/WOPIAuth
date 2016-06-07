@@ -669,7 +669,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-1q-w5G">
-                                                                    <rect key="frame" x="-2" y="0.0" width="177" height="17"/>
+                                                                    <rect key="frame" x="-2" y="0.0" width="176" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="pWi-Kr-TAS">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1556,6 +1556,16 @@ Gw
                             <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="B8S-B9-awM">
                                 <rect key="frame" x="338" y="23" width="16" height="16"/>
                             </progressIndicator>
+                            <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PmM-JR-yeD">
+                                <rect key="frame" x="356" y="13" width="122" height="32"/>
+                                <buttonCell key="cell" type="push" title="Stop Request" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="q81-Zy-PpQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopRequest:" target="xxd-h0-Y8C" id="94d-G1-kKW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="B8S-B9-awM" firstAttribute="centerY" secondItem="fac-F0-PRg" secondAttribute="centerY" id="2aa-fm-pmp"/>
@@ -1566,7 +1576,9 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="3LH-ER-jDf" secondAttribute="bottom" constant="20" symbolic="YES" id="P9e-iq-d8b"/>
                             <constraint firstItem="20o-LR-nPP" firstAttribute="top" secondItem="60j-Mi-9Ib" secondAttribute="top" id="ZJ2-iB-5xa"/>
                             <constraint firstItem="3LH-ER-jDf" firstAttribute="top" secondItem="20o-LR-nPP" secondAttribute="bottom" id="bwu-cV-5gx"/>
+                            <constraint firstItem="PmM-JR-yeD" firstAttribute="baseline" secondItem="3LH-ER-jDf" secondAttribute="baseline" id="cLS-VF-vDO"/>
                             <constraint firstItem="fac-F0-PRg" firstAttribute="leading" secondItem="3LH-ER-jDf" secondAttribute="trailing" constant="12" symbolic="YES" id="qoq-zX-zot"/>
+                            <constraint firstItem="PmM-JR-yeD" firstAttribute="leading" secondItem="B8S-B9-awM" secondAttribute="trailing" constant="8" symbolic="YES" id="yEx-Qf-Ygl"/>
                             <constraint firstAttribute="trailing" secondItem="20o-LR-nPP" secondAttribute="trailing" id="zaQ-ZW-AAA"/>
                         </constraints>
                     </view>
@@ -1574,6 +1586,7 @@ Gw
                         <outlet property="authCallButton" destination="3LH-ER-jDf" id="GHS-WD-ytx"/>
                         <outlet property="refreshButton" destination="fac-F0-PRg" id="lUs-In-SNd"/>
                         <outlet property="refreshProgress" destination="B8S-B9-awM" id="EsM-dX-vUS"/>
+                        <outlet property="stopButton" destination="PmM-JR-yeD" id="R7w-Yu-0os"/>
                     </connections>
                 </viewController>
                 <customObject id="g9g-N1-MMT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

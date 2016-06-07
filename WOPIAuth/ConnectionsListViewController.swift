@@ -1,5 +1,16 @@
 import Cocoa
 
+/// Notification used to signal modification of item in array of `ConnectionInfo` objects.
+let ConnectionInfoModifiedNotification = "com.microsoft.office.WOPIAuth.ConnectionInfoModified"
+
+/**
+	Signal that `ConnectionInfo` has been changed.
+*/
+func NotifyConnectionInfoChanged() {
+	let notificationCenter = NSNotificationCenter.defaultCenter()
+	notificationCenter.postNotificationName(ConnectionInfoModifiedNotification, object: nil, userInfo: nil)
+}
+
 /**
 	Controller to manage creation and display of `ConnectionInfo` objects.
 */
@@ -58,6 +69,35 @@ class ConnectionsListViewController: NSViewController, NSTableViewDelegate, Prov
 	/// Filters tableview to only show connections associated with selected provider
 	dynamic var predicate: NSPredicate = NSPredicate(value: false)
 	
+	private var changedConnectionInfoObserver: NSObjectProtocol?
+
+	// MARK: Life Cycle
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		let notificationCenter = NSNotificationCenter.defaultCenter()
+		self.changedConnectionInfoObserver = notificationCenter.addObserverForName(ConnectionInfoModifiedNotification, object: nil, queue: nil) { note in
+			self.performSelectorOnMainThread(#selector(self.didReceiveConnectionInfoModifiedNotification(_:)), withObject: note, waitUntilDone: true)
+		}
+	}
+	
+	deinit {
+		if let observer = self.changedConnectionInfoObserver {
+			let notificationCenter = NSNotificationCenter.defaultCenter()
+			notificationCenter.removeObserver(observer)
+		}
+	}
+	
+	// MARK: Notifications
+	
+	/**
+		One or more of the `ConnectionInfo` objects we are holding may have changed, so re-persist them.
+	*/
+	func didReceiveConnectionInfoModifiedNotification(note: NSNotification) {
+		Preferences.connections = connections
+	}
+
 	// MARK: Segue
 	
 	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {

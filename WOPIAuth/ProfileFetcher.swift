@@ -54,7 +54,7 @@ class ProfileFetcher : Fetcher {
 		
 		WOPIAuthLogInfo("Invoking profile endpoint via GET: \"\(url.absoluteString)\"")
 
-		let task = session.dataTaskWithRequest(request) { data, response, error in
+		task = session.dataTaskWithRequest(request) { data, response, error in
 			let result: FetchProfileResult
 			
 			do {
@@ -62,6 +62,10 @@ class ProfileFetcher : Fetcher {
 				result = FetchProfileResult { info }
 			}
 			catch let error as NSError {
+				if error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
+					// user canceled, don't invoke completion handler
+					return
+				}
 				result = .Failure(error)
 			}
 			catch {
@@ -72,6 +76,6 @@ class ProfileFetcher : Fetcher {
 				completionHandler(result)
 			}
 		}
-		task.resume()
+		task!.resume()
 	}
 }
