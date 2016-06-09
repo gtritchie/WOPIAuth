@@ -109,7 +109,6 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		webView.navigationDelegate = self
 
 		let request = NSURLRequest(URL: signInPageUrl)
-		WOPIAuthLogInfo("Loading page: \(pageUrl.string)")
 		webView.loadRequest(request)
 	}
 	
@@ -134,8 +133,8 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 	
 	func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
 		let request = navigationAction.request
-		
-		if let url = request.URL where url.scheme == stopUrl?.scheme && url.host == stopUrl?.host {
+		let url = request.URL
+		if let url = url where url.scheme == stopUrl?.scheme && url.host == stopUrl?.host {
 			let haveComponents = NSURLComponents(URL: url, resolvingAgainstBaseURL: true)
 			if let hp = haveComponents?.path, ip = stopUrl?.path where hp == ip || ("/" == hp + ip) {
 				if let query = haveComponents?.query {
@@ -219,6 +218,22 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 					dismissController(self)
 				}
 			}
+		}
+		if let url = url {
+			WOPIAuthLogInfo("Opening \(url.absoluteString)")
+		}
+		decisionHandler(.Allow)
+	}
+
+	func webView(webView: WKWebView, decidePolicyForNavigationResponse navigationResponse: WKNavigationResponse, decisionHandler: (WKNavigationResponsePolicy) -> Void) {
+		let response = navigationResponse.response
+		let url = response.URL!.absoluteString
+		WOPIAuthLogInfo("Redirect to \(url)")
+		
+		let urlParts = NSURLComponents(URL: response.URL!, resolvingAgainstBaseURL: true)!
+
+		if urlParts.scheme != "https" {
+			WOPIAuthLogWarning("Redirect to insecure endpoint (non-https)")
 		}
 		decisionHandler(.Allow)
 	}

@@ -45,6 +45,11 @@ class TokenResult {
 			throw TokenResult.errorWithMessage("Empty access_token")
 		}
 		
+		guard let tokenType = topLevelDict["token_type"] as? String else {
+			throw TokenResult.errorWithMessage("No token_type")
+		}
+		WOPIAuthLogInfo("Token type = \"\(tokenType)\"")
+		
 		let expiration = topLevelDict["expires_in"] as? NSNumber
 		let refresh = topLevelDict["refresh_token"] as? String
 		
@@ -62,7 +67,6 @@ class TokenResult {
 	
 	/// Return an `NSError` object with message
 	static func errorWithMessage(localizedDescription: String) -> NSError {
-		WOPIAuthLogError(localizedDescription)
 		return NSError(domain: "Token Result", code: 1, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
 	}
 
