@@ -20,6 +20,25 @@ class TokenResultTests: XCTestCase {
 			"expires_in": expirationValueObject,
 			"more_random_stuff": "bam",
 			"refresh_token": refreshTokenValue,
+			"token_type" : "bearer",
+			"trailing": "0"
+		]
+		do {
+			return try NSJSONSerialization.dataWithJSONObject(jsonItems, options: NSJSONWritingOptions(rawValue: 0))
+		} catch {
+			XCTFail()
+			return noJSON()
+		}
+	}
+
+	
+	private func noTokenTypeJSON() -> NSData {
+		let jsonItems = [
+			"random_stuff": "zoom",
+			"access_token": accessTokenValue,
+			"expires_in": expirationValueObject,
+			"more_random_stuff": "bam",
+			"refresh_token": refreshTokenValue,
 			"trailing": "0"
 		]
 		do {
@@ -142,6 +161,14 @@ class TokenResultTests: XCTestCase {
 	func testInvalidResponseCode() {
 		do {
 			try TokenResult.createFromResponse(noJSON(), response: invalidResponse(), error: nil)
+			XCTFail()
+		} catch {
+		}
+	}
+	
+	func testMissingTokenType() {
+		do {
+			try TokenResult.createFromResponse(noTokenTypeJSON(), response: nil, error: nil)
 			XCTFail()
 		} catch {
 		}
