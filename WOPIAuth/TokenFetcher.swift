@@ -62,7 +62,6 @@ class TokenFetcher: Fetcher {
 		loggingPostParams["client_secret"] = "***"
 		loggingPostParams["code"] = authCode
 		loggingPostParams["grant_type"] = "authorization_code"
-		loggingPostParams["redirect_uri"] = redirectUri
 		let loggingPostString = formEncodedQueryStringFor(loggingPostParams)
 		
 		// Set POST body
