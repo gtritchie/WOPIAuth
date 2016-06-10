@@ -72,6 +72,42 @@ class ConnectionDetailsViewController: NSViewController, ConnectionViewing, Prov
 	
 	@IBAction func refreshTokens(sender: NSButton) {
 		
+		var tokenEndpointUrl = selectedConnection!.bootstrapInfo.tokenIssuanceURL
+		if !selectedConnection!.postAuthTokenIssuanceURL.isEmpty {
+			tokenEndpointUrl = selectedConnection!.postAuthTokenIssuanceURL
+			WOPIAuthLogInfo("Using post-auth token exchange URL: \(tokenEndpointUrl)")
+		} else {
+			WOPIAuthLogInfo("Using standard token exchange URL: \(tokenEndpointUrl)")
+		}
+		
+		guard let tokenUrl = NSURL(string: tokenEndpointUrl) else {
+			WOPIAuthLogError("Malformed token endpoint URL: \"\(tokenEndpointUrl)\"")
+			return
+		}
+
+		
+		let tokenFetcher = TokenFetcher(tokenURL: tokenUrl, clientId: selectedProvider!.clientId,
+		                                clientSecret: selectedProvider!.clientSecret,
+		                                authCode: selectedConnection!.refreshToken,
+		                                sessionContext: selectedConnection!.sessionContext)
+		activeFetcher = tokenFetcher
+		tokenFetcher.fetchTokensUsingCompletionHandler(forRefresh: true) { (result) in
+			switch result {
+			case .Success(let tokenResult):
+				self.selectedConnection!.accessToken = tokenResult.accessToken
+				self.selectedConnection!.tokenExpiration = tokenResult.tokenExpiration
+				self.selectedConnection!.expiresAt = nil
+				if tokenResult.tokenExpiration > 0 {
+					self.selectedConnection!.expiresAt = NSDate().dateByAddingTimeInterval(NSTimeInterval(tokenResult.tokenExpiration))
+				}
+				self.selectedConnection!.refreshToken = tokenResult.refreshToken
+				NotifyConnectionInfoChanged()
+				WOPIAuthLogInfo("Successful exchange of Refresh Token")
+			case .Failure(let error):
+				WOPIAuthLogNSError(error)
+			}
+			self.stopCurrentRequest(sender)
+		}
 	}
 	
 	@IBAction func stopRequest(sender: AnyObject) {

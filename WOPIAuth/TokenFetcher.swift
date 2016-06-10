@@ -10,7 +10,6 @@ class TokenFetcher: Fetcher {
 	private var clientId: String
 	private var clientSecret: String
 	private var authCode: String
-	private var redirectUri: String
 	private var sessionContext: String
 	
 	/// Used to return results from async call
@@ -31,16 +30,15 @@ class TokenFetcher: Fetcher {
 	
 	// MARK: Life Cycle
 	
-	init(tokenURL: NSURL, clientId: String, clientSecret: String, authCode: String, redirectUri: String, sessionContext: String) {
+	init(tokenURL: NSURL, clientId: String, clientSecret: String, authCode: String, sessionContext: String) {
 		self.clientId = clientId
 		self.clientSecret = clientSecret
 		self.authCode = authCode
-		self.redirectUri = redirectUri
 		self.sessionContext = sessionContext
 		super.init(url: tokenURL, errorDomain: "Token Exchange")
 	}
 
-	func fetchTokensUsingCompletionHandler(completionHandler: FetchTokenResult -> Void) {
+	func fetchTokensUsingCompletionHandler(forRefresh refresh: Bool, completionHandler: FetchTokenResult -> Void) {
 		let request = NSMutableURLRequest(URL: url)
 		
 		request.HTTPMethod = "POST"
@@ -60,18 +58,32 @@ class TokenFetcher: Fetcher {
 		var loggingPostParams = [String : String]()
 		loggingPostParams["client_id"] = clientId
 		loggingPostParams["client_secret"] = "***"
-		loggingPostParams["code"] = authCode
-		loggingPostParams["grant_type"] = "authorization_code"
+		if refresh {
+			loggingPostParams["refresh_token"] = authCode
+		} else {
+			loggingPostParams["code"] = authCode
+		}
+		if refresh {
+			loggingPostParams["grant_type"] = "refresh_token"
+		} else {
+			loggingPostParams["grant_type"] = "authorization_code"
+		}
 		let loggingPostString = formEncodedQueryStringFor(loggingPostParams)
 		
 		// Set POST body
 		var postParams = [String : String]()
 		postParams["client_id"] = clientId
 		postParams["client_secret"] = clientSecret
-		postParams["code"] = authCode
-		postParams["grant_type"] = "authorization_code"
-		postParams["redirect_uri"] = redirectUri
-
+		if refresh {
+			postParams["refresh_token"] = authCode
+		} else {
+			postParams["code"] = authCode
+		}
+		if refresh {
+			postParams["grant_type"] = "refresh_token"
+		} else {
+			postParams["grant_type"] = "authorization_code"
+		}
 		let postString = formEncodedQueryStringFor(postParams)
 
 		WOPIAuthLogInfo("Invoking token endpoint via POST: \"\(url.absoluteString)\"")
