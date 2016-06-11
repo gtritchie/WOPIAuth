@@ -41,7 +41,7 @@
 		4E8CB5C21CB759C400769F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C11CB759C400769F0D /* Assets.xcassets */; };
 		4E8CB5C51CB759C400769F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8CB5C31CB759C400769F0D /* Main.storyboard */; };
 		4E8CB5DB1CB759C400769F0D /* WOPIAuthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */; };
-		4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */; };
+		4E9BCBD11CC9D2880051F477 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BCBD01CC9D2880051F477 /* Logging.swift */; };
 		4EA398E21CE65ABF00105C5B /* P_extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA398E11CE65ABF00105C5B /* P_extensions.swift */; };
 		4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620931CBC9EB100D631F4 /* MainWindowController.swift */; };
 		4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */; };
@@ -111,7 +111,7 @@
 		4E8CB5D61CB759C400769F0D /* WOPIAuthUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5DA1CB759C400769F0D /* WOPIAuthUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WOPIAuthUITests.swift; sourceTree = "<group>"; };
 		4E8CB5DC1CB759C400769F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGlobal.swift; sourceTree = "<group>"; };
+		4E9BCBD01CC9D2880051F477 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4EA398E11CE65ABF00105C5B /* P_extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P_extensions.swift; sourceTree = "<group>"; };
 		4EA620931CBC9EB100D631F4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = WOPIAuth/MainWindowController.swift; sourceTree = "<group>"; };
 		4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscExtensions.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 		4EB2A6451CCACC750054E523 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				4E9BCBD01CC9D2880051F477 /* AppGlobal.swift */,
+				4E9BCBD01CC9D2880051F477 /* Logging.swift */,
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
 				4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */,
 				4EA398E11CE65ABF00105C5B /* P_extensions.swift */,
@@ -457,7 +457,7 @@
 				4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */,
 				4E64FE441D04B7470034E235 /* ConnectionDetailsViewController.swift in Sources */,
 				4E64FE4F1D04B7470034E235 /* ProviderDetailsViewController.swift in Sources */,
-				4E9BCBD11CC9D2880051F477 /* AppGlobal.swift in Sources */,
+				4E9BCBD11CC9D2880051F477 /* Logging.swift in Sources */,
 				4E64FE431D04B7470034E235 /* ClientInfo.swift in Sources */,
 				4E64FE561D04B7470034E235 /* WOPIFlowViewController.swift in Sources */,
 				4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */,
