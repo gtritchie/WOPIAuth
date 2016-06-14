@@ -100,6 +100,7 @@
 		4E64FE401D04B7470034E235 /* TokenResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenResult.swift; path = WOPIAuth/TokenResult.swift; sourceTree = "<group>"; };
 		4E64FE411D04B7470034E235 /* WOPIFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WOPIFlowViewController.swift; path = WOPIAuth/WOPIFlowViewController.swift; sourceTree = "<group>"; };
 		4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrapFetcher.swift; path = WOPIAuth/BootstrapFetcher.swift; sourceTree = "<group>"; };
+		4E7443A51D0F9D3F00157C49 /* WOPIAuth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WOPIAuth.entitlements; sourceTree = "<group>"; };
 		4E7E0E5F1D04B343004CE941 /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrapInfo.swift; path = WOPIAuth/BootstrapInfo.swift; sourceTree = "<group>"; };
 		4E8CB5BA1CB759C400769F0D /* WOPIAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOPIAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		4E8CB5BC1CB759C400769F0D /* WOPIAuth */ = {
 			isa = PBXGroup;
 			children = (
+				4E7443A51D0F9D3F00157C49 /* WOPIAuth.entitlements */,
 				4EB2A6451CCACC750054E523 /* Helpers */,
 				4E592BC71CBC865E00A67FEF /* Model */,
 				4EA620951CBCAB1200D631F4 /* Controller */,
@@ -365,6 +367,11 @@
 					4E8CB5B91CB759C400769F0D = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = CMFNTP23SX;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					4E8CB5CA1CB759C400769F0D = {
 						CreatedOnToolsVersion = 7.3;
@@ -635,6 +642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WOPIAuth/WOPIAuth.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WOPIAuth/Info.plist;
@@ -649,6 +657,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WOPIAuth/WOPIAuth.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = WOPIAuth/Info.plist;
