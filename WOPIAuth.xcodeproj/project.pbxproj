@@ -44,7 +44,6 @@
 		4E9BCBD11CC9D2880051F477 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BCBD01CC9D2880051F477 /* Logging.swift */; };
 		4EA398E21CE65ABF00105C5B /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA398E11CE65ABF00105C5B /* extensions.swift */; };
 		4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA620931CBC9EB100D631F4 /* MainWindowController.swift */; };
-		4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */; };
 		4EBFBA441CF4BAEB00E75267 /* ProfileResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFBA431CF4BAEB00E75267 /* ProfileResultTests.swift */; };
 		4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */; };
 		4EE81E3B1CF3B4B500B481BD /* TokenResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE81E3A1CF3B4B500B481BD /* TokenResultTests.swift */; };
@@ -116,7 +115,6 @@
 		4E9BCBD01CC9D2880051F477 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4EA398E11CE65ABF00105C5B /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		4EA620931CBC9EB100D631F4 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = WOPIAuth/MainWindowController.swift; sourceTree = "<group>"; };
-		4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiscExtensions.swift; sourceTree = "<group>"; };
 		4EBFBA431CF4BAEB00E75267 /* ProfileResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileResultTests.swift; sourceTree = "<group>"; };
 		4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionContaining.swift; sourceTree = "<group>"; };
 		4EE81E3A1CF3B4B500B481BD /* TokenResultTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenResultTests.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 			children = (
 				4E9BCBD01CC9D2880051F477 /* Logging.swift */,
 				4E8CB5BD1CB759C400769F0D /* AppDelegate.swift */,
-				4EB39DA51CDD12B5004101CF /* MiscExtensions.swift */,
 				4EA398E11CE65ABF00105C5B /* extensions.swift */,
 			);
 			name = Helpers;
@@ -490,7 +487,6 @@
 				4E64FE481D04B7470034E235 /* Fetcher.swift in Sources */,
 				4E64FE531D04B7470034E235 /* RightPaneSplitViewController.swift in Sources */,
 				4E64FE461D04B7470034E235 /* ConnectionsListViewController.swift in Sources */,
-				4EB39DA61CDD12B5004101CF /* MiscExtensions.swift in Sources */,
 				4EA620941CBC9EB100D631F4 /* MainWindowController.swift in Sources */,
 				4E64FE4D1D04B7470034E235 /* ProfileResult.swift in Sources */,
 			);

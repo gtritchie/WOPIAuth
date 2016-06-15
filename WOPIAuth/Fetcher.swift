@@ -46,5 +46,12 @@ class Fetcher {
 	func errorWithMessage(localizedDescription: String) -> NSError {
 		return NSError(domain: errorDomain, code: 1, userInfo: [NSLocalizedDescriptionKey: localizedDescription])
 	}
-
+	
+	func formEncodedQueryStringFor(params: [String: String]) -> String {
+		var arr: [String] = []
+		for (key, val) in params {
+			arr.append("\(key)=\(val.wwwFormURLEncodedString)")
+		}
+		return arr.joinWithSeparator("&")
+	}
 }

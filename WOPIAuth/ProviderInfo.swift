@@ -82,9 +82,9 @@ class ProviderInfo: ModelInfo, NSCoding {
 	/// Summary of `ProviderInfo` suitable for logging
 	override var description: String {
 		get {
-			
+			let scopeStr = scope == nil ? "" : scope!
 			return "[providerName=\"\(providerName)\", bootstrapper=\"\(bootstrapper)\", " +
-				"clientId=\"\(clientId)\", clientSecret=\"*\", redirectUrl=\"\(redirectUrl)\", scope=\"\(unwrapStringReplaceNilWithEmpty(scope))\"]"
+				"clientId=\"\(clientId)\", clientSecret=\"*\", redirectUrl=\"\(redirectUrl)\", scope=\"\(scopeStr)\"]"
 		}
 	}
 	

@@ -97,7 +97,7 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 			return
 		}
 		
-		let scopeStr = unwrapStringReplaceNilWithEmpty(providerInfo!.scope)
+		let scopeStr = providerInfo!.scope == nil ? "" : providerInfo!.scope!
 		
 		let queryItems: [NSURLQueryItem] = [
 			NSURLQueryItem(name: "client_id", value: providerInfo!.clientId),
