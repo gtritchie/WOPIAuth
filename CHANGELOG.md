@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.5 (2016-??-??)
+
+- Under development
+
 ### 1.0.4 (2016-06-10)
 
 - Implement the refresh flow button
