@@ -48,10 +48,7 @@
 		4EBFBA441CF4BAEB00E75267 /* ProfileResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBFBA431CF4BAEB00E75267 /* ProfileResultTests.swift */; };
 		4EE6D0FF1CD29C640004CD8B /* ConnectionContaining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6D0FE1CD29C640004CD8B /* ConnectionContaining.swift */; };
 		4EE81E3B1CF3B4B500B481BD /* TokenResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE81E3A1CF3B4B500B481BD /* TokenResultTests.swift */; };
-		4EEB7C141D11E38000EE55D2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB7C131D11E38000EE55D2 /* README.md */; };
 		4EEB7C161D11E3C100EE55D2 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EEB7C151D11E3C100EE55D2 /* LICENSE.txt */; };
-		4EEB7C181D11E56C00EE55D2 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB7C171D11E56C00EE55D2 /* CHANGELOG.md */; };
-		4EEB7C1A1D11E89000EE55D2 /* CONTRIBUTORS.md in Sources */ = {isa = PBXBuildFile; fileRef = 4EEB7C191D11E89000EE55D2 /* CONTRIBUTORS.md */; };
 		4EF918471CD021FE005A5186 /* ConnectionViewing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF918461CD021FE005A5186 /* ConnectionViewing.swift */; };
 		4EF9FC2F1CD14A25001C8C57 /* ConnectionCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF9FC2E1CD14A25001C8C57 /* ConnectionCreating.swift */; };
 /* End PBXBuildFile section */
@@ -469,7 +466,6 @@
 				4E64FE491D04B7470034E235 /* LogViewController.swift in Sources */,
 				4E64FE551D04B7470034E235 /* TokenResult.swift in Sources */,
 				4E64FE4B1D04B7470034E235 /* Preferences.swift in Sources */,
-				4EEB7C181D11E56C00EE55D2 /* CHANGELOG.md in Sources */,
 				4E64FE451D04B7470034E235 /* ConnectionInfo.swift in Sources */,
 				4E100AC81CC03E9000AFA37E /* SidebarSplitViewController.swift in Sources */,
 				4E7E0E601D04B343004CE941 /* BootstrapInfo.swift in Sources */,
@@ -487,12 +483,10 @@
 				4E64FE4C1D04B7470034E235 /* ProfileFetcher.swift in Sources */,
 				4E6F606C1CC448C600F4F826 /* BootstrapFetcher.swift in Sources */,
 				4E64FE421D04B7470034E235 /* AuthResult.swift in Sources */,
-				4EEB7C141D11E38000EE55D2 /* README.md in Sources */,
 				4E64FE501D04B7470034E235 /* ProviderInfo.swift in Sources */,
 				4E64FE541D04B7470034E235 /* TokenFetcher.swift in Sources */,
 				4E8CB5BE1CB759C400769F0D /* AppDelegate.swift in Sources */,
 				4E01D58A1CD178200073DBD9 /* SignInViewController.swift in Sources */,
-				4EEB7C1A1D11E89000EE55D2 /* CONTRIBUTORS.md in Sources */,
 				4E64FE481D04B7470034E235 /* Fetcher.swift in Sources */,
 				4E64FE531D04B7470034E235 /* RightPaneSplitViewController.swift in Sources */,
 				4E64FE461D04B7470034E235 /* ConnectionsListViewController.swift in Sources */,
