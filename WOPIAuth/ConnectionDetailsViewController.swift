@@ -20,7 +20,8 @@
 import Cocoa
 
 /**
-	Controller to manage detailed display of one `ConnectionInfo` object.
+	Controller to manage detailed display of one `ConnectionInfo` object, and support
+	user-triggered authenticated call and refresh flow.
 */
 class ConnectionDetailsViewController: NSViewController, ConnectionViewing, ProviderViewing {
 

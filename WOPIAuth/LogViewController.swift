@@ -19,7 +19,9 @@
 
 import Cocoa
 
-/// ViewController for the logging view
+/**
+	View that displays lines of logged text received via notifications.
+*/
 class LogViewController: NSViewController {
 
 	// MARK: Properties

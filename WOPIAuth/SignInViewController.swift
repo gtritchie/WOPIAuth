@@ -22,6 +22,12 @@ import WebKit
 
 /**
 	Controller to manage sign-in UI in a webview for WOPI auth flow.
+
+	Borrows quite a bit from Pascal Pfiffner's excellent OAuth2 framework at
+	https://github.com/p2/OAuth2
+
+	Be nice to consolidate and just use his framework instead of all this 
+	similar code.
 */
 class SignInViewController: NSViewController, WKNavigationDelegate {
 

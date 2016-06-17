@@ -72,7 +72,7 @@
 /* Begin PBXFileReference section */
 		4E01D5891CD178200073DBD9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = WOPIAuth/SignInViewController.swift; sourceTree = "<group>"; };
 		4E0A514C1CF784C800F4F64C /* WOPIAuthModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WOPIAuthModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarSplitViewController.swift; path = WOPIAuth/SidebarSplitViewController.swift; sourceTree = "<group>"; };
+		4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarSplitViewController.swift; sourceTree = "<group>"; };
 		4E1CBB861CD40AA3001235DB /* ProviderInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderInfoTests.swift; sourceTree = "<group>"; };
 		4E1CBB881CD40F58001235DB /* LoggingSenderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingSenderTests.swift; sourceTree = "<group>"; };
 		4E223AC41CDA9AFB0035665C /* BootstrapInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapInfoTests.swift; sourceTree = "<group>"; };
@@ -83,23 +83,23 @@
 		4E64FE2F1D04B7470034E235 /* ConnectionDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionDetailsViewController.swift; path = WOPIAuth/ConnectionDetailsViewController.swift; sourceTree = "<group>"; };
 		4E64FE301D04B7470034E235 /* ConnectionInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionInfo.swift; path = WOPIAuth/ConnectionInfo.swift; sourceTree = "<group>"; };
 		4E64FE311D04B7470034E235 /* ConnectionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionsListViewController.swift; path = WOPIAuth/ConnectionsListViewController.swift; sourceTree = "<group>"; };
-		4E64FE321D04B7470034E235 /* ConnectionsSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionsSplitViewController.swift; path = WOPIAuth/ConnectionsSplitViewController.swift; sourceTree = "<group>"; };
-		4E64FE331D04B7470034E235 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fetcher.swift; path = WOPIAuth/Fetcher.swift; sourceTree = "<group>"; };
+		4E64FE321D04B7470034E235 /* ConnectionsSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsSplitViewController.swift; sourceTree = "<group>"; };
+		4E64FE331D04B7470034E235 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		4E64FE341D04B7470034E235 /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogViewController.swift; path = WOPIAuth/LogViewController.swift; sourceTree = "<group>"; };
 		4E64FE351D04B7470034E235 /* ModelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelInfo.swift; path = WOPIAuth/ModelInfo.swift; sourceTree = "<group>"; };
 		4E64FE361D04B7470034E235 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Preferences.swift; path = WOPIAuth/Preferences.swift; sourceTree = "<group>"; };
-		4E64FE371D04B7470034E235 /* ProfileFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileFetcher.swift; path = WOPIAuth/ProfileFetcher.swift; sourceTree = "<group>"; };
+		4E64FE371D04B7470034E235 /* ProfileFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileFetcher.swift; sourceTree = "<group>"; };
 		4E64FE381D04B7470034E235 /* ProfileResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileResult.swift; path = WOPIAuth/ProfileResult.swift; sourceTree = "<group>"; };
 		4E64FE391D04B7470034E235 /* ProviderDetailEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDetailEditing.swift; sourceTree = "<group>"; };
 		4E64FE3A1D04B7470034E235 /* ProviderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderDetailsViewController.swift; path = WOPIAuth/ProviderDetailsViewController.swift; sourceTree = "<group>"; };
 		4E64FE3B1D04B7470034E235 /* ProviderInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderInfo.swift; path = WOPIAuth/ProviderInfo.swift; sourceTree = "<group>"; };
 		4E64FE3C1D04B7470034E235 /* ProviderListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProviderListViewController.swift; path = WOPIAuth/ProviderListViewController.swift; sourceTree = "<group>"; };
 		4E64FE3D1D04B7470034E235 /* ProviderViewing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderViewing.swift; sourceTree = "<group>"; };
-		4E64FE3E1D04B7470034E235 /* RightPaneSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RightPaneSplitViewController.swift; path = WOPIAuth/RightPaneSplitViewController.swift; sourceTree = "<group>"; };
-		4E64FE3F1D04B7470034E235 /* TokenFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenFetcher.swift; path = WOPIAuth/TokenFetcher.swift; sourceTree = "<group>"; };
+		4E64FE3E1D04B7470034E235 /* RightPaneSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightPaneSplitViewController.swift; sourceTree = "<group>"; };
+		4E64FE3F1D04B7470034E235 /* TokenFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenFetcher.swift; sourceTree = "<group>"; };
 		4E64FE401D04B7470034E235 /* TokenResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenResult.swift; path = WOPIAuth/TokenResult.swift; sourceTree = "<group>"; };
 		4E64FE411D04B7470034E235 /* WOPIFlowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WOPIFlowViewController.swift; path = WOPIAuth/WOPIFlowViewController.swift; sourceTree = "<group>"; };
-		4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrapFetcher.swift; path = WOPIAuth/BootstrapFetcher.swift; sourceTree = "<group>"; };
+		4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BootstrapFetcher.swift; sourceTree = "<group>"; };
 		4E7443A51D0F9D3F00157C49 /* WOPIAuth.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = WOPIAuth.entitlements; sourceTree = "<group>"; };
 		4E7E0E5F1D04B343004CE941 /* BootstrapInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BootstrapInfo.swift; path = WOPIAuth/BootstrapInfo.swift; sourceTree = "<group>"; };
 		4E8CB5BA1CB759C400769F0D /* WOPIAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOPIAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,22 +158,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E4A98FE1D13AB2600FE7088 /* Data Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E64FE331D04B7470034E235 /* Fetcher.swift */,
+				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
+				4E64FE3F1D04B7470034E235 /* TokenFetcher.swift */,
+				4E64FE371D04B7470034E235 /* ProfileFetcher.swift */,
+			);
+			name = "Data Controller";
+			sourceTree = "<group>";
+		};
+		4E4A98FF1D13ABAF00FE7088 /* SplitViews */ = {
+			isa = PBXGroup;
+			children = (
+				4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */,
+				4E64FE3E1D04B7470034E235 /* RightPaneSplitViewController.swift */,
+				4E64FE321D04B7470034E235 /* ConnectionsSplitViewController.swift */,
+			);
+			name = SplitViews;
+			path = WOPIAuth;
+			sourceTree = "<group>";
+		};
 		4E592BC71CBC865E00A67FEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4E64FE2D1D04B7470034E235 /* AuthResult.swift */,
 				4E64FE2E1D04B7470034E235 /* ClientInfo.swift */,
 				4E64FE301D04B7470034E235 /* ConnectionInfo.swift */,
-				4E64FE331D04B7470034E235 /* Fetcher.swift */,
 				4E64FE351D04B7470034E235 /* ModelInfo.swift */,
 				4E64FE361D04B7470034E235 /* Preferences.swift */,
-				4E64FE371D04B7470034E235 /* ProfileFetcher.swift */,
 				4E64FE381D04B7470034E235 /* ProfileResult.swift */,
 				4E64FE3B1D04B7470034E235 /* ProviderInfo.swift */,
-				4E64FE3F1D04B7470034E235 /* TokenFetcher.swift */,
 				4E64FE401D04B7470034E235 /* TokenResult.swift */,
 				4E7E0E5F1D04B343004CE941 /* BootstrapInfo.swift */,
-				4E6F606B1CC448C600F4F826 /* BootstrapFetcher.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -187,6 +205,7 @@
 				4EEB7C171D11E56C00EE55D2 /* CHANGELOG.md */,
 				4EEB7C151D11E3C100EE55D2 /* LICENSE.txt */,
 				4E8CB5BC1CB759C400769F0D /* WOPIAuth */,
+				4EB2A6451CCACC750054E523 /* Helpers */,
 				4E8CB5CE1CB759C400769F0D /* WOPIAuthTests */,
 				4E8CB5D91CB759C400769F0D /* WOPIAuthUITests */,
 				4E8CB5BB1CB759C400769F0D /* Products */,
@@ -207,13 +226,12 @@
 		4E8CB5BC1CB759C400769F0D /* WOPIAuth */ = {
 			isa = PBXGroup;
 			children = (
-				4E7443A51D0F9D3F00157C49 /* WOPIAuth.entitlements */,
-				4EB2A6451CCACC750054E523 /* Helpers */,
 				4E592BC71CBC865E00A67FEF /* Model */,
-				4EA620951CBCAB1200D631F4 /* Controller */,
+				4E4A98FE1D13AB2600FE7088 /* Data Controller */,
+				4EA620951CBCAB1200D631F4 /* View */,
 				4EA5A3281CCFE23D00828EE1 /* Protocols */,
 				4E8CB5C11CB759C400769F0D /* Assets.xcassets */,
-				4E8CB5C31CB759C400769F0D /* Main.storyboard */,
+				4E7443A51D0F9D3F00157C49 /* WOPIAuth.entitlements */,
 				4E8CB5C61CB759C400769F0D /* Info.plist */,
 			);
 			path = WOPIAuth;
@@ -255,22 +273,21 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		4EA620951CBCAB1200D631F4 /* Controller */ = {
+		4EA620951CBCAB1200D631F4 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E64FE2F1D04B7470034E235 /* ConnectionDetailsViewController.swift */,
-				4E64FE311D04B7470034E235 /* ConnectionsListViewController.swift */,
-				4E64FE321D04B7470034E235 /* ConnectionsSplitViewController.swift */,
-				4E64FE341D04B7470034E235 /* LogViewController.swift */,
-				4E64FE3A1D04B7470034E235 /* ProviderDetailsViewController.swift */,
-				4E64FE3C1D04B7470034E235 /* ProviderListViewController.swift */,
-				4E64FE3E1D04B7470034E235 /* RightPaneSplitViewController.swift */,
-				4E64FE411D04B7470034E235 /* WOPIFlowViewController.swift */,
+				4E8CB5C31CB759C400769F0D /* Main.storyboard */,
 				4EA620931CBC9EB100D631F4 /* MainWindowController.swift */,
-				4E100AC71CC03E9000AFA37E /* SidebarSplitViewController.swift */,
+				4E64FE3C1D04B7470034E235 /* ProviderListViewController.swift */,
+				4E64FE3A1D04B7470034E235 /* ProviderDetailsViewController.swift */,
+				4E64FE311D04B7470034E235 /* ConnectionsListViewController.swift */,
+				4E64FE2F1D04B7470034E235 /* ConnectionDetailsViewController.swift */,
+				4E64FE341D04B7470034E235 /* LogViewController.swift */,
+				4E64FE411D04B7470034E235 /* WOPIFlowViewController.swift */,
 				4E01D5891CD178200073DBD9 /* SignInViewController.swift */,
+				4E4A98FF1D13ABAF00FE7088 /* SplitViews */,
 			);
-			name = Controller;
+			name = View;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -282,6 +299,7 @@
 				4EA398E11CE65ABF00105C5B /* extensions.swift */,
 			);
 			name = Helpers;
+			path = WOPIAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -535,6 +553,7 @@
 				4E8CB5C41CB759C400769F0D /* Base */,
 			);
 			name = Main.storyboard;
+			path = WOPIAuth;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
