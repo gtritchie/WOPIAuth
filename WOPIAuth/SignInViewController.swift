@@ -30,6 +30,24 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 	/// Our web view; implicitly unwrapped so do not attempt to use it unless isViewLoaded() returns true.
 	var webView: WKWebView!
 
+	private var progressIndicator: NSProgressIndicator!
+	private var loadingView: NSView {
+		let view = NSView(frame: self.view.bounds)
+		view.translatesAutoresizingMaskIntoConstraints = false
+		
+		progressIndicator = NSProgressIndicator(frame: NSZeroRect)
+		progressIndicator.style = .SpinningStyle
+		progressIndicator.displayedWhenStopped = false
+		progressIndicator.sizeToFit()
+		progressIndicator.translatesAutoresizingMaskIntoConstraints = false
+		
+		view.addSubview(progressIndicator)
+		view.addConstraint(NSLayoutConstraint(item: progressIndicator, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0.0))
+		view.addConstraint(NSLayoutConstraint(item: progressIndicator, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
+		
+		return view
+	}
+
 	var connection: ConnectionInfo?
 	var clientInfo: ClientInfo?
 	var providerInfo: ProviderInfo?
@@ -83,6 +101,8 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
 		view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0))
 		view.addConstraint(NSLayoutConstraint(item: webView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0))
+		
+		showLoadingIndicator()
 	}
 
 	override func viewDidAppear() {
@@ -263,6 +283,32 @@ class SignInViewController: NSViewController, WKNavigationDelegate {
 		}
 	}
 	
+	func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+		webView.animator().alphaValue = 1.0
+		hideLoadingIndicator()
+	}
+
+	// MARK: Progress indicator
+	
+	func showLoadingIndicator() {
+		let loadingContainerView = loadingView
+		
+		view.addSubview(loadingContainerView)
+		view.addConstraint(NSLayoutConstraint(item: loadingContainerView, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0.0))
+		view.addConstraint(NSLayoutConstraint(item: loadingContainerView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
+		view.addConstraint(NSLayoutConstraint(item: loadingContainerView, attribute: .Left, relatedBy: .Equal, toItem: view, attribute: .Left, multiplier: 1.0, constant: 0.0))
+		view.addConstraint(NSLayoutConstraint(item: loadingContainerView, attribute: .Right, relatedBy: .Equal, toItem: view, attribute: .Right, multiplier: 1.0, constant: 0.0))
+		
+		progressIndicator.startAnimation(nil)
+	}
+	
+	func hideLoadingIndicator() {
+		guard progressIndicator != nil else { return }
+		
+		progressIndicator.stopAnimation(nil)
+		progressIndicator.superview?.removeFromSuperview()
+	}
+
 	// MARK: Utility
 	
 	/// Log a warning if the matched parameter and expected parameter differed only by case
