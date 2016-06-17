@@ -24,9 +24,4 @@ Warnings
 --------
 The client secret, and the access tokens, are stored unencrypted in user defaults. Some sensitive information may also be displayed in the user interface.
 
-Not Yet Implemented
--------------------
-* store sensitive information in the keychain
-* ensure status log does not show sensitive information
-* implemented Preferences
-* check for updates to the program on GitHub
+See the Issues for this repo for known issues and a wish-list.
