@@ -22,19 +22,19 @@ import Foundation
 /**
 	`AuthResult` contains results from successful sign-in.
 */
-class AuthResult {
+struct AuthResult {
 	
 	/// OAuth2 auth_code
-	var authCode: String?
+	var authCode = ""
 	
 	/// Optional post-auth tokenIssuanceURL
-	var postAuthTokenIssuanceURL: String = ""
+	var postAuthTokenIssuanceURL = ""
 	
 	/// Which client platform string to send in the request header.
-	var sessionContext: String = ""
+	var sessionContext = ""
 	
 	/// Contents of error response
-	var error: String = ""
-	var errorDescription: String = ""
-	var errorURI: String = ""
+	var error = ""
+	var errorDescription = ""
+	var errorURI = ""
 }

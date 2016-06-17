@@ -43,9 +43,10 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 	/// Who to notify when we have a new connection
 	var container: ConnectionContaining?
 
+	/// The newly created `ConnectionInfo` object
 	private var connection: ConnectionInfo?
 
-	/// In-process request
+	/// Request in-progress
 	var activeFetcher: Fetcher?
 
 	// MARK: Actions

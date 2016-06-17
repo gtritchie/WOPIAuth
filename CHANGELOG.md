@@ -1,5 +1,10 @@
 Changelog
 =========
+
+### 1.0.6 (2016-??-??)
+
+- Fix https://github.com/gtritchie/WOPIAuth/issues/1
+
 ### 1.0.5 (2016-06-15)
 
 - First release on GitHub
