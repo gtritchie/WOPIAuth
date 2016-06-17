@@ -42,7 +42,7 @@ class LogViewController: NSViewController {
 	// MARK: Life Cycle
 	
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 
 		let notificationCenter = NSNotificationCenter.defaultCenter()
 		self.logObserver = notificationCenter.addObserverForName(LogLineNotification, object: nil, queue: nil) { note in
