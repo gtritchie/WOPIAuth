@@ -1,5 +1,8 @@
 Changelog
 =========
+### 1.0.5 (2016-06-15)
+
+- First release on GitHub
 
 ### 1.0.5 (2016-??-??)
 
