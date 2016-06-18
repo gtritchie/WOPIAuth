@@ -21,7 +21,7 @@ import Cocoa
 
 /**
 	Controller to manage WOPI client authentication flow test. Each stage of the WOPI client auth flow
-	is exercised, and details are logged.
+	is exercised, and details are logged. The results are accumulated into a `ConnectionInfo` object.
 
 	1. Bootstrapper call
 	2. Sign-In UI

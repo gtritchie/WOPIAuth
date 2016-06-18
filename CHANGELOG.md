@@ -3,7 +3,8 @@ Changelog
 
 ### 1.0.6 (2016-??-??)
 
-- Fix https://github.com/gtritchie/WOPIAuth/issues/1
+- Fix [The Refresh button doesn't show the progress control or the Stop Request button](https://github.com/gtritchie/WOPIAuth/issues/1)
+- Progress control in web view while loading sign-in page
 
 ### 1.0.5 (2016-06-15)
 
