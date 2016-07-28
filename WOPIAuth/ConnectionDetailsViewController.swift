@@ -109,7 +109,8 @@ class ConnectionDetailsViewController: NSViewController, ConnectionViewing, Prov
 		let tokenFetcher = TokenFetcher(tokenURL: tokenUrl, clientId: selectedProvider!.clientId,
 		                                clientSecret: selectedProvider!.clientSecret,
 		                                authCode: selectedConnection!.refreshToken,
-		                                sessionContext: selectedConnection!.sessionContext)
+		                                sessionContext: selectedConnection!.sessionContext,
+		                                redirectUri: selectedProvider!.redirectUrl)
 		startRequest(sender, tokenFetcher)
 		tokenFetcher.fetchTokensUsingCompletionHandler(forRefresh: true) { (result) in
 			switch result {

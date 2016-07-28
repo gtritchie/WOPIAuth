@@ -226,7 +226,8 @@ class WOPIFlowViewController: NSViewController, ConnectionCreating {
 
 		let tokenFetcher = TokenFetcher(tokenURL: tokenUrl, clientId: provider!.clientId,
 		                                clientSecret: provider!.clientSecret, authCode: authCode!,
-		                                sessionContext: connection!.sessionContext)
+		                                sessionContext: connection!.sessionContext,
+		                                redirectUri: provider!.redirectUrl)
 		activeFetcher = tokenFetcher
 		tokenFetcher.fetchTokensUsingCompletionHandler(forRefresh: false) { (result) in
 			switch result {

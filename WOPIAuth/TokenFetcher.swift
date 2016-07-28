@@ -30,6 +30,7 @@ class TokenFetcher: Fetcher {
 	private var clientSecret: String
 	private var authCode: String
 	private var sessionContext: String
+	private var redirectUri: String
 	
 	/// Used to return results from async call
 	enum FetchTokenResult {
@@ -49,11 +50,12 @@ class TokenFetcher: Fetcher {
 	
 	// MARK: Life Cycle
 	
-	init(tokenURL: NSURL, clientId: String, clientSecret: String, authCode: String, sessionContext: String) {
+	init(tokenURL: NSURL, clientId: String, clientSecret: String, authCode: String, sessionContext: String, redirectUri: String) {
 		self.clientId = clientId
 		self.clientSecret = clientSecret
 		self.authCode = authCode
 		self.sessionContext = sessionContext
+		self.redirectUri = redirectUri
 		super.init(url: tokenURL, errorDomain: "Token Exchange")
 	}
 
@@ -86,6 +88,7 @@ class TokenFetcher: Fetcher {
 			loggingPostParams["grant_type"] = "refresh_token"
 		} else {
 			loggingPostParams["grant_type"] = "authorization_code"
+			loggingPostParams["redirect_uri"] = redirectUri
 		}
 		let loggingPostString = formEncodedQueryStringFor(loggingPostParams)
 		
@@ -102,6 +105,7 @@ class TokenFetcher: Fetcher {
 			postParams["grant_type"] = "refresh_token"
 		} else {
 			postParams["grant_type"] = "authorization_code"
+			postParams["redirect_uri"] = redirectUri
 		}
 		let postString = formEncodedQueryStringFor(postParams)
 

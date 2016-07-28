@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.7 (2016-07-27)
+
+- Fix [Token request does not include redirect_uri as per oauth2 spec](https://github.com/gtritchie/WOPIAuth/issues/8)
+
 ### 1.0.6 (2016-06-18)
 
 - Fix [The Refresh button doesn't show the progress control or the Stop Request button](https://github.com/gtritchie/WOPIAuth/issues/1)
