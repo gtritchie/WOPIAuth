@@ -52,6 +52,36 @@ class ProfileResultTests: XCTestCase {
 			return noJSON()
 		}
 	}
+
+	// New recommendation is to have the profile info nested in a bootstrap object. Both variations are in the
+	// wild for the foreseeable future.
+	//
+	//	{
+	//		"Bootstrap": {
+	//			"EcosystemUrl": "http://.../wopi*/ecosystem?access_token=<ecosystem_token>",
+	//			"UserId": "User ID",
+	//			"SignInName": "user@contoso.com",
+	//			"UserFriendlyName": "User Name"
+	//		}
+	//	}
+	
+	private func validV2JSON() -> NSData {
+		let jsonItems = [
+			"Bootstrap": [
+				"UserId": userId,
+				"SignInName": signInName,
+				"UserFriendlyName": friendlyName
+			]
+		]
+		do {
+			return try NSJSONSerialization.dataWithJSONObject(jsonItems, options: NSJSONWritingOptions(rawValue: 0))
+		} catch {
+			XCTFail()
+			return noJSON()
+		}
+	}
+	
+
 	
 	private func emptyUserIdJSON() -> NSData {
 		let jsonItems = [
@@ -101,6 +131,17 @@ class ProfileResultTests: XCTestCase {
 		}
 	}
 
+	func testValidV2ProfileResponse() {
+		do {
+			let result = try ProfileResult.createFromResponse(validV2JSON(), response: validResponse(), error: nil)
+			XCTAssertEqual(result.userId, userId)
+			XCTAssertEqual(result.signInName, signInName)
+			XCTAssertTrue(result.friendlyName == friendlyName)
+		} catch {
+			XCTFail()
+		}
+	}
+	
 	func testEmptyJSONProfileResponse() {
 		do {
 			try ProfileResult.createFromResponse(noJSON(), response: validResponse(), error: nil)
