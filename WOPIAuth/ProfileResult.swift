@@ -59,7 +59,12 @@ class ProfileResult {
 		Parse JSON response from profile endpoint
 	*/
 	func populateFromResponseData(data: NSData) throws {
-		let topLevelDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
+		var topLevelDict = try NSJSONSerialization.JSONObjectWithData(data, options: []) as! NSDictionary
+		
+		if topLevelDict["Bootstrap"] as? NSDictionary != nil {
+			topLevelDict = topLevelDict["Bootstrap"] as! NSDictionary
+		}
+		
 		guard let id = topLevelDict["UserId"] as? String else {
 			throw ProfileResult.errorWithMessage("Unable to extract userId")
 		}

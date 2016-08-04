@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.8 (2016-08-04)
+
+- Fix [Newer authenticated bootstrapper response format not handled correctly](https://github.com/gtritchie/WOPIAuth/issues/9)
+
 ### 1.0.7 (2016-07-27)
 
 - Fix [Token request does not include redirect_uri as per oauth2 spec](https://github.com/gtritchie/WOPIAuth/issues/8)
