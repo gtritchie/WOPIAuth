@@ -1,6 +1,10 @@
 Changelog
 =========
 
+### 1.0.9 (2016-08-27)
+
+- Fix [Edited provider info doesn't persist across sessions ](https://github.com/gtritchie/WOPIAuth/issues/10)
+
 ### 1.0.8 (2016-08-04)
 
 - Fix [Newer authenticated bootstrapper response format not handled correctly](https://github.com/gtritchie/WOPIAuth/issues/9)

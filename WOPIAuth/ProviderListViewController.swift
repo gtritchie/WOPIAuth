@@ -123,6 +123,7 @@ class ProviderListViewController: NSViewController,	ProviderDetailEditing, NSTab
 			}
 			activeProvider.setPropertiesFrom(provider)
 			setActiveProvider(activeProvider)
+			Preferences.providers = providers
 		}
 	}
 	
